@@ -1,0 +1,467 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AutocompleteNeedExistingFieldUse" xml:space="preserve">
+    <value>Un champ avec un éditeur de type AutoComplete doit faire référence a un champ d'une autre table.</value>
+  </data>
+  <data name="CreateOrUseField" xml:space="preserve">
+    <value>Souhaitez vous utiliser un champ de la base ou utiliser un champ créé dans l'instruction select? Cliquiez sur oui pour utiliser un champ de la base.</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>Erreur</value>
+  </data>
+  <data name="MainForm_ReadWebConfig_Ce_dossier_ne_contient_pas_de_fichier_config_web" xml:space="preserve">
+    <value>Ce dossier ne contient pas de fichier config.web</value>
+  </data>
+  <data name="Search_filter" xml:space="preserve">
+    <value>Un filtre de recherche </value>
+  </data>
+  <data name="Saving" xml:space="preserve">
+    <value>Sauvegarde en cours</value>
+  </data>
+  <data name="FieldNameNeeded" xml:space="preserve">
+    <value>Le nom du champ est obligatoire.</value>
+  </data>
+  <data name="Graphic" xml:space="preserve">
+    <value>Graphique</value>
+  </data>
+  <data name="SavingConfig" xml:space="preserve">
+    <value>Enregistrement de la configuration.</value>
+  </data>
+  <data name="JoinWithNoConstraint_Description" xml:space="preserve">
+    <value>{0} lie "{1}" à "{2}" utilisez le bouton ci-dessous pour créer le contrainte.</value>
+  </data>
+  <data name="TableWithNoViewCreateView" xml:space="preserve">
+    <value>Créer la vue</value>
+  </data>
+  <data name="Parameters" xml:space="preserve">
+    <value>Paramètres</value>
+  </data>
+  <data name="Remove_from_database" xml:space="preserve">
+    <value>Souhaitez vous également le supprimer dans la base de donnée?</value>
+  </data>
+  <data name="BuildSameJoinRecursively" xml:space="preserve">
+    <value>Créer les jointures dans la vue {0} pour joindre {1}</value>
+  </data>
+  <data name="Confirmation" xml:space="preserve">
+    <value>Confirmation</value>
+  </data>
+  <data name="RemovingFolderFiles" xml:space="preserve">
+    <value>Suppression des fichiers et dossiers.</value>
+  </data>
+  <data name="Alert" xml:space="preserve">
+    <value>Alerte</value>
+  </data>
+  <data name="JoinWithNoConstraintTitle" xml:space="preserve">
+    <value>La jointure {0} de la vue {1} n'est pas couverte par une contrainte.</value>
+  </data>
+  <data name="Log_file_exist" xml:space="preserve">
+    <value>Le fichier spécifié pour le stockage des logs est absent.</value>
+  </data>
+  <data name="CantFindPrimaryKey" xml:space="preserve">
+    <value>Impossible de déterminer la clef primaire pour cette table.</value>
+  </data>
+  <data name="SourceFileCopyError" xml:space="preserve">
+    <value>Erreur de copie des fichiers sources vérifiez les droits sur le dossier spécifié et l'installation du Wizard.</value>
+  </data>
+  <data name="MultiSMS" xml:space="preserve">
+    <value>Envoi de masse</value>
+  </data>
+  <data name="MainForm_SetTableProperties_Propriétés_de_" xml:space="preserve">
+    <value>Propriétés de </value>
+  </data>
+  <data name="Decreasing" xml:space="preserve">
+    <value>Décroissant</value>
+  </data>
+  <data name="ErrorReadingConfigFile" xml:space="preserve">
+    <value>Erreur de lecture du fichier de configuration\r</value>
+  </data>
+  <data name="NotTabloidFolderConfirm" xml:space="preserve">
+    <value>Le dossier sélectionné ne semble pas être un dossier tabloïd. Confirmez-vous la suppression de son contenu?</value>
+  </data>
+  <data name="add_join" xml:space="preserve">
+    <value>Cette table ne semble pas exister dans cette vue souhaitez-vous ajouter une jointure ?</value>
+  </data>
+  <data name="DisableModule" xml:space="preserve">
+    <value>Attention la désactivation du module supprimera la table contenant les informations de ce dernier. Il ne sera pas possible de les récupérer. Confirmez vous cette opération?</value>
+  </data>
+  <data name="Information" xml:space="preserve">
+    <value>Information</value>
+  </data>
+  <data name="Remove_view_database" xml:space="preserve">
+    <value>Souhaitez vous également supprimer la table dans la base de donnée?</value>
+  </data>
+  <data name="NewFromBaseForm_btn_Click_Récupération_des_Tables" xml:space="preserve">
+    <value>Récupération des Tables</value>
+  </data>
+  <data name="Confirm_supp" xml:space="preserve">
+    <value>Confirmez vous la suppression de {0}({1}) de la vue {2}?</value>
+  </data>
+  <data name="AddSchema" xml:space="preserve">
+    <value>Le nom du schéma par défaut n'est pas défini souhaitez vous le définir et modifier l'ensemble des tables?</value>
+  </data>
+  <data name="SimpleSMS" xml:space="preserve">
+    <value>Envoi simple</value>
+  </data>
+  <data name="Publishing" xml:space="preserve">
+    <value>Publication en cours</value>
+  </data>
+  <data name="ViewWithNoTableTitle" xml:space="preserve">
+    <value>Cette vue fait référence à une table qui n'existe pas.</value>
+  </data>
+  <data name="AnalyseError" xml:space="preserve">
+    <value>Erreur durant l'analyse</value>
+  </data>
+  <data name="Detail" xml:space="preserve">
+    <value>Détail</value>
+  </data>
+  <data name="CustomingConfig" xml:space="preserve">
+    <value>Personnalisation du web.config.</value>
+  </data>
+  <data name="MainForm_convertisseur1x2xToolStripMenuItem_Click_Converssion_réussie_" xml:space="preserve">
+    <value>Converssion réussie.</value>
+  </data>
+  <data name="NewFromBaseForm_tables_inutiles" xml:space="preserve">
+    <value>Les tables suivantes sont absentes :
+
+	- {0}
+
+ Elles sont utile au fonctionnement de Tabloïd!
+
+Souhaitez-vous les créer ?</value>
+  </data>
+  <data name="LoginCouldnotbeempty" xml:space="preserve">
+    <value>Le champ 'Identifiant Windows' ne peut être vide!</value>
+  </data>
+  <data name="Base_Modification_error" xml:space="preserve">
+    <value>Erreur à la modification de la base :</value>
+  </data>
+  <data name="folder_site_selection" xml:space="preserve">
+    <value>Sélectionnez le dossier contenant l'ensemble du site.</value>
+  </data>
+  <data name="Automatic_generated_view" xml:space="preserve">
+    <value>Cette vue est générée automatiquement. Si vous la modifiez elle sera intégrée à votre personnalisation.</value>
+  </data>
+  <data name="Parameters_menu_not_found" xml:space="preserve">
+    <value>Le menu paramètres n'a pas été trouvé (vérifiez l'othographe)...</value>
+  </data>
+  <data name="Save_as" xml:space="preserve">
+    <value>Enregistrez sous</value>
+  </data>
+  <data name="Menu_creation_success" xml:space="preserve">
+    <value>Le menu a été créé avec succés.</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="wizard" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\wizard.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Mailing" xml:space="preserve">
+    <value>Publipostage</value>
+  </data>
+  <data name="NewFromBaseForm_GetTable_" xml:space="preserve">
+    <value>La table {0} ne contient pas les champs par défaut pour le fonctionnement de Tabloïd!
+
+Les champs suivants sont abscents :
+
+	- {1}
+
+Souhaitez-vous les créer ?</value>
+  </data>
+  <data name="Analysing" xml:space="preserve">
+    <value>Analyse en cours</value>
+  </data>
+  <data name="ViewNameAlreadyExist" xml:space="preserve">
+    <value>Ce nom de vue existe déja. Si vous souhaitez créer deux vues pour une même table saisissez un nom de vue différent</value>
+  </data>
+  <data name="WrongConfigVersion" xml:space="preserve">
+    <value>La base actuelle ne semble pas implémenter la nouvelle gestion des roles de Tabloid. Shoutez vous la convertir ?</value>
+  </data>
+  <data name="JoinWithNoConstraintBuildConstraint" xml:space="preserve">
+    <value>Créer la contrainte</value>
+  </data>
+  <data name="ChooseOnAutomaticJoinAtLeast" xml:space="preserve">
+    <value>Sélectionnez au moins une jointure automatique à créer !</value>
+  </data>
+  <data name="alignJoinVisibility" xml:space="preserve">
+    <value>La jointure associée à ce champ n'est pas visible pour ce type de visibilité, souhaitez vous modifier la visibilité de la jointure automatiquement?</value>
+  </data>
+  <data name="JoinWithNoConstraintBuildAllConstraint" xml:space="preserve">
+    <value>Corriger sur tout le projet</value>
+  </data>
+  <data name="RefFieldForTable" xml:space="preserve">
+    <value>Champ de référence pour la table {0} :</value>
+  </data>
+  <data name="AddComboForThisTable" xml:space="preserve">
+    <value>Ajouter une liste déroulante à cette vue pour cette table</value>
+  </data>
+  <data name="ConfirmDelete" xml:space="preserve">
+    <value>Confirmez vous cette suppression?</value>
+  </data>
+  <data name="Export" xml:space="preserve">
+    <value>Export</value>
+  </data>
+  <data name="ConfirmPasswordError" xml:space="preserve">
+    <value>Le mot de passe de confirmation ne correspond pas!</value>
+  </data>
+  <data name="SavingError" xml:space="preserve">
+    <value>Erreur au cours de la sauvegarde :</value>
+  </data>
+  <data name="Erreur" xml:space="preserve">
+    <value>Erreur</value>
+  </data>
+  <data name="Question" xml:space="preserve">
+    <value>Question</value>
+  </data>
+  <data name="PasswordRegExpMess" xml:space="preserve">
+    <value>Le mot de passe doit ce composer de 8 caractères ou plus, de lettre, nombre et caractères spéciaux.</value>
+  </data>
+  <data name="CustumRoleUsed" xml:space="preserve">
+    <value>Les vues roles, utilisateur et perso sont des vues système? Si vous ne les avez pas personnalisées, il est recommandé de laisser tabloid les gérer automatiquement. Souhaitez vous les supprimer?</value>
+  </data>
+  <data name="ErrorMessage" xml:space="preserve">
+    <value>Erreur {0}</value>
+  </data>
+  <data name="Field_in_join_remove_join" xml:space="preserve">
+    <value>Ce champ provient d'une jointure, souhaitez vous supprimer la jointure?</value>
+  </data>
+  <data name="Remove_join" xml:space="preserve">
+    <value>Vous êtes sur le point de supprimer la jointure '{0}'. Confirmez vous cette opération?</value>
+  </data>
+  <data name="Confirm_supp_view" xml:space="preserve">
+    <value>Confirmez vous la suppression de la vue {0}({1})?</value>
+  </data>
+  <data name="Increasing" xml:space="preserve">
+    <value>Croissant</value>
+  </data>
+  <data name="NewFromBaseForm_btn_Click_" xml:space="preserve">
+    <value>Erreur de connection vérifiez les paramètres 
+</value>
+  </data>
+  <data name="PreDefineText" xml:space="preserve">
+    <value>Textes prédefinis</value>
+  </data>
+  <data name="Warning" xml:space="preserve">
+    <value>Attention</value>
+  </data>
+  <data name="SetFieldTitle" xml:space="preserve">
+    <value>Veuillez indiquer un titre pour ce champ.</value>
+  </data>
+  <data name="BuildSameJoin" xml:space="preserve">
+    <value>Créer une jointure dans la vue {0} vers {1}</value>
+  </data>
+  <data name="List" xml:space="preserve">
+    <value>Liste</value>
+  </data>
+  <data name="SchemaAlreadyExist" xml:space="preserve">
+    <value>Le schéma demandé existe déjà. Si vous souhaitez remplacer ce schéma utilisez le bouton 'oui' attention toutes les données du schéma actuel seront supprimées.</value>
+  </data>
+  <data name="detail2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\detail2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="TabloidFileCopy" xml:space="preserve">
+    <value>Copie des fichiers et dossiers Tabloid.</value>
+  </data>
+  <data name="ajout" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ajout.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="TableWithNoViewTitle" xml:space="preserve">
+    <value>Cette table est présente dans la base et ne dispose pas de vue associée.</value>
+  </data>
+  <data name="ReplaceConfigFile" xml:space="preserve">
+    <value>Au moins un fichier de configuration existe déja souhaitez vous le remplacer?</value>
+  </data>
+  <data name="DeleteConfirm" xml:space="preserve">
+    <value>Confirmez vous le suppression?</value>
+  </data>
+  <data name="enrg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\enrg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MainForm_convertisseur1x2xToolStripMenuItem_Click_Un_fichier_portant_le_nom_web_bak_existe_déja__Souhaitez_vous_l_écraser_" xml:space="preserve">
+    <value>Un fichier portant le nom web.bak existe déja. Souhaitez vous l'écraser?</value>
+  </data>
+  <data name="ConvertOnlyN1Join" xml:space="preserve">
+    <value>Seul les relations de type N:1 sont prises en charge!</value>
+  </data>
+  <data name="Cleanning" xml:space="preserve">
+    <value>Nettoyage.</value>
+  </data>
+  <data name="tableNotExist" xml:space="preserve">
+    <value>La table {0} semble ne plus exister. Vérifiez votre base.</value>
+  </data>
+  <data name="RenameOldName" xml:space="preserve">
+    <value>Ancien nom : </value>
+  </data>
+  <data name="Have_been_added" xml:space="preserve">
+    <value> a été ajouté.</value>
+  </data>
+  <data name="ConfirmDeleteView" xml:space="preserve">
+    <value>Confirmez vous la suppression de cette vue?</value>
+  </data>
+  <data name="EmptyTrash" xml:space="preserve">
+    <value>Souhaitez-vous vider la corbeille avant de la désactiver?</value>
+  </data>
+  <data name="AuthenticationAndAutoEnrollementError" xml:space="preserve">
+    <value>Vous ne pouvez pas utiliser la fonction d'autoenrollement en dehors d'une authentification Windows. Le mode d'authentification va être modifié.</value>
+  </data>
+  <data name="TableWithNoViewRenameTable" xml:space="preserve">
+    <value>Renommer la table</value>
+  </data>
+  <data name="suppr2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\suppr2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="NotDefine" xml:space="preserve">
+    <value>non déterminée</value>
+  </data>
+  <data name="MySQLDifferentBaseName" xml:space="preserve">
+    <value>Le schéma par défaut ne correspond pas au non de la base souhaitez-vous le corriger?</value>
+  </data>
+  <data name="SelectJoin" xml:space="preserve">
+    <value>Sélectionnez une jointure pour poursuivre cette opération!</value>
+  </data>
+  <data name="NoJoinCreate" xml:space="preserve">
+    <value>Aucune jointure vers cette table n'existe. Tabloïd peut la créer pour vous. Souhaitez vous la créer?</value>
+  </data>
+  <data name="CreateJoin" xml:space="preserve">
+    <value>Création de jointure</value>
+  </data>
+  <data name="AddAutomaticFilter" xml:space="preserve">
+    <value>Ajouter un filtre automatique à ce champ</value>
+  </data>
+  <data name="ConvertToComplexList" xml:space="preserve">
+    <value>Convertir la liste en tableau</value>
+  </data>
+  <data name="AddNewSynthese" xml:space="preserve">
+    <value>Ce projet ne contient pas de page de synthèse. Souhaitez vous en créer une?</value>
+  </data>
+  <data name="DirectoryNotExist" xml:space="preserve">
+    <value>Le répertoire sélectionné n'existe pas!</value>
+  </data>
+  <data name="DeleteFunctionConfirm" xml:space="preserve">
+    <value>Confirmez vous la suppression définitive de la fonction '{0}'?</value>
+  </data>
+  <data name="FieldAlreadyExist" xml:space="preserve">
+    <value>Ce nom de champ existe déja dans la base. Merci de le modifier.</value>
+  </data>
+  <data name="DisplayCorrespondingJoin" xml:space="preserve">
+    <value>Afficher la jointure correspondante</value>
+  </data>
+  <data name="DisplayCorrespondigView" xml:space="preserve">
+    <value>Afficher la vue correspondante</value>
+  </data>
+</root>

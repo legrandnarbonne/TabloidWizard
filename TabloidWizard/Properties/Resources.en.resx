@@ -1,0 +1,430 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="MainForm_convertisseur1x2xToolStripMenuItem_Click_Converssion_réussie_" xml:space="preserve">
+    <value>Single successful.!</value>
+  </data>
+  <data name="NewFromBaseForm_btn_Click_Récupération_des_Tables" xml:space="preserve">
+    <value>Recovery of Tables!</value>
+  </data>
+  <data name="Erreur" xml:space="preserve">
+    <value>Error!</value>
+  </data>
+  <data name="Information" xml:space="preserve">
+    <value>Information</value>
+  </data>
+  <data name="NewFromBaseForm_GetTable_" xml:space="preserve">
+    <value>The table {0} does not contain the default fields for the operation of Tabloid!
+
+The following fields are abscents:-{1} do you want to create them?</value>
+  </data>
+  <data name="MainForm_SetTableProperties_Propriétés_de_" xml:space="preserve">
+    <value>properties of</value>
+  </data>
+  <data name="MainForm_ReadWebConfig_Ce_dossier_ne_contient_pas_de_fichier_config_web" xml:space="preserve">
+    <value>This folder contains no file config.web.</value>
+  </data>
+  <data name="MainForm_convertisseur1x2xToolStripMenuItem_Click_Un_fichier_portant_le_nom_web_bak_existe_déja__Souhaitez_vous_l_écraser_" xml:space="preserve">
+    <value>A file with the name web.bak already exists. Would crush you it?</value>
+  </data>
+  <data name="NewFromBaseForm_tables_inutiles" xml:space="preserve">
+    <value>The following tables are missing:-{0} they are useful to the functioning of Tabloid!
+
+Do you want to create them?</value>
+  </data>
+  <data name="NewFromBaseForm_btn_Click_" xml:space="preserve">
+    <value>Connection error check settings!</value>
+  </data>
+  <data name="folder_site_selection" xml:space="preserve">
+    <value>Select the folder that contains all of the site.!</value>
+  </data>
+  <data name="Log_file_exist" xml:space="preserve">
+    <value>The file specified for the storage of logs is missing.!</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>Error!</value>
+  </data>
+  <data name="Save_as" xml:space="preserve">
+    <value>Register an account for free</value>
+  </data>
+  <data name="Search_filter" xml:space="preserve">
+    <value>Search Filter</value>
+  </data>
+  <data name="Have_been_added" xml:space="preserve">
+    <value>field has been added.</value>
+  </data>
+  <data name="Confirm_supp" xml:space="preserve">
+    <value>Do you confirm the deletion of {0} ({1}) from the view {2} ?!</value>
+  </data>
+  <data name="Confirmation" xml:space="preserve">
+    <value>Confirmation</value>
+  </data>
+  <data name="Remove_from_database" xml:space="preserve">
+    <value>Would you like to delete it in the database ?!</value>
+  </data>
+  <data name="Remove_join" xml:space="preserve">
+    <value>You are about to delete the join &amp;#39;{0}&amp;#39;. Do you confirm this operation ?!</value>
+  </data>
+  <data name="Menu_creation_success" xml:space="preserve">
+    <value>The menu has been successfully created.</value>
+  </data>
+  <data name="Confirm_supp_view" xml:space="preserve">
+    <value>Do you confirm the deletion of the view {0} ({1}) ?!</value>
+  </data>
+  <data name="Remove_view_database" xml:space="preserve">
+    <value>Do you also want to delete the table in the database ?!</value>
+  </data>
+  <data name="Base_Modification_error" xml:space="preserve">
+    <value>Error modifying the database:!</value>
+  </data>
+  <data name="Field_in_join_remove_join" xml:space="preserve">
+    <value>This field comes from a join, do you want to delete the join ?!</value>
+  </data>
+  <data name="Parameters_menu_not_found" xml:space="preserve">
+    <value>The settings menu was not found (check the othograph) ...!</value>
+  </data>
+  <data name="Parameters" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="add_join" xml:space="preserve">
+    <value>This table does not seem to exist in this view do you want to add a join ?!</value>
+  </data>
+  <data name="Warning" xml:space="preserve">
+    <value>Caution!</value>
+  </data>
+  <data name="ChooseOnAutomaticJoinAtLeast" xml:space="preserve">
+    <value>Select at least one automatic join to create !!</value>
+  </data>
+  <data name="RefFieldForTable" xml:space="preserve">
+    <value>Reference field for table {0}:!</value>
+  </data>
+  <data name="ConvertOnlyN1Join" xml:space="preserve">
+    <value>Only N: 1 relationships are supported !!</value>
+  </data>
+  <data name="BuildSameJoin" xml:space="preserve">
+    <value>Create a join in view {0} to {1}!</value>
+  </data>
+  <data name="BuildSameJoinRecursively" xml:space="preserve">
+    <value>Create joins in view {0} to join {1}!</value>
+  </data>
+  <data name="AddComboForThisTable" xml:space="preserve">
+    <value>Add a drop-down list to this view for this table!</value>
+  </data>
+  <data name="tableNotExist" xml:space="preserve">
+    <value>The {0} table does not seem to exist anymore. Check your base.</value>
+  </data>
+  <data name="SetFieldTitle" xml:space="preserve">
+    <value>Please enter a title for this field.</value>
+  </data>
+  <data name="FieldNameNeeded" xml:space="preserve">
+    <value>The name of the field is required</value>
+  </data>
+  <data name="ViewNameAlreadyExist" xml:space="preserve">
+    <value>This view name already exists. If you want to create two views for the same table, enter a different view name!</value>
+  </data>
+  <data name="AutocompleteNeedExistingFieldUse" xml:space="preserve">
+    <value>A field with an AutoComplete editor must refer to a field in another table.</value>
+  </data>
+  <data name="WrongConfigVersion" xml:space="preserve">
+    <value>The current database does not seem to implement the new role management of Tabloid. Do you drink it?</value>
+  </data>
+  <data name="CustumRoleUsed" xml:space="preserve">
+    <value>The roles, user, and custom views are system views? If you have not customized them, it is recommended to let tabloid handle them automatically. Would you like to delete them ?!</value>
+  </data>
+  <data name="LoginCouldnotbeempty" xml:space="preserve">
+    <value>The 'Windows ID' field cannot be empty!</value>
+  </data>
+  <data name="SavingError" xml:space="preserve">
+    <value>Error during backup:!</value>
+  </data>
+  <data name="Publishing" xml:space="preserve">
+    <value>Publishing is in progress.</value>
+  </data>
+  <data name="RemovingFolderFiles" xml:space="preserve">
+    <value>Deleting files and folders.!</value>
+  </data>
+  <data name="CreateOrUseField" xml:space="preserve">
+    <value>Want to use a field of the database or use a field set in the select statement? Click Yes to use a field of the database.!</value>
+  </data>
+  <data name="PreDefineText" xml:space="preserve">
+    <value>Predefined texts!</value>
+  </data>
+  <data name="SimpleSMS" xml:space="preserve">
+    <value>Simple shipping!</value>
+  </data>
+  <data name="MultiSMS" xml:space="preserve">
+    <value>Sending of mass!</value>
+  </data>
+  <data name="Alert" xml:space="preserve">
+    <value>Alert:</value>
+  </data>
+  <data name="DisableModule" xml:space="preserve">
+    <value>Caution Disabling the module will remove the table that contains the information of the latter. It is not possible to recover. Can you confirm this operation?</value>
+  </data>
+  <data name="AddSchema" xml:space="preserve">
+    <value>The name of the default schema is not set want to define it and change all of the tables?</value>
+  </data>
+  <data name="SourceFileCopyError" xml:space="preserve">
+    <value>Copy error source files check permissions on the specified folder and the installation of the Wizard.!</value>
+  </data>
+  <data name="Cleanning" xml:space="preserve">
+    <value>Cleaning up</value>
+  </data>
+  <data name="SavingConfig" xml:space="preserve">
+    <value>Saving configuration</value>
+  </data>
+  <data name="CustomingConfig" xml:space="preserve">
+    <value>Customization of the web.config.!</value>
+  </data>
+  <data name="ReplaceConfigFile" xml:space="preserve">
+    <value>At least one configuration file already exists, do you want to replace it ?!</value>
+  </data>
+  <data name="TabloidFileCopy" xml:space="preserve">
+    <value>Copy Tabloid files and folders.!</value>
+  </data>
+  <data name="Saving" xml:space="preserve">
+    <value>Backup In Progress</value>
+  </data>
+  <data name="NotTabloidFolderConfirm" xml:space="preserve">
+    <value>The selected folder does not appear to be a tabloid folder. Do you confirm the deletion of its contents ?!</value>
+  </data>
+  <data name="CantFindPrimaryKey" xml:space="preserve">
+    <value>Unable to determine the primary key for this table.!</value>
+  </data>
+  <data name="List" xml:space="preserve">
+    <value>List</value>
+  </data>
+  <data name="Detail" xml:space="preserve">
+    <value>Detail</value>
+  </data>
+  <data name="Mailing" xml:space="preserve">
+    <value>Mailings</value>
+  </data>
+  <data name="Graphic" xml:space="preserve">
+    <value>Chart</value>
+  </data>
+  <data name="Export" xml:space="preserve">
+    <value>Export</value>
+  </data>
+  <data name="ErrorReadingConfigFile" xml:space="preserve">
+    <value>Error reading configuration file \ r!</value>
+  </data>
+  <data name="PasswordRegExpMess" xml:space="preserve">
+    <value>The password must consist of 8 characters or more, letter, number and special characters.</value>
+  </data>
+  <data name="ConfirmPasswordError" xml:space="preserve">
+    <value>Confirmed password does not matched</value>
+  </data>
+  <data name="AuthenticationAndAutoEnrollementError" xml:space="preserve">
+    <value>You can not use the autoenroll function outside Windows authentication. The authentication mode will be changed.</value>
+  </data>
+  <data name="DeleteConfirm" xml:space="preserve">
+    <value>Do you confirm the deletion ?!</value>
+  </data>
+  <data name="Automatic_generated_view" xml:space="preserve">
+    <value>This view is generated automatically. If you change it, it will be integrated into your customization.</value>
+  </data>
+  <data name="Increasing" xml:space="preserve">
+    <value>Ascending</value>
+  </data>
+  <data name="Decreasing" xml:space="preserve">
+    <value>DESC</value>
+  </data>
+  <data name="ErrorMessage" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="SchemaAlreadyExist" xml:space="preserve">
+    <value>The requested schema already exists. If you want to replace this schema use the &amp;#39;yes&amp;#39; button. Attention all data in the current schema will be deleted.</value>
+  </data>
+  <data name="ConfirmDelete" xml:space="preserve">
+    <value>Do you confirm this deletion ?!</value>
+  </data>
+  <data name="EmptyTrash" xml:space="preserve">
+    <value>Would you like to empty the trash before disabling it ?!</value>
+  </data>
+  <data name="TableWithNoViewTitle" xml:space="preserve">
+    <value>This table is present in the database and does not have an associated view.</value>
+  </data>
+  <data name="ViewWithNoTableTitle" xml:space="preserve">
+    <value>This view refers to a table that does not exist.</value>
+  </data>
+  <data name="JoinWithNoConstraintTitle" xml:space="preserve">
+    <value>The {0} join of view {1} is not constrained.</value>
+  </data>
+  <data name="JoinWithNoConstraintBuildConstraint" xml:space="preserve">
+    <value>Create the constraint!</value>
+  </data>
+  <data name="JoinWithNoConstraintBuildAllConstraint" xml:space="preserve">
+    <value>Correct on the whole project!</value>
+  </data>
+  <data name="TableWithNoViewCreateView" xml:space="preserve">
+    <value>Create the view!</value>
+  </data>
+  <data name="AnalyseError" xml:space="preserve">
+    <value>Error during the analysis!</value>
+  </data>
+  <data name="Analysing" xml:space="preserve">
+    <value>Scan in Progress</value>
+  </data>
+  <data name="TableWithNoViewRenameTable" xml:space="preserve">
+    <value>Rename the table!</value>
+  </data>
+  <data name="JoinWithNoConstraint_Description" xml:space="preserve">
+    <value>{0} links &amp;quot;{1}&amp;quot; to &amp;quot;{2}&amp;quot; use the button below to create the constraint.</value>
+  </data>
+  <data name="alignJoinVisibility" xml:space="preserve">
+    <value>The join associated with this field is not visible for this type of visibility, do you want to change the visibility of the join automatically ?!</value>
+  </data>
+  <data name="Question" xml:space="preserve">
+    <value>Question</value>
+  </data>
+  <data name="RenameOldName" xml:space="preserve">
+    <value>Old Name</value>
+  </data>
+  <data name="ConfirmDeleteView" xml:space="preserve">
+    <value>are you sure you want to remove this photo?</value>
+  </data>
+  <data name="NotDefine" xml:space="preserve">
+    <value>!Uncalced</value>
+  </data>
+  <data name="MySQLDifferentBaseName" xml:space="preserve">
+    <value>The default schema does not match the no from the base do you want to fix it ?!</value>
+  </data>
+  <data name="SelectJoin" xml:space="preserve">
+    <value>Select a join to continue this operation !!</value>
+  </data>
+  <data name="NoJoinCreate" xml:space="preserve">
+    <value>No joins to this table exist. Tabloid can create it for you. Would you like to create it ?!</value>
+  </data>
+  <data name="CreateJoin" xml:space="preserve">
+    <value>Join creation!</value>
+  </data>
+  <data name="AddAutomaticFilter" xml:space="preserve">
+    <value>Add an automatic filter to this field!</value>
+  </data>
+  <data name="ConvertToComplexList" xml:space="preserve">
+    <value>Convert the list to a table!</value>
+  </data>
+  <data name="AddNewSynthese" xml:space="preserve">
+    <value>This project does not contain a summary page. Would you like to create one ?!</value>
+  </data>
+  <data name="DirectoryNotExist" xml:space="preserve">
+    <value>The selected directory does not exist.</value>
+  </data>
+</root>
