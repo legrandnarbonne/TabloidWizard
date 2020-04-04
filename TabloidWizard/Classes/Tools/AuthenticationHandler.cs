@@ -1,4 +1,5 @@
 ﻿
+using System.Windows.Forms;
 using System.Xml.Linq;
 
 namespace TabloidWizard.Classes.Tools
@@ -22,8 +23,6 @@ namespace TabloidWizard.Classes.Tools
                     setFormAuthentication(config, true);
                     break;
                 case AuthenticationType.Formulaire:
-
-
                     setIISAuthenticationType(config, false);
                     setFormAuthentication(config, true);
                     break;

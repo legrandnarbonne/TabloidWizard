@@ -118,6 +118,8 @@ namespace TabloidWizard
                     OnCopy = copierToolStripMenuItem_Click,
                     OnPaste = collerToolStripMenuItem_Click,
 
+                    SearchInProperty = "Champ",
+
                     OnPropertyValueChanged = onFieldModified,
                     AfterSelectedItemChange = setCurrentContext,
                     AfterObjectCollectionSet = addFieldIcon,
@@ -135,6 +137,8 @@ namespace TabloidWizard
                     DisplayPropertyName = "Jointures",
 
                     EnableDelete = true,
+
+                    SearchInProperty = "ChampDeRef;ChampDeRef2",
 
                     OnAddElement = addJoin,
                     OnContextOpening = joinContextOpening,
@@ -380,9 +384,9 @@ namespace TabloidWizard
 
             WizardEvents.onConfigLoaded(appSet.Schema);
 
-            SetViewListFromConfig();
             SetFunctionListFromConfig();
-
+            SetViewListFromConfig();
+            
             Program.CurrentProjectFolder = _configFiles.ProjectFolderPath;
 
 
@@ -1153,6 +1157,7 @@ namespace TabloidWizard
         private void contextMenuTable_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
             DialogResult dr = DialogResult.Cancel;
+            bool fieldAddAction = true;
 
             switch (e.ClickedItem.Name)
             {
@@ -1163,14 +1168,20 @@ namespace TabloidWizard
                     dr = new WizardComplexList(CurrentContext.CurrentView).ShowDialog();
                     break;
                 case "ajouterTable":
-                    dr = new WizardTable(Program.AppSet.ConnectionString, Program.AppSet.ProviderType).ShowDialog();
+                    var wiz = new WizardTable(Program.AppSet.ConnectionString, Program.AppSet.ProviderType);
+                    dr = wiz.ShowDialog();
+                    if (dr == DialogResult.OK) CurrentContext.CurrentView = wiz.CreatedView;
+                    fieldAddAction = false;
                     break;
             }
 
             _joinViewer.SetObjectCollection();//joind could be added and cancel pressed
 
             if (dr == DialogResult.OK)
+            {
+                if (fieldAddAction) WizardEvents.afterFieldAdded(CurrentContext.CurrentView);
                 SetViewListFromConfig(true);
+            }
 
             setProjectModified();
         }
@@ -1247,7 +1258,7 @@ namespace TabloidWizard
 
         private void afficherLeContenuDuSelectToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var frmGrid = new GridViewForm(CurrentContext.CurrentView, Program.AppSet.ConnectionString);
+            var frmGrid = new GridViewForm2(CurrentContext.CurrentView, Program.AppSet.ConnectionString);
 
             frmGrid.ShowDialog();
         }
@@ -1388,7 +1399,7 @@ namespace TabloidWizard
                 openView.Click += openView_Click;
             }
 
-            
+
             //display only if selection is not empty
             mn.Items["mnFieldOpenView"].Enabled = mn.Items["mnFieldOpenJoin"].Enabled = mn.Items["mnFieldFilter"].Enabled = mn.Items["mnFieldlistConv"].Enabled = isSelection;
 
@@ -1399,14 +1410,14 @@ namespace TabloidWizard
             //for combox or comboboxplus field display convert menu
             var editor = _fieldViewer.SelectedObject.Editeur;
             mn.Items["mnFieldlistConv"].Visible = ctrl.isSingleObjectSelector;// editor == Tabloid.Classes.Controls.TemplateType.ComboBox ||
-                                                                     //   editor == Tabloid.Classes.Controls.TemplateType.ComboBoxPlus;
+                                                                              //   editor == Tabloid.Classes.Controls.TemplateType.ComboBoxPlus;
 
             //for field with join display open join
             mn.Items["mnFieldOpenJoin"].Visible = !string.IsNullOrEmpty(_fieldViewer.SelectedObject.Jointure);
 
             //for view or gridview editor display ope view
             mn.Items["mnFieldOpenView"].Visible = ctrl.isArrayObjectSelector;//editor == Tabloid.Classes.Controls.TemplateType.View ||
-                                                                        //editor == Tabloid.Classes.Controls.TemplateType.GridView;
+                                                                             //editor == Tabloid.Classes.Controls.TemplateType.GridView;
         }
 
         private void openView_Click(object sender, EventArgs e)
@@ -1825,6 +1836,7 @@ namespace TabloidWizard
 
             SetFunctionListFromConfig(true);
         }
+
     }
 
 

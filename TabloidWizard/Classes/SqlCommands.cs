@@ -20,13 +20,13 @@ namespace TabloidWizard.Classes
         /// <summary>
         ///     Return Sql command to list all Table
         /// </summary>
-        public static string SqlGetTable()
+        public static string SqlGetTable(string schema=null)
         {
             return Provider == Provider.MySql
                 ? "SHOW TABLES"
                 : string.Format(
                     "SELECT tablename FROM pg_tables WHERE schemaname='{0}' and tablename<>'spatial_ref_sys' and tablename<>'geometry_columns' order by tablename",
-                Program.AppSet.Schema);
+                string.IsNullOrEmpty(schema)?Program.AppSet.Schema:schema);
         }
 
         /// <summary>

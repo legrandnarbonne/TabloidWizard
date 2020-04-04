@@ -53,6 +53,9 @@ namespace TabloidWizard.Classes
         public void SaveConfigFiles(bool promptOnExist)
         {
             if (_configFiles == null) return;
+
+            Directory.CreateDirectory(ConfigFolderPath); //create if not exist
+
             if (Directory.GetFiles(ConfigFolderPath, "*.config").Length > 0)//prompt if a file exist
                 if (promptOnExist)
                     if (

@@ -196,6 +196,12 @@ namespace TabloidWizard.Classes
         [Category("Datagouv"), Description("URL de l'API data.gouv.fr.")]
         public string DataGouvUri { get; set; }
 
+        [Category("Etiquette"), Description("Entier représentant la largeur des etiquettes en mm.")]
+        public String labelWidth { get; set; }
+
+        [Category("Etiquette"), Description("Entier représentant la hauteur des etiquettes en mm.")]
+        public String labelHeight { get; set; }
+
         [Category("Divers"),Description("Permet un mode de fonctionnement spécifique de type questionnaire par exemple.")]
         public TabloidTypes TabloidType { get; set; }
         //[Category("IIS"),
@@ -353,7 +359,7 @@ namespace TabloidWizard.Classes
         /// Get schema list from postgres connection string or database propertie for mysql
         /// </summary>
         /// <returns></returns>
-        static string[] GetSchemaList(Provider provider)
+        public static string[] GetSchemaList(Provider provider)
         {
             var schemaList = new List<string>();
             var props = Program.AppSet.ConnectionString.Split(';');

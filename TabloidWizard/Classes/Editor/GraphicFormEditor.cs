@@ -62,7 +62,7 @@ namespace TabloidWizard.Classes.Editor
             try
             {
                 var graph = (TabloidConfigGraph)lstGraphic.SelectedItem;
-                var sqlSet = TabloidGraphHelper.GetSQL(_view, graph,"");//find sql
+                var sqlSet = TabloidGraphHelper.GetSQL(_view, graph,"",null);//find sql
 
 
                 sqlSet.Select.Where = string.Format("deleted_{0}=0", _view);

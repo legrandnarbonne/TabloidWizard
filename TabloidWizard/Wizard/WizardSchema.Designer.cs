@@ -31,9 +31,6 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WizardSchema));
             this.wizard1 = new Gui.Wizard.Wizard();
-            this.Fin = new Gui.Wizard.WizardPage();
-            this.header5 = new Gui.Wizard.Header();
-            this.label8 = new System.Windows.Forms.Label();
             this.Info = new Gui.Wizard.WizardPage();
             this.label7 = new System.Windows.Forms.Label();
             this.txtSchema = new System.Windows.Forms.TextBox();
@@ -48,10 +45,13 @@
             this.txtHote = new System.Windows.Forms.TextBox();
             this.txtUtil = new System.Windows.Forms.TextBox();
             this.header4 = new Gui.Wizard.Header();
+            this.Fin = new Gui.Wizard.WizardPage();
+            this.header5 = new Gui.Wizard.Header();
+            this.label8 = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.wizard1.SuspendLayout();
-            this.Fin.SuspendLayout();
             this.Info.SuspendLayout();
+            this.Fin.SuspendLayout();
             this.SuspendLayout();
             // 
             // wizard1
@@ -67,40 +67,6 @@
             this.Fin});
             this.wizard1.Size = new System.Drawing.Size(298, 313);
             this.wizard1.TabIndex = 0;
-            // 
-            // Fin
-            // 
-            this.Fin.Controls.Add(this.header5);
-            this.Fin.Controls.Add(this.label8);
-            this.Fin.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Fin.IsFinishPage = true;
-            this.Fin.Location = new System.Drawing.Point(0, 0);
-            this.Fin.Name = "Fin";
-            this.Fin.Size = new System.Drawing.Size(298, 265);
-            this.Fin.TabIndex = 5;
-            this.Fin.CloseFromNext += new Gui.Wizard.PageEventHandler(this.Button_end);
-            // 
-            // header5
-            // 
-            this.header5.BackColor = System.Drawing.SystemColors.Control;
-            this.header5.CausesValidation = false;
-            this.header5.Description = "";
-            this.header5.Dock = System.Windows.Forms.DockStyle.Top;
-            this.header5.Image = ((System.Drawing.Image)(resources.GetObject("header5.Image")));
-            this.header5.Location = new System.Drawing.Point(0, 0);
-            this.header5.Name = "header5";
-            this.header5.Size = new System.Drawing.Size(298, 57);
-            this.header5.TabIndex = 12;
-            this.header5.Title = "Assistant d\'ajout";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(37, 111);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(217, 13);
-            this.label8.TabIndex = 0;
-            this.label8.Text = "Cliquez sur \"Finish\" pour réaliser l\'opération.";
             // 
             // Info
             // 
@@ -210,6 +176,7 @@
             this.cmbType.Name = "cmbType";
             this.cmbType.Size = new System.Drawing.Size(121, 21);
             this.cmbType.TabIndex = 25;
+            this.cmbType.SelectedIndexChanged += new System.EventHandler(this.cmbType_SelectedIndexChanged);
             // 
             // txtMdp
             // 
@@ -225,6 +192,7 @@
             this.txtHote.Name = "txtHote";
             this.txtHote.Size = new System.Drawing.Size(100, 21);
             this.txtHote.TabIndex = 26;
+            this.txtHote.Text = "localhost";
             // 
             // txtUtil
             // 
@@ -246,19 +214,54 @@
             this.header4.TabIndex = 11;
             this.header4.Title = "Assistant création de base";
             // 
+            // Fin
+            // 
+            this.Fin.Controls.Add(this.header5);
+            this.Fin.Controls.Add(this.label8);
+            this.Fin.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Fin.IsFinishPage = true;
+            this.Fin.Location = new System.Drawing.Point(0, 0);
+            this.Fin.Name = "Fin";
+            this.Fin.Size = new System.Drawing.Size(298, 265);
+            this.Fin.TabIndex = 5;
+            this.Fin.CloseFromNext += new Gui.Wizard.PageEventHandler(this.Button_end);
+            // 
+            // header5
+            // 
+            this.header5.BackColor = System.Drawing.SystemColors.Control;
+            this.header5.CausesValidation = false;
+            this.header5.Description = "";
+            this.header5.Dock = System.Windows.Forms.DockStyle.Top;
+            this.header5.Image = ((System.Drawing.Image)(resources.GetObject("header5.Image")));
+            this.header5.Location = new System.Drawing.Point(0, 0);
+            this.header5.Name = "header5";
+            this.header5.Size = new System.Drawing.Size(298, 57);
+            this.header5.TabIndex = 12;
+            this.header5.Title = "Assistant d\'ajout";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(37, 111);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(217, 13);
+            this.label8.TabIndex = 0;
+            this.label8.Text = "Cliquez sur \"Finish\" pour réaliser l\'opération.";
+            // 
             // WizardSchema
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(298, 313);
             this.Controls.Add(this.wizard1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "WizardSchema";
             this.Text = "Wizard";
             this.wizard1.ResumeLayout(false);
-            this.Fin.ResumeLayout(false);
-            this.Fin.PerformLayout();
             this.Info.ResumeLayout(false);
             this.Info.PerformLayout();
+            this.Fin.ResumeLayout(false);
+            this.Fin.PerformLayout();
             this.ResumeLayout(false);
 
         }

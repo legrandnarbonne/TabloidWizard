@@ -93,7 +93,7 @@ namespace TabloidWizard
 
             var where = string.IsNullOrEmpty(txtId.Text)?"":_view.DbKey + "=" + txtId.Text;
 
-            var sqlSet = TabloidGraphHelper.GetSQL(_view, _currentGraph, where);//find sql
+            var sqlSet = TabloidGraphHelper.GetSQL(_view, _currentGraph, where,null);//find sql
 
             txtSql.Text = sqlSet.Select.Command;
 

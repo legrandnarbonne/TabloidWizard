@@ -236,6 +236,7 @@ namespace TabloidWizard.Classes.WizardTools
             configs.updateXML();
             configs.ChangeConfigFilesPath(cfg.DestinationPath);
             configs.SaveConfigFiles(false);
+            
 
             //set authentication mode
             AuthenticationHandler.Set(Program.AppSet.ModeAuthentification);

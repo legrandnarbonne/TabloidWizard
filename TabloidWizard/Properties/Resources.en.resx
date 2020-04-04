@@ -427,4 +427,16 @@ Do you want to create them?</value>
   <data name="DirectoryNotExist" xml:space="preserve">
     <value>The selected directory does not exist.</value>
   </data>
+  <data name="DeleteFunctionConfirm" xml:space="preserve">
+    <value>Do you confirm the permanent deletion of the function &amp;#39;{0}&amp;#39; ?!</value>
+  </data>
+  <data name="FieldAlreadyExist" xml:space="preserve">
+    <value>This field name already exists in the database. Please modify it.!</value>
+  </data>
+  <data name="DisplayCorrespondingJoin" xml:space="preserve">
+    <value>Show the corresponding join!</value>
+  </data>
+  <data name="DisplayCorrespondigView" xml:space="preserve">
+    <value>Display the corresponding view!</value>
+  </data>
 </root>

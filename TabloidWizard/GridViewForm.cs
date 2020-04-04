@@ -35,7 +35,7 @@ namespace TabloidWizard
             Visibilites v;
             Enum.TryParse<Visibilites>(cmbVisibility.SelectedValue.ToString(), out v);
 
-            _sqlSet = TableDefinition.DefSql(_view.Nom, v, false, false, null, false, null, null);
+            _sqlSet = TableDefinition.DefSql(_view.Nom, v, false, false, null, false, null, null,null);
 
             var dt = DataTools.Data(_sqlSet.Select.Command, _connectionString, out lastError);
 

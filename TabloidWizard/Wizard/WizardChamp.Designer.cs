@@ -31,16 +31,23 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WizardField));
             this.wizard1 = new Gui.Wizard.Wizard();
-            this.Editeur = new Gui.Wizard.WizardPage();
-            this.txtDescription = new System.Windows.Forms.TextBox();
-            this.wzCmbEditeur = new System.Windows.Forms.ComboBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.WzTxtTitre = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.header4 = new Gui.Wizard.Header();
+            this.Fin = new Gui.Wizard.WizardPage();
+            this.header5 = new Gui.Wizard.Header();
+            this.label8 = new System.Windows.Forms.Label();
+            this.Button = new Gui.Wizard.WizardPage();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtToolTipBtn = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtUrlBtn = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.header3 = new Gui.Wizard.Header();
+            this.visibilite = new Gui.Wizard.WizardPage();
+            this.lstVisibilites = new System.Windows.Forms.CheckedListBox();
+            this.header1 = new Gui.Wizard.Header();
+            this.header2 = new Gui.Wizard.Header();
             this.Champ = new Gui.Wizard.WizardPage();
-            this.cmbTable = new System.Windows.Forms.ComboBox();
-            this.label11 = new System.Windows.Forms.Label();
+            this.fs = new TabloidWizard.Classes.Control.FieldSelector();
             this.txtDec = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.txtLong = new System.Windows.Forms.TextBox();
@@ -51,47 +58,37 @@
             this.lbl = new System.Windows.Forms.Label();
             this.radioCrea = new System.Windows.Forms.RadioButton();
             this.radioExist = new System.Windows.Forms.RadioButton();
-            this.lstChamp = new System.Windows.Forms.ComboBox();
-            this.label7 = new System.Windows.Forms.Label();
             this.header6 = new Gui.Wizard.Header();
-            this.visibilite = new Gui.Wizard.WizardPage();
-            this.lstVisibilites = new System.Windows.Forms.CheckedListBox();
-            this.header1 = new Gui.Wizard.Header();
-            this.header2 = new Gui.Wizard.Header();
-            this.Button = new Gui.Wizard.WizardPage();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.txtToolTipBtn = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtUrlBtn = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.header3 = new Gui.Wizard.Header();
-            this.Fin = new Gui.Wizard.WizardPage();
-            this.header5 = new Gui.Wizard.Header();
-            this.label8 = new System.Windows.Forms.Label();
+            this.Editeur = new Gui.Wizard.WizardPage();
+            this.txtDescription = new System.Windows.Forms.TextBox();
+            this.wzCmbEditeur = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.WzTxtTitre = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.header4 = new Gui.Wizard.Header();
             this.type = new Gui.Wizard.WizardPage();
             this.hdrChooseRoute = new Gui.Wizard.Header();
             this.radField = new System.Windows.Forms.RadioButton();
             this.radbutton = new System.Windows.Forms.RadioButton();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.wizard1.SuspendLayout();
-            this.Editeur.SuspendLayout();
-            this.Champ.SuspendLayout();
+            this.Fin.SuspendLayout();
+            this.Button.SuspendLayout();
             this.visibilite.SuspendLayout();
             this.header1.SuspendLayout();
-            this.Button.SuspendLayout();
-            this.Fin.SuspendLayout();
+            this.Champ.SuspendLayout();
+            this.Editeur.SuspendLayout();
             this.type.SuspendLayout();
             this.SuspendLayout();
             // 
             // wizard1
             // 
-            this.wizard1.Controls.Add(this.Editeur);
             this.wizard1.Controls.Add(this.type);
             this.wizard1.Controls.Add(this.Fin);
             this.wizard1.Controls.Add(this.Button);
             this.wizard1.Controls.Add(this.visibilite);
             this.wizard1.Controls.Add(this.Champ);
+            this.wizard1.Controls.Add(this.Editeur);
             this.wizard1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.wizard1.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.wizard1.Location = new System.Drawing.Point(0, 0);
@@ -106,84 +103,177 @@
             this.wizard1.Size = new System.Drawing.Size(336, 381);
             this.wizard1.TabIndex = 0;
             // 
-            // Editeur
+            // Fin
             // 
-            this.Editeur.Controls.Add(this.txtDescription);
-            this.Editeur.Controls.Add(this.wzCmbEditeur);
-            this.Editeur.Controls.Add(this.label6);
-            this.Editeur.Controls.Add(this.WzTxtTitre);
-            this.Editeur.Controls.Add(this.label5);
-            this.Editeur.Controls.Add(this.header4);
-            this.Editeur.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Editeur.IsFinishPage = false;
-            this.Editeur.Location = new System.Drawing.Point(0, 0);
-            this.Editeur.Name = "Editeur";
-            this.Editeur.Size = new System.Drawing.Size(336, 333);
-            this.Editeur.TabIndex = 4;
+            this.Fin.Controls.Add(this.header5);
+            this.Fin.Controls.Add(this.label8);
+            this.Fin.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Fin.IsFinishPage = true;
+            this.Fin.Location = new System.Drawing.Point(0, 0);
+            this.Fin.Name = "Fin";
+            this.Fin.Size = new System.Drawing.Size(336, 333);
+            this.Fin.TabIndex = 5;
+            this.Fin.CloseFromNext += new Gui.Wizard.PageEventHandler(this.Button_end);
             // 
-            // txtDescription
+            // header5
             // 
-            this.txtDescription.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtDescription.Enabled = false;
-            this.txtDescription.Location = new System.Drawing.Point(12, 140);
-            this.txtDescription.Multiline = true;
-            this.txtDescription.Name = "txtDescription";
-            this.txtDescription.Size = new System.Drawing.Size(312, 190);
-            this.txtDescription.TabIndex = 27;
-            this.txtDescription.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.header5.BackColor = System.Drawing.SystemColors.Control;
+            this.header5.CausesValidation = false;
+            this.header5.Description = "";
+            this.header5.Dock = System.Windows.Forms.DockStyle.Top;
+            this.header5.Image = ((System.Drawing.Image)(resources.GetObject("header5.Image")));
+            this.header5.Location = new System.Drawing.Point(0, 0);
+            this.header5.Name = "header5";
+            this.header5.Size = new System.Drawing.Size(336, 57);
+            this.header5.TabIndex = 12;
+            this.header5.Title = "Assistant d\'ajout";
             // 
-            // wzCmbEditeur
+            // label8
             // 
-            this.wzCmbEditeur.FormattingEnabled = true;
-            this.wzCmbEditeur.Location = new System.Drawing.Point(100, 104);
-            this.wzCmbEditeur.Name = "wzCmbEditeur";
-            this.wzCmbEditeur.Size = new System.Drawing.Size(121, 21);
-            this.wzCmbEditeur.TabIndex = 26;
-            this.wzCmbEditeur.SelectedIndexChanged += new System.EventHandler(this.wzCmbEditeur_SelectedIndexChanged);
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(66, 152);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(207, 13);
+            this.label8.TabIndex = 0;
+            this.label8.Text = "Utilisez le boutton Finish pour créer l\'objet";
             // 
-            // label6
+            // Button
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(46, 107);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(48, 13);
-            this.label6.TabIndex = 25;
-            this.label6.Text = "Editeur :";
+            this.Button.Controls.Add(this.textBox3);
+            this.Button.Controls.Add(this.label4);
+            this.Button.Controls.Add(this.txtToolTipBtn);
+            this.Button.Controls.Add(this.label3);
+            this.Button.Controls.Add(this.txtUrlBtn);
+            this.Button.Controls.Add(this.label2);
+            this.Button.Controls.Add(this.header3);
+            this.Button.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Button.IsFinishPage = false;
+            this.Button.Location = new System.Drawing.Point(0, 0);
+            this.Button.Name = "Button";
+            this.Button.Size = new System.Drawing.Size(336, 333);
+            this.Button.TabIndex = 3;
             // 
-            // WzTxtTitre
+            // textBox3
             // 
-            this.WzTxtTitre.Location = new System.Drawing.Point(100, 77);
-            this.WzTxtTitre.Name = "WzTxtTitre";
-            this.WzTxtTitre.Size = new System.Drawing.Size(121, 21);
-            this.WzTxtTitre.TabIndex = 24;
-            this.WzTxtTitre.TextChanged += new System.EventHandler(this.WzTxtTitre_TextChanged);
+            this.textBox3.Location = new System.Drawing.Point(37, 138);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(272, 21);
+            this.textBox3.TabIndex = 18;
             // 
-            // label5
+            // label4
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(58, 80);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(36, 13);
-            this.label5.TabIndex = 23;
-            this.label5.Text = "Titre :";
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(12, 122);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(59, 13);
+            this.label4.TabIndex = 17;
+            this.label4.Text = "Info bulle :";
             // 
-            // header4
+            // txtToolTipBtn
             // 
-            this.header4.BackColor = System.Drawing.SystemColors.Control;
-            this.header4.CausesValidation = false;
-            this.header4.Description = "Saisissez les propriétés du champ";
-            this.header4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.header4.Image = ((System.Drawing.Image)(resources.GetObject("header4.Image")));
-            this.header4.Location = new System.Drawing.Point(0, 0);
-            this.header4.Name = "header4";
-            this.header4.Size = new System.Drawing.Size(336, 57);
-            this.header4.TabIndex = 11;
-            this.header4.Title = "Assistant d\'ajout";
+            this.txtToolTipBtn.Location = new System.Drawing.Point(155, 90);
+            this.txtToolTipBtn.Name = "txtToolTipBtn";
+            this.txtToolTipBtn.Size = new System.Drawing.Size(121, 21);
+            this.txtToolTipBtn.TabIndex = 16;
+            this.txtToolTipBtn.Text = "/images/";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(64, 93);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(92, 13);
+            this.label3.TabIndex = 15;
+            this.label3.Text = "U.R.L. de l\'icone :";
+            // 
+            // txtUrlBtn
+            // 
+            this.txtUrlBtn.Location = new System.Drawing.Point(155, 63);
+            this.txtUrlBtn.Name = "txtUrlBtn";
+            this.txtUrlBtn.Size = new System.Drawing.Size(121, 21);
+            this.txtUrlBtn.TabIndex = 14;
+            this.toolTip1.SetToolTip(this.txtUrlBtn, "Url du type maPage.aspx?val={0}&retour={2}");
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(64, 66);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(93, 13);
+            this.label2.TabIndex = 13;
+            this.label2.Text = "U.R.L. à appeler :";
+            // 
+            // header3
+            // 
+            this.header3.BackColor = System.Drawing.SystemColors.Control;
+            this.header3.CausesValidation = false;
+            this.header3.Description = "Saisissez les propriétés du bouton";
+            this.header3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.header3.Image = ((System.Drawing.Image)(resources.GetObject("header3.Image")));
+            this.header3.Location = new System.Drawing.Point(0, 0);
+            this.header3.Name = "header3";
+            this.header3.Size = new System.Drawing.Size(336, 57);
+            this.header3.TabIndex = 10;
+            this.header3.Title = "Assistant d\'ajout";
+            // 
+            // visibilite
+            // 
+            this.visibilite.Controls.Add(this.lstVisibilites);
+            this.visibilite.Controls.Add(this.header1);
+            this.visibilite.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.visibilite.IsFinishPage = false;
+            this.visibilite.Location = new System.Drawing.Point(0, 0);
+            this.visibilite.Name = "visibilite";
+            this.visibilite.Size = new System.Drawing.Size(336, 333);
+            this.visibilite.TabIndex = 2;
+            // 
+            // lstVisibilites
+            // 
+            this.lstVisibilites.BackColor = System.Drawing.SystemColors.Control;
+            this.lstVisibilites.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.lstVisibilites.CheckOnClick = true;
+            this.lstVisibilites.FormattingEnabled = true;
+            this.lstVisibilites.Items.AddRange(new object[] {
+            "Liste",
+            "Détail",
+            "Export",
+            "Publipostage",
+            "Calendrier"});
+            this.lstVisibilites.Location = new System.Drawing.Point(113, 95);
+            this.lstVisibilites.Name = "lstVisibilites";
+            this.lstVisibilites.Size = new System.Drawing.Size(120, 96);
+            this.lstVisibilites.TabIndex = 6;
+            // 
+            // header1
+            // 
+            this.header1.BackColor = System.Drawing.SystemColors.Control;
+            this.header1.CausesValidation = false;
+            this.header1.Controls.Add(this.header2);
+            this.header1.Description = "Selectionnez la ou les vues dans lesquelles afficher cet objet";
+            this.header1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.header1.Image = ((System.Drawing.Image)(resources.GetObject("header1.Image")));
+            this.header1.Location = new System.Drawing.Point(0, 0);
+            this.header1.Name = "header1";
+            this.header1.Size = new System.Drawing.Size(336, 57);
+            this.header1.TabIndex = 5;
+            this.header1.Title = "Assistant d\'ajout";
+            // 
+            // header2
+            // 
+            this.header2.BackColor = System.Drawing.SystemColors.Control;
+            this.header2.CausesValidation = false;
+            this.header2.Description = "Selectionnez la ou les vues dans lesquelles afficher cet objet";
+            this.header2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.header2.Image = ((System.Drawing.Image)(resources.GetObject("header2.Image")));
+            this.header2.Location = new System.Drawing.Point(0, 0);
+            this.header2.Name = "header2";
+            this.header2.Size = new System.Drawing.Size(336, 57);
+            this.header2.TabIndex = 9;
+            this.header2.Title = "Assistant d\'ajout";
             // 
             // Champ
             // 
-            this.Champ.Controls.Add(this.cmbTable);
-            this.Champ.Controls.Add(this.label11);
+            this.Champ.Controls.Add(this.fs);
             this.Champ.Controls.Add(this.txtDec);
             this.Champ.Controls.Add(this.label10);
             this.Champ.Controls.Add(this.txtLong);
@@ -194,8 +284,6 @@
             this.Champ.Controls.Add(this.lbl);
             this.Champ.Controls.Add(this.radioCrea);
             this.Champ.Controls.Add(this.radioExist);
-            this.Champ.Controls.Add(this.lstChamp);
-            this.Champ.Controls.Add(this.label7);
             this.Champ.Controls.Add(this.header6);
             this.Champ.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Champ.IsFinishPage = false;
@@ -204,24 +292,13 @@
             this.Champ.Size = new System.Drawing.Size(336, 333);
             this.Champ.TabIndex = 6;
             // 
-            // cmbTable
+            // fs
             // 
-            this.cmbTable.Enabled = false;
-            this.cmbTable.FormattingEnabled = true;
-            this.cmbTable.Location = new System.Drawing.Point(137, 238);
-            this.cmbTable.Name = "cmbTable";
-            this.cmbTable.Size = new System.Drawing.Size(121, 21);
-            this.cmbTable.TabIndex = 36;
-            this.cmbTable.SelectedIndexChanged += new System.EventHandler(this.cmbTable_SelectedIndexChanged);
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(35, 241);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(64, 13);
-            this.label11.TabIndex = 35;
-            this.label11.Text = "de la table :";
+            this.fs.ConnectionString = null;
+            this.fs.Location = new System.Drawing.Point(49, 221);
+            this.fs.Name = "fs";
+            this.fs.Size = new System.Drawing.Size(240, 88);
+            this.fs.TabIndex = 35;
             // 
             // txtDec
             // 
@@ -317,24 +394,6 @@
             this.radioExist.UseVisualStyleBackColor = true;
             this.radioExist.CheckedChanged += new System.EventHandler(this.radioExist_CheckedChanged);
             // 
-            // lstChamp
-            // 
-            this.lstChamp.Enabled = false;
-            this.lstChamp.FormattingEnabled = true;
-            this.lstChamp.Location = new System.Drawing.Point(137, 265);
-            this.lstChamp.Name = "lstChamp";
-            this.lstChamp.Size = new System.Drawing.Size(121, 21);
-            this.lstChamp.TabIndex = 24;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(35, 268);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(96, 13);
-            this.label7.TabIndex = 23;
-            this.label7.Text = "Champ à afficher :";
-            // 
             // header6
             // 
             this.header6.BackColor = System.Drawing.SystemColors.Control;
@@ -348,173 +407,79 @@
             this.header6.TabIndex = 5;
             this.header6.Title = "Assistant d\'ajout";
             // 
-            // visibilite
+            // Editeur
             // 
-            this.visibilite.Controls.Add(this.lstVisibilites);
-            this.visibilite.Controls.Add(this.header1);
-            this.visibilite.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.visibilite.IsFinishPage = false;
-            this.visibilite.Location = new System.Drawing.Point(0, 0);
-            this.visibilite.Name = "visibilite";
-            this.visibilite.Size = new System.Drawing.Size(336, 333);
-            this.visibilite.TabIndex = 2;
+            this.Editeur.Controls.Add(this.txtDescription);
+            this.Editeur.Controls.Add(this.wzCmbEditeur);
+            this.Editeur.Controls.Add(this.label6);
+            this.Editeur.Controls.Add(this.WzTxtTitre);
+            this.Editeur.Controls.Add(this.label5);
+            this.Editeur.Controls.Add(this.header4);
+            this.Editeur.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Editeur.IsFinishPage = false;
+            this.Editeur.Location = new System.Drawing.Point(0, 0);
+            this.Editeur.Name = "Editeur";
+            this.Editeur.Size = new System.Drawing.Size(336, 333);
+            this.Editeur.TabIndex = 4;
             // 
-            // lstVisibilites
+            // txtDescription
             // 
-            this.lstVisibilites.BackColor = System.Drawing.SystemColors.Control;
-            this.lstVisibilites.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.lstVisibilites.CheckOnClick = true;
-            this.lstVisibilites.FormattingEnabled = true;
-            this.lstVisibilites.Items.AddRange(new object[] {
-            "Liste",
-            "Détail",
-            "Export",
-            "Publipostage",
-            "Calendrier"});
-            this.lstVisibilites.Location = new System.Drawing.Point(113, 95);
-            this.lstVisibilites.Name = "lstVisibilites";
-            this.lstVisibilites.Size = new System.Drawing.Size(120, 96);
-            this.lstVisibilites.TabIndex = 6;
+            this.txtDescription.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtDescription.Enabled = false;
+            this.txtDescription.Location = new System.Drawing.Point(12, 140);
+            this.txtDescription.Multiline = true;
+            this.txtDescription.Name = "txtDescription";
+            this.txtDescription.Size = new System.Drawing.Size(312, 190);
+            this.txtDescription.TabIndex = 27;
+            this.txtDescription.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // header1
+            // wzCmbEditeur
             // 
-            this.header1.BackColor = System.Drawing.SystemColors.Control;
-            this.header1.CausesValidation = false;
-            this.header1.Controls.Add(this.header2);
-            this.header1.Description = "Selectionnez la ou les vues dans lesquelles afficher cet objet";
-            this.header1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.header1.Image = ((System.Drawing.Image)(resources.GetObject("header1.Image")));
-            this.header1.Location = new System.Drawing.Point(0, 0);
-            this.header1.Name = "header1";
-            this.header1.Size = new System.Drawing.Size(336, 57);
-            this.header1.TabIndex = 5;
-            this.header1.Title = "Assistant d\'ajout";
+            this.wzCmbEditeur.FormattingEnabled = true;
+            this.wzCmbEditeur.Location = new System.Drawing.Point(100, 104);
+            this.wzCmbEditeur.Name = "wzCmbEditeur";
+            this.wzCmbEditeur.Size = new System.Drawing.Size(121, 21);
+            this.wzCmbEditeur.TabIndex = 26;
+            this.wzCmbEditeur.SelectedIndexChanged += new System.EventHandler(this.wzCmbEditeur_SelectedIndexChanged);
             // 
-            // header2
+            // label6
             // 
-            this.header2.BackColor = System.Drawing.SystemColors.Control;
-            this.header2.CausesValidation = false;
-            this.header2.Description = "Selectionnez la ou les vues dans lesquelles afficher cet objet";
-            this.header2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.header2.Image = ((System.Drawing.Image)(resources.GetObject("header2.Image")));
-            this.header2.Location = new System.Drawing.Point(0, 0);
-            this.header2.Name = "header2";
-            this.header2.Size = new System.Drawing.Size(336, 57);
-            this.header2.TabIndex = 9;
-            this.header2.Title = "Assistant d\'ajout";
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(46, 107);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(48, 13);
+            this.label6.TabIndex = 25;
+            this.label6.Text = "Editeur :";
             // 
-            // Button
+            // WzTxtTitre
             // 
-            this.Button.Controls.Add(this.textBox3);
-            this.Button.Controls.Add(this.label4);
-            this.Button.Controls.Add(this.txtToolTipBtn);
-            this.Button.Controls.Add(this.label3);
-            this.Button.Controls.Add(this.txtUrlBtn);
-            this.Button.Controls.Add(this.label2);
-            this.Button.Controls.Add(this.header3);
-            this.Button.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Button.IsFinishPage = false;
-            this.Button.Location = new System.Drawing.Point(0, 0);
-            this.Button.Name = "Button";
-            this.Button.Size = new System.Drawing.Size(336, 333);
-            this.Button.TabIndex = 3;
+            this.WzTxtTitre.Location = new System.Drawing.Point(100, 77);
+            this.WzTxtTitre.Name = "WzTxtTitre";
+            this.WzTxtTitre.Size = new System.Drawing.Size(121, 21);
+            this.WzTxtTitre.TabIndex = 24;
+            this.WzTxtTitre.TextChanged += new System.EventHandler(this.WzTxtTitre_TextChanged);
             // 
-            // textBox3
+            // label5
             // 
-            this.textBox3.Location = new System.Drawing.Point(37, 138);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(272, 21);
-            this.textBox3.TabIndex = 18;
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(58, 80);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(36, 13);
+            this.label5.TabIndex = 23;
+            this.label5.Text = "Titre :";
             // 
-            // label4
+            // header4
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 122);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(59, 13);
-            this.label4.TabIndex = 17;
-            this.label4.Text = "Info bulle :";
-            // 
-            // txtToolTipBtn
-            // 
-            this.txtToolTipBtn.Location = new System.Drawing.Point(155, 90);
-            this.txtToolTipBtn.Name = "txtToolTipBtn";
-            this.txtToolTipBtn.Size = new System.Drawing.Size(121, 21);
-            this.txtToolTipBtn.TabIndex = 16;
-            this.txtToolTipBtn.Text = "/images/";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(64, 93);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(92, 13);
-            this.label3.TabIndex = 15;
-            this.label3.Text = "U.R.L. de l\'icone :";
-            // 
-            // txtUrlBtn
-            // 
-            this.txtUrlBtn.Location = new System.Drawing.Point(155, 63);
-            this.txtUrlBtn.Name = "txtUrlBtn";
-            this.txtUrlBtn.Size = new System.Drawing.Size(121, 21);
-            this.txtUrlBtn.TabIndex = 14;
-            this.toolTip1.SetToolTip(this.txtUrlBtn, "Url du type maPage.aspx?val={0}&retour={2}");
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(64, 66);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(93, 13);
-            this.label2.TabIndex = 13;
-            this.label2.Text = "U.R.L. à appeler :";
-            // 
-            // header3
-            // 
-            this.header3.BackColor = System.Drawing.SystemColors.Control;
-            this.header3.CausesValidation = false;
-            this.header3.Description = "Saisissez les propriétés du bouton";
-            this.header3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.header3.Image = ((System.Drawing.Image)(resources.GetObject("header3.Image")));
-            this.header3.Location = new System.Drawing.Point(0, 0);
-            this.header3.Name = "header3";
-            this.header3.Size = new System.Drawing.Size(336, 57);
-            this.header3.TabIndex = 10;
-            this.header3.Title = "Assistant d\'ajout";
-            // 
-            // Fin
-            // 
-            this.Fin.Controls.Add(this.header5);
-            this.Fin.Controls.Add(this.label8);
-            this.Fin.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Fin.IsFinishPage = true;
-            this.Fin.Location = new System.Drawing.Point(0, 0);
-            this.Fin.Name = "Fin";
-            this.Fin.Size = new System.Drawing.Size(336, 333);
-            this.Fin.TabIndex = 5;
-            this.Fin.CloseFromNext += new Gui.Wizard.PageEventHandler(this.Button_end);
-            // 
-            // header5
-            // 
-            this.header5.BackColor = System.Drawing.SystemColors.Control;
-            this.header5.CausesValidation = false;
-            this.header5.Description = "";
-            this.header5.Dock = System.Windows.Forms.DockStyle.Top;
-            this.header5.Image = ((System.Drawing.Image)(resources.GetObject("header5.Image")));
-            this.header5.Location = new System.Drawing.Point(0, 0);
-            this.header5.Name = "header5";
-            this.header5.Size = new System.Drawing.Size(336, 57);
-            this.header5.TabIndex = 12;
-            this.header5.Title = "Assistant d\'ajout";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(66, 152);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(207, 13);
-            this.label8.TabIndex = 0;
-            this.label8.Text = "Utilisez le boutton Finish pour créer l\'objet";
+            this.header4.BackColor = System.Drawing.SystemColors.Control;
+            this.header4.CausesValidation = false;
+            this.header4.Description = "Saisissez les propriétés du champ";
+            this.header4.Dock = System.Windows.Forms.DockStyle.Top;
+            this.header4.Image = ((System.Drawing.Image)(resources.GetObject("header4.Image")));
+            this.header4.Location = new System.Drawing.Point(0, 0);
+            this.header4.Name = "header4";
+            this.header4.Size = new System.Drawing.Size(336, 57);
+            this.header4.TabIndex = 11;
+            this.header4.Title = "Assistant d\'ajout";
             // 
             // type
             // 
@@ -563,27 +528,27 @@
             this.radbutton.TabIndex = 2;
             this.radbutton.Text = "Ajouter un bouton";
             // 
-            // Wizard
+            // WizardField
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(336, 381);
             this.Controls.Add(this.wizard1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "Wizard";
+            this.Name = "WizardField";
             this.Text = "Ajout de champ";
             this.Load += new System.EventHandler(this.Wizard_Load);
             this.wizard1.ResumeLayout(false);
-            this.Editeur.ResumeLayout(false);
-            this.Editeur.PerformLayout();
-            this.Champ.ResumeLayout(false);
-            this.Champ.PerformLayout();
-            this.visibilite.ResumeLayout(false);
-            this.header1.ResumeLayout(false);
-            this.Button.ResumeLayout(false);
-            this.Button.PerformLayout();
             this.Fin.ResumeLayout(false);
             this.Fin.PerformLayout();
+            this.Button.ResumeLayout(false);
+            this.Button.PerformLayout();
+            this.visibilite.ResumeLayout(false);
+            this.header1.ResumeLayout(false);
+            this.Champ.ResumeLayout(false);
+            this.Champ.PerformLayout();
+            this.Editeur.ResumeLayout(false);
+            this.Editeur.PerformLayout();
             this.type.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -625,15 +590,12 @@
         private System.Windows.Forms.Label lbl;
         private System.Windows.Forms.RadioButton radioCrea;
         private System.Windows.Forms.RadioButton radioExist;
-        private System.Windows.Forms.ComboBox lstChamp;
-        private System.Windows.Forms.Label label7;
         private Gui.Wizard.Header header6;
         private System.Windows.Forms.TextBox txtDec;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox txtLong;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.ComboBox cmbTable;
-        private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox txtDescription;
+        private Classes.Control.FieldSelector fs;
     }
 }

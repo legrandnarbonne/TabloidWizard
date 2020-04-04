@@ -128,6 +128,7 @@ namespace TabloidWizard.Classes
             if (string.IsNullOrEmpty(Program.AppSet.grainDeSable))
             {
                 Program.AppSet.grainDeSable = GetUniqueKey(7);
+                TabloidConfig.Config.updateCurrentKey(Program.AppSet.grainDeSable);
             }
         }
 

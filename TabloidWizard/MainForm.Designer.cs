@@ -802,7 +802,7 @@ namespace TabloidWizard
             this.ajouterUneFonctionToolStripMenuItem,
             this.supprimerUneFonctionToolStripMenuItem});
             this.contextMenuFunction.Name = "contextMenuFunction";
-            this.contextMenuFunction.Size = new System.Drawing.Size(239, 70);
+            this.contextMenuFunction.Size = new System.Drawing.Size(239, 48);
             // 
             // ajouterUneFonctionToolStripMenuItem
             // 

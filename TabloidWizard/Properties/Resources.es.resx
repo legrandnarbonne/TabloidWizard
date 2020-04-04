@@ -426,4 +426,16 @@ Parámetros:
   <data name="DirectoryNotExist" xml:space="preserve">
     <value>El directorio seleccionado no existe.</value>
   </data>
+  <data name="DeleteFunctionConfirm" xml:space="preserve">
+    <value>¿Confirma la eliminación permanente de la función &amp;#39;{0}&amp;#39;?!</value>
+  </data>
+  <data name="FieldAlreadyExist" xml:space="preserve">
+    <value>Este nombre de campo ya existe en la base de datos. ¡Por favor modifíquelo!</value>
+  </data>
+  <data name="DisplayCorrespondingJoin" xml:space="preserve">
+    <value>Mostrar la unión correspondiente!</value>
+  </data>
+  <data name="DisplayCorrespondigView" xml:space="preserve">
+    <value>Mostrar la vista correspondiente!</value>
+  </data>
 </root>

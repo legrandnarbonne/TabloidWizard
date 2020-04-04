@@ -8,6 +8,7 @@ using Tabloid.Classes.Config;
 using Tabloid.Classes.Controls;
 using Tabloid.Classes.Data;
 using TabloidWizard.Classes;
+using TabloidWizard.Classes.Control;
 using TabloidWizard.Classes.Tools;
 using TabloidWizard.Classes.WizardTools;
 using TabloidWizard.Properties;
@@ -49,6 +50,10 @@ namespace TabloidWizard
             visibilite.ShowFromBack += Visbile_ShowFromBack;
             visibilite.CloseFromBack += Visbile_CloseFromBack;
             visibilite.Enter += updateVisibilityList;
+
+            fs.ConnectionString = _connectionString;
+            fs.cmdSchema.DataSource = AppSetting.GetSchemaList(_provider);//.Items.Add("finance_subv");
+            fs.Enabled = false;
         }
 
 
@@ -63,23 +68,7 @@ namespace TabloidWizard
                 }
         }
 
-        private void populateFieldList()
-        {
-            string lastError;
 
-            lstChamp.Items.Clear();
-
-            var dc = DataTools.Data(SqlCommands.SqlGetColums(cmbTable.SelectedValue.ToString()), _connectionString, out lastError);//0
-            foreach (DataRow dcr in dc.Rows)
-            {
-                if (TabloidFields.IstabloidField(dcr[0].ToString()) == -1)
-                {
-                    lstChamp.Items.Add(dcr[0].ToString());
-                }
-            }
-
-            if (lstChamp.Items.Count > 0) lstChamp.SelectedIndex = 0;
-        }
         //verify if name and type are filled
 
         //Jump over editeur
@@ -136,7 +125,8 @@ namespace TabloidWizard
         void radioExist_CheckedChanged(object sender, EventArgs e)
         {
             txtNomCrea.Enabled = lstTypeCrea.Enabled = txtLong.Enabled = txtDec.Enabled = radioCrea.Checked;
-            lstChamp.Enabled = cmbTable.Enabled = radioExist.Checked;
+            //fs.lstChamp.Enabled = fs.cmbTable.Enabled = 
+            fs.Enabled = radioExist.Checked;
             validateFieldCreation(null, null);
         }
 
@@ -180,10 +170,6 @@ namespace TabloidWizard
             }
         }
 
-        private void cmbTable_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            populateFieldList();
-        }
 
         // Editeur page validation
         private void Editeur_CloseFromNext(object sender, PageEventArgs e)
@@ -255,7 +241,7 @@ namespace TabloidWizard
                 {
                     e.Cancel = false;
                     radioExist.Checked = true;
-                    lstChamp.SelectedItem = lstChamp.FindStringExact(view.DbKey);
+                    fs.lstChamp.SelectedItem = fs.lstChamp.FindStringExact(view.DbKey);
                 }
             }
         }
@@ -286,12 +272,12 @@ namespace TabloidWizard
                 {
                     var view = (TabloidConfigView)_iviewFct;
                     //populate table list
-                    var dt = DataTools.Data(SqlCommands.SqlGetTable(), _connectionString, out lastError);
-                    cmbTable.ValueMember = dt.Columns[0].ColumnName;
-                    cmbTable.DataSource = dt;
+                    var poss = fs.cmdSchema.FindStringExact(view.Schema);
+                    fs.cmdSchema.SelectedIndex = poss;
 
-                    var pos = cmbTable.FindStringExact(view.NomTable);
-                    if (pos > -1) cmbTable.SelectedIndex = pos;
+
+                    var pos = fs.cmbTable.FindStringExact(view.NomTable);
+                    if (pos > -1) fs.cmbTable.SelectedIndex = pos;
                     else
                     {
                         MessageBox.Show(string.Format(Resources.tableNotExist, view.NomTable), Resources.Erreur, MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -354,9 +340,9 @@ namespace TabloidWizard
                     }
                     else//use existing field
                     {
-                        if (cmbTable.SelectedValue.ToString() != view.NomTable)//verify if field is in current table
+                        if (fs.cmbTable.SelectedValue.ToString() != view.NomTable)//verify if field is in current table
                         {
-                            var useJoin = view.Jointures.GetJoinFromTableName(cmbTable.SelectedValue.ToString());
+                            var useJoin = view.Jointures.GetJoinFromTableName(fs.cmbTable.SelectedValue.ToString());
                             if (useJoin == null)//verify if table is in joined table list
                             {
                                 if (MessageBox.Show(Resources.add_join, Resources.Warning, MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.Yes)
@@ -368,7 +354,7 @@ namespace TabloidWizard
 
                                     w.ShowDialog();
 
-                                    useJoin = view.Jointures.GetJoinFromTableName(cmbTable.SelectedValue.ToString());
+                                    useJoin = view.Jointures.GetJoinFromTableName(fs.cmbTable.SelectedValue.ToString());
                                     if (useJoin != null) useJoinName = useJoin.Nom;
                                 }
                             }
@@ -382,7 +368,7 @@ namespace TabloidWizard
             if (radbutton.Checked)//add button
                 Tc = new TabloidConfigColonne
                 {
-                    Champ = lstChamp.Text,
+                    Champ = fs.lstChamp.Text,
                     Titre = WzTxtTitre.Text,
                     Editeur = TemplateType.Btn,
                     Type = DbType.String,
@@ -395,7 +381,7 @@ namespace TabloidWizard
             {
                 Tc = new TabloidConfigColonne
                 {
-                    Champ = radioCrea.Checked ? txtNomCrea.Text : lstChamp.Text,
+                    Champ = radioCrea.Checked ? txtNomCrea.Text : fs.lstChamp.Text,
                     Titre = WzTxtTitre.Text,
                     Editeur = ((TabloidBaseControl)wzCmbEditeur.SelectedItem).type,
                     Type = radioCrea.Checked ?
@@ -421,11 +407,11 @@ namespace TabloidWizard
 
                     if (Tc.Editeur == TemplateType.Mobile)
                     {
-                        view.Recherche.ChampMobile = radioCrea.Checked ? txtNomCrea.Text : lstChamp.Text;
+                        view.Recherche.ChampMobile = radioCrea.Checked ? txtNomCrea.Text : fs.lstChamp.Text;
                         WizardSQLHelper.SetMobile(view);
                     }
                     if (Tc.Editeur == TemplateType.Mail)
-                        view.Recherche.ChampMail = radioCrea.Checked ? txtNomCrea.Text : lstChamp.Text;
+                        view.Recherche.ChampMail = radioCrea.Checked ? txtNomCrea.Text : fs.lstChamp.Text;
                 }
             }
 
@@ -439,7 +425,6 @@ namespace TabloidWizard
 
             return false;
         }
-
 
     }
 }

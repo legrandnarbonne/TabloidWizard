@@ -33,6 +33,8 @@ namespace TabloidWizard
 
                 OnAddElement = addMenu,
 
+                SearchInProperty = "Table",
+
                 ChildPropertyName = "SousMenu",
                 DisplayPropertyName = "Titre",
             };

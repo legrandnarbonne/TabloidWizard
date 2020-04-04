@@ -52,6 +52,7 @@ namespace TabloidWizard.Classes
                     if (utilFrm.ShowDialog() == System.Windows.Forms.DialogResult.OK)//for user table need to ask for user 0
                     {
                         Program.AppSet.grainDeSable = Classes.WizardEvents.GetUniqueKey(7);
+                        TabloidConfig.Config.updateCurrentKey(Program.AppSet.grainDeSable);
                         var param = new string[] { utilFrm.txtLogin.Text, utilFrm.txtNom.Text, utilFrm.txtPrenom.Text, utilFrm.txtMail.Text, Tabloid.Classes.Tools.SecurityHelper.EncryptPassword(utilFrm.txtMdp1.Text) };
                         WizardSQLHelper.ExecuteFromFile(t.SqlFile, param, connectionString);
 

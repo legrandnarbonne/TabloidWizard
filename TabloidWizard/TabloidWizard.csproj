@@ -14,7 +14,6 @@
     <SourceAnalysisOverrideSettingsFile>C:\Users\dapojero\AppData\Roaming\ICSharpCode/SharpDevelop4\Settings.SourceAnalysis</SourceAnalysisOverrideSettingsFile>
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <ApplicationIcon>wizard.ico</ApplicationIcon>
-    <NoWin32Manifest>False</NoWin32Manifest>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -55,7 +54,14 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>TabloidWizard.manifest</ApplicationManifest>
+  </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AdvancedDataGridView, Version=1.1.23503.5, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DG.AdvancedDataGridView.1.1.23503.5\lib\net40\AdvancedDataGridView.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Cyotek.Windows.Forms.ColorPicker, Version=1.0.0.0, Culture=neutral, PublicKeyToken=58daa28b0b2de221, processorArchitecture=MSIL">
       <HintPath>..\packages\Cyotek.Windows.Forms.ColorPicker.1.7.2\lib\net35\Cyotek.Windows.Forms.ColorPicker.dll</HintPath>
       <Private>True</Private>
@@ -120,6 +126,12 @@
     <Compile Include="Classes\appSetting.cs" />
     <Compile Include="Classes\CollectionEditor.cs" />
     <Compile Include="Classes\Config\Helper\DescriptiveCollectionEditor .cs" />
+    <Compile Include="Classes\Control\FieldSelector.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Classes\Control\FieldSelector.Designer.cs">
+      <DependentUpon>FieldSelector.cs</DependentUpon>
+    </Compile>
     <Compile Include="Classes\Control\GListBox.cs" />
     <Compile Include="Classes\Control\IGenericPropertiesViewer.cs" />
     <Compile Include="Classes\Control\SearchBox.cs">
@@ -192,6 +204,12 @@
     </Compile>
     <Compile Include="GraphForm.Designer.cs">
       <DependentUpon>GraphForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GridViewForm2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GridViewForm2.Designer.cs">
+      <DependentUpon>GridViewForm2.cs</DependentUpon>
     </Compile>
     <Compile Include="IndicLayout.cs">
       <SubType>Form</SubType>
@@ -389,6 +407,9 @@
     <EmbeddedResource Include="Classes\Analyse\AnalyseStr.resx">
       <DependentUpon>AnalyseStr.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Classes\Control\FieldSelector.resx">
+      <DependentUpon>FieldSelector.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Classes\Control\SearchBox.resx">
       <DependentUpon>SearchBox.cs</DependentUpon>
     </EmbeddedResource>
@@ -418,6 +439,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GraphForm.resx">
       <DependentUpon>GraphForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GridViewForm2.resx">
+      <DependentUpon>GridViewForm2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="IndicLayout.resx">
       <DependentUpon>IndicLayout.cs</DependentUpon>
@@ -586,6 +610,9 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <None Include="TabloidWizard.manifest">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="ClassDiagram1.cd" />
     <None Include="packages.config" />
     <None Include="Resources\ajout.png" />

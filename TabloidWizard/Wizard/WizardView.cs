@@ -16,6 +16,8 @@ namespace TabloidWizard
         string _connectionString;
         Provider _provider;
 
+        public TabloidConfigView CreatedView { get; set; }
+
         public WizardTable(string connectionString, Provider provider)
         {
             _provider = provider;
@@ -59,7 +61,7 @@ namespace TabloidWizard
 
 
             //add new View
-            var view = new TabloidConfigView
+            CreatedView = new TabloidConfigView
             {
                 Schema = param[0],
                 Nom = viewName,
@@ -70,13 +72,13 @@ namespace TabloidWizard
 
             if (radUseExistingTable.Checked)
             {
-                TabloidConfig.Config.Views.Add(view);
+                TabloidConfig.Config.Views.Add(CreatedView);
 
                 //set as default view
                 setAsDefaultView(viewName);
 
                 //add to menu
-                addToMenu(view);
+                addToMenu(CreatedView);
 
                 return;
             }
@@ -92,22 +94,22 @@ namespace TabloidWizard
                 Type = DbType.String
             };
 
-            Tools.AddWithUniqueName(view.Colonnes, Tc, "C");
+            Tools.AddWithUniqueName(CreatedView.Colonnes, Tc, "C");
 
-            TabloidConfig.Config.Views.Add(view);
+            TabloidConfig.Config.Views.Add(CreatedView);
 
             //set as default view
             setAsDefaultView(viewName);
 
             //add to menu
-            addToMenu(view);
+            addToMenu(CreatedView);
         }
 
         private void setAsDefaultView(string viewName)
         {
-            if (chkDefaultView.Checked)            
+            if (chkDefaultView.Checked)
                 AppSetting.setDefaultPage(viewName);
-                //Program.AppSet.pageDefaut = TabloidPages.BSRelativeUrl[TabloidPages.Type.Liste] + "?table=" + viewName;            
+            //Program.AppSet.pageDefaut = TabloidPages.BSRelativeUrl[TabloidPages.Type.Liste] + "?table=" + viewName;            
         }
 
         private void addToMenu(TabloidConfigView t)

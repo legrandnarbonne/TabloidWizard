@@ -115,6 +115,11 @@ namespace TabloidWizard.Classes.Control
         public TreeViewEventHandler AfterSelectedItemChange { get; set; }
 
         /// <summary>
+        /// Add search in a property in complementary of label
+        /// </summary>
+        public string SearchInProperty { get; set; }
+
+        /// <summary>
         /// Call after object move or property change 
         /// </summary>
         public EventHandler<PropertyValueChangedEventArgs> OnPropertyValueChanged { get; set; }
@@ -292,9 +297,32 @@ namespace TabloidWizard.Classes.Control
         {
             foreach (TreeNode n in collection)
             {
+                if (searchBox1.Text.Length == 0)
+                {
+                    n.BackColor = Color.White;
+                    continue;
+                }
+                //search in label
                 n.BackColor = n.Text.IndexOf(searchBox1.Text, StringComparison.CurrentCultureIgnoreCase) != -1 ?
                     Color.Yellow : Color.White;
 
+                //search in other property
+                if (!string.IsNullOrEmpty(SearchInProperty) & n.BackColor == Color.White)
+                {
+                    var sips = SearchInProperty.Split(';');
+                    foreach (string sip in sips)
+                    {
+                        var prop = n.Tag.GetType().GetProperty(sip);
+                        if (prop != null)
+                        {
+                            var value = prop.GetValue(n.Tag, null);
+                            if (value.ToString().IndexOf(searchBox1.Text, StringComparison.CurrentCultureIgnoreCase) != -1) n.BackColor = Color.Green;
+                        }
+                    }
+                }
+
+
+                //handel sub object
                 if (n.Nodes.Count > 0)
                     searchInNodeCollection(n.Nodes);
             }
@@ -463,7 +491,9 @@ namespace TabloidWizard.Classes.Control
         private void properties_PropertyValueChanged(object s, PropertyValueChangedEventArgs e)
         {
             OnPropertyValueChanged?.Invoke(this, e);
-            SetObjectCollection();
+            //SetObjectCollection();
+            //update label in treeview
+            list.SelectedNode.Text = properties.SelectedObject.ToString();
         }
 
         private void btnPaste_Click(object sender, EventArgs e)
