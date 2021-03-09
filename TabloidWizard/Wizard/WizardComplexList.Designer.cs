@@ -58,8 +58,8 @@
             // 
             // wizard1
             // 
-            this.wizard1.Controls.Add(this.Info);
             this.wizard1.Controls.Add(this.Fin);
+            this.wizard1.Controls.Add(this.Info);
             resources.ApplyResources(this.wizard1, "wizard1");
             this.wizard1.Name = "wizard1";
             this.wizard1.Pages.AddRange(new Gui.Wizard.WizardPage[] {

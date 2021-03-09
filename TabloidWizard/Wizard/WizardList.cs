@@ -1,4 +1,5 @@
 ﻿using Gui.Wizard;
+using MetroFramework.Forms;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +12,7 @@ using TabloidWizard.Classes.Tools;
 
 namespace TabloidWizard
 {
-    public partial class WizardList : Form
+    public partial class WizardList : MetroForm
     {
         TabloidConfigView _view;
         string _connectionString;
@@ -51,7 +52,7 @@ namespace TabloidWizard
             Fin.CloseFromBack += finFromBack;
 
             cmbView.DataSource = TabloidConfig.Config.Views
-                .Where(x => x.Nom != _view.Nom)
+                //.Where(x => x.Nom != _view.Nom)
                 .OrderBy(x=>x.Nom).ToList();
         }
 
@@ -90,6 +91,7 @@ namespace TabloidWizard
             JoinListUpdated = useJoin == null;
 
             e.Cancel = !WizardSQLHelper.SetDataBaseForList(
+                this,
                 false,
                 _view.Schema,
                 table,

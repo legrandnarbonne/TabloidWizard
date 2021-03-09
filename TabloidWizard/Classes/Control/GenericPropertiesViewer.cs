@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MetroFramework;
+using System;
 using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
@@ -104,6 +105,8 @@ namespace TabloidWizard.Classes.Control
 
         public ObjectType SelectedObject { get; internal set; }
 
+        public bool AllowCopy { get; set; }
+
         public bool IsClipBoardEmpty { get; set; }
 
         public object ClipBoard { get; set; }
@@ -191,7 +194,7 @@ namespace TabloidWizard.Classes.Control
             {
                 list.BeginUpdate();
 
-                WizardTools.Tools.setTreeViewFromCollection(list, ConfigurationElementCollection(obj), ChildPropertyName);
+                WizardTools.Tools.setTreeViewFromCollection(list, ConfigurationElementCollection(obj), ChildPropertyName, this);
 
                 AfterObjectCollectionSet?.Invoke(this, null);
 
@@ -214,7 +217,7 @@ namespace TabloidWizard.Classes.Control
 
                 list.BeginUpdate();
 
-                WizardTools.Tools.setTreeViewFromCollection(list, collection, ChildPropertyName);
+                WizardTools.Tools.setTreeViewFromCollection(list, collection, ChildPropertyName, this);
 
                 AfterObjectCollectionSet?.Invoke(this, null);
 
@@ -264,9 +267,9 @@ namespace TabloidWizard.Classes.Control
             ContextMenu.Items["cmAddChild"].Visible = ChildPropertyName != null;//OnChildAdd != null;
 
             //if no clipboard event hide copy and paste
-            ContextMenu.Items["cmCopy"].Visible = OnCopy != null;
-            ContextMenu.Items["cmPaste"].Visible = OnCopy != null;
-            ContextMenu.Items["cmSepCopy"].Visible = OnCopy != null;
+            ContextMenu.Items["cmCopy"].Visible = AllowCopy;
+            ContextMenu.Items["cmPaste"].Visible = AllowCopy;
+            ContextMenu.Items["cmSepCopy"].Visible = AllowCopy;
 
             //disable move
             moveSep.Visible = btnToBotom.Visible = btnToTop.Visible = btnMoveDown.Visible = btnMoveUp.Visible = EnableMove;
@@ -274,6 +277,11 @@ namespace TabloidWizard.Classes.Control
             //disable entry where selection is needed
             btnDelete.Enabled =
             ContextMenu.Items["cmAddChild"].Enabled = ContextMenu.Items["cmDelete"].Enabled = ContextMenu.Items["cmEdit"].Enabled = ContextMenu.Items["cmCopy"].Enabled = SelectedObject != null;
+        }
+
+        public void Copy()
+        {
+            ClipBoard = SelectedObject.Clone<ObjectType>();
         }
         #endregion
 
@@ -463,7 +471,7 @@ namespace TabloidWizard.Classes.Control
                 return;
             }
 
-            var result = MessageBox.Show(
+            var result = MetroMessageBox.Show(this,
                 string.Format("Confirmez vous la suppression de : {0}?", SelectedObject),
                 "Confirmation",
                 MessageBoxButtons.OKCancel,
@@ -503,7 +511,10 @@ namespace TabloidWizard.Classes.Control
 
         private void btnCopy_Click(object sender, EventArgs e)
         {
-            OnCopy?.Invoke(this, e);
+            if (OnCopy != null)
+                OnCopy.Invoke(this, e);
+            else
+                Copy();
         }
 
         private void btnAddChild_Click_1(object sender, EventArgs e)
@@ -522,7 +533,8 @@ namespace TabloidWizard.Classes.Control
 
         private void setParent(ObjectType obj, ObjectType parent)
         {
-            obj.GetType().GetProperty("Parent").SetValue(obj, parent, null);
+            if (obj.GetType().GetProperty("Parent") != null)
+                obj.GetType().GetProperty("Parent").SetValue(obj, parent, null);
         }
 
         private void list_DragDrop(object sender, DragEventArgs e)
@@ -677,6 +689,8 @@ namespace TabloidWizard.Classes.Control
         private void list_MouseDown(object sender, MouseEventArgs e)
         {
             TreeViewHelper.TreeSelectOnMouseUp(sender, e);
+
+            SelectedObject = list.SelectedNode == null ? null : (ObjectType)list.SelectedNode.Tag;
         }
 
         class DragDropPos

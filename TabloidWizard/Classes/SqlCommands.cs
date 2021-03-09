@@ -4,6 +4,7 @@ using System;
 using System.Data;
 using System.IO;
 using System.Linq;
+using System.Windows.Forms;
 using Tabloid.Classes.Data;
 using Tabloid.Classes.Tools;
 using TabloidWizard.Classes.Tools;
@@ -64,7 +65,7 @@ namespace TabloidWizard.Classes
         /// </summary>
         /// <param name="table">Field table name without schema</param>
         /// <param name="schema"></param>
-        public static void DropColumn(string table, string column, string schema)
+        public static void DropColumn(string table, string column, string schema,IWin32Window own)
         {
             string error;
             var constraints = DataTools.Data(SqlCommands.SqlGetForeignKey(table, schema), Program.AppSet.ConnectionString, out error);
@@ -76,11 +77,11 @@ namespace TabloidWizard.Classes
             foreach (DataRowView dr in columnConstraints)
             {
                 var param1 = new string[] { schema, dr[3].ToString(), table };
-                WizardSQLHelper.ExecuteFromFile("DropForeignKey.sql", param1, Program.AppSet.ConnectionString);
+                WizardSQLHelper.ExecuteFromFile("DropForeignKey.sql", param1, Program.AppSet.ConnectionString,own);
             }
 
             var param = new string[] { schema+"."+table, ChampTools.RemoveTableName(column)};
-            WizardSQLHelper.ExecuteFromFile("supField.sql", param, Program.AppSet.ConnectionString);
+            WizardSQLHelper.ExecuteFromFile("supField.sql", param, Program.AppSet.ConnectionString,own);
         }
         /// <summary>
         ///     Return Sql command to list ForeignKey

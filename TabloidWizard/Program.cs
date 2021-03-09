@@ -29,6 +29,7 @@ namespace TabloidWizard
         /// Current wizard folder
         /// </summary>
         public static string CurrentProjectFolder { get; set; }
+        public static XLSStructure CurrentXLSStructure { get; internal set; }
 
         /// <summary>
         ///     Program entry point.

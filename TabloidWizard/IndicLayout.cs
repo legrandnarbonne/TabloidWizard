@@ -1,18 +1,23 @@
-﻿using System;
+﻿using MetroFramework;
+using MetroFramework.Forms;
+using System;
+using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 using Tabloid.Classes.Config;
-using TabloidWizard.Classes.Tools;
+using Tabloid.Classes.Optimisation.Cache;
 using TabloidWizard.Classes.WizardTools;
 using static Tabloid.Classes.Config.TabloidConfigIndicateur;
 
 namespace TabloidWizard
 {
-    public partial class IndicLayout : Form
+    public partial class IndicLayout : MetroForm
     {
         TableLayoutPanel currentTable;
         PictureBox currentImage;
         TabloidConfigSynthese currentSynthese;
+        //Dictionary<string, TabloidConfigIndicateur> indicDic;
 
         Image plus;
         Image unknow;
@@ -20,6 +25,8 @@ namespace TabloidWizard
         Image classic;
         Image topList;
         Image graphic;
+
+        bool _layoutSelectionChange;
 
         public IndicLayout(TabloidConfigSynthese s)
         {
@@ -29,15 +36,27 @@ namespace TabloidWizard
 
             setImage();
 
+            cmbIndic.DataSource = IndicCache.GetIndicList().Values.ToArray();
+
             if (currentSynthese != null)
                 renderSynthese();
 
             setActive(panel);
         }
 
+        //private void setIndicDictionary()
+        //{
+        //    indicDic = new Dictionary<string, TabloidConfigIndicateur>();
+        //    foreach (TabloidConfigIndicateur i in currentSynthese.Indicateurs)
+        //        indicDic[i.Nom] = i;
+
+        //    foreach (TabloidConfigView v in TabloidConfig.Config.Views)
+        //        foreach (TabloidConfigIndicateur i in v.Indicateurs)
+        //            indicDic[i.Nom] = i;
+        //}
+
         private void renderSynthese()
         {
-
             foreach (TabloidConfigRow r in currentSynthese.Affichage)
                 renderLine(r);
 
@@ -46,7 +65,7 @@ namespace TabloidWizard
 
         void renderLine(TabloidConfigRow r)
         {
-            var row = addRow(panel,r);
+            var row = addRow(panel, r);
             foreach (TabloidConfigCell c in r.Cellules)
                 addColumn(row, c);
 
@@ -83,32 +102,39 @@ namespace TabloidWizard
 
         private void setActiveImg(PictureBox sender)
         {
-            if (currentImage != null) currentImage.BackColor = Color.White;
+            var old = currentImage;
             currentImage = sender;
-            currentImage.BackColor = Color.Yellow;
-            var indic= getIndicFromTag(currentImage.Tag);
-            if (indic == null)
-            {
-                if (MessageBox.Show("Cette cellule ne fait pas référence à un indicateur. Souhaitez-vous en ajouter un?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
-                == DialogResult.Yes)
-                {
-                    if (MessageBox.Show("Souhaitez-vous ajouter l'indicateur au niveau de la synthèse (Les indicateurs peuvent être également ajouter au niveau d'une vue)", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
-                == DialogResult.Yes)
-                    {
-                        indic = new TabloidConfigIndicateur();
-                        Tools.AddWithUniqueName(currentSynthese.Indicateurs, indic, "I");
-                    }
-                }
-            }
-                
-            propertyGrid1.SelectedObject = indic;
 
+            if (old != null) old.Refresh();
+            
+            currentImage.Refresh();
+
+            var indic = getIndicFromTag(currentImage.Tag);
+
+            _layoutSelectionChange = true;
+            cmbIndic.SelectedItem = indic;
+
+        }
+
+        private void setBorder(object sender, PaintEventArgs e)
+        {
+            var pb = ((PictureBox)sender);
+
+            if (pb == currentImage)
+                ControlPaint.DrawBorder(e.Graphics, pb.ClientRectangle, 
+                    Color.Blue,3, ButtonBorderStyle.Solid,
+                    Color.Blue, 3, ButtonBorderStyle.Solid,
+                    Color.Blue, 3, ButtonBorderStyle.Solid,
+                    Color.Blue, 3, ButtonBorderStyle.Solid);
         }
 
         private TabloidConfigIndicateur getIndicFromTag(object tag)
         {
             var c = (TabloidConfigCell)tag;
-            return currentSynthese.Indicateurs[c.Indicateur];
+
+            if (c == null || string.IsNullOrEmpty(c.Indicateur)) return null;
+
+            return IndicCache.GetIndicCache(c.Indicateur);//indicDic[c.Indicateur];
         }
 
         /// <summary>
@@ -118,8 +144,6 @@ namespace TabloidWizard
         /// <returns>newly created TableLayoutPanel representing new row</returns>
         private TableLayoutPanel addRow(TableLayoutPanel parent, TabloidConfigRow tcr)
         {
-            //var img = unknow;
-
             var tab = new TableLayoutPanel
             {
                 CellBorderStyle = TableLayoutPanelCellBorderStyle.Single,
@@ -135,7 +159,6 @@ namespace TabloidWizard
 
             //add add column
             tab.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 40f));
-            //PictureBox imgCtrl = picAddColumn.Clone();
 
             var imgCtrl = new PictureBox
             {
@@ -147,19 +170,6 @@ namespace TabloidWizard
 
             imgCtrl.MouseDown += picAddColumn_Click;
             tab.Controls.Add(imgCtrl, 0, 0);
-
-            //tab.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100f));
-            //tab.Controls.Add(getIndicImageCtrl(), 1, 0);
-
-
-            //add line button
-            //tab.RowStyles.Add(new RowStyle(SizeType.Absolute, 50));
-            //PictureBox imgCtrl = picAddLine.Clone();
-            //imgCtrl.Name = "e";
-            //imgCtrl.MouseDown += picPanelAddLine_Click;
-            //tab.Controls.Add(imgCtrl,1, 0);
-
-
 
             //add new tab
             parent.SuspendLayout();
@@ -189,35 +199,53 @@ namespace TabloidWizard
             var pos = parent.ColumnCount - 1;
             parent.ColumnStyles.Insert(pos, new ColumnStyle(SizeType.Percent, 100f));
 
-            parent.Controls.Add(getIndicImageCtrl(c), pos, 0);
+            var pb = getIndicImageCtrl(c);
+
+            parent.Controls.Add(pb, pos, 0);
+
+            if (c == null) pb.Tag = new TabloidConfigCell();
 
             parent.ResumeLayout();
         }
 
         private PictureBox getIndicImageCtrl(TabloidConfigCell c)
         {
-            var i = currentSynthese.Indicateurs[c.Indicateur];
             var img = unknow;
 
-            if (i != null)
-                switch (i.Type)
-                {
-                    case WidgetType.TopList:
-                        img = topList;
-                        break;
-                    case WidgetType.Classic:
-                        img = classic;
-                        break;
-                    case WidgetType.Graphic:
-                        img = graphic;
-                        break;
-                }
+            if (c != null)
+            {
+                var i = IndicCache.GetIndicCache(c.Indicateur);
+                img = getImage(i);
+            }
 
             var imgCtrl = new PictureBox { BackgroundImage = img, Dock = DockStyle.Fill, BackgroundImageLayout = ImageLayout.Center };
             imgCtrl.Tag = c;
             imgCtrl.Click += ImgCtrl_Click;
+            imgCtrl.Paint += setBorder;
 
             return imgCtrl;
+        }
+
+        private Image getImage(TabloidConfigIndicateur i)
+        {
+            if (i != null)
+                switch (i.Type)
+                {
+                    case WidgetType.TopList:
+                        return topList;
+                        break;
+                    case WidgetType.Classic:
+                        return classic;
+                        break;
+                    case WidgetType.InLine:
+                        return classic;
+                        break;
+                    case WidgetType.Graphic:
+                        return graphic;
+                        break;
+                }
+
+            return unknow;
         }
 
         public void calcSize(TableLayoutPanel ctrl)
@@ -240,23 +268,21 @@ namespace TabloidWizard
         {
             var r = new TabloidConfigRow();
             Tools.AddWithUniqueName(
-                TabloidConfig.Config.Synthese.Affichage,r , "SR");
-            addRow(panel,r);
+                TabloidConfig.Config.Synthese.Affichage, r, "SR");
+            addRow(panel, r);
         }
         private void btnAddLine_Click(object sender, EventArgs e)
         {
             var r = new TabloidConfigRow();
             Tools.AddWithUniqueName(
                  TabloidConfig.Config.Synthese.Affichage, r, "SR");
-            addRow(currentTable,r);
+            addRow(currentTable, r);
         }
 
         private void picAddColumn_Click(object sender, EventArgs e)
         {
             var parent = (TableLayoutPanel)((PictureBox)sender).Parent;
             setActive(parent);
-
-
             addColumn(currentTable, null);
         }
 
@@ -296,6 +322,66 @@ namespace TabloidWizard
 
             pic.BackgroundImage = unknow;
             pic.Tag = null;
+        }
+
+        private void cmbIndic_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!_layoutSelectionChange && currentImage != null)
+            {
+                var i = ((TabloidConfigIndicateur)cmbIndic.SelectedItem);
+
+                ((TabloidConfigCell)currentImage.Tag).Indicateur = i.Nom;
+                currentImage.BackgroundImage = getImage(i);
+            }
+
+            propertyGrid1.SelectedObject = cmbIndic.SelectedItem;
+
+            _layoutSelectionChange = false;
+        }
+
+        private void btnRemoveIndic_Click(object sender, EventArgs e)
+        {
+            ((TabloidConfigCell)currentImage.Tag).Indicateur = null;
+            currentImage.BackgroundImage = getImage(null);
+        }
+
+        private void btnCreateIndic_Click(object sender, EventArgs e)
+        {
+            var wiz = new WizardIndic();
+            if (wiz.ShowDialog() == DialogResult.OK)
+            {
+                var indic = wiz.Result;
+                ((TabloidConfigCell)currentImage.Tag).Indicateur = indic.Nom;
+                currentImage.BackgroundImage = getImage(indic);
+            }
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if (currentImage == null) return;
+
+
+            if (MetroMessageBox.Show(this, "Confirmez-vous la suppression de la cellule?","Question",MessageBoxButtons.OKCancel)==DialogResult.OK)
+            {
+
+                TableLayoutPanel parent =(TableLayoutPanel)currentImage.Parent.Parent;
+
+                parent.SuspendLayout();
+
+                parent.ColumnStyles.RemoveAt(parent.ColumnCount - 1);
+                //parent.ColumnCount--;
+                //var pos = parent.ColumnCount - 1;
+                //parent.ColumnStyles.Insert(pos, new ColumnStyle(SizeType.Percent, 100f));
+
+                //var pb = getIndicImageCtrl(c);
+
+                //parent.Controls.Add(pb, pos, 0);
+
+                //if (c == null) pb.Tag = new TabloidConfigCell();
+
+                parent.ResumeLayout();
+            }
         }
     }
 

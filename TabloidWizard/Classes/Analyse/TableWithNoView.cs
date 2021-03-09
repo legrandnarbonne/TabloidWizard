@@ -1,6 +1,7 @@
 ﻿
 
 using System;
+using System.Windows.Forms;
 using Tabloid.Classes.Config;
 using TabloidWizard.Classes.Tools;
 using static TabloidWizard.AnalyseStr;
@@ -9,6 +10,8 @@ namespace TabloidWizard.Classes.Analyse
 {
     class TableWithNoView : AnalyseResult, IAnalyseResult
     {
+        private IWin32Window _own;
+
         public override int Level
         {
             get
@@ -44,8 +47,9 @@ namespace TabloidWizard.Classes.Analyse
             }
         }
 
-        public TableWithNoView(TableAnalysisResult tr)
+        public TableWithNoView(TableAnalysisResult tr, IWin32Window own)
         {
+            _own = own;
             ParentTableResult = tr;
         }
 
@@ -55,7 +59,7 @@ namespace TabloidWizard.Classes.Analyse
             if (frmRename.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 var param = new string[] { Program.AppSet.Schema, ParentTableResult.TableName, frmRename.txtNewName.Text };
-                WizardSQLHelper.ExecuteFromFile("renameTable.sql", param, Program.AppSet.ConnectionString);
+                WizardSQLHelper.ExecuteFromFile("renameTable.sql", param, Program.AppSet.ConnectionString,_own);
             }
         }
 
@@ -69,7 +73,7 @@ namespace TabloidWizard.Classes.Analyse
             var avt = new ArrayVerify();
             var newView = new TabloidConfigView();
 
-            BuildFromBase.GetTable(ParentTableResult.TableName, Program.AppSet.Schema, ref newView,ref avt, new BuildFromBase.BaseImporterConfig
+            BuildFromBase.GetTable(_own,ParentTableResult.TableName, Program.AppSet.Schema, ref newView,ref avt, new BuildFromBase.BaseImporterConfig
             {
                 RemoveTableName = true,
                 ToUpperCase = true,

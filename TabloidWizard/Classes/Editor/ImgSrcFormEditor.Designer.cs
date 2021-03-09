@@ -41,7 +41,7 @@
             // button1
             // 
             this.button1.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.button1.Location = new System.Drawing.Point(423, 227);
+            this.button1.Location = new System.Drawing.Point(430, 268);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 14;
@@ -51,7 +51,7 @@
             // button2
             // 
             this.button2.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.button2.Location = new System.Drawing.Point(508, 227);
+            this.button2.Location = new System.Drawing.Point(515, 268);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 15;
@@ -60,7 +60,7 @@
             // 
             // btnAddPicture
             // 
-            this.btnAddPicture.Location = new System.Drawing.Point(12, 227);
+            this.btnAddPicture.Location = new System.Drawing.Point(19, 268);
             this.btnAddPicture.Name = "btnAddPicture";
             this.btnAddPicture.Size = new System.Drawing.Size(128, 23);
             this.btnAddPicture.TabIndex = 17;
@@ -71,7 +71,7 @@
             // flpThumbnails
             // 
             this.flpThumbnails.AutoScroll = true;
-            this.flpThumbnails.Location = new System.Drawing.Point(12, 12);
+            this.flpThumbnails.Location = new System.Drawing.Point(19, 53);
             this.flpThumbnails.Name = "flpThumbnails";
             this.flpThumbnails.Size = new System.Drawing.Size(571, 209);
             this.flpThumbnails.TabIndex = 18;
@@ -81,7 +81,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(595, 262);
+            this.ClientSize = new System.Drawing.Size(611, 300);
             this.Controls.Add(this.flpThumbnails);
             this.Controls.Add(this.btnAddPicture);
             this.Controls.Add(this.button2);

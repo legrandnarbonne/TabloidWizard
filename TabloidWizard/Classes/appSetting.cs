@@ -7,6 +7,7 @@
  * To change this template use Tools | Options | Coding | Edit Standard Headers.
  */
 
+using MetroFramework;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -172,7 +173,10 @@ namespace TabloidWizard.Classes
 
         [Category("Ouverture de session"), Description("Type d'authentification désirée")]
         public AuthenticationType ModeAuthentification { get; set; }
-        
+
+        [Category("Ouverture de session"), Description("Utiliser les groupe de sécurité d'un LDAP"),DefaultValue(false)]
+        public bool UseLDAPSecurityGroup { get; set; }
+
         [Category("Divers"), Description("Active le mode débug SQL si égal à oui"), DefaultValue("oui")]
         public string sqlDebug { get; set; }
 
@@ -240,7 +244,7 @@ namespace TabloidWizard.Classes
 
             if (remove) src.RemoveNode("/configuration/connectionStrings/add[@name='TabloidConnection']");
         }
-        public void ReadConnectionSetting(XmlFile src, bool remove)
+        public void ReadConnectionSetting(XmlFile src, bool remove, IWin32Window own)
         {
             foreach (var pi in GetType().GetProperties())
             {
@@ -264,7 +268,7 @@ namespace TabloidWizard.Classes
             }
 
             if (string.IsNullOrEmpty(Schema))//set schéma for old version
-                if (MessageBox.Show(Properties.Resources.AddSchema, Properties.Resources.Confirmation, MessageBoxButtons.OKCancel, MessageBoxIcon.Information)
+                if (MetroMessageBox.Show(own,Properties.Resources.AddSchema, Properties.Resources.Confirmation, MessageBoxButtons.OKCancel)
                     == DialogResult.OK)
                 {
                     setSchemaFromConnectionString(ProviderType);
@@ -394,6 +398,42 @@ namespace TabloidWizard.Classes
         public static string GetDefaultPageURL(string viewName, TabloidPages.Type type = TabloidPages.Type.Liste)
         {
             return TabloidPages.BSRelativeUrl[type] + "?table=" + viewName;
+        }
+
+        public class Connexion
+        {
+            public string Host { get; set; }
+            public string Password { get; set; }
+            public string UserID { get; set; }
+            public string Database { get; set; }
+            public string Port { get; set; }
+
+            public string[] SearchPath { get; set; }
+            
+                
+            /// <summary>
+            /// Split connection string
+            /// 
+            /// </summary>
+            public Connexion(string connStr)
+            {
+                Host=GetConnStringPropValue("Host", connStr)[0];
+                Port=GetConnStringPropValue("Port", connStr)[0];
+                UserID = GetConnStringPropValue("User ID", connStr)[0];
+                Password =GetConnStringPropValue("Password", connStr)[0];
+                Database = GetConnStringPropValue("Database", connStr)[0];
+                SearchPath =GetConnStringPropValue("SearchPath", connStr); 
+            }
+
+            public static string[] GetConnStringPropValue(string propName, string connStr)
+            {
+                var schemaList = new List<string>();
+                var props = connStr.Split(';');
+
+                var iprops = Array.FindIndex(props, p => p.StartsWith(propName, StringComparison.OrdinalIgnoreCase));
+
+                return props[iprops].Split('=')[1].Split(',');
+            }
         }
     }
 }

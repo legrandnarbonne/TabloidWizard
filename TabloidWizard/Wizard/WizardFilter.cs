@@ -1,4 +1,5 @@
 ﻿using Gui.Wizard;
+using MetroFramework.Forms;
 using System;
 using System.Windows.Forms;
 using TabloidWizard.Classes;
@@ -9,7 +10,7 @@ namespace TabloidWizard
     /// <summary>
     /// Filter wizard not use 
     /// </summary>
-    public partial class WizardFilter : Form
+    public partial class WizardFilter : MetroForm
     {
         ConfigFilesCollection _configFiles;
 

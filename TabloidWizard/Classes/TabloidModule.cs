@@ -1,5 +1,6 @@
 ﻿
 using System.Collections.Generic;
+using System.Windows.Forms;
 using Tabloid.Classes.Data;
 using TabloidWizard.Classes.Tools;
 
@@ -35,9 +36,9 @@ namespace TabloidWizard.Classes
         /// </summary>
         /// <param name="enable">set if true or disable module if false</param>
         /// <returns></returns>
-        public static bool SetModuleState(bool enable, ModuleTableType moduleType)
+        public static bool SetModuleState(bool enable, ModuleTableType moduleType, IWin32Window own)
         {
-            return enable ? Activate(moduleType) : Remove(moduleType);
+            return enable ? Activate(moduleType,own) : Remove(moduleType,own);
         }
 
         public static bool IsModuleActivated(ModuleTableType moduleType)
@@ -57,11 +58,11 @@ namespace TabloidWizard.Classes
         /// <summary>
         /// Build Module base table
         /// </summary>
-        public static bool Activate(ModuleTableType moduleType)
+        public static bool Activate(ModuleTableType moduleType, IWin32Window own)
         {
             foreach (string tableName in TableList[moduleType])
             {
-                WizardSQLHelper.ExecuteFromFile(tableName + ".sql", null, Program.AppSet.ConnectionString);
+                WizardSQLHelper.ExecuteFromFile(tableName + ".sql", null, Program.AppSet.ConnectionString,own);
             }
             return true;
         }
@@ -69,7 +70,7 @@ namespace TabloidWizard.Classes
         /// <summary>
         /// Remove Module base table
         /// </summary>
-        public static bool Remove(ModuleTableType moduleType)
+        public static bool Remove(ModuleTableType moduleType, IWin32Window own)
         {
             foreach (string tableName in TableList[moduleType])
             {
@@ -77,7 +78,7 @@ namespace TabloidWizard.Classes
                 if (Program.AppSet.ProviderType == Provider.Postgres)
                     competedTableName = CurrentContext.CurrentView.Schema + "." + tableName;
 
-                WizardSQLHelper.ExecuteFromFile("supTable.sql", new string[] { competedTableName }, Program.AppSet.ConnectionString);
+                WizardSQLHelper.ExecuteFromFile("supTable.sql", new string[] { competedTableName }, Program.AppSet.ConnectionString,own);
             }
             return true;
         }

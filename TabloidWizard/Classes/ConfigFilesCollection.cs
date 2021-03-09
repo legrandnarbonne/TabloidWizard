@@ -1,4 +1,5 @@
 ﻿
+using MetroFramework;
 using System;
 using System.IO;
 using System.Windows.Forms;
@@ -50,7 +51,7 @@ namespace TabloidWizard.Classes
         /// Write xml config files
         /// </summary>
         /// <param name="promptOnExist"></param>
-        public void SaveConfigFiles(bool promptOnExist)
+        public void SaveConfigFiles(bool promptOnExist, IWin32Window own)
         {
             if (_configFiles == null) return;
 
@@ -59,9 +60,9 @@ namespace TabloidWizard.Classes
             if (Directory.GetFiles(ConfigFolderPath, "*.config").Length > 0)//prompt if a file exist
                 if (promptOnExist)
                     if (
-                        MessageBox.Show(Properties.Resources.ReplaceConfigFile,
+                        MetroMessageBox.Show(own,Properties.Resources.ReplaceConfigFile,
                         Properties.Resources.Information,
-                            MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.No)
+                            MessageBoxButtons.YesNo) == DialogResult.No)
                         return;
 
             //Save file

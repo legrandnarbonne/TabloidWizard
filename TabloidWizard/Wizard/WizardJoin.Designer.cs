@@ -53,6 +53,7 @@
             this.cmbTypeJointure = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
             this.wjRef = new Gui.Wizard.WizardPage();
+            this.chkCmbChRefHT = new System.Windows.Forms.CheckBox();
             this.cmbChampRef = new System.Windows.Forms.ComboBox();
             this.lblChampRef = new System.Windows.Forms.Label();
             this.header7 = new Gui.Wizard.Header();
@@ -61,7 +62,6 @@
             this.lblChampRef2 = new System.Windows.Forms.Label();
             this.header3 = new Gui.Wizard.Header();
             this.wizard1 = new Gui.Wizard.Wizard();
-            this.chkCmbChRefHT = new System.Windows.Forms.CheckBox();
             this.Fin.SuspendLayout();
             this.wjOrder.SuspendLayout();
             this.wjVisibilite.SuspendLayout();
@@ -79,7 +79,7 @@
             this.Fin.IsFinishPage = true;
             this.Fin.Location = new System.Drawing.Point(0, 0);
             this.Fin.Name = "Fin";
-            this.Fin.Size = new System.Drawing.Size(298, 300);
+            this.Fin.Size = new System.Drawing.Size(324, 298);
             this.Fin.TabIndex = 5;
             this.Fin.CloseFromNext += new Gui.Wizard.PageEventHandler(this.Button_end);
             // 
@@ -92,7 +92,7 @@
             this.header4.Image = ((System.Drawing.Image)(resources.GetObject("header4.Image")));
             this.header4.Location = new System.Drawing.Point(0, 0);
             this.header4.Name = "header4";
-            this.header4.Size = new System.Drawing.Size(298, 57);
+            this.header4.Size = new System.Drawing.Size(324, 57);
             this.header4.TabIndex = 29;
             this.header4.Title = "Assistant ajout de jointure";
             // 
@@ -116,7 +116,7 @@
             this.wjOrder.IsFinishPage = false;
             this.wjOrder.Location = new System.Drawing.Point(0, 0);
             this.wjOrder.Name = "wjOrder";
-            this.wjOrder.Size = new System.Drawing.Size(298, 300);
+            this.wjOrder.Size = new System.Drawing.Size(324, 298);
             this.wjOrder.TabIndex = 4;
             // 
             // cmbOrderType
@@ -145,7 +145,7 @@
             this.header2.Image = ((System.Drawing.Image)(resources.GetObject("header2.Image")));
             this.header2.Location = new System.Drawing.Point(0, 0);
             this.header2.Name = "header2";
-            this.header2.Size = new System.Drawing.Size(298, 57);
+            this.header2.Size = new System.Drawing.Size(324, 57);
             this.header2.TabIndex = 29;
             this.header2.Title = "Assistant ajout de jointure";
             // 
@@ -174,7 +174,7 @@
             this.wjVisibilite.IsFinishPage = false;
             this.wjVisibilite.Location = new System.Drawing.Point(0, 0);
             this.wjVisibilite.Name = "wjVisibilite";
-            this.wjVisibilite.Size = new System.Drawing.Size(298, 300);
+            this.wjVisibilite.Size = new System.Drawing.Size(324, 298);
             this.wjVisibilite.TabIndex = 2;
             // 
             // header1
@@ -186,14 +186,14 @@
             this.header1.Image = ((System.Drawing.Image)(resources.GetObject("header1.Image")));
             this.header1.Location = new System.Drawing.Point(0, 0);
             this.header1.Name = "header1";
-            this.header1.Size = new System.Drawing.Size(298, 57);
+            this.header1.Size = new System.Drawing.Size(324, 57);
             this.header1.TabIndex = 29;
             this.header1.Tag = "";
             this.header1.Title = "Assistant ajout de jointure";
             // 
             // lstVisibilites
             // 
-            this.lstVisibilites.BackColor = System.Drawing.SystemColors.Control;
+            this.lstVisibilites.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.lstVisibilites.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.lstVisibilites.CheckOnClick = true;
             this.lstVisibilites.FormattingEnabled = true;
@@ -216,7 +216,7 @@
             this.wjStart.IsFinishPage = false;
             this.wjStart.Location = new System.Drawing.Point(0, 0);
             this.wjStart.Name = "wjStart";
-            this.wjStart.Size = new System.Drawing.Size(298, 300);
+            this.wjStart.Size = new System.Drawing.Size(324, 298);
             this.wjStart.TabIndex = 6;
             // 
             // lstAutoJoin
@@ -262,7 +262,7 @@
             this.header6.Image = ((System.Drawing.Image)(resources.GetObject("header6.Image")));
             this.header6.Location = new System.Drawing.Point(0, 0);
             this.header6.Name = "header6";
-            this.header6.Size = new System.Drawing.Size(298, 57);
+            this.header6.Size = new System.Drawing.Size(324, 57);
             this.header6.TabIndex = 27;
             this.header6.Title = "Assistant ajout de jointure";
             // 
@@ -318,8 +318,21 @@
             this.wjRef.IsFinishPage = false;
             this.wjRef.Location = new System.Drawing.Point(0, 0);
             this.wjRef.Name = "wjRef";
-            this.wjRef.Size = new System.Drawing.Size(298, 300);
+            this.wjRef.Size = new System.Drawing.Size(324, 298);
             this.wjRef.TabIndex = 1;
+            // 
+            // chkCmbChRefHT
+            // 
+            this.chkCmbChRefHT.AutoSize = true;
+            this.chkCmbChRefHT.Checked = true;
+            this.chkCmbChRefHT.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkCmbChRefHT.Location = new System.Drawing.Point(131, 161);
+            this.chkCmbChRefHT.Name = "chkCmbChRefHT";
+            this.chkCmbChRefHT.Size = new System.Drawing.Size(143, 17);
+            this.chkCmbChRefHT.TabIndex = 31;
+            this.chkCmbChRefHT.Text = "Afficher la liste simplifiée";
+            this.chkCmbChRefHT.UseVisualStyleBackColor = true;
+            this.chkCmbChRefHT.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // cmbChampRef
             // 
@@ -351,7 +364,7 @@
             this.header7.Image = ((System.Drawing.Image)(resources.GetObject("header7.Image")));
             this.header7.Location = new System.Drawing.Point(0, 0);
             this.header7.Name = "header7";
-            this.header7.Size = new System.Drawing.Size(298, 57);
+            this.header7.Size = new System.Drawing.Size(324, 57);
             this.header7.TabIndex = 28;
             this.header7.Title = "Assistant ajout de jointure";
             // 
@@ -364,7 +377,7 @@
             this.wjRef2.IsFinishPage = false;
             this.wjRef2.Location = new System.Drawing.Point(0, 0);
             this.wjRef2.Name = "wjRef2";
-            this.wjRef2.Size = new System.Drawing.Size(298, 300);
+            this.wjRef2.Size = new System.Drawing.Size(324, 298);
             this.wjRef2.TabIndex = 3;
             // 
             // cmbChampRef2
@@ -397,21 +410,21 @@
             this.header3.Image = ((System.Drawing.Image)(resources.GetObject("header3.Image")));
             this.header3.Location = new System.Drawing.Point(0, 0);
             this.header3.Name = "header3";
-            this.header3.Size = new System.Drawing.Size(298, 57);
+            this.header3.Size = new System.Drawing.Size(324, 57);
             this.header3.TabIndex = 29;
             this.header3.Title = "Assistant ajout de jointure";
             // 
             // wizard1
             // 
-            this.wizard1.Controls.Add(this.wjRef);
-            this.wizard1.Controls.Add(this.wjStart);
             this.wizard1.Controls.Add(this.Fin);
             this.wizard1.Controls.Add(this.wjOrder);
             this.wizard1.Controls.Add(this.wjVisibilite);
             this.wizard1.Controls.Add(this.wjRef2);
+            this.wizard1.Controls.Add(this.wjRef);
+            this.wizard1.Controls.Add(this.wjStart);
             this.wizard1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.wizard1.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.wizard1.Location = new System.Drawing.Point(0, 0);
+            this.wizard1.Location = new System.Drawing.Point(20, 60);
             this.wizard1.Name = "wizard1";
             this.wizard1.Pages.AddRange(new Gui.Wizard.WizardPage[] {
             this.wjStart,
@@ -420,31 +433,18 @@
             this.wjVisibilite,
             this.wjOrder,
             this.Fin});
-            this.wizard1.Size = new System.Drawing.Size(298, 348);
+            this.wizard1.Size = new System.Drawing.Size(324, 346);
             this.wizard1.TabIndex = 0;
-            // 
-            // chkCmbChRefHT
-            // 
-            this.chkCmbChRefHT.AutoSize = true;
-            this.chkCmbChRefHT.Checked = true;
-            this.chkCmbChRefHT.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkCmbChRefHT.Location = new System.Drawing.Point(131, 161);
-            this.chkCmbChRefHT.Name = "chkCmbChRefHT";
-            this.chkCmbChRefHT.Size = new System.Drawing.Size(143, 17);
-            this.chkCmbChRefHT.TabIndex = 31;
-            this.chkCmbChRefHT.Text = "Afficher la liste simplifiée";
-            this.chkCmbChRefHT.UseVisualStyleBackColor = true;
-            this.chkCmbChRefHT.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // WizardJoin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(298, 348);
+            this.ClientSize = new System.Drawing.Size(364, 426);
             this.Controls.Add(this.wizard1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "WizardJoin";
-            this.Text = "Wizard";
+            this.Text = "Jointure";
             this.Fin.ResumeLayout(false);
             this.Fin.PerformLayout();
             this.wjOrder.ResumeLayout(false);

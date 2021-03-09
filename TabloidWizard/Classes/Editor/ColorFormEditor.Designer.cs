@@ -41,28 +41,28 @@
             // colorWheel1
             // 
             this.colorWheel1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.colorWheel1.Location = new System.Drawing.Point(40, 12);
+            this.colorWheel1.Location = new System.Drawing.Point(50, 54);
             this.colorWheel1.Name = "colorWheel1";
             this.colorWheel1.Size = new System.Drawing.Size(191, 174);
             this.colorWheel1.TabIndex = 0;
             // 
             // colorGrid1
             // 
-            this.colorGrid1.Location = new System.Drawing.Point(12, 204);
+            this.colorGrid1.Location = new System.Drawing.Point(22, 246);
             this.colorGrid1.Name = "colorGrid1";
             this.colorGrid1.Size = new System.Drawing.Size(247, 165);
             this.colorGrid1.TabIndex = 1;
             // 
             // colorEditor1
             // 
-            this.colorEditor1.Location = new System.Drawing.Point(316, 12);
+            this.colorEditor1.Location = new System.Drawing.Point(326, 54);
             this.colorEditor1.Name = "colorEditor1";
             this.colorEditor1.Size = new System.Drawing.Size(256, 249);
             this.colorEditor1.TabIndex = 2;
             // 
             // previewPanel
             // 
-            this.previewPanel.Location = new System.Drawing.Point(394, 256);
+            this.previewPanel.Location = new System.Drawing.Point(404, 298);
             this.previewPanel.Name = "previewPanel";
             this.previewPanel.Size = new System.Drawing.Size(87, 54);
             this.previewPanel.TabIndex = 13;
@@ -70,7 +70,7 @@
             // button1
             // 
             this.button1.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.button1.Location = new System.Drawing.Point(426, 361);
+            this.button1.Location = new System.Drawing.Point(436, 403);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 14;
@@ -80,7 +80,7 @@
             // button2
             // 
             this.button2.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.button2.Location = new System.Drawing.Point(507, 361);
+            this.button2.Location = new System.Drawing.Point(517, 403);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 15;
@@ -98,7 +98,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(595, 396);
+            this.ClientSize = new System.Drawing.Size(611, 434);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.previewPanel);

@@ -1,4 +1,6 @@
 ﻿using Gui.Wizard;
+using MetroFramework;
+using MetroFramework.Forms;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -10,7 +12,7 @@ using TabloidWizard.Classes.WizardTools;
 
 namespace TabloidWizard
 {
-    public partial class WizardJoin : Form
+    public partial class WizardJoin : MetroForm
     {
         string _connectionString;
         TabloidConfigView _view;
@@ -76,7 +78,7 @@ namespace TabloidWizard
                 e.Cancel = true;
                 if (lstAutoJoin.SelectedItems.Count == 0)
                 {
-                    MessageBox.Show(Properties.Resources.ChooseOnAutomaticJoinAtLeast, Properties.Resources.Erreur, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MetroMessageBox.Show(this,Properties.Resources.ChooseOnAutomaticJoinAtLeast, Properties.Resources.Erreur, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
@@ -122,7 +124,7 @@ namespace TabloidWizard
 
                 if (dbKey == null)
                 {
-                    MessageBox.Show(Properties.Resources.CantFindPrimaryKey, Properties.Resources.Erreur, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MetroMessageBox.Show(this,Properties.Resources.CantFindPrimaryKey, Properties.Resources.Erreur, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 

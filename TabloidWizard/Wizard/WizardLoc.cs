@@ -1,16 +1,14 @@
 ﻿using Gui.Wizard;
+using MetroFramework;
+using MetroFramework.Forms;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Windows.Forms;
 using Tabloid.Classes.Config;
-
-using TabloidWizard.Classes;
 using TabloidWizard.Classes.Tools;
 
 namespace TabloidWizard
 {
-    public partial class WizardLoc : Form
+    public partial class WizardLoc : MetroForm
     {
         TabloidConfigView _view;
         public WizardLoc(TabloidConfigView v)
@@ -25,11 +23,11 @@ namespace TabloidWizard
         private void Info_CloseFromNext(object sender, PageEventArgs e)
         {
             if (txtGeomFiled.Text == "")
-                MessageBox.Show(Properties.Resources.FieldNameNeeded, Properties.Resources.Erreur, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MetroMessageBox.Show(this,Properties.Resources.FieldNameNeeded, Properties.Resources.Erreur, MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             var param = new string[] { _view.Nom, txtGeomFiled.Text, $"geometry({cmbType.SelectedItem},{txtSrid.Text})", _view.Schema };
 
-            WizardSQLHelper.ExecuteFromFile("addField.sql", param, Program.AppSet.ConnectionString);
+            WizardSQLHelper.ExecuteFromFile("addField.sql", param, Program.AppSet.ConnectionString,this);
 
             TabloidConfigGeoLoc.GeoLocType geoLocType;
             Enum.TryParse(cmbType.SelectedItem.ToString(), out geoLocType);
@@ -42,7 +40,7 @@ namespace TabloidWizard
 
             if (chkAddMenu.Checked)
             {
-                WizardSQLHelper.AddToMenu(_view, "Carte " + _view.Titre, TabloidConfigMenuItem.MenuType.Carte, null);
+                WizardSQLHelper.AddToMenu(this,_view, "Carte " + _view.Titre, TabloidConfigMenuItem.MenuType.Carte, null);
             }
 
         }

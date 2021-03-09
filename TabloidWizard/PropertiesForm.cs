@@ -1,11 +1,12 @@
-﻿using System;
+﻿using MetroFramework.Forms;
+using System;
 using System.Windows.Forms;
 using Tabloid.Classes.Config;
 
 namespace TabloidWizard
 {
     //allow menu edition
-    public partial class PropriesForm : Form
+    public partial class PropriesForm : MetroForm
     {
         public PropriesForm(TabloidConfigMenuItem i)
         {

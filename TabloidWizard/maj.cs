@@ -1,9 +1,10 @@
-﻿using System.IO;
+﻿using MetroFramework.Forms;
+using System.IO;
 using System.Windows.Forms;
 
 namespace TabloidWizard
 {
-    public partial class maj : Form
+    public partial class maj : MetroForm
     {
         public maj(string destinationPath)
         {

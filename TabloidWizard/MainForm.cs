@@ -30,7 +30,10 @@ using Microsoft.Win32;
 using ExtensionMethods;
 using TabloidWizard.Classes.Tools;
 using Tabloid.Classes.Data;
-//using Tabloid.Classes.Objects;
+using MetroFramework.Forms;
+using MetroFramework;
+using TabloidWizard.Classes.Editor;
+using static TabloidWizard.Classes.AppSetting;
 
 namespace TabloidWizard
 {
@@ -38,7 +41,7 @@ namespace TabloidWizard
     /// <summary>
     ///     Description of MainForm.
     /// </summary>
-    public partial class MainForm : Form, IMRUClient
+    public partial class MainForm : MetroForm, IMRUClient
     {
         const string _registryPath = "Software\\TabloidWizard";
 
@@ -50,6 +53,7 @@ namespace TabloidWizard
         GenericPropertiesViewer<TabloidConfigJointureCollection, TabloidConfigJointure> _joinViewer;
         GenericPropertiesViewer<TabloidConfigIndicateurCollection, TabloidConfigIndicateur> _indicViewer;
         GenericPropertiesViewer<TabloidConfigTriggerCollection, TabloidConfigTrigger> _triggerViewer;
+        GenericPropertiesViewer<TabloidConfigImportCollection, TabloidConfigImport> _importViewer;
 
         TabPage _triggerTabPage;
 
@@ -58,7 +62,7 @@ namespace TabloidWizard
         /// </summary>
         //public string _currentPath;
         BackgroundWorker _gbw;
-        WaitingForm waitingForm;
+        WaitingForm _waitingForm;
         Object _clipboard;
         bool _projectModified;//set to true if project have been modified and not saved
         bool _upDateFromPropertyGrid;//set to true if object modified in property grid
@@ -73,8 +77,15 @@ namespace TabloidWizard
         {
             InitializeComponent();
 
+            Program.CurrentXLSStructure = new XLSStructure();
+
+            this.StyleManager = metroStyleManager1;
+
+            createdViewWarningState = new List<TabloidConfigView>();
 
             SetViewersTabs();
+
+            tabviewfct.SelectedIndex = 0;
             SetProjectReady(false);
 
             SetCollectionEditor();
@@ -107,6 +118,8 @@ namespace TabloidWizard
                     TypesName = "Champs",
                     TypeName = "Champ",
 
+                    Padding = new Padding(0, 10, 0, 0),
+
                     ChildPropertyName = "Colonnes",
                     DisplayPropertyName = "Colonnes",
 
@@ -115,7 +128,7 @@ namespace TabloidWizard
 
                     OnAddElement = addField,
                     OnDeleteElement = deleteField,
-                    OnCopy = copierToolStripMenuItem_Click,
+                    AllowCopy = true,
                     OnPaste = collerToolStripMenuItem_Click,
 
                     SearchInProperty = "Champ",
@@ -124,14 +137,21 @@ namespace TabloidWizard
                     AfterSelectedItemChange = setCurrentContext,
                     AfterObjectCollectionSet = addFieldIcon,
                     OnCollectionModified = collectionModified,
-                    OnContextOpening = fieldContextOpening
+                    OnContextOpening = fieldContextOpening,
+
                 });
+
+            _fieldViewer.list.DrawMode = TreeViewDrawMode.OwnerDrawText;
+            _fieldViewer.list.DrawNode += new DrawTreeNodeEventHandler(FieldView_DrawNode);
+
             _joinViewer = (GenericPropertiesViewer<TabloidConfigJointureCollection, TabloidConfigJointure>)addTab(
                 new GenericPropertiesViewer<TabloidConfigJointureCollection, TabloidConfigJointure>
                 {
                     Name = "lstJointuress",
                     TypesName = "Jointures",
                     TypeName = "Jointure",
+
+                    Padding = new Padding(0, 10, 0, 0),
 
                     ChildPropertyName = "Jointures",
                     DisplayPropertyName = "Jointures",
@@ -142,6 +162,8 @@ namespace TabloidWizard
 
                     OnAddElement = addJoin,
                     OnContextOpening = joinContextOpening,
+                    AllowCopy = true,
+                    OnPaste = joinPaste_Click,
 
                     OnPropertyValueChanged = TablePropertyValueChanged,
                     AfterSelectedItemChange = setCurrentContext,
@@ -154,11 +176,15 @@ namespace TabloidWizard
                     TypeName = "Filtre",
                     Name = "lstFiltres",
 
+                    Padding = new Padding(0, 10, 0, 0),
+
                     DisplayPropertyName = "Recherche",
                     EnableMove = true,
                     EnableDelete = true,
 
                     OnAddElement = addFilter,
+                    AllowCopy = true,
+                    OnPaste = filterPaste_Click,
 
                     OnPropertyValueChanged = TablePropertyValueChanged,
                     AfterSelectedItemChange = setCurrentContext,
@@ -171,11 +197,15 @@ namespace TabloidWizard
                     TypeName = "Edition",
                     Name = "lstEditions",
 
+                    Padding = new Padding(0, 10, 0, 0),
+
                     DisplayPropertyName = "Editions",
 
                     EnableDelete = true,
 
                     OnAddElement = addEdition,
+                    AllowCopy = true,
+                    OnPaste = editionPaste_Click,
 
                     OnPropertyValueChanged = TablePropertyValueChanged,
                     AfterSelectedItemChange = setCurrentContext,
@@ -189,10 +219,16 @@ namespace TabloidWizard
                     TypeName = "Graphique",
                     Name = "lstGraphs",
 
+                    Padding = new Padding(0, 10, 0, 0),
+
                     ChildPropertyName = "Graphiques",
                     DisplayPropertyName = "Graphiques",
 
                     EnableDelete = true,
+                    EnableMove = true,
+
+                    AllowCopy = true,
+                    OnPaste = graphPaste_Click,
 
                     OnAddElement = addGraph,
                     OnEditElement = editGraph,
@@ -207,9 +243,14 @@ namespace TabloidWizard
                     TypeName = "Export",
                     Name = "lstExports",
 
+                    Padding = new Padding(0, 10, 0, 0),
+
                     DisplayPropertyName = "Exports",
 
                     EnableDelete = true,
+
+                    AllowCopy = true,
+                    OnPaste = exportPaste_Click,
 
                     OnAddElement = addExport,
 
@@ -224,15 +265,41 @@ namespace TabloidWizard
                     TypeName = "Indicateur",
                     Name = "lstIndics",
 
+                    Padding = new Padding(0, 10, 0, 0),
+
                     DisplayPropertyName = "Indicateurs",
 
                     EnableDelete = true,
 
                     OnAddElement = addIndic,
+                    AllowCopy = true,
+                    OnPaste = indicPaste_Click,
 
                     OnPropertyValueChanged = TablePropertyValueChanged,
                     AfterSelectedItemChange = setCurrentContext,
                     OnCollectionModified = collectionModified
+                });
+            _importViewer = (GenericPropertiesViewer<TabloidConfigImportCollection, TabloidConfigImport>)addTab(
+                new GenericPropertiesViewer<TabloidConfigImportCollection, TabloidConfigImport>
+                {
+                    TypesName = "Imports",
+                    TypeName = "Import",
+                    Name = "lstImports",
+
+                    Padding = new Padding(0, 10, 0, 0),
+
+                    DisplayPropertyName = "Imports",
+
+                    EnableDelete = true,
+
+                    OnAddElement = addImportTable_Click,
+                    AllowCopy = true,
+                    OnPaste = importPaste_Click,
+
+                    OnPropertyValueChanged = TablePropertyValueChanged,
+                    AfterSelectedItemChange = setCurrentContext,
+                    OnCollectionModified = collectionModified,
+                    OnContextOpening = importContextOpening,
                 });
             _triggerViewer = (GenericPropertiesViewer<TabloidConfigTriggerCollection, TabloidConfigTrigger>)addTab(
                 new GenericPropertiesViewer<TabloidConfigTriggerCollection, TabloidConfigTrigger>
@@ -241,20 +308,130 @@ namespace TabloidWizard
                     TypeName = "Trigger",
                     Name = "lstTriggers",
 
+                    Padding = new Padding(0, 10, 0, 0),
+
                     DisplayPropertyName = "Triggers",
 
                     EnableDelete = true,
 
-                    OnAddElement = addTrigger
+                    OnAddElement = addTrigger,
+
+                    AllowCopy = true,
+                    OnPaste = triggerPaste_Click
                 });
 
             _triggerTabPage = tabFieldDetail.TabPages[tabFieldDetail.TabPages.Count - 1];
         }
 
+        private void triggerPaste_Click(object sender, EventArgs e)
+        {
+            CurrentContext.CurrentTrigger = _triggerViewer.SelectedObject;
+
+            var copied = (TabloidConfigTrigger)_triggerViewer.ClipBoard;
+
+            Tools.AddWithUniqueName(CurrentContext.CurrentView.Triggers, copied, "I");
+            _triggerViewer.ClipBoard = null;
+            _triggerViewer.SetObjectCollection();
+            setProjectModified();
+        }
+
+        private void importPaste_Click(object sender, EventArgs e)
+        {
+            CurrentContext.CurrentImport = _importViewer.SelectedObject;
+
+            var copied = (TabloidConfigImport)_importViewer.ClipBoard;
+
+            Tools.AddWithUniqueName(CurrentContext.CurrentView.Imports, copied, "IM");
+            _importViewer.ClipBoard = null;
+            _importViewer.SetObjectCollection();
+            setProjectModified();
+        }
+
+        private void indicPaste_Click(object sender, EventArgs e)
+        {
+            CurrentContext.CurrentIndic = _indicViewer.SelectedObject;
+
+            var copied = (TabloidConfigIndicateur)_indicViewer.ClipBoard;
+
+            Tools.AddWithUniqueName(CurrentContext.CurrentView.Indicateurs, copied, "I");
+            _indicViewer.ClipBoard = null;
+            _indicViewer.SetObjectCollection();
+            setProjectModified();
+        }
+
+        private void exportPaste_Click(object sender, EventArgs e)
+        {
+            CurrentContext.CurrentExport = _exportViewer.SelectedObject;
+
+            var copied = (TabloidConfigEdition)_exportViewer.ClipBoard;
+
+            Tools.AddWithUniqueName(CurrentContext.CurrentView.Exports, copied, "E");
+            _exportViewer.ClipBoard = null;
+            _exportViewer.SetObjectCollection();
+            setProjectModified();
+        }
+
+        private void graphPaste_Click(object sender, EventArgs e)
+        {
+            CurrentContext.CurrentGraph = _graphiqViewer.SelectedObject;
+
+            var copied = (TabloidConfigGraph)_joinViewer.ClipBoard;
+            copied.Parent = CurrentContext.CurrentGraph;
+
+            var dest = CurrentContext.CurrentGraph == null ?
+                null : CurrentContext.CurrentGraph.Graphiques;
+
+            Tools.AddWithUniqueName(CurrentContext.CurrentView.Graphiques, copied, "G", dest);
+            _graphiqViewer.ClipBoard = null;
+            _graphiqViewer.SetObjectCollection();
+            setProjectModified();
+        }
+
+        private void editionPaste_Click(object sender, EventArgs e)
+        {
+            CurrentContext.CurrentEdition = _editionViewer.SelectedObject;
+
+            var copied = (TabloidConfigEdition)_editionViewer.ClipBoard;
+
+            Tools.AddWithUniqueName(CurrentContext.CurrentView.Editions, copied, "E");
+            _editionViewer.ClipBoard = null;
+            _editionViewer.SetObjectCollection();
+            setProjectModified();
+        }
+
+        private void filterPaste_Click(object sender, EventArgs e)
+        {
+            CurrentContext.CurrentFilter = _filterViewer.SelectedObject;
+
+            var copied = (TabloidConfigRecherche)_filterViewer.ClipBoard;
+
+            Tools.AddWithUniqueName(CurrentContext.CurrentView.Recherche, copied, "R");
+            _filterViewer.ClipBoard = null;
+            _filterViewer.SetObjectCollection();
+            setProjectModified();
+        }
+
+        private void joinPaste_Click(object sender, EventArgs e)
+        {
+            CurrentContext.CurrentJoin = _joinViewer.SelectedObject;
+
+            var copied = (TabloidConfigJointure)_joinViewer.ClipBoard;
+            copied.Parent = CurrentContext.CurrentJoin;
+
+            var dest = CurrentContext.CurrentJoin == null ?
+                null : CurrentContext.CurrentJoin.Jointures;
+
+            Tools.AddWithUniqueName(CurrentContext.CurrentView.Jointures, copied, "J", dest);
+            _joinViewer.ClipBoard = null;
+            _joinViewer.SetObjectCollection();
+            setProjectModified();
+        }
+
+
 
         private void onFieldModified(object sender, PropertyValueChangedEventArgs e)
         {
-            WizardEvents.afterFieldPropertyChange(sender, e);
+            WizardEvents.afterFieldPropertyChange(sender, e, this);
             setProjectModified();
         }
 
@@ -268,8 +445,77 @@ namespace TabloidWizard
         private void addFieldIcon(object sender, EventArgs e)
         {
             foreach (TreeNode n in _fieldViewer.list.Nodes)
+            {
                 if (TabloidControl.TabloidControlList.ContainsKey(((TabloidConfigColonne)n.Tag).Editeur))
                     n.ImageIndex = n.SelectedImageIndex = TabloidControl.TabloidControlList[((TabloidConfigColonne)n.Tag).Editeur].IconType;
+
+            }
+        }
+
+        private void FieldView_DrawNode(object sender, DrawTreeNodeEventArgs e)
+        {
+            DrawNode(_fieldViewer.list, e);
+        }
+
+        private void DrawNode(TreeView tree, DrawTreeNodeEventArgs e)
+        {
+            bool selected = (e.State & TreeNodeStates.Selected) != 0;
+
+            var width = tree.Width - SystemInformation.VerticalScrollBarWidth - 2;
+            e.DrawDefault = true;
+
+            // Retrieve the node font. If the node font has not been set,
+            // use the TreeView font.
+            Font nodeFont = e.Node.NodeFont;
+            if (nodeFont == null) nodeFont = ((TreeView)tree).Font;
+
+            if (!selected && e.Node.BackColor != Color.Empty)
+            {
+                var rec = new Rectangle(e.Node.Bounds.Left, e.Node.Bounds.Top,
+                    width, e.Node.Bounds.Height);
+                e.Graphics.FillRectangle(new SolidBrush(e.Node.BackColor), rec);
+                e.DrawDefault = false;
+
+
+                // Draw the node text.
+                e.Graphics.DrawString(e.Node.Text, nodeFont, Brushes.Black, rec);
+            }
+            //add tab information
+            if (e.Node.Tag != null)
+            {
+                var cc = (TabloidConfigColonne)e.Node.Tag;
+
+                if (!String.IsNullOrEmpty(cc.Tab) || !String.IsNullOrEmpty(cc.Groupe) && !cc.Groupe.StartsWith("!"))
+                {
+                    var tab = !String.IsNullOrEmpty(cc.Tab);
+                    var title = tab ? cc.Tab : cc.Groupe;
+
+                    Pen customPen = new Pen(Color.LightGray, 1);
+                    StringFormat stringFormat = new StringFormat();
+                    stringFormat.Alignment = StringAlignment.Far;
+                    stringFormat.LineAlignment = StringAlignment.Center;
+
+                    var m = (int)e.Graphics.MeasureString(title, nodeFont).Width;
+
+                    var fullWithBounds = new Rectangle(e.Node.Bounds.Left, e.Node.Bounds.Top, width - e.Node.Bounds.Left - 5, e.Node.Bounds.Height);
+
+                    if (tab)
+                        e.Graphics.FillRectangle(Brushes.LightGray,
+                            new Rectangle(e.Node.Bounds.Left + width - e.Node.Bounds.Left - 5 - m, e.Node.Bounds.Top, m, e.Node.Bounds.Height - 1));
+                    else
+                        e.Graphics.DrawRectangle(customPen,
+                            new Rectangle(e.Node.Bounds.Left + width - e.Node.Bounds.Left - 5 - m, e.Node.Bounds.Top, m, e.Node.Bounds.Height - 1));
+
+                    e.Graphics.DrawLine(customPen, new Point(0, e.Bounds.Top),
+                                new Point(tree.Width - 4, e.Bounds.Top));
+                    // Draw the tab title.
+
+                    e.Graphics.DrawString(title, nodeFont, tab ? Brushes.White : Brushes.LightGray,
+                        fullWithBounds, stringFormat);
+
+                    customPen.Dispose();
+                }
+            }
         }
 
         private static void SetDefaultEditor()
@@ -336,7 +582,40 @@ namespace TabloidWizard
         /// <param name="appSet">appSet to define</param>
         private void ReadConfig(string folderName, AppSetting appSet)
         {
+            _waitingForm = new WaitingForm(ReadConfig)
+            {
+                Text = "Chargement",
+                progressBar = { Style = ProgressBarStyle.Marquee }
+            };
+
+            _waitingForm.Wr.RunWorkerAsync(new object[] { folderName, appSet });
+
+            _waitingForm.ShowDialog();
+
+            SetFunctionListFromConfig();
+            SetViewListFromConfig();
+
+            Program.CurrentProjectFolder = _configFiles.ProjectFolderPath;
+
+
+            //ModuleTable
+            mnPhotoModule.Checked = TabloidModule.IsModuleActivated(TabloidModule.ModuleTableType.Phototheque);
+
+            updateStatusBar();
+
+            SetProjectReady(true);
+        }
+        private void ReadConfig(object sender, DoWorkEventArgs e)
+        {
+            var args = (object[])e.Argument;
+            var worker = (BackgroundWorker)sender;
+
+            var folderName = (string)args[0];
+            var appSet = (AppSetting)args[1];
+
             _configFiles = new ConfigFilesCollection();//new XmlFile[Enum.GetNames(typeof(XmlFile.ConfigFilesTypes)).Length];
+
+            worker.ReportProgress(0, new WaitingFormProperties(Resources.Chargement, Resources.LodingConfigFiles));
 
             foreach (XmlFile.ConfigFilesTypes ct in Enum.GetValues(typeof(XmlFile.ConfigFilesTypes)))
             {
@@ -351,7 +630,7 @@ namespace TabloidWizard
                 }
                 else
                 {
-                    MessageBox.Show(Resources.MainForm_ReadWebConfig_Ce_dossier_ne_contient_pas_de_fichier_config_web,
+                    MetroMessageBox.Show(this, Resources.MainForm_ReadWebConfig_Ce_dossier_ne_contient_pas_de_fichier_config_web,
                         Resources.Erreur, MessageBoxButtons.OK,
                         MessageBoxIcon.Error);
                     return;
@@ -365,7 +644,7 @@ namespace TabloidWizard
 
             //read appsetting properties
             appSet.ReadAppSetting(_configFiles._configFiles[(int)XmlFile.ConfigFilesTypes.appSettings], true);
-            appSet.ReadConnectionSetting(_configFiles._configFiles[(int)XmlFile.ConfigFilesTypes.connections], true);
+            appSet.ReadConnectionSetting(_configFiles._configFiles[(int)XmlFile.ConfigFilesTypes.connections], true, this);
 
             ////read tabloid config menu
             var tabloidmn = _configFiles._configFiles[(int)XmlFile.ConfigFilesTypes.tabloidMenu].Xml.SelectSingleNode("/TabloidMenu");
@@ -376,26 +655,15 @@ namespace TabloidWizard
                 tabloidmn.InnerXml = ""; //remove tabloid content when readed
             }
 
+            worker.ReportProgress(0, new WaitingFormProperties(Resources.Chargement, Resources.LodingGeoStyle));
             //read olstyle file
             OlStyleCollection.Load(folderName);
 
-
+            worker.ReportProgress(0, new WaitingFormProperties(Resources.Chargement, Resources.AutomaticViewBuilding));
             AutomaticViewBuilder.SetTable(appSet.Schema);//automatic view is added on load and remove on save
 
-            WizardEvents.onConfigLoaded(appSet.Schema);
-
-            SetFunctionListFromConfig();
-            SetViewListFromConfig();
-            
-            Program.CurrentProjectFolder = _configFiles.ProjectFolderPath;
-
-
-            //ModuleTable
-            mnPhotoModule.Checked = TabloidModule.IsModuleActivated(TabloidModule.ModuleTableType.Phototheque);
-
-            updateStatusBar();
-
-            SetProjectReady(true);
+            worker.ReportProgress(0, new WaitingFormProperties(Resources.Chargement, Resources.Validation));
+            WizardEvents.onConfigLoaded(appSet.Schema, this);
         }
 
         private void updateStatusBar()
@@ -403,7 +671,7 @@ namespace TabloidWizard
             var vProject = getVersion(Program.CurrentProjectFolder);
             var vWizard = getVersion(Program.CurrentWizardFolder + "\\Sources\\Tabloid\\Tabloid");
 
-            txtStatut.Text = String.Format("Projet {0} - dossier {1} - version du projet {2} - version displonible {3}",
+            txtStatut.Text = String.Format(Resources.StatusMatrix,
                 Program.AppSet.Titre,
                 Program.CurrentProjectFolder,
                 vProject,
@@ -412,7 +680,7 @@ namespace TabloidWizard
             btnStatusUpdateEngine.Visible = vProject != vWizard;
 
             if (vProject == vWizard)
-                txtStatut.Text += " - le moteur est à jour.";
+                txtStatut.Text += Resources.NoUpdate;
 
 
         }
@@ -434,11 +702,20 @@ namespace TabloidWizard
             var tabloid = _configFiles._configFiles[(int)XmlFile.ConfigFilesTypes.tabloid].Xml.SelectSingleNode("/Tabloid");
             if (tabloid != null)
             {
-                TabloidConfig.Deserialize("<Tabloid>" + tabloid.InnerXml + "</Tabloid>");
+                try
+                {
+                    TabloidConfig.Deserialize("<Tabloid>" + tabloid.InnerXml + "</Tabloid>");
 
-                tabloid.InnerXml = ""; //remove tabloid content when readed
+                    tabloid.InnerXml = ""; //remove tabloid content when readed
 
-                WizardEvents.OnDeserialize();
+                    WizardEvents.OnDeserialize();
+                }
+                catch(Exception e)
+                {
+                    MetroMessageBox.Show(this, "Erreur au chargement de la configuration :"+e.ToString(), Resources.Error, MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                }
+
             }
         }
 
@@ -448,13 +725,13 @@ namespace TabloidWizard
         /// <param name="v"></param>
         void SetProjectReady(bool v)
         {
-            propriétésToolStripMenuItem.Enabled = MnEditeurMenu.Enabled = btnProprietes.Enabled = v;
-            pageDeSynthèseToolStripMenuItem.Enabled = v;
-            modulesMenuItem.Enabled = MajMenuItem.Enabled = sauvegarderToolStripMenuItem.Enabled = publierUnSiteToolStripMenuItem.Enabled = v;
+            toolStripMenuItem8.Enabled = toolStripMenuItem14.Enabled = btnProprietes.Enabled = v;
+            analyserLaStructureDeVotreProjetToolStripMenuItem.Enabled = pageDeSynthèseToolStripMenuItem.Enabled = v;
+            modulesMenuItem.Enabled = MnMaj.Enabled = sauvegarderToolStripMenuItem.Enabled = MnPublier.Enabled = v;
             propTable.Enabled = v;
-            _fieldViewer.Enabled = _filterViewer.Enabled = _joinViewer.Enabled = _editionViewer.Enabled = _indicViewer.Enabled = _triggerViewer.Enabled = _exportViewer.Enabled = _graphiqViewer.Enabled = v;
-            codeXMLToolStripMenuItem.Enabled = enregistrerToolStripMenuItem.Enabled = v;
-            genQlikViewToolStripMenuItem.Enabled = enregistrerToolStripMenuItem1.Enabled = btnEnregistrer.Enabled = générateurDeQuestionnaireToolStripMenuItem.Enabled = v;
+            _fieldViewer.Enabled = _filterViewer.Enabled = _joinViewer.Enabled = _editionViewer.Enabled = _indicViewer.Enabled = _importViewer.Enabled = _triggerViewer.Enabled = _exportViewer.Enabled = _graphiqViewer.Enabled = v;
+            codeXMLToolStripMenuItem.Enabled = MnSave.Enabled = v;
+            genQlikViewToolStripMenuItem.Enabled = MnSaveAs.Enabled = btnEnregistrer.Enabled = générateurDeQuestionnaireToolStripMenuItem.Enabled = v;
             btnExecute.Enabled = btnLog.Enabled = styleCartographieToolStripMenuItem.Enabled = v;
             contextMenuView.Enabled = v;
 
@@ -463,10 +740,10 @@ namespace TabloidWizard
 
         void MainFormLoad(object sender, EventArgs e)
         {
-            _mruManager = new MRUManager();
+            _mruManager = new MRUManager(this);
             _mruManager.Initialize(
                 this, // owner form
-                fichierRécentsToolStripMenuItem, // Recent Files menu item
+                toolStripMenuItem12, // Recent Files menu item
                 _registryPath); // Registry path to keep MRU list
         }
         /// <summary>
@@ -493,15 +770,15 @@ namespace TabloidWizard
                     var dirInfo = new DirectoryInfo(fbd.SelectedPath);
                     if (!dirInfo.Exists)
                     {
-                        MessageBox.Show(Resources.DirectoryNotExist, Resources.Error, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MetroMessageBox.Show(this, Resources.DirectoryNotExist, Resources.Error, MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
                     _configFiles.ChangeConfigFilesPath(fbd.SelectedPath);
-                    Tools.publication(_configFiles, true);
+                    Tools.publication(_configFiles, this, true);
                 }
                 else return;
             }
-            _configFiles.SaveConfigFiles(As && !isFirstSave);
+            _configFiles.SaveConfigFiles(As && !isFirstSave, this);
 
             _projectModified = false;
         }
@@ -511,6 +788,7 @@ namespace TabloidWizard
         MRUManager _mruManager;
 
         ConfigFilesCollection _configFiles;
+        private List<TabloidConfigView> createdViewWarningState;
 
         #endregion Global
 
@@ -583,7 +861,7 @@ namespace TabloidWizard
             {
                 if (Program.AppSet.Schema != temp.Schema)
                 {
-                    var dlg = MessageBox.Show("Vous avez modifié le schéma par défaut. Souhaitez-vous modifier le schéma pour l'ensemble des vues?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    var dlg = MetroMessageBox.Show(this, Resources.ChangeProjectSchema, Resources.Question, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                     if (dlg == DialogResult.Yes)
                     {
@@ -733,10 +1011,11 @@ namespace TabloidWizard
             if (_displayView)
             {
                 if (CurrentContext.CurrentView != null)
-                    if (CurrentContext.CurrentView.AutomaticCreation)
+                    if (CurrentContext.CurrentView.AutomaticCreation && !createdViewWarningState.Contains(CurrentContext.CurrentView))
                     {
-                        var dr = MessageBox.Show(Resources.Automatic_generated_view, Resources.Information, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        var dr = MetroMessageBox.Show(this, Resources.Automatic_generated_view, Resources.Information, MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         if (dr == DialogResult.Cancel) return;
+                        createdViewWarningState.Add(CurrentContext.CurrentView);
                     }
             }
 
@@ -754,6 +1033,7 @@ namespace TabloidWizard
             _graphiqViewer.SetObjectCollection();
             _indicViewer.SetObjectCollection();
             _triggerViewer.SetObjectCollection();
+            _importViewer.SetObjectCollection();
         }
         #endregion List events
         #endregion Affichage
@@ -817,7 +1097,7 @@ namespace TabloidWizard
             var fi = new FileInfo(Program.AppSet.TabloidLogsPath);
             if (!fi.Exists)
             {
-                MessageBox.Show(Resources.Log_file_exist, Resources.Error, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MetroMessageBox.Show(this, Resources.Log_file_exist, Resources.Error, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -828,12 +1108,12 @@ namespace TabloidWizard
 
         private void sauvegarderToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Tools.makeZipSite(Program.CurrentProjectFolder);
+            Tools.makeZipSite(Program.CurrentProjectFolder, this);
         }
 
         private void publierUnSiteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Tools.publication(_configFiles);
+            Tools.publication(_configFiles, this);
         }
 
         private void MnEditeurMenu_Click(object sender, EventArgs e)
@@ -869,7 +1149,7 @@ namespace TabloidWizard
             var fi = new FileInfo(newFileName);
             if (fi.Exists)
             {
-                var result = MessageBox.Show(Resources.MainForm_convertisseur1x2xToolStripMenuItem_Click_Un_fichier_portant_le_nom_web_bak_existe_déja__Souhaitez_vous_l_écraser_,
+                var result = MetroMessageBox.Show(this, Resources.MainForm_convertisseur1x2xToolStripMenuItem_Click_Un_fichier_portant_le_nom_web_bak_existe_déja__Souhaitez_vous_l_écraser_,
     Resources.Information, MessageBoxButtons.YesNo, MessageBoxIcon.Information);
 
                 if (result == DialogResult.No) return;
@@ -882,7 +1162,7 @@ namespace TabloidWizard
             sw.Write(content);
             sw.Close();
 
-            MessageBox.Show(Resources.MainForm_convertisseur1x2xToolStripMenuItem_Click_Converssion_réussie_,
+            MetroMessageBox.Show(this, Resources.MainForm_convertisseur1x2xToolStripMenuItem_Click_Converssion_réussie_,
                 Resources.Information, MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         /// <summary>
@@ -984,13 +1264,18 @@ namespace TabloidWizard
 
         #region field method
 
-        private void copierToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            _fieldViewer.ClipBoard = _fieldViewer.SelectedObject.Clone();
-        }
+
         private void collerToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Tools.AddWithUniqueName(CurrentContext.CurrentField.Colonnes, (TabloidConfigColonne)_fieldViewer.ClipBoard, "C", CurrentContext.CurrentView.Colonnes);
+            CurrentContext.CurrentField = _fieldViewer.SelectedObject;
+
+            var copiedColumn = (TabloidConfigColonne)_fieldViewer.ClipBoard;
+            copiedColumn.Parent = CurrentContext.CurrentField;
+
+            var dest = CurrentContext.CurrentField == null ?
+                null : CurrentContext.CurrentField.Colonnes;
+
+            Tools.AddWithUniqueName(CurrentContext.CurrentView.Colonnes, copiedColumn, "C", dest);
             _fieldViewer.ClipBoard = null;
             _fieldViewer.SetObjectCollection();
             setProjectModified();
@@ -1001,7 +1286,26 @@ namespace TabloidWizard
             var w = new WizardSimpleListConverter(CurrentContext.CurrentView, _fieldViewer.SelectedObject);
 
             if (w.ShowDialog() == DialogResult.OK)
+            {
                 _fieldViewer.SetObjectCollection(CurrentContext.CurrentView, true);
+                SetViewListFromConfig(true);
+            }
+
+        }
+        /// <summary>
+        /// Convert text field to list
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void TextFielConverter_Click(object sender, EventArgs e)
+        {
+            var w = new WizardFieldToListConverter(CurrentContext.CurrentView, _fieldViewer.SelectedObject);
+
+            if (w.ShowDialog() == DialogResult.OK)
+            {
+                _fieldViewer.SetObjectCollection(CurrentContext.CurrentView, true);
+                SetViewListFromConfig(true);
+            }
         }
 
         private void addAutomaticFilter(object sender, EventArgs e)
@@ -1017,7 +1321,7 @@ namespace TabloidWizard
             _filterViewer.SetObjectCollection();
             setProjectModified();
 
-            MessageBox.Show(Resources.Search_filter + name + Resources.Have_been_added);
+            MetroMessageBox.Show(this, Resources.Search_filter + name + Resources.Have_been_added);
         }
 
         /// <summary>
@@ -1045,6 +1349,7 @@ namespace TabloidWizard
                 _fieldViewer.SetObjectCollection();
                 if (w.JoinListUpdated) _joinViewer.SetObjectCollection();
                 WizardEvents.afterFieldAdded(CurrentContext.CurrentView);
+                CurrentContext.CurrentView.AutomaticCreation = false;
                 setProjectModified();
             }
         }
@@ -1059,7 +1364,7 @@ namespace TabloidWizard
             if (Program.AppSet.ProviderType == Provider.Postgres)
                 currentViewTable = CurrentContext.CurrentView.Schema + "." + currentViewTable;
 
-            if (MessageBox.Show(
+            if (MetroMessageBox.Show(this,
                     string.Format(Resources.Confirm_supp, ch.Nom, ch.Champ, currentViewTable),
                 Resources.Confirmation, MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.Cancel) return;
 
@@ -1073,9 +1378,9 @@ namespace TabloidWizard
             {
                 if (string.IsNullOrEmpty(ch.Jointure))
                 {//field is in current table we can remove in table
-                    if (MessageBox.Show(Resources.Remove_from_database, Resources.Confirmation, MessageBoxButtons.YesNo,
+                    if (MetroMessageBox.Show(this, Resources.Remove_from_database, Resources.Confirmation, MessageBoxButtons.YesNo,
                             MessageBoxIcon.Question) == DialogResult.Yes)
-                        SqlCommands.DropColumn(CurrentContext.CurrentView.NomTable, ch.Champ, CurrentContext.CurrentView.Schema);
+                        SqlCommands.DropColumn(CurrentContext.CurrentView.NomTable, ch.Champ, CurrentContext.CurrentView.Schema, this);
 
                 }
                 else
@@ -1086,7 +1391,7 @@ namespace TabloidWizard
                             c => string.Equals(c.Jointure, ch.Jointure, StringComparison.OrdinalIgnoreCase)).ToList();
 
                         if (j.Count == 0)//join use else where
-                            if (MessageBox.Show(Resources.Field_in_join_remove_join, Resources.Confirmation, MessageBoxButtons.YesNo,
+                            if (MetroMessageBox.Show(this, Resources.Field_in_join_remove_join, Resources.Confirmation, MessageBoxButtons.YesNo,
                                     MessageBoxIcon.Question) == DialogResult.Yes)
                             {
                                 var joinToRemove = CurrentContext.CurrentView.Jointures.GetJointure(ch.Jointure);
@@ -1098,9 +1403,9 @@ namespace TabloidWizard
                                 _joinViewer.SetObjectCollection();
 
                                 if ((joinToRemove.Relation == "N:1" || joinToRemove.Relation == null) &&
-                                    MessageBox.Show(Resources.Remove_from_database, Resources.Confirmation, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                                    MetroMessageBox.Show(this, Resources.Remove_from_database, Resources.Confirmation, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                                 {
-                                    SqlCommands.DropColumn(currentViewTable, joinToRemove.ChampDeRef, CurrentContext.CurrentView.Schema);
+                                    SqlCommands.DropColumn(currentViewTable, joinToRemove.ChampDeRef, CurrentContext.CurrentView.Schema, this);
                                     //var param = new[] { currentViewTable, joinToRemove.ChampDeRef };
                                     //var result = !WizardHelper.ExecuteFromFile("supField.sql", param, Program.AppSet.ConnectionString);
                                 }
@@ -1173,13 +1478,18 @@ namespace TabloidWizard
                     if (dr == DialogResult.OK) CurrentContext.CurrentView = wiz.CreatedView;
                     fieldAddAction = false;
                     break;
+                case "ajouterUneTableCalendrierToolStripMenuItem":
+                    var w3 = new WizardCalendrier(CurrentContext.CurrentView, Program.AppSet.ConnectionString, Program.AppSet.ProviderType);
+                    dr = w3.ShowDialog();
+                    break;
             }
 
-            _joinViewer.SetObjectCollection();//joind could be added and cancel pressed
+            _joinViewer.SetObjectCollection();//join could be added and cancel pressed
 
             if (dr == DialogResult.OK)
             {
                 if (fieldAddAction) WizardEvents.afterFieldAdded(CurrentContext.CurrentView);
+                CurrentContext.CurrentView.AutomaticCreation = false;
                 SetViewListFromConfig(true);
             }
 
@@ -1193,13 +1503,16 @@ namespace TabloidWizard
             lstViews.SelectedIndex = lstViews.Items.Count - 1;
         }
 
-        private void ajouterUneTableCalendrierToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            var w3 = new WizardCalendrier(CurrentContext.CurrentView, Program.AppSet.ConnectionString, Program.AppSet.ProviderType);
-            if (w3.ShowDialog() == DialogResult.OK)
-                SetViewListFromConfig(true);
-            lstViews.SelectedIndex = lstViews.Items.Count - 1;
-        }
+        //private void ajouterUneTableCalendrierToolStripMenuItem_Click(object sender, EventArgs e)
+        //{
+        //    var w3 = new WizardCalendrier(CurrentContext.CurrentView, Program.AppSet.ConnectionString, Program.AppSet.ProviderType);
+        //    if (w3.ShowDialog() == DialogResult.OK)
+        //    {
+        //        CurrentContext.CurrentView.AutomaticCreation = false;
+        //        SetViewListFromConfig(true);
+        //    }
+        //    lstViews.SelectedIndex = lstViews.Items.Count - 1;
+        //}
         private void ajouterUnChampToolStripMenuItem_Click(object sender, EventArgs e)
         {
             AddFieldFromWizard(CurrentContext.CurrentView, null);
@@ -1207,13 +1520,13 @@ namespace TabloidWizard
 
         private void ajouterAuMenuParamètreToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            WizardSQLHelper.AddToParamMenu(CurrentContext.CurrentView);
+            WizardSQLHelper.AddToParamMenu(CurrentContext.CurrentView, this);
             setProjectModified();
         }
 
         private void ajouterCommeMenuPrincipalToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            WizardSQLHelper.AddToMenu(CurrentContext.CurrentView);
+            WizardSQLHelper.AddToMenu(this, CurrentContext.CurrentView);
             setProjectModified();
         }
 
@@ -1224,14 +1537,14 @@ namespace TabloidWizard
             if (Program.AppSet.ProviderType == Provider.Postgres)
                 currentTable = CurrentContext.CurrentView.Schema + "." + currentTable;
 
-            if (MessageBox.Show(
+            if (MetroMessageBox.Show(this,
                     string.Format(Resources.Confirm_supp_view, CurrentContext.CurrentView.Nom, currentTable),
                 Resources.Confirmation, MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.Cancel) return;
 
-            if (MessageBox.Show(Resources.Remove_view_database, Resources.Confirmation, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (MetroMessageBox.Show(this, Resources.Remove_view_database, Resources.Confirmation, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 var param = new[] { currentTable };
-                var result = !WizardSQLHelper.ExecuteFromFile("supTable.sql", param, Program.AppSet.ConnectionString);
+                var result = !WizardSQLHelper.ExecuteFromFile("supTable.sql", param, Program.AppSet.ConnectionString, this);
             }
 
             TabloidConfig.Config.Views.Remove(CurrentContext.CurrentView);
@@ -1258,6 +1571,7 @@ namespace TabloidWizard
 
         private void afficherLeContenuDuSelectToolStripMenuItem_Click(object sender, EventArgs e)
         {
+
             var frmGrid = new GridViewForm2(CurrentContext.CurrentView, Program.AppSet.ConnectionString);
 
             frmGrid.ShowDialog();
@@ -1304,9 +1618,9 @@ namespace TabloidWizard
 
                 if (e.ChangedItem.PropertyDescriptor.Name == "Phototheque" && (bool)e.ChangedItem.Value)//verify if module is enabled
                     if (!TabloidModule.IsModuleActivated(TabloidModule.ModuleTableType.Phototheque))
-                        mnPhotoModule.Checked = TabloidModule.Activate(TabloidModule.ModuleTableType.Phototheque);
+                        mnPhotoModule.Checked = TabloidModule.Activate(TabloidModule.ModuleTableType.Phototheque, this);
 
-                WizardEvents.afterViewPropertyChange(s, e);
+                WizardEvents.afterViewPropertyChange(s, e, this);
 
                 SetViewListFromConfig(true);
             }
@@ -1322,7 +1636,7 @@ namespace TabloidWizard
         /// <param name="e"></param>
         private void addGraph(object sender, GenericPropertiesViewer<TabloidConfigGraphCollection, TabloidConfigGraph>.AddEventArgs e)
         {
-            var frmG = new GraphForm(CurrentContext.CurrentView, e.Parent);
+            var frmG = new GraphForm(CurrentContext.CurrentView, null, e.Parent);
 
             if (frmG.ShowDialog() == DialogResult.OK)
                 _graphiqViewer.SetObjectCollection(CurrentContext.CurrentView, true);
@@ -1334,6 +1648,13 @@ namespace TabloidWizard
             _indicViewer.SetObjectCollection();
             setProjectModified();
         }
+        //private void addImport(object sender, GenericPropertiesViewer<TabloidConfigImportCollection, TabloidConfigImport>.AddEventArgs e)
+        //{
+        //    var newImport = new TabloidConfigImport();
+        //    Tools.AddWithUniqueName(CurrentContext.CurrentView.Imports, newImport, "IM");
+        //    _importViewer.SetObjectCollection();
+        //    setProjectModified();
+        //}
         private void addTrigger(object sender, GenericPropertiesViewer<TabloidConfigTriggerCollection, TabloidConfigTrigger>.AddEventArgs e)
         {
             var newTrigger = new TabloidConfigTrigger();
@@ -1380,6 +1701,14 @@ namespace TabloidWizard
                 listConv.Click += simpleListConverter_Click;
             }
 
+            if (!mn.Items.ContainsKey("mnFieldConvToList"))
+            {
+                var listConv = new ToolStripMenuItem { Text = Resources.ConvertToList, Name = "mnFieldConvToList" };
+                mn.Items.Add(listConv);
+
+                listConv.Click += TextFielConverter_Click;
+            }
+
             if (!mn.Items.ContainsKey("mnFieldOpenJoin"))
             {
                 if (mn.Items[mn.Items.Count - 1].GetType() == typeof(ToolStripMenuItem))
@@ -1401,14 +1730,21 @@ namespace TabloidWizard
 
 
             //display only if selection is not empty
-            mn.Items["mnFieldOpenView"].Enabled = mn.Items["mnFieldOpenJoin"].Enabled = mn.Items["mnFieldFilter"].Enabled = mn.Items["mnFieldlistConv"].Enabled = isSelection;
+            mn.Items["mnFieldOpenView"].Enabled = mn.Items["mnFieldOpenJoin"].Enabled = mn.Items["mnFieldFilter"].Enabled =
+            mn.Items["mnFieldlistConv"].Enabled = mn.Items["mnFieldlistConv"].Enabled = isSelection;
 
             if (!isSelection) return;
 
             var ctrl = TabloidControl.TabloidControlList[_fieldViewer.SelectedObject.Editeur];
 
+            //for textbox field display convert menu
+            mn.Items["mnFieldConvToList"].Visible = !ctrl.isSingleObjectSelector &&
+                                                    !ctrl.isArrayObjectSelector &&
+                                                    !ctrl.isButton;// editor == Tabloid.Classes.Controls.TemplateType.ComboBox ||
+
+
             //for combox or comboboxplus field display convert menu
-            var editor = _fieldViewer.SelectedObject.Editeur;
+            //var editor = _fieldViewer.SelectedObject.Editeur;
             mn.Items["mnFieldlistConv"].Visible = ctrl.isSingleObjectSelector;// editor == Tabloid.Classes.Controls.TemplateType.ComboBox ||
                                                                               //   editor == Tabloid.Classes.Controls.TemplateType.ComboBoxPlus;
 
@@ -1418,6 +1754,41 @@ namespace TabloidWizard
             //for view or gridview editor display ope view
             mn.Items["mnFieldOpenView"].Visible = ctrl.isArrayObjectSelector;//editor == Tabloid.Classes.Controls.TemplateType.View ||
                                                                              //editor == Tabloid.Classes.Controls.TemplateType.GridView;
+        }
+        private void importContextOpening(object sender, CancelEventArgs e)
+        {
+            //var mn = ((GenericPropertiesViewer<TabloidConfigImportCollection, TabloidConfigImport>)sender).ContextMenu;
+            //var isSelection = _importViewer.SelectedObject != null;
+
+
+
+
+            //if (!mn.Items.ContainsKey("mnAddImport"))
+            //{
+            //    var importTable = new ToolStripMenuItem { Text = Resources.AddImport, Name = "mnAddImport" };
+            //    mn.Items.Add(importTable);
+
+            //    importTable.Click += addImportTable_Click;
+            //}
+
+
+            ////display only if selection is not empty
+            //mn.Items["mnAddImport"].Enabled = true; //!isSelection;
+
+            ////if (!isSelection) return;
+
+        }
+
+        private void addImportTable_Click(object sender, EventArgs e)
+        {
+            var wz = new WizardImport(_importViewer.SelectedObject, CurrentContext.CurrentView);
+
+            if (wz.ShowDialog() == DialogResult.OK)
+            {
+                Tools.AddWithUniqueName(CurrentContext.CurrentView.Imports, wz.ImportResult, "IM");
+                _importViewer.SetObjectCollection();
+                setProjectModified();
+            }
         }
 
         private void openView_Click(object sender, EventArgs e)
@@ -1476,6 +1847,17 @@ namespace TabloidWizard
 
             var destView = TabloidConfig.Config.Views[selectJoin.NomTable];//todo search with nomtable property
 
+            if (!mn.Items.ContainsKey("mnAlias"))
+            {
+                if (mn.Items[mn.Items.Count - 1].GetType() == typeof(ToolStripMenuItem))
+                    mn.Items.Add(new ToolStripSeparator { Name = "mnAliasSep" });
+
+                var mnAlias = new ToolStripMenuItem { Text = Resources.AliasTransform, Name = "mnAlias" };
+                mn.Items.Add(mnAlias);
+
+                mnAlias.Click += steAlias;
+            }
+
             if (destView != null)
             {
                 // open view menu
@@ -1520,6 +1902,16 @@ namespace TabloidWizard
             }
         }
 
+        private void steAlias(object sender, EventArgs e)
+        {
+            var wiz = new WizardAlias(_joinViewer.SelectedObject);
+            wiz.ShowDialog();
+
+            _joinViewer.RefreshGrid();
+
+            setProjectModified();
+        }
+
         private void joinOpenView_Click(object sender, EventArgs e)
         {
             selectViewTableName(_joinViewer.SelectedObject.NomTable);
@@ -1542,7 +1934,7 @@ namespace TabloidWizard
             var paramMenu = WizardSQLHelper.getParamMenu();
             if (paramMenu != null)
                 if (paramMenu.SousMenu.findFirstFromType(TabloidConfigMenuItem.MenuType.Publipostage) == null)
-                    WizardSQLHelper.AddToParamMenu(new TabloidConfigMenuItem { Type = TabloidConfigMenuItem.MenuType.Publipostage, Titre = "Publipostage" });
+                    WizardSQLHelper.AddToParamMenu(this, new TabloidConfigMenuItem { Type = TabloidConfigMenuItem.MenuType.Publipostage, Titre = "Publipostage" });
 
             _editionViewer.SetObjectCollection();
 
@@ -1611,7 +2003,7 @@ namespace TabloidWizard
 
         private void mettreÀJourLeMoteurToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Tools.publication(_configFiles, true);
+            Tools.publication(_configFiles, this, true);
 
             updateStatusBar();
         }
@@ -1664,8 +2056,17 @@ namespace TabloidWizard
                     case "lstGraphs":
                         CurrentContext.CurrentGraph = _graphiqViewer.SelectedObject;
                         break;
+                    case "lstImports":
+                        CurrentContext.CurrentImport = _importViewer.SelectedObject;
+                        break;
                     case "lstExports":
                         CurrentContext.CurrentExport = _exportViewer.SelectedObject;
+                        break;
+                    case "lstTriggers":
+                        CurrentContext.CurrentTrigger = _triggerViewer.SelectedObject;
+                        break;
+                    case "lstIndics":
+                        CurrentContext.CurrentIndic = _indicViewer.SelectedObject;
                         break;
                 }
 
@@ -1675,12 +2076,12 @@ namespace TabloidWizard
         private void activerLeModulePhotothèqueToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (((ToolStripMenuItem)sender).Checked)
-                if (MessageBox.Show(Resources.DisableModule, Resources.Information, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+                if (MetroMessageBox.Show(this, Resources.DisableModule, Resources.Information, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
                     return;
 
 
             // set phototheque module state
-            if (TabloidModule.SetModuleState(!((ToolStripMenuItem)sender).Checked, TabloidModule.ModuleTableType.Phototheque))
+            if (TabloidModule.SetModuleState(!((ToolStripMenuItem)sender).Checked, TabloidModule.ModuleTableType.Phototheque, this))
                 ((ToolStripMenuItem)sender).Checked = !((ToolStripMenuItem)sender).Checked;
         }
 
@@ -1746,7 +2147,7 @@ namespace TabloidWizard
 
         private void btnStatusUpdateEngine_Click(object sender, EventArgs e)
         {
-            Tools.publication(_configFiles, true);
+            Tools.publication(_configFiles, this, true);
 
             updateStatusBar();
         }
@@ -1755,7 +2156,7 @@ namespace TabloidWizard
         {
             if (TabloidConfig.Config.Synthese.Affichage.Count == 0)
             {
-                if (MessageBox.Show(Resources.AddNewSynthese, Resources.Question, MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+                if (MetroMessageBox.Show(this, Resources.AddNewSynthese, Resources.Question, MessageBoxButtons.YesNo, MessageBoxIcon.Question)
                     == DialogResult.Yes)
                 {
                     var row = new TabloidConfigRow();
@@ -1776,7 +2177,11 @@ namespace TabloidWizard
 
             frm.ShowDialog();
         }
-
+        /// <summary>
+        /// Change from tab view to tab function
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void tabviewfct_SelectedIndexChanged(object sender, EventArgs e)
         {
             _displayView = _joinViewer.Enabled = _filterViewer.Enabled = _graphiqViewer.Enabled =
@@ -1820,7 +2225,7 @@ namespace TabloidWizard
                 TabloidConfig.Config.Functions.Add(wf.function);//add function
 
                 if (wf.chkAddMenu.Checked)//add menu
-                    WizardSQLHelper.AddToMenu(wf.function);
+                    WizardSQLHelper.AddToMenu(this, wf.function);
 
                 SetFunctionListFromConfig(true);
             }
@@ -1828,7 +2233,7 @@ namespace TabloidWizard
 
         private void supprimerUneFonctionToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show(
+            if (MetroMessageBox.Show(this,
                 string.Format(Resources.DeleteFunctionConfirm, CurrentContext.CurrentFunction.Nom),
                  Resources.Confirmation, MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.Cancel) return;
 
@@ -1837,6 +2242,56 @@ namespace TabloidWizard
             SetFunctionListFromConfig(true);
         }
 
+        // This class defines the gradient colors for 
+        // the MenuStrip and the ToolStrip.
+        class CustomProfessionalColors : ProfessionalColorTable
+        {
+            public override Color ToolStripGradientBegin
+            { get { return Color.BlueViolet; } }
+
+            public override Color ToolStripGradientMiddle
+            { get { return Color.CadetBlue; } }
+
+            public override Color ToolStripGradientEnd
+            { get { return Color.CornflowerBlue; } }
+
+            public override Color MenuStripGradientBegin
+            { get { return Color.Salmon; } }
+
+            public override Color MenuStripGradientEnd
+            { get { return Color.OrangeRed; } }
+        }
+
+        private void toolStripMenuItem1_DropDownOpening(object sender, EventArgs e)
+        {
+            ((ToolStripMenuItem)sender).ForeColor = Color.Black;
+        }
+
+        private void toolStripMenuItem1_DropDownClosed(object sender, EventArgs e)
+        {
+            ((ToolStripMenuItem)sender).ForeColor = Color.White;
+        }
+
+        private void activerPostgisToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string err;
+
+            var sql = "Create extension postgis;";
+
+            DataTools.Command(sql, null, Program.AppSet.ConnectionString, out err);
+
+            if (!string.IsNullOrEmpty(err))
+                MetroMessageBox.Show(this, string.Format(Resources.ErrorMessage, err), Resources.Erreur, MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+        }
+
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+            //MessageBox.Show(PgAdmin.IsPgAdminInstalled().ToString());
+            var c = new Connexion(Program.AppSet.ConnectionString);
+
+            PgAdmin.BackupDatabase(c.Host,c.UserID,c.Password, c.Database, @"c:\\", "test.sql",c.Port);
+        }
     }
 
 
@@ -1851,7 +2306,10 @@ namespace TabloidWizard
 
         public static TabloidConfigColonne CurrentField { get; set; }
         public static TabloidConfigGraph CurrentGraph { get; set; }
+        public static TabloidConfigIndicateur CurrentIndic { get; internal set; }
+        public static TabloidConfigImport CurrentImport { get; internal set; }
 
+        public static TabloidConfigTrigger CurrentTrigger { get; internal set; }
         public static TabloidConfigJointure CurrentJoin { get; set; }
         public static TabloidConfigRecherche CurrentFilter { get; internal set; }
         public static List<ToolStripItem> ConvertContextJoinMenuItems { get; internal set; }

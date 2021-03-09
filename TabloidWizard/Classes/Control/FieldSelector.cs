@@ -30,6 +30,8 @@ namespace TabloidWizard.Classes.Control
 
             lstChamp.Items.Clear();
 
+            if (cmbTable.SelectedValue == null) return;
+
             var dc = DataTools.Data(SqlCommands.SqlGetColums(
                 cmbTable.SelectedValue.ToString(),
                 cmdSchema.SelectedValue.ToString()), ConnectionString, out lastError);//0
@@ -49,6 +51,7 @@ namespace TabloidWizard.Classes.Control
             string lastError;
 
             var dt = DataTools.Data(SqlCommands.SqlGetTable(cmdSchema.SelectedItem.ToString()), ConnectionString, out lastError);
+
             cmbTable.ValueMember = dt.Columns[0].ColumnName;
             cmbTable.DataSource = dt;
         }

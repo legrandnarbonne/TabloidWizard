@@ -120,4 +120,40 @@
   <data name="textBox1.Text" xml:space="preserve">
     <value>Enter the login user to the first connection information. Only one ID windows (login) is mandatory. Once connected, the user administration can be done through the eval/Utilateurs menu!</value>
   </data>
+  <data name="btnCancel.Text" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Name:</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>First name</value>
+  </data>
+  <data name="lblAuth.Text" xml:space="preserve">
+    <value>Windows username</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>Email address</value>
+  </data>
+  <data name="btnOk.Text" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>Password:</value>
+  </data>
+  <data name="label6.Text" xml:space="preserve">
+    <value>Confirmation</value>
+  </data>
+  <data name="label7.Text" xml:space="preserve">
+    <value>Authentication:</value>
+  </data>
+  <data name="cmbAuth.Items" xml:space="preserve">
+    <value>Form-Based</value>
+  </data>
+  <data name="cmbAuth.Items1" xml:space="preserve">
+    <value>Using a Windows domain (LDPA)!</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>User</value>
+  </data>
 </root>

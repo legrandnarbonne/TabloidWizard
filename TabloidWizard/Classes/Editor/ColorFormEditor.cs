@@ -1,4 +1,5 @@
 ﻿
+using MetroFramework.Forms;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
@@ -6,7 +7,7 @@ using Tabloid.Classes.Objects;
 
 namespace TabloidWizard.Classes.Editor
 {
-    public partial class ColorFormEditor : Form
+    public partial class ColorFormEditor : MetroForm
     {
         public ColorFormEditor(EditableColor color)
         {

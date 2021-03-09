@@ -1,5 +1,6 @@
 ﻿
 
+using MetroFramework;
 using System;
 using System.Windows.Forms;
 using Tabloid.Classes.Config;
@@ -9,6 +10,7 @@ namespace TabloidWizard.Classes.Analyse
 {
     class ViewWithNoTable : AnalyseResult, IAnalyseResult
     {
+        private IWin32Window _own;
 
         public override string Title
         {
@@ -27,8 +29,9 @@ namespace TabloidWizard.Classes.Analyse
 
         public TableAnalysisResult ParentTableResult { get; set; }
 
-        public ViewWithNoTable(TableAnalysisResult tr)
+        public ViewWithNoTable(TableAnalysisResult tr, IWin32Window own)
         {
+            _own = own;
             ParentTableResult = tr;
         }
 
@@ -45,7 +48,7 @@ namespace TabloidWizard.Classes.Analyse
 
         private void DeleteView(object sender, EventArgs e)
         {
-            if (MessageBox.Show(Properties.Resources.ConfirmDeleteView, Properties.Resources.Question, MessageBoxButtons.OKCancel, MessageBoxIcon.Question)
+            if (MetroMessageBox.Show(_own,Properties.Resources.ConfirmDeleteView, Properties.Resources.Question)
                 == DialogResult.OK)
             {
                 TabloidConfig.Config.Views.Remove(ParentTableResult.Views[0]);

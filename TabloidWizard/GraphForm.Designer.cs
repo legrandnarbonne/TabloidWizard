@@ -1,4 +1,6 @@
-﻿namespace TabloidWizard
+﻿using MetroFramework.Controls;
+
+namespace TabloidWizard
 {
     partial class GraphForm
     {
@@ -28,15 +30,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GraphForm));
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GraphForm));
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabControl1 = new MetroFramework.Controls.MetroTabControl();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.button1 = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
@@ -51,17 +53,17 @@
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.propertyGrid1 = new System.Windows.Forms.PropertyGrid();
-            this.tab1 = new System.Windows.Forms.TabControl();
+            this.tab1 = new MetroFramework.Controls.MetroTabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.chart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.txtSql = new System.Windows.Forms.TextBox();
+            this.txtId = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.btnOk = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
-            this.label5 = new System.Windows.Forms.Label();
-            this.txtId = new System.Windows.Forms.TextBox();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
             this.splitContainer2.Panel1.SuspendLayout();
@@ -86,26 +88,19 @@
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel1});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 439);
+            resources.ApplyResources(this.statusStrip1, "statusStrip1");
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(758, 22);
-            this.statusStrip1.TabIndex = 7;
-            this.statusStrip1.Text = "statusStrip1";
             // 
             // toolStripStatusLabel1
             // 
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(743, 17);
+            resources.ApplyResources(this.toolStripStatusLabel1, "toolStripStatusLabel1");
             this.toolStripStatusLabel1.Spring = true;
-            this.toolStripStatusLabel1.Text = "toolStripStatusLabel1";
             // 
             // splitContainer2
             // 
-            this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer2.IsSplitterFixed = true;
-            this.splitContainer2.Location = new System.Drawing.Point(0, 0);
+            resources.ApplyResources(this.splitContainer2, "splitContainer2");
             this.splitContainer2.Name = "splitContainer2";
-            this.splitContainer2.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
             // splitContainer2.Panel1
             // 
@@ -117,14 +112,10 @@
             this.splitContainer2.Panel2.Controls.Add(this.label5);
             this.splitContainer2.Panel2.Controls.Add(this.btnOk);
             this.splitContainer2.Panel2.Controls.Add(this.btnCancel);
-            this.splitContainer2.Size = new System.Drawing.Size(758, 439);
-            this.splitContainer2.SplitterDistance = 394;
-            this.splitContainer2.TabIndex = 8;
             // 
             // splitContainer1
             // 
-            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 0);
+            resources.ApplyResources(this.splitContainer1, "splitContainer1");
             this.splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
@@ -134,23 +125,19 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.tab1);
-            this.splitContainer1.Size = new System.Drawing.Size(758, 394);
-            this.splitContainer1.SplitterDistance = 252;
-            this.splitContainer1.TabIndex = 5;
             // 
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Controls.Add(this.tabPage5);
-            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.Location = new System.Drawing.Point(0, 0);
+            resources.ApplyResources(this.tabControl1, "tabControl1");
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(252, 394);
-            this.tabControl1.TabIndex = 0;
+            this.tabControl1.UseSelectable = true;
             // 
             // tabPage4
             // 
+            this.tabPage4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tabPage4.Controls.Add(this.button1);
             this.tabPage4.Controls.Add(this.label4);
             this.tabPage4.Controls.Add(this.label3);
@@ -162,136 +149,89 @@
             this.tabPage4.Controls.Add(this.radChTable);
             this.tabPage4.Controls.Add(this.radChDef);
             this.tabPage4.Controls.Add(this.label1);
-            this.tabPage4.Location = new System.Drawing.Point(4, 22);
+            resources.ApplyResources(this.tabPage4, "tabPage4");
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(244, 368);
-            this.tabPage4.TabIndex = 0;
-            this.tabPage4.Text = "Assistant";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(150, 284);
+            resources.ApplyResources(this.button1, "button1");
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 10;
-            this.button1.Text = "Mettre à jour";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label4
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(37, 219);
+            resources.ApplyResources(this.label4, "label4");
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(46, 13);
-            this.label4.TabIndex = 9;
-            this.label4.Text = "Champ :";
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(37, 175);
+            resources.ApplyResources(this.label3, "label3");
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(40, 13);
-            this.label3.TabIndex = 8;
-            this.label3.Text = "Table :";
             // 
             // cmbChamp
             // 
             this.cmbChamp.FormattingEnabled = true;
-            this.cmbChamp.Location = new System.Drawing.Point(61, 235);
+            resources.ApplyResources(this.cmbChamp, "cmbChamp");
             this.cmbChamp.Name = "cmbChamp";
-            this.cmbChamp.Size = new System.Drawing.Size(121, 21);
-            this.cmbChamp.TabIndex = 7;
             // 
             // cmbTable
             // 
             this.cmbTable.FormattingEnabled = true;
-            this.cmbTable.Location = new System.Drawing.Point(61, 191);
+            resources.ApplyResources(this.cmbTable, "cmbTable");
             this.cmbTable.Name = "cmbTable";
-            this.cmbTable.Size = new System.Drawing.Size(121, 21);
-            this.cmbTable.TabIndex = 6;
             this.cmbTable.SelectedIndexChanged += new System.EventHandler(this.cmbTable_SelectedIndexChanged);
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(9, 153);
+            resources.ApplyResources(this.label2, "label2");
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(56, 13);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "Champ Y :";
             // 
             // cmbChTable
             // 
-            this.cmbChTable.Enabled = false;
+            resources.ApplyResources(this.cmbChTable, "cmbChTable");
             this.cmbChTable.FormattingEnabled = true;
-            this.cmbChTable.Location = new System.Drawing.Point(61, 116);
             this.cmbChTable.Name = "cmbChTable";
-            this.cmbChTable.Size = new System.Drawing.Size(121, 21);
-            this.cmbChTable.TabIndex = 4;
             // 
             // cmbChView
             // 
             this.cmbChView.FormattingEnabled = true;
-            this.cmbChView.Location = new System.Drawing.Point(61, 66);
+            resources.ApplyResources(this.cmbChView, "cmbChView");
             this.cmbChView.Name = "cmbChView";
-            this.cmbChView.Size = new System.Drawing.Size(121, 21);
-            this.cmbChView.TabIndex = 3;
             // 
             // radChTable
             // 
-            this.radChTable.AutoSize = true;
-            this.radChTable.Location = new System.Drawing.Point(27, 93);
+            resources.ApplyResources(this.radChTable, "radChTable");
             this.radChTable.Name = "radChTable";
-            this.radChTable.Size = new System.Drawing.Size(214, 17);
-            this.radChTable.TabIndex = 2;
-            this.radChTable.Text = "utiliser directement un champ de la table";
             this.radChTable.UseVisualStyleBackColor = true;
             // 
             // radChDef
             // 
-            this.radChDef.AutoSize = true;
+            resources.ApplyResources(this.radChDef, "radChDef");
             this.radChDef.Checked = true;
-            this.radChDef.Location = new System.Drawing.Point(27, 46);
             this.radChDef.Name = "radChDef";
-            this.radChDef.Size = new System.Drawing.Size(155, 17);
-            this.radChDef.TabIndex = 1;
             this.radChDef.TabStop = true;
-            this.radChDef.Text = "utiliser un champ déja défini";
             this.radChDef.UseVisualStyleBackColor = true;
             this.radChDef.CheckedChanged += new System.EventHandler(this.radChDef_CheckedChanged);
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(9, 18);
+            resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(56, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Champ X :";
             // 
             // tabPage5
             // 
             this.tabPage5.Controls.Add(this.propertyGrid1);
-            this.tabPage5.Location = new System.Drawing.Point(4, 22);
+            resources.ApplyResources(this.tabPage5, "tabPage5");
             this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage5.Size = new System.Drawing.Size(244, 368);
-            this.tabPage5.TabIndex = 1;
-            this.tabPage5.Text = "Avancé";
             this.tabPage5.UseVisualStyleBackColor = true;
             // 
             // propertyGrid1
             // 
-            this.propertyGrid1.Dock = System.Windows.Forms.DockStyle.Fill;
+            resources.ApplyResources(this.propertyGrid1, "propertyGrid1");
             this.propertyGrid1.LineColor = System.Drawing.SystemColors.ControlDark;
-            this.propertyGrid1.Location = new System.Drawing.Point(3, 3);
             this.propertyGrid1.Name = "propertyGrid1";
-            this.propertyGrid1.Size = new System.Drawing.Size(238, 362);
-            this.propertyGrid1.TabIndex = 5;
             this.propertyGrid1.PropertyValueChanged += new System.Windows.Forms.PropertyValueChangedEventHandler(this.propertyGrid1_PropertyValueChanged);
             // 
             // tab1
@@ -299,128 +239,88 @@
             this.tab1.Controls.Add(this.tabPage1);
             this.tab1.Controls.Add(this.tabPage2);
             this.tab1.Controls.Add(this.tabPage3);
-            this.tab1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tab1.Location = new System.Drawing.Point(0, 0);
+            resources.ApplyResources(this.tab1, "tab1");
             this.tab1.Name = "tab1";
             this.tab1.SelectedIndex = 0;
-            this.tab1.Size = new System.Drawing.Size(502, 394);
-            this.tab1.TabIndex = 0;
+            this.tab1.UseSelectable = true;
             // 
             // tabPage1
             // 
             this.tabPage1.Controls.Add(this.chart);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            resources.ApplyResources(this.tabPage1, "tabPage1");
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(494, 368);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Graphique";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // chart
             // 
             chartArea1.Name = "ChartArea1";
             this.chart.ChartAreas.Add(chartArea1);
-            this.chart.Dock = System.Windows.Forms.DockStyle.Fill;
+            resources.ApplyResources(this.chart, "chart");
             legend1.Name = "Legend1";
             this.chart.Legends.Add(legend1);
-            this.chart.Location = new System.Drawing.Point(3, 3);
             this.chart.Name = "chart";
             series1.ChartArea = "ChartArea1";
             series1.Legend = "Legend1";
             series1.Name = "Series1";
             this.chart.Series.Add(series1);
-            this.chart.Size = new System.Drawing.Size(488, 362);
-            this.chart.TabIndex = 4;
-            this.chart.Text = "chart1";
             // 
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.dataGridView1);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            resources.ApplyResources(this.tabPage2, "tabPage2");
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(494, 368);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Données";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 3);
+            resources.ApplyResources(this.dataGridView1, "dataGridView1");
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(488, 362);
-            this.dataGridView1.TabIndex = 0;
             // 
             // tabPage3
             // 
             this.tabPage3.Controls.Add(this.txtSql);
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            resources.ApplyResources(this.tabPage3, "tabPage3");
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(494, 368);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "Select";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
             // txtSql
             // 
-            this.txtSql.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtSql.Location = new System.Drawing.Point(0, 0);
-            this.txtSql.Multiline = true;
+            resources.ApplyResources(this.txtSql, "txtSql");
             this.txtSql.Name = "txtSql";
-            this.txtSql.Size = new System.Drawing.Size(494, 368);
-            this.txtSql.TabIndex = 0;
+            // 
+            // txtId
+            // 
+            resources.ApplyResources(this.txtId, "txtId");
+            this.txtId.Name = "txtId";
+            this.txtId.TextChanged += new System.EventHandler(this.txtId_TextChanged);
+            // 
+            // label5
+            // 
+            resources.ApplyResources(this.label5, "label5");
+            this.label5.Name = "label5";
             // 
             // btnOk
             // 
-            this.btnOk.Location = new System.Drawing.Point(590, 10);
+            resources.ApplyResources(this.btnOk, "btnOk");
             this.btnOk.Name = "btnOk";
-            this.btnOk.Size = new System.Drawing.Size(75, 23);
-            this.btnOk.TabIndex = 1;
-            this.btnOk.Text = "Ok";
             this.btnOk.UseVisualStyleBackColor = true;
             this.btnOk.Click += new System.EventHandler(this.btnOk_Click_1);
             // 
             // btnCancel
             // 
-            this.btnCancel.Enabled = false;
-            this.btnCancel.Location = new System.Drawing.Point(671, 10);
+            resources.ApplyResources(this.btnCancel, "btnCancel");
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 23);
-            this.btnCancel.TabIndex = 2;
-            this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(12, 15);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(85, 13);
-            this.label5.TabIndex = 7;
-            this.label5.Text = "Tester avec l\'id :";
-            // 
-            // txtId
-            // 
-            this.txtId.Enabled = false;
-            this.txtId.Location = new System.Drawing.Point(103, 12);
-            this.txtId.Name = "txtId";
-            this.txtId.Size = new System.Drawing.Size(100, 20);
-            this.txtId.TabIndex = 8;
-            this.txtId.TextChanged += new System.EventHandler(this.txtId_TextChanged);
             // 
             // GraphForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(758, 461);
+            this.BorderStyle = MetroFramework.Forms.MetroFormBorderStyle.FixedSingle;
             this.Controls.Add(this.splitContainer2);
             this.Controls.Add(this.statusStrip1);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "GraphForm";
-            this.Text = "Assistant Graphique";
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.splitContainer2.Panel1.ResumeLayout(false);
@@ -455,14 +355,12 @@
         private System.Windows.Forms.Button btnOk;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
-        private System.Windows.Forms.TabControl tab1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.TextBox txtSql;
-        private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage4;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
@@ -479,5 +377,7 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox txtId;
         private System.Windows.Forms.Label label5;
+        private MetroTabControl tab1;
+        private MetroTabControl tabControl1;
     }
 }

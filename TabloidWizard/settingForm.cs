@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MetroFramework;
+using MetroFramework.Forms;
+using System;
 using System.Windows.Forms;
 using TabloidWizard.Classes;
 using TabloidWizard.Classes.Tools;
@@ -8,7 +10,7 @@ namespace TabloidWizard
     /// <summary>
     ///     Description of settingForm.
     /// </summary>
-    public partial class SettingForm : Form
+    public partial class SettingForm : MetroForm
     {
         bool _authenticationChange;
         bool _setAuthenticationModeOnClose;//if set to true modify web.config when closing
@@ -42,7 +44,7 @@ namespace TabloidWizard
 
             if (obj.ModeAuthentification != AuthenticationHandler.AuthenticationType.Windows &&
                 !string.IsNullOrEmpty(obj.AutoenrollmentDomain))
-                MessageBox.Show(Properties.Resources.AuthenticationAndAutoEnrollementError, Properties.Resources.Erreur, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MetroMessageBox.Show(this,Properties.Resources.AuthenticationAndAutoEnrollementError, Properties.Resources.Erreur, MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
     }
 }

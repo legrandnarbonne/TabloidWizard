@@ -33,11 +33,12 @@
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.button1 = new System.Windows.Forms.Button();
-            this.chkFullDisplay = new System.Windows.Forms.CheckBox();
+            this.chkFullDisplay = new MetroFramework.Controls.MetroToggle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.lbTable = new System.Windows.Forms.Label();
             this.lbView = new System.Windows.Forms.Label();
             this.grpAnalyse = new System.Windows.Forms.GroupBox();
+            this.txtdesc = new System.Windows.Forms.TextBox();
             this.pnlBtn = new System.Windows.Forms.Panel();
             this.txtRes = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -46,7 +47,7 @@
             this.lbl3 = new System.Windows.Forms.Label();
             this.lbl2 = new System.Windows.Forms.Label();
             this.lbl1 = new System.Windows.Forms.Label();
-            this.txtdesc = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.grpAnalyse.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -58,7 +59,7 @@
             // 
             this.treeView1.ImageIndex = 0;
             this.treeView1.ImageList = this.imageList1;
-            this.treeView1.Location = new System.Drawing.Point(12, 35);
+            this.treeView1.Location = new System.Drawing.Point(19, 79);
             this.treeView1.Name = "treeView1";
             this.treeView1.SelectedImageIndex = 0;
             this.treeView1.Size = new System.Drawing.Size(472, 390);
@@ -77,7 +78,7 @@
             // button1
             // 
             this.button1.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.button1.Location = new System.Drawing.Point(638, 430);
+            this.button1.Location = new System.Drawing.Point(645, 474);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 1;
@@ -87,19 +88,19 @@
             // chkFullDisplay
             // 
             this.chkFullDisplay.AutoSize = true;
-            this.chkFullDisplay.Location = new System.Drawing.Point(502, 12);
+            this.chkFullDisplay.Location = new System.Drawing.Point(640, 56);
             this.chkFullDisplay.Name = "chkFullDisplay";
-            this.chkFullDisplay.Size = new System.Drawing.Size(159, 17);
+            this.chkFullDisplay.Size = new System.Drawing.Size(80, 17);
             this.chkFullDisplay.TabIndex = 2;
-            this.chkFullDisplay.Text = "Afficher les vues sans erreur";
-            this.chkFullDisplay.UseVisualStyleBackColor = true;
+            this.chkFullDisplay.Text = "Off";
+            this.chkFullDisplay.UseSelectable = true;
             this.chkFullDisplay.CheckedChanged += new System.EventHandler(this.chkFullDisplay_CheckedChanged);
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.lbTable);
             this.groupBox1.Controls.Add(this.lbView);
-            this.groupBox1.Location = new System.Drawing.Point(502, 35);
+            this.groupBox1.Location = new System.Drawing.Point(509, 79);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(211, 85);
             this.groupBox1.TabIndex = 3;
@@ -129,12 +130,23 @@
             this.grpAnalyse.Controls.Add(this.txtdesc);
             this.grpAnalyse.Controls.Add(this.pnlBtn);
             this.grpAnalyse.Controls.Add(this.txtRes);
-            this.grpAnalyse.Location = new System.Drawing.Point(502, 126);
+            this.grpAnalyse.Location = new System.Drawing.Point(509, 170);
             this.grpAnalyse.Name = "grpAnalyse";
             this.grpAnalyse.Size = new System.Drawing.Size(211, 298);
             this.grpAnalyse.TabIndex = 4;
             this.grpAnalyse.TabStop = false;
             this.grpAnalyse.Text = "Analyse";
+            // 
+            // txtdesc
+            // 
+            this.txtdesc.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.txtdesc.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtdesc.Enabled = false;
+            this.txtdesc.Location = new System.Drawing.Point(6, 82);
+            this.txtdesc.Multiline = true;
+            this.txtdesc.Name = "txtdesc";
+            this.txtdesc.Size = new System.Drawing.Size(199, 98);
+            this.txtdesc.TabIndex = 2;
             // 
             // pnlBtn
             // 
@@ -147,6 +159,7 @@
             // 
             // txtRes
             // 
+            this.txtRes.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.txtRes.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtRes.Enabled = false;
             this.txtRes.Location = new System.Drawing.Point(6, 19);
@@ -158,7 +171,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(12, 10);
+            this.pictureBox1.Location = new System.Drawing.Point(270, 32);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(16, 16);
             this.pictureBox1.TabIndex = 5;
@@ -167,7 +180,7 @@
             // pictureBox2
             // 
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(75, 10);
+            this.pictureBox2.Location = new System.Drawing.Point(327, 31);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(16, 16);
             this.pictureBox2.TabIndex = 6;
@@ -176,7 +189,7 @@
             // pictureBox3
             // 
             this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(141, 10);
+            this.pictureBox3.Location = new System.Drawing.Point(393, 31);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(16, 16);
             this.pictureBox3.TabIndex = 7;
@@ -185,7 +198,7 @@
             // lbl3
             // 
             this.lbl3.AutoSize = true;
-            this.lbl3.Location = new System.Drawing.Point(163, 13);
+            this.lbl3.Location = new System.Drawing.Point(415, 32);
             this.lbl3.Name = "lbl3";
             this.lbl3.Size = new System.Drawing.Size(13, 13);
             this.lbl3.TabIndex = 8;
@@ -194,7 +207,7 @@
             // lbl2
             // 
             this.lbl2.AutoSize = true;
-            this.lbl2.Location = new System.Drawing.Point(97, 13);
+            this.lbl2.Location = new System.Drawing.Point(349, 32);
             this.lbl2.Name = "lbl2";
             this.lbl2.Size = new System.Drawing.Size(13, 13);
             this.lbl2.TabIndex = 9;
@@ -203,27 +216,28 @@
             // lbl1
             // 
             this.lbl1.AutoSize = true;
-            this.lbl1.Location = new System.Drawing.Point(34, 13);
+            this.lbl1.Location = new System.Drawing.Point(292, 32);
             this.lbl1.Name = "lbl1";
             this.lbl1.Size = new System.Drawing.Size(13, 13);
             this.lbl1.TabIndex = 10;
             this.lbl1.Text = "0";
             // 
-            // txtdesc
+            // label1
             // 
-            this.txtdesc.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtdesc.Enabled = false;
-            this.txtdesc.Location = new System.Drawing.Point(6, 82);
-            this.txtdesc.Multiline = true;
-            this.txtdesc.Name = "txtdesc";
-            this.txtdesc.Size = new System.Drawing.Size(199, 98);
-            this.txtdesc.TabIndex = 2;
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(568, 55);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(98, 18);
+            this.label1.TabIndex = 11;
+            this.label1.Text = "Tout afficher :";
             // 
             // AnalyseStr
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(725, 465);
+            this.ClientSize = new System.Drawing.Size(741, 503);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.lbl1);
             this.Controls.Add(this.lbl2);
             this.Controls.Add(this.lbl3);
@@ -260,7 +274,6 @@
         private System.Windows.Forms.TreeView treeView1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ImageList imageList1;
-        private System.Windows.Forms.CheckBox chkFullDisplay;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label lbTable;
         private System.Windows.Forms.Label lbView;
@@ -274,5 +287,7 @@
         private System.Windows.Forms.Label lbl2;
         private System.Windows.Forms.Label lbl1;
         private System.Windows.Forms.TextBox txtdesc;
+        private MetroFramework.Controls.MetroToggle chkFullDisplay;
+        private System.Windows.Forms.Label label1;
     }
 }

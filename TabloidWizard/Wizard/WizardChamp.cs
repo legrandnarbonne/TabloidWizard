@@ -1,4 +1,6 @@
 ﻿using Gui.Wizard;
+using MetroFramework;
+using MetroFramework.Forms;
 using System;
 using System.Data;
 using System.Linq;
@@ -6,16 +8,14 @@ using System.Windows.Forms;
 using Tabloid.Classes;
 using Tabloid.Classes.Config;
 using Tabloid.Classes.Controls;
-using Tabloid.Classes.Data;
 using TabloidWizard.Classes;
-using TabloidWizard.Classes.Control;
 using TabloidWizard.Classes.Tools;
 using TabloidWizard.Classes.WizardTools;
 using TabloidWizard.Properties;
 
 namespace TabloidWizard
 {
-    public partial class WizardField : Form
+    public partial class WizardField : MetroForm
     {
         private TabloidConfigColonne Tc;
         private TabloidConfigColonne _parentField;
@@ -40,30 +40,62 @@ namespace TabloidWizard
             Champ.CloseFromNext += validateFieldCreation;
             Champ.CloseFromNext += validateFieldEditorCompliance;
             Champ.CloseFromBack += validateFieldCreation;
+            Champ.ShowFromBack += ChampShowCreation;
 
             Button.ShowFromBack += Button_ShowFromBack;
             Button.ShowFromNext += Button_ShowFromNext;
 
             Editeur.ShowFromNext += Editeur_ShowFromNext;
             Editeur.CloseFromNext += Editeur_CloseFromNext;
+            Editeur.ShowFromBack += Editeur_ShowFromBack;
+
+            Graphique.ShowFromNext += Graphique_ShowFromNext;
+            Graphique.ShowFromBack += Graphique_ShowFromBack;
 
             visibilite.ShowFromBack += Visbile_ShowFromBack;
             visibilite.CloseFromBack += Visbile_CloseFromBack;
             visibilite.Enter += updateVisibilityList;
+
+            if (_iviewFct is TabloidConfigView)
+            { cmbGraph.DataSource = ((TabloidConfigView)view).Graphiques; }
+
 
             fs.ConnectionString = _connectionString;
             fs.cmdSchema.DataSource = AppSetting.GetSchemaList(_provider);//.Items.Add("finance_subv");
             fs.Enabled = false;
         }
 
+        private void ChampShowCreation(object sender, EventArgs e)
+        {
+            if (((TabloidBaseControl)wzCmbEditeur.SelectedItem).type == TemplateType.Graphique)
+                wizard1.BackTo(Editeur);
+        }
 
+        private void Editeur_ShowFromBack(object sender, EventArgs e)
+        {
+            if (((TabloidBaseControl)wzCmbEditeur.SelectedItem).type == TemplateType.Graphique)
+                wizard1.BackTo(Editeur);
+        }
+
+        private void Graphique_ShowFromBack(object sender, EventArgs e)
+        {
+            if (((TabloidBaseControl)wzCmbEditeur.SelectedItem).type != TemplateType.Graphique)
+                wizard1.BackTo(Champ);
+        }
+
+
+        private void Graphique_ShowFromNext(object sender, EventArgs e)
+        {
+            if (((TabloidBaseControl)wzCmbEditeur.SelectedItem).type != TemplateType.Graphique)
+                wizard1.NextTo(visibilite);
+        }
 
         private void validateFieldEditorCompliance(object sender, PageEventArgs e)
         {
             if (wzCmbEditeur.SelectedItem != null)
                 if (((TabloidBaseControl)wzCmbEditeur.SelectedItem).type == TemplateType.AutoCompleteTextBox && radioCrea.Checked)
                 {
-                    MessageBox.Show(Resources.AutocompleteNeedExistingFieldUse, Resources.Erreur, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MetroMessageBox.Show(this, Resources.AutocompleteNeedExistingFieldUse, Resources.Erreur, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     e.Cancel = true;
                 }
         }
@@ -89,6 +121,7 @@ namespace TabloidWizard
         private void Editeur_ShowFromNext(object sender, EventArgs e)
         {
             if (radbutton.Checked) wizard1.NextTo(Button);
+
         }
         //Jump over button
         private void Button_ShowFromNext(object sender, EventArgs e)
@@ -153,7 +186,7 @@ namespace TabloidWizard
                 {
                     if (Tools.isFieldExist(txtNomCrea.Text, view.NomTable, view.Schema))
                     {
-                        MessageBox.Show(Resources.FieldAlreadyExist, Resources.Error, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MetroMessageBox.Show(this, Resources.FieldAlreadyExist, Resources.Error, MessageBoxButtons.OK, MessageBoxIcon.Error);
                         wizard1.NextEnabled = false;
                     }
                 }
@@ -176,7 +209,7 @@ namespace TabloidWizard
         {
             if (string.IsNullOrEmpty(WzTxtTitre.Text))
             {
-                MessageBox.Show(Resources.SetFieldTitle, Resources.Erreur, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MetroMessageBox.Show(this, Resources.SetFieldTitle, Resources.Erreur, MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 e.Cancel = true;
                 return;
             }
@@ -210,7 +243,7 @@ namespace TabloidWizard
                 //Label ask to know if database field is needed
                 if (((TabloidBaseControl)wzCmbEditeur.SelectedItem).type == TemplateType.Label)
                 {
-                    var dlg = MessageBox.Show(Resources.CreateOrUseField, Resources.Information, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Information);
+                    var dlg = MetroMessageBox.Show(this, Resources.CreateOrUseField, Resources.Information, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Information);
                     switch (dlg)
                     {
                         case DialogResult.Cancel:
@@ -242,6 +275,12 @@ namespace TabloidWizard
                     e.Cancel = false;
                     radioExist.Checked = true;
                     fs.lstChamp.SelectedItem = fs.lstChamp.FindStringExact(view.DbKey);
+                }
+
+                if (((TabloidBaseControl)wzCmbEditeur.SelectedItem).type == TemplateType.Graphique)
+                {
+                    e.Cancel = true;
+                    wizard1.NextTo(Graphique);
                 }
             }
         }
@@ -280,7 +319,7 @@ namespace TabloidWizard
                     if (pos > -1) fs.cmbTable.SelectedIndex = pos;
                     else
                     {
-                        MessageBox.Show(string.Format(Resources.tableNotExist, view.NomTable), Resources.Erreur, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MetroMessageBox.Show(this, string.Format(Resources.tableNotExist, view.NomTable), Resources.Erreur, MessageBoxButtons.OK, MessageBoxIcon.Error);
                         this.Close();
                     }
                 }
@@ -307,7 +346,7 @@ namespace TabloidWizard
             }
             catch (Exception ex)
             {
-                MessageBox.Show(Resources.Erreur, ex.ToString());
+                MetroMessageBox.Show(this, Resources.Erreur, ex.ToString());
             }
         }
 
@@ -319,11 +358,12 @@ namespace TabloidWizard
         {
             var useJoinName = "";
 
-            if (_iviewFct is TabloidConfigView)
+            if (_iviewFct is TabloidConfigView&&!radbutton.Checked)
             {
                 var view = (TabloidConfigView)_iviewFct;
 
-                if (_useDatabaseField)//handel label with no database field
+                if (_useDatabaseField //handel label with no database field
+                    && ((TabloidBaseControl)wzCmbEditeur.SelectedItem).type != TemplateType.Graphique)//no database field for graphic
                     if (radioCrea.Checked)//field must be created in database
                     {
                         var t = (DbType)Enum.Parse(typeof(DbType), lstTypeCrea.SelectedItem.ToString());
@@ -335,17 +375,18 @@ namespace TabloidWizard
 
                         var param = new string[] { view.NomTable, txtNomCrea.Text, sqlType + fieldArg, view.Schema };
 
-                        if (!WizardSQLHelper.ExecuteFromFile("addField.sql", param, _connectionString)) return true;
+                        if (!WizardSQLHelper.ExecuteFromFile("addField.sql", param, _connectionString, this)) return true;
 
                     }
                     else//use existing field
                     {
-                        if (fs.cmbTable.SelectedValue.ToString() != view.NomTable)//verify if field is in current table
+                        if (fs.cmbTable.SelectedValue.ToString() != view.NomTable &&
+                            ((TabloidBaseControl)wzCmbEditeur.SelectedItem).type != TemplateType.Graphique)//verify if field is in current table
                         {
                             var useJoin = view.Jointures.GetJoinFromTableName(fs.cmbTable.SelectedValue.ToString());
                             if (useJoin == null)//verify if table is in joined table list
                             {
-                                if (MessageBox.Show(Resources.add_join, Resources.Warning, MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.Yes)
+                                if (MetroMessageBox.Show(this, Resources.add_join, Resources.Warning, MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.Yes)
                                 {
                                     var w = new WizardJoin(
                                         view,
@@ -372,8 +413,10 @@ namespace TabloidWizard
                     Titre = WzTxtTitre.Text,
                     Editeur = TemplateType.Btn,
                     Type = DbType.String,
-                    EditeurParam1 = txtUrlBtn.Text,
-                    EditeurParam2 = txtToolTipBtn.Text,
+                    EditeurParam2 = txtIcoBtn.Text,
+                    EditeurParam3 = txtUrlBtn.Text,
+                    EditeurParam4 = txtToolTipBtn.Text,
+                    VisibleDetail=true,
                     Parent = _parentField,
                     Nom = "btn"
                 };
@@ -399,6 +442,11 @@ namespace TabloidWizard
                     Tc.EditeurParam2 = "/Tabloid/images/inconnu.png";
                     Tc.EditeurParam3 = "jpg";
                     Tc.EditeurParam4 = "4";
+                }
+
+                if (Tc.Editeur == TemplateType.Graphique)
+                {
+                    Tc.EditeurParam1 = ((TabloidConfigGraph)cmbGraph.SelectedItem).Nom;
                 }
 
                 if (_iviewFct is TabloidConfigView)

@@ -117,11 +117,267 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="&gt;&gt;Fin.Name" xml:space="preserve">
+    <value>Fin</value>
+  </data>
+  <data name="&gt;&gt;Fin.Type" xml:space="preserve">
+    <value>Gui.Wizard.WizardPage, Wizard, Version=1.1.7286.32476, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;Fin.Parent" xml:space="preserve">
+    <value>wizard1</value>
+  </data>
+  <data name="&gt;&gt;Fin.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;Info.Name" xml:space="preserve">
+    <value>Info</value>
+  </data>
+  <data name="&gt;&gt;Info.Type" xml:space="preserve">
+    <value>Gui.Wizard.WizardPage, Wizard, Version=1.1.7286.32476, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;Info.Parent" xml:space="preserve">
+    <value>wizard1</value>
+  </data>
+  <data name="&gt;&gt;Info.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="wizard1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="wizard1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8.25pt</value>
+  </data>
+  <data name="wizard1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>20, 60</value>
+  </data>
+  <data name="wizard1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>356, 400</value>
+  </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="wizard1.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;wizard1.Name" xml:space="preserve">
+    <value>wizard1</value>
+  </data>
+  <data name="&gt;&gt;wizard1.Type" xml:space="preserve">
+    <value>Gui.Wizard.Wizard, Wizard, Version=1.1.7286.32476, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;wizard1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;wizard1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;cmbJoin.Name" xml:space="preserve">
+    <value>cmbJoin</value>
+  </data>
+  <data name="&gt;&gt;cmbJoin.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cmbJoin.Parent" xml:space="preserve">
+    <value>Info</value>
+  </data>
+  <data name="&gt;&gt;cmbJoin.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;label3.Name" xml:space="preserve">
+    <value>label3</value>
+  </data>
+  <data name="&gt;&gt;label3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label3.Parent" xml:space="preserve">
+    <value>Info</value>
+  </data>
+  <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;cmbTable.Name" xml:space="preserve">
+    <value>cmbTable</value>
+  </data>
+  <data name="&gt;&gt;cmbTable.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cmbTable.Parent" xml:space="preserve">
+    <value>Info</value>
+  </data>
+  <data name="&gt;&gt;cmbTable.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;label11.Name" xml:space="preserve">
+    <value>label11</value>
+  </data>
+  <data name="&gt;&gt;label11.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label11.Parent" xml:space="preserve">
+    <value>Info</value>
+  </data>
+  <data name="&gt;&gt;label11.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;cmbChamp.Name" xml:space="preserve">
+    <value>cmbChamp</value>
+  </data>
+  <data name="&gt;&gt;cmbChamp.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cmbChamp.Parent" xml:space="preserve">
+    <value>Info</value>
+  </data>
+  <data name="&gt;&gt;cmbChamp.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;label2.Name" xml:space="preserve">
+    <value>label2</value>
+  </data>
+  <data name="&gt;&gt;label2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label2.Parent" xml:space="preserve">
+    <value>Info</value>
+  </data>
+  <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;radioCrea.Name" xml:space="preserve">
+    <value>radioCrea</value>
+  </data>
+  <data name="&gt;&gt;radioCrea.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;radioCrea.Parent" xml:space="preserve">
+    <value>Info</value>
+  </data>
+  <data name="&gt;&gt;radioCrea.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;radioExist.Name" xml:space="preserve">
+    <value>radioExist</value>
+  </data>
+  <data name="&gt;&gt;radioExist.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;radioExist.Parent" xml:space="preserve">
+    <value>Info</value>
+  </data>
+  <data name="&gt;&gt;radioExist.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;chkDistinct.Name" xml:space="preserve">
+    <value>chkDistinct</value>
+  </data>
+  <data name="&gt;&gt;chkDistinct.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;chkDistinct.Parent" xml:space="preserve">
+    <value>Info</value>
+  </data>
+  <data name="&gt;&gt;chkDistinct.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;chkName.Name" xml:space="preserve">
+    <value>chkName</value>
+  </data>
+  <data name="&gt;&gt;chkName.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;chkName.Parent" xml:space="preserve">
+    <value>Info</value>
+  </data>
+  <data name="&gt;&gt;chkName.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;txtViewName.Name" xml:space="preserve">
+    <value>txtViewName</value>
+  </data>
+  <data name="&gt;&gt;txtViewName.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtViewName.Parent" xml:space="preserve">
+    <value>Info</value>
+  </data>
+  <data name="&gt;&gt;txtViewName.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="&gt;&gt;label1.Name" xml:space="preserve">
+    <value>label1</value>
+  </data>
+  <data name="&gt;&gt;label1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
+    <value>Info</value>
+  </data>
+  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="&gt;&gt;txtTable.Name" xml:space="preserve">
+    <value>txtTable</value>
+  </data>
+  <data name="&gt;&gt;txtTable.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtTable.Parent" xml:space="preserve">
+    <value>Info</value>
+  </data>
+  <data name="&gt;&gt;txtTable.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="&gt;&gt;label7.Name" xml:space="preserve">
+    <value>label7</value>
+  </data>
+  <data name="&gt;&gt;label7.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label7.Parent" xml:space="preserve">
+    <value>Info</value>
+  </data>
+  <data name="&gt;&gt;label7.ZOrder" xml:space="preserve">
+    <value>13</value>
+  </data>
+  <data name="&gt;&gt;header4.Name" xml:space="preserve">
+    <value>header4</value>
+  </data>
+  <data name="&gt;&gt;header4.Type" xml:space="preserve">
+    <value>Gui.Wizard.Header, Wizard, Version=1.1.7286.32476, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;header4.Parent" xml:space="preserve">
+    <value>Info</value>
+  </data>
+  <data name="&gt;&gt;header4.ZOrder" xml:space="preserve">
+    <value>14</value>
+  </data>
+  <data name="Info.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="Info.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="Info.Size" type="System.Drawing.Size, System.Drawing">
+    <value>356, 352</value>
+  </data>
+  <data name="Info.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;Info.Name" xml:space="preserve">
+    <value>Info</value>
+  </data>
+  <data name="&gt;&gt;Info.Type" xml:space="preserve">
+    <value>Gui.Wizard.WizardPage, Wizard, Version=1.1.7286.32476, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;Info.Parent" xml:space="preserve">
+    <value>wizard1</value>
+  </data>
+  <data name="&gt;&gt;Info.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="cmbJoin.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="cmbJoin.Location" type="System.Drawing.Point, System.Drawing">
     <value>198, 233</value>
   </data>
@@ -146,7 +402,6 @@
   <data name="label3.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="label3.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -526,7 +781,7 @@
     <value>0, 0</value>
   </data>
   <data name="header4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>339, 57</value>
+    <value>356, 57</value>
   </data>
   <data name="header4.TabIndex" type="System.Int32, mscorlib">
     <value>11</value>
@@ -535,7 +790,7 @@
     <value>header4</value>
   </data>
   <data name="&gt;&gt;header4.Type" xml:space="preserve">
-    <value>Gui.Wizard.Header, Wizard, Version=1.1.7234.31789, Culture=neutral, PublicKeyToken=null</value>
+    <value>Gui.Wizard.Header, Wizard, Version=1.1.7286.32476, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;header4.Parent" xml:space="preserve">
     <value>Info</value>
@@ -543,29 +798,53 @@
   <data name="&gt;&gt;header4.ZOrder" xml:space="preserve">
     <value>14</value>
   </data>
-  <data name="Info.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+  <data name="&gt;&gt;header5.Name" xml:space="preserve">
+    <value>header5</value>
+  </data>
+  <data name="&gt;&gt;header5.Type" xml:space="preserve">
+    <value>Gui.Wizard.Header, Wizard, Version=1.1.7286.32476, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;header5.Parent" xml:space="preserve">
+    <value>Fin</value>
+  </data>
+  <data name="&gt;&gt;header5.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;label8.Name" xml:space="preserve">
+    <value>label8</value>
+  </data>
+  <data name="&gt;&gt;label8.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label8.Parent" xml:space="preserve">
+    <value>Fin</value>
+  </data>
+  <data name="&gt;&gt;label8.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="Fin.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
-  <data name="Info.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="Fin.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
-  <data name="Info.Size" type="System.Drawing.Size, System.Drawing">
-    <value>339, 336</value>
+  <data name="Fin.Size" type="System.Drawing.Size, System.Drawing">
+    <value>356, 352</value>
   </data>
-  <data name="Info.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
+  <data name="Fin.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
   </data>
-  <data name="&gt;&gt;Info.Name" xml:space="preserve">
-    <value>Info</value>
+  <data name="&gt;&gt;Fin.Name" xml:space="preserve">
+    <value>Fin</value>
   </data>
-  <data name="&gt;&gt;Info.Type" xml:space="preserve">
-    <value>Gui.Wizard.WizardPage, Wizard, Version=1.1.7234.31789, Culture=neutral, PublicKeyToken=null</value>
+  <data name="&gt;&gt;Fin.Type" xml:space="preserve">
+    <value>Gui.Wizard.WizardPage, Wizard, Version=1.1.7286.32476, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;Info.Parent" xml:space="preserve">
+  <data name="&gt;&gt;Fin.Parent" xml:space="preserve">
     <value>wizard1</value>
   </data>
-  <data name="&gt;&gt;Info.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="&gt;&gt;Fin.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="header5.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
@@ -607,7 +886,7 @@
     <value>0, 0</value>
   </data>
   <data name="header5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>339, 57</value>
+    <value>356, 57</value>
   </data>
   <data name="header5.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
@@ -616,7 +895,7 @@
     <value>header5</value>
   </data>
   <data name="&gt;&gt;header5.Type" xml:space="preserve">
-    <value>Gui.Wizard.Header, Wizard, Version=1.1.7234.31789, Culture=neutral, PublicKeyToken=null</value>
+    <value>Gui.Wizard.Header, Wizard, Version=1.1.7286.32476, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;header5.Parent" xml:space="preserve">
     <value>Fin</value>
@@ -651,57 +930,6 @@
   <data name="&gt;&gt;label8.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="Fin.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="Fin.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="Fin.Size" type="System.Drawing.Size, System.Drawing">
-    <value>339, 336</value>
-  </data>
-  <data name="Fin.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;Fin.Name" xml:space="preserve">
-    <value>Fin</value>
-  </data>
-  <data name="&gt;&gt;Fin.Type" xml:space="preserve">
-    <value>Gui.Wizard.WizardPage, Wizard, Version=1.1.7234.31789, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;Fin.Parent" xml:space="preserve">
-    <value>wizard1</value>
-  </data>
-  <data name="&gt;&gt;Fin.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="wizard1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="wizard1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Tahoma, 8.25pt</value>
-  </data>
-  <data name="wizard1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="wizard1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>339, 384</value>
-  </data>
-  <data name="wizard1.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;wizard1.Name" xml:space="preserve">
-    <value>wizard1</value>
-  </data>
-  <data name="&gt;&gt;wizard1.Type" xml:space="preserve">
-    <value>Gui.Wizard.Wizard, Wizard, Version=1.1.7234.31789, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;wizard1.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;wizard1.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <metadata name="toolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
@@ -712,7 +940,7 @@
     <value>6, 13</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>339, 384</value>
+    <value>396, 480</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -3015,7 +3243,7 @@
 </value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>Wizard</value>
+    <value>Liste à choix multiple</value>
   </data>
   <data name="&gt;&gt;toolTip1.Name" xml:space="preserve">
     <value>toolTip1</value>
@@ -3027,6 +3255,6 @@
     <value>WizardComplexList</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>MetroFramework.Forms.MetroForm, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
   </data>
 </root>

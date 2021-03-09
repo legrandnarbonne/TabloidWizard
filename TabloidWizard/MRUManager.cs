@@ -1,3 +1,4 @@
+using MetroFramework;
 using Microsoft.Win32;
 using System;
 using System.Collections;
@@ -113,6 +114,8 @@ namespace TabloidWizard
 
         private const string regEntryName = "file";  // entry name to keep MRU (file0, file1...)
 
+        private IWin32Window _own;
+
         #endregion Members
 
         #region Windows API
@@ -135,9 +138,10 @@ namespace TabloidWizard
 
         #region Constructor
 
-        public MRUManager()
+        public MRUManager(IWin32Window own)
         {
             mruList = new ArrayList();
+            _own = own;
         }
 
         #endregion Constructor
@@ -385,7 +389,7 @@ namespace TabloidWizard
             }
             catch (Exception ex)
             {
-                MessageBox.Show(Properties.Resources.ErrorReadingConfigFile+ex.Message, Properties.Resources.Erreur);
+                MetroMessageBox.Show(_own,Properties.Resources.ErrorReadingConfigFile+ex.Message, Properties.Resources.Erreur);
             }
         }
 

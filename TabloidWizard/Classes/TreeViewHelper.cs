@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MetroFramework;
+using System;
 using System.Configuration;
 using System.Drawing;
 using System.Windows.Forms;
@@ -16,12 +17,12 @@ namespace TabloidWizard.Classes
 
             // Get the node that the user has clicked.
             var node = tree.GetNodeAt(p);
-            if (node != null)
-            {
+            //if (node != null)
+            //{
                 // Select the node the user has clicked.
                 // The node appears selected until the menu is displayed on the screen.
                 tree.SelectedNode = node;
-            }
+            //}
         }
         /// <summary>
         /// 
@@ -31,7 +32,7 @@ namespace TabloidWizard.Classes
         /// <param name="key"></param>
         /// <param name="title"></param>
         /// <param name="subCollection">Name of property containing sub collection must be null for 1 level collection</param>
-        public static void LoadTreeFromCollection(TreeView tv, ConfigurationElementCollection col, string key, string title, string subCollection)
+        public static void LoadTreeFromCollection(TreeView tv, ConfigurationElementCollection col, string key, string title, string subCollection, IWin32Window own)
         {
             try
             {
@@ -42,7 +43,7 @@ namespace TabloidWizard.Classes
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MetroMessageBox.Show(own,ex.Message);
             }
         }
         /// <summary>

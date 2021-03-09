@@ -120,4 +120,22 @@
   <data name="textBox1.Text" xml:space="preserve">
     <value>Use un archivo con tres columnas: una que contenga las preguntas, otra vacía para un campo libre o la lista de respuestas separadas por; para las listas desplegables, el tercero contendrá un posible título de grupo.</value>
   </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Nombre de vista:</value>
+  </data>
+  <data name="txtVue.Text" xml:space="preserve">
+    <value>Cuestionario</value>
+  </data>
+  <data name="btnImport.Text" xml:space="preserve">
+    <value>Subir un archivo</value>
+  </data>
+  <data name="button1.Text" xml:space="preserve">
+    <value>Cancelar</value>
+  </data>
+  <data name="btnGen.Text" xml:space="preserve">
+    <value>_Generar</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Generador de cuestionarios!</value>
+  </data>
 </root>

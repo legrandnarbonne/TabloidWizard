@@ -18,9 +18,11 @@ namespace TabloidWizard.Classes.Editor
         ListBox _list;
 
         List<string> modalPropertiesList = new List<string> {"*.Champ","*.ChampLimite","*.Fin","*.Debut","TabloidConfigCalendrier.Titre","*.ChampX","*.ChampY","*.ChampCritere","*.ChampCritere2",
-                                                    "*.ChampAffichage","*.ChampValeur","*.ChampClef","*.ChampDeRef","*.ChampDeRef2","*.DbKey"};
+                                                    "*.ChampAffichage","*.ChampValeur","*.ChampClef","*.ChampDeRef","*.ChampDeRef2","*.DbKey","TabloidConfigCalendrier.Couleur","TabloidConfigCalendrier.Tooltip","TabloidConfigCalendrier.ChampGroupe","*.JoinFieldName","*.JoinValueField",
+                                                    "*.ColName",
+        "*.Select","*.Where","*.GroupBy","*.Distinct","*.WherePeuplement","*.Order","*.Rolels","*.VisibleRole","TabloidConfigEdition.Authorization","*.FieldName"};
 
-        List<string> dropDownPropertiesList = new List<string> { "*.Jointure", "*.Table", "*.TableSource", "*.NomTable" };
+        List<string> dropDownPropertiesList = new List<string> { "*.Jointure", "*.Table", "*.TableSource", "*.NomTable","*.TableName","*.JoinTableName"};
 
         public override UITypeEditorEditStyle GetEditStyle(ITypeDescriptorContext context)
         {
@@ -58,10 +60,16 @@ namespace TabloidWizard.Classes.Editor
                 case "ChampDeRef2":
                 case "DbKey":
                 case "Champ Limite":
+                case "Couleur":
+                case "Tooltip":
+                case "ChampGroupe":
+                case "FieldName":
+                case "JoinFieldName":
+                case "JoinValueField":
                     string table = null;
-                    if (context.PropertyDescriptor.ComponentType.Name == "TabloidConfigEdition"&&//cliqued from edition
-                        (context.PropertyDescriptor.Name== "ChampAffichage"||
-                        context.PropertyDescriptor.Name == "ChampCritere"||
+                    if (context.PropertyDescriptor.ComponentType.Name == "TabloidConfigEdition" &&//cliqued from edition
+                        (context.PropertyDescriptor.Name == "ChampAffichage" ||
+                        context.PropertyDescriptor.Name == "ChampCritere" ||
                         context.PropertyDescriptor.Name == "ChampCritere2" ||
                         context.PropertyDescriptor.Name == "ChampClef"))
                     {
@@ -80,7 +88,7 @@ namespace TabloidWizard.Classes.Editor
                         if (!string.IsNullOrEmpty(j.NomTable)) table = j.NomTable;
                     }
 
-                    var frm = new TableFieldSelectorForm(CurrentContext.CurrentView, (string)value,table);
+                    var frm = new TableFieldSelectorForm(CurrentContext.CurrentView, (string)value, table);
                     frm.ShowDialog();
                     if (frm.DialogResult == DialogResult.OK)
                         value = frm.Value;
@@ -95,29 +103,76 @@ namespace TabloidWizard.Classes.Editor
                     {
                         var j = (TabloidConfigJointure)_list.SelectedItem;
                         var o = (TabloidConfigEdition)context.Instance;
-                        o.ChampClef=setIfEmpty(o.ChampClef,j.DbKey);
+                        o.ChampClef = setIfEmpty(o.ChampClef, j.DbKey);
                         o.ChampCritere = setIfEmpty(o.ChampCritere, j.DbKey);
 
                         var cs = CurrentContext.CurrentView.Colonnes.First(c => c.Jointure == j.Nom);
-                        if (cs!=null)
-                            o.ChampAffichage = setIfEmpty(o.ChampAffichage, 
+                        if (cs != null)
+                            o.ChampAffichage = setIfEmpty(o.ChampAffichage,
                                 ((Champ)cs).NomChamp);
                     }
                     break;
                 case "Table":
                 case "TableSource":
                 case "NomTable":
+                case "TableName":
+                case "JoinTableName":
                     setTableList(provider, value);
                     value = _list.SelectedItem;
+                    break;
+
+                case "Select":
+                case "Where":
+                case "GroupBy":
+                case "Distinct":
+                case "WherePeuplement":
+                case "Order":
+                    var sqlEditor = new SqlEditor(value == null ? "" : value.ToString());
+                    sqlEditor.ShowDialog();
+
+                    if (sqlEditor.DialogResult == DialogResult.OK)
+                        value = sqlEditor.txtSql.Text;
+                    break;
+                case "Rolels":
+                case "VisibleRole":
+                case "Authorization":
+                    string title= "?";
+                    WizardRoles wz=null;
+
+                    if (context.PropertyDescriptor.Name == "Authorization")
+                    {
+                        title = Properties.Resources.Edition + ((TabloidConfigEdition)context.Instance).ToString();
+
+                        wz = new WizardRoles(title, Properties.Resources.DisplayOnly);                        
+                    }
+                    else
+                    {
+                        title = Properties.Resources.TheField + ((TabloidConfigColonne)context.Instance).ToString();
+
+                        wz = context.PropertyDescriptor.Name == "VisibleRole" ?
+                            new WizardRoles(title, Properties.Resources.Hidden) :
+                            new WizardRoles(title, Properties.Resources.WithReadOnly);                        
+                    }
+
+                    if (wz.ShowDialog() == DialogResult.OK)
+                        value = wz.txtResult.Text;                    
+                    break;
+                case "ColName":
+                    var frmXLS = new XLSColumnSelector(Program.CurrentXLSStructure,XLSColumnSelector.BehaviourTypes.ColumnSelect);
+                    if (frmXLS.ShowDialog() == DialogResult.OK)
+                    {
+                        Program.CurrentXLSStructure = frmXLS.CurrentXLSStructure;
+                        value = frmXLS.cmbField.SelectedItem;
+                    }
                     break;
             }
 
             return base.EditValue(context, provider, value);
         }
 
-        private string setIfEmpty(string prop,string value)
+        private string setIfEmpty(string prop, string value)
         {
-            return string.IsNullOrEmpty(prop)?value:prop;
+            return string.IsNullOrEmpty(prop) ? value : prop;
         }
 
         public void setJoinList(IServiceProvider provider, List<TabloidConfigJointure> joinCollection, object value)

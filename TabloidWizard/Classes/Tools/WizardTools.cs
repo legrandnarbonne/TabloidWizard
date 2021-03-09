@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MetroFramework;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Configuration;
@@ -45,7 +46,7 @@ namespace TabloidWizard.Classes.WizardTools
         /// Make zip file from with file in a specified path
         /// </summary>
         /// <param name="sourcePath">Folder to save</param>
-        public static void makeZipSite(string sourcePath)
+        public static void makeZipSite(string sourcePath, IWin32Window own)
         {
             var saveFileDialog1 = new SaveFileDialog();
             saveFileDialog1.Filter = "Fichier Zip|*zip";
@@ -60,7 +61,7 @@ namespace TabloidWizard.Classes.WizardTools
                 {
                     var _wf = new WaitingForm(makeZipSiteWorker)
                     {
-                        lbInfo = { Text = TabloidWizard.Properties.Resources.Saving },
+                         Text = TabloidWizard.Properties.Resources.Saving ,
                         progressBar = { Style = ProgressBarStyle.Marquee }
                     };
 
@@ -69,7 +70,7 @@ namespace TabloidWizard.Classes.WizardTools
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(TabloidWizard.Properties.Resources.SavingError + ex, TabloidWizard.Properties.Resources.Erreur, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MetroMessageBox.Show(own,Properties.Resources.SavingError + ex, Properties.Resources.Erreur, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
             }
@@ -94,7 +95,7 @@ namespace TabloidWizard.Classes.WizardTools
         /// <param name="config"></param>
         /// <param name="maj"></param>
         /// <param name="forceKeepConfig"></param>
-        public static void publication(ConfigFilesCollection config, bool maj = false, bool forceKeepConfig = false)
+        public static void publication(ConfigFilesCollection config, IWin32Window own, bool maj = false, bool forceKeepConfig = false)
         {
 
             var cfg = new publishConfig();
@@ -128,7 +129,7 @@ namespace TabloidWizard.Classes.WizardTools
 
                 if (majFrm.ShowDialog() == DialogResult.OK)
                 {
-                    if (majFrm.chkSAV.Checked) makeZipSite(cfg.DestinationPath);
+                    if (majFrm.chkSAV.Checked) makeZipSite(cfg.DestinationPath,own);
                     cfg.KeepOpenJs = majFrm.chkOpenJs.Checked;
                     cfg.KeepUpload = majFrm.chkUpload.Checked;
                     cfg.KeepWebConfig = majFrm.chkWebConfig.Checked;
@@ -139,29 +140,32 @@ namespace TabloidWizard.Classes.WizardTools
                     return;
             }
 
-            Tools.publication(config, cfg);
+            Tools.publication(config, cfg,own);
         }
 
         /// <summary>
         /// Copy tabloid engine to selected path
         /// </summary>
         /// <param name="destinationPath">destination path</param>
-        static void publication(ConfigFilesCollection config, publishConfig cfg)
+        static void publication(ConfigFilesCollection config, publishConfig cfg, IWin32Window own)
         {
+            //var wf = new WaitingForm(wrPublication);
+            //wf.sho();
+            //Thread.Sleep(2000);
             try
             {
                 var _wf = new WaitingForm(wrPublication)
                 {
-                    lbInfo = { Text = Properties.Resources.Publishing },
+                    Text = Properties.Resources.Publishing,
                     progressBar = { Style = ProgressBarStyle.Marquee }
                 };
 
-                _wf.Wr.RunWorkerAsync(new object[] { config, cfg });
+                _wf.Wr.RunWorkerAsync(new object[] { config, cfg,own });
                 _wf.ShowDialog();
             }
             catch (Exception ex)
             {
-                MessageBox.Show(Properties.Resources.SavingError + ex, Properties.Resources.Erreur, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MetroMessageBox.Show(own,Properties.Resources.SavingError + ex, Properties.Resources.Erreur, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         static void wrPublication(object sender, DoWorkEventArgs e)
@@ -179,13 +183,13 @@ namespace TabloidWizard.Classes.WizardTools
                 if (!subFolder.Any(r => r.FullName.Equals(Path.Combine(di.FullName, "tabloid"), StringComparison.InvariantCultureIgnoreCase)) &&
                     !subFolder.Any(r => r.FullName.Equals(Path.Combine(di.FullName, "configs"), StringComparison.InvariantCultureIgnoreCase)))
                 {
-                    if (MessageBox.Show(Properties.Resources.NotTabloidFolderConfirm, Properties.Resources.Information, MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+                    if (MetroMessageBox.Show((IWin32Window)args[2],Properties.Resources.NotTabloidFolderConfirm, Properties.Resources.Information, MessageBoxButtons.YesNo, MessageBoxIcon.Question)
                         == DialogResult.No)
                         return;
                 }
 
             //delete file in selected folder
-            worker.ReportProgress(0, new WaitingFormProperties(Properties.Resources.RemovingFolderFiles));
+            worker.ReportProgress(0, new WaitingFormProperties(Properties.Resources.Publication,Properties.Resources.RemovingFolderFiles));
             foreach (FileInfo file in di.GetFiles())
             {
                 if (!string.Equals(file.Name, "web.config", StringComparison.OrdinalIgnoreCase) || !cfg.KeepWebConfig)
@@ -202,7 +206,7 @@ namespace TabloidWizard.Classes.WizardTools
                                 dir.Delete(true);
             }
 
-            worker.ReportProgress(0, new WaitingFormProperties(Properties.Resources.TabloidFileCopy));
+            worker.ReportProgress(0, new WaitingFormProperties(Properties.Resources.Publication, Properties.Resources.TabloidFileCopy));
 
             List<String> exclude = new List<String>();
 
@@ -219,23 +223,23 @@ namespace TabloidWizard.Classes.WizardTools
 
             catch
             {
-                MessageBox.Show(Properties.Resources.SourceFileCopyError, Properties.Resources.Erreur, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MetroMessageBox.Show((IWin32Window)args[2], Properties.Resources.SourceFileCopyError, Properties.Resources.Erreur, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
             if (!cfg.KeepWebConfig)
             {
-                worker.ReportProgress(0, new WaitingFormProperties(Properties.Resources.CustomingConfig));
+                worker.ReportProgress(0, new WaitingFormProperties(Properties.Resources.Publication, Properties.Resources.CustomingConfig));
                 ConnManager.personalizeDbProvider(cfg.DestinationPath + @"\web.config");
             }
 
-            worker.ReportProgress(0, new WaitingFormProperties(Properties.Resources.Cleanning));
+            worker.ReportProgress(0, new WaitingFormProperties(Properties.Resources.Publication, Properties.Resources.Cleanning));
             var v = new DirectoryInfo(cfg.DestinationPath + @"\Tabloid\bin");
             v.Delete(true);
 
-            worker.ReportProgress(0, new WaitingFormProperties(Properties.Resources.SavingConfig));
+            worker.ReportProgress(0, new WaitingFormProperties(Properties.Resources.Publication, Properties.Resources.SavingConfig));
             configs.updateXML();
             configs.ChangeConfigFilesPath(cfg.DestinationPath);
-            configs.SaveConfigFiles(false);
+            configs.SaveConfigFiles(false, (IWin32Window)args[2]);
             
 
             //set authentication mode
@@ -343,7 +347,7 @@ namespace TabloidWizard.Classes.WizardTools
             //else propGraph.SelectedObject = null;
         }
 
-        public static void setTreeViewFromCollection(TreeView tree, ConfigurationElementCollection col, string subCollection)
+        public static void setTreeViewFromCollection(TreeView tree, ConfigurationElementCollection col, string subCollection, IWin32Window own)
         {
 
 
@@ -351,7 +355,7 @@ namespace TabloidWizard.Classes.WizardTools
 
             if (tree.SelectedNode != null) current = tree.SelectedNode.Name;
 
-            TreeViewHelper.LoadTreeFromCollection(tree, col, "Nom", null, subCollection);
+            TreeViewHelper.LoadTreeFromCollection(tree, col, "Nom", null, subCollection,own);
 
 
             if (current != null && tree.Nodes != null)

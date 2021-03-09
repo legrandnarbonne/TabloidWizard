@@ -45,12 +45,12 @@
             this.btnMoveUp = new System.Windows.Forms.ToolStripMenuItem();
             this.btnMoveDown = new System.Windows.Forms.ToolStripMenuItem();
             this.btnToBotom = new System.Windows.Forms.ToolStripMenuItem();
-            this.searchBox1 = new TabloidWizard.Classes.Control.SearchBox();
             this.toolStripField = new System.Windows.Forms.ToolStrip();
             this.btnAdd = new System.Windows.Forms.ToolStripButton();
             this.btnDelete = new System.Windows.Forms.ToolStripButton();
             this.properties = new System.Windows.Forms.PropertyGrid();
             this.lblProperties = new System.Windows.Forms.Label();
+            this.searchBox1 = new TabloidWizard.Classes.Control.SearchBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitChamps)).BeginInit();
             this.splitChamps.Panel1.SuspendLayout();
             this.splitChamps.Panel2.SuspendLayout();
@@ -67,7 +67,7 @@
             this.lblList.ForeColor = System.Drawing.Color.White;
             this.lblList.Location = new System.Drawing.Point(0, 0);
             this.lblList.Name = "lblList";
-            this.lblList.Size = new System.Drawing.Size(273, 23);
+            this.lblList.Size = new System.Drawing.Size(271, 23);
             this.lblList.TabIndex = 2;
             this.lblList.Text = "- Liste des Champs -";
             this.lblList.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -76,7 +76,7 @@
             // 
             this.splitChamps.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.splitChamps.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitChamps.Location = new System.Drawing.Point(0, 0);
+            this.splitChamps.Location = new System.Drawing.Point(3, 3);
             this.splitChamps.Name = "splitChamps";
             // 
             // splitChamps.Panel1
@@ -91,8 +91,8 @@
             this.splitChamps.Panel2.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.splitChamps.Panel2.Controls.Add(this.properties);
             this.splitChamps.Panel2.Controls.Add(this.lblProperties);
-            this.splitChamps.Size = new System.Drawing.Size(834, 361);
-            this.splitChamps.SplitterDistance = 275;
+            this.splitChamps.Size = new System.Drawing.Size(828, 355);
+            this.splitChamps.SplitterDistance = 273;
             this.splitChamps.TabIndex = 1;
             // 
             // list
@@ -103,7 +103,7 @@
             this.list.HideSelection = false;
             this.list.Location = new System.Drawing.Point(0, 44);
             this.list.Name = "list";
-            this.list.Size = new System.Drawing.Size(273, 290);
+            this.list.Size = new System.Drawing.Size(271, 284);
             this.list.TabIndex = 5;
             this.list.ItemDrag += new System.Windows.Forms.ItemDragEventHandler(this.list_ItemDrag);
             this.list.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.lstBox_SelectedIndexChanged);
@@ -218,24 +218,15 @@
             this.btnToBotom.Text = "Placer en bas";
             this.btnToBotom.Click += new System.EventHandler(this.btnToBotom_Click);
             // 
-            // searchBox1
-            // 
-            this.searchBox1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.searchBox1.Location = new System.Drawing.Point(0, 23);
-            this.searchBox1.Name = "searchBox1";
-            this.searchBox1.OnTextChange = null;
-            this.searchBox1.Size = new System.Drawing.Size(273, 21);
-            this.searchBox1.TabIndex = 6;
-            // 
             // toolStripField
             // 
             this.toolStripField.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.toolStripField.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnAdd,
             this.btnDelete});
-            this.toolStripField.Location = new System.Drawing.Point(0, 334);
+            this.toolStripField.Location = new System.Drawing.Point(0, 328);
             this.toolStripField.Name = "toolStripField";
-            this.toolStripField.Size = new System.Drawing.Size(273, 25);
+            this.toolStripField.Size = new System.Drawing.Size(271, 25);
             this.toolStripField.TabIndex = 4;
             this.toolStripField.Text = "toolStrip1";
             // 
@@ -271,7 +262,7 @@
             this.properties.LineColor = System.Drawing.SystemColors.InactiveCaption;
             this.properties.Location = new System.Drawing.Point(0, 23);
             this.properties.Name = "properties";
-            this.properties.Size = new System.Drawing.Size(553, 336);
+            this.properties.Size = new System.Drawing.Size(549, 330);
             this.properties.TabIndex = 4;
             this.properties.PropertyValueChanged += new System.Windows.Forms.PropertyValueChangedEventHandler(this.properties_PropertyValueChanged);
             // 
@@ -283,15 +274,25 @@
             this.lblProperties.ForeColor = System.Drawing.Color.White;
             this.lblProperties.Location = new System.Drawing.Point(0, 0);
             this.lblProperties.Name = "lblProperties";
-            this.lblProperties.Size = new System.Drawing.Size(553, 23);
+            this.lblProperties.Size = new System.Drawing.Size(549, 23);
             this.lblProperties.TabIndex = 3;
             this.lblProperties.Text = "- Sélectionnez une entrée dans la liste de gauche -";
             this.lblProperties.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // searchBox1
+            // 
+            this.searchBox1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.searchBox1.Location = new System.Drawing.Point(0, 23);
+            this.searchBox1.Name = "searchBox1";
+            this.searchBox1.OnTextChange = null;
+            this.searchBox1.Size = new System.Drawing.Size(271, 21);
+            this.searchBox1.TabIndex = 6;
             // 
             // GenericPropertiesViewer
             // 
             this.Controls.Add(this.splitChamps);
             this.Name = "GenericPropertiesViewer";
+            this.Padding = new System.Windows.Forms.Padding(3);
             this.Size = new System.Drawing.Size(834, 361);
             this.splitChamps.Panel1.ResumeLayout(false);
             this.splitChamps.Panel1.PerformLayout();

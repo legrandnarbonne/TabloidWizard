@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MetroFramework.Forms;
+using System;
 using System.Windows.Forms;
 using Tabloid.Classes.Config;
 using TabloidWizard.Classes;
@@ -8,7 +9,7 @@ using TabloidWizard.Classes.WizardTools;
 
 namespace TabloidWizard
 {
-    public partial class MenuEditor2 : Form
+    public partial class MenuEditor2 : MetroForm
     {
         GenericPropertiesViewer<TabloidMenu, TabloidConfigMenuItem> _viewer;
         TabloidMenu _menu;

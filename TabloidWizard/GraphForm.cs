@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MetroFramework.Forms;
+using System;
 using System.Data;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
@@ -10,19 +11,21 @@ using TabloidWizard.Classes.WizardTools;
 
 namespace TabloidWizard
 {
-    public partial class GraphForm : Form
+    public partial class GraphForm : MetroForm
     {
         readonly TabloidConfigGraph _currentGraph;
+        readonly TabloidConfigGraph _parentGraph;
         readonly TabloidConfigView _view;
         readonly bool _update;
 
-        public GraphForm(TabloidConfigView view, TabloidConfigGraph graph = null)
+        public GraphForm(TabloidConfigView view, TabloidConfigGraph graph = null, TabloidConfigGraph parent = null)
         {
             InitializeComponent();
 
             _currentGraph = graph;
             _view = view;
             _update = _currentGraph != null;
+            _parentGraph = parent;
 
             if (!_update)//new
                 _currentGraph = new TabloidConfigGraph();
@@ -180,7 +183,10 @@ namespace TabloidWizard
         void btnOk_Click_1(object sender, EventArgs e)
         {
             if (!_update)
-                Tools.AddWithUniqueName(_view.Graphiques,_currentGraph,"G",_view.Graphiques);
+            {
+                var parent = _parentGraph==null? _view.Graphiques : _parentGraph.Graphiques;
+                Tools.AddWithUniqueName(_view.Graphiques, _currentGraph, "G", parent);
+            }
 
             DialogResult = DialogResult.OK;
             Close();

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MetroFramework;
+using System;
 using System.Data;
 using System.Linq;
 using System.Windows.Forms;
@@ -19,7 +20,7 @@ namespace TabloidWizard.Classes.Tools
         /// <param name="avt"></param>
         /// <param name="connectionString"></param>
         /// <returns></returns>
-        public static bool GetTable(string tableName, string schema, ref TabloidConfigView tableConfig, ref ArrayVerify avt, BaseImporterConfig config)
+        public static bool GetTable(IWin32Window own,string tableName, string schema, ref TabloidConfigView tableConfig, ref ArrayVerify avt, BaseImporterConfig config)
         {
             var indexTable = TabloidTables.IsTabloidTable(tableName, ref avt);
             var toShow = indexTable == -1;
@@ -86,7 +87,7 @@ namespace TabloidWizard.Classes.Tools
                                 .Where((f, index) => l.Any(i => i == index))
                                 .Select((x, index) => x.Name + "_" + tableName).ToArray());
 
-                        r = MessageBox.Show(
+                        r = MetroMessageBox.Show(own,
                             string.Format(
                                 Resources.NewFromBaseForm_GetTable_,
                                 tableName, strCh),

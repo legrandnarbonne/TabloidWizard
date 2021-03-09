@@ -88,6 +88,15 @@ namespace TabloidWizard.Properties {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Ajouter un nouvel import.
+        /// </summary>
+        internal static string AddImport {
+            get {
+                return ResourceManager.GetString("AddImport", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Ce projet ne contient pas de page de synthèse. Souhaitez vous en créer une?.
         /// </summary>
         internal static string AddNewSynthese {
@@ -121,6 +130,15 @@ namespace TabloidWizard.Properties {
         internal static string Alert {
             get {
                 return ResourceManager.GetString("Alert", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Transformer en alias.
+        /// </summary>
+        internal static string AliasTransform {
+            get {
+                return ResourceManager.GetString("AliasTransform", resourceCulture);
             }
         }
         
@@ -179,6 +197,15 @@ namespace TabloidWizard.Properties {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Création des vues automatiques..
+        /// </summary>
+        internal static string AutomaticViewBuilding {
+            get {
+                return ResourceManager.GetString("AutomaticViewBuilding", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Erreur à la modification de la base :.
         /// </summary>
         internal static string Base_Modification_error {
@@ -211,6 +238,24 @@ namespace TabloidWizard.Properties {
         internal static string CantFindPrimaryKey {
             get {
                 return ResourceManager.GetString("CantFindPrimaryKey", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Vous avez modifié le schéma par défaut. Souhaitez-vous modifier le schéma pour l&apos;ensemble des vues?.
+        /// </summary>
+        internal static string ChangeProjectSchema {
+            get {
+                return ResourceManager.GetString("ChangeProjectSchema", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Chargement.
+        /// </summary>
+        internal static string Chargement {
+            get {
+                return ResourceManager.GetString("Chargement", resourceCulture);
             }
         }
         
@@ -305,6 +350,24 @@ namespace TabloidWizard.Properties {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Convertir en liste.
+        /// </summary>
+        internal static string ConvertToList {
+            get {
+                return ResourceManager.GetString("ConvertToList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Cette cellule ne fait pas référence à un indicateur. Souhaitez-vous en ajouter un?.
+        /// </summary>
+        internal static string CreateIndic {
+            get {
+                return ResourceManager.GetString("CreateIndic", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Création de jointure.
         /// </summary>
         internal static string CreateJoin {
@@ -337,6 +400,24 @@ namespace TabloidWizard.Properties {
         internal static string CustumRoleUsed {
             get {
                 return ResourceManager.GetString("CustumRoleUsed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Lecture des données..
+        /// </summary>
+        internal static string DatabaseRead {
+            get {
+                return ResourceManager.GetString("DatabaseRead", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Affichage des données..
+        /// </summary>
+        internal static string DataDisplaying {
+            get {
+                return ResourceManager.GetString("DataDisplaying", resourceCulture);
             }
         }
         
@@ -419,6 +500,24 @@ namespace TabloidWizard.Properties {
         internal static string DisplayCorrespondingJoin {
             get {
                 return ResourceManager.GetString("DisplayCorrespondingJoin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à affichée uniquement.
+        /// </summary>
+        internal static string DisplayOnly {
+            get {
+                return ResourceManager.GetString("DisplayOnly", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à L&apos;édition .
+        /// </summary>
+        internal static string Edition {
+            get {
+                return ResourceManager.GetString("Edition", resourceCulture);
             }
         }
         
@@ -514,6 +613,15 @@ namespace TabloidWizard.Properties {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Analyse du fichier.
+        /// </summary>
+        internal static string FileAnalysis {
+            get {
+                return ResourceManager.GetString("FileAnalysis", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Sélectionnez le dossier contenant l&apos;ensemble du site..
         /// </summary>
         internal static string folder_site_selection {
@@ -537,6 +645,24 @@ namespace TabloidWizard.Properties {
         internal static string Have_been_added {
             get {
                 return ResourceManager.GetString("Have_been_added", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à caché.
+        /// </summary>
+        internal static string Hidden {
+            get {
+                return ResourceManager.GetString("Hidden", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Une des lignes de votre tableau de correspondance est incomplète..
+        /// </summary>
+        internal static string ImportIncorrectExcelLine {
+            get {
+                return ResourceManager.GetString("ImportIncorrectExcelLine", resourceCulture);
             }
         }
         
@@ -600,6 +726,24 @@ namespace TabloidWizard.Properties {
         internal static string List {
             get {
                 return ResourceManager.GetString("List", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Chargement des fichiers de configuration..
+        /// </summary>
+        internal static string LodingConfigFiles {
+            get {
+                return ResourceManager.GetString("LodingConfigFiles", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Chargement des styles cartographiques..
+        /// </summary>
+        internal static string LodingGeoStyle {
+            get {
+                return ResourceManager.GetString("LodingGeoStyle", resourceCulture);
             }
         }
         
@@ -771,6 +915,15 @@ namespace TabloidWizard.Properties {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à  - le moteur est à jour..
+        /// </summary>
+        internal static string NoUpdate {
+            get {
+                return ResourceManager.GetString("NoUpdate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Paramètres.
         /// </summary>
         internal static string Parameters {
@@ -803,6 +956,15 @@ namespace TabloidWizard.Properties {
         internal static string PreDefineText {
             get {
                 return ResourceManager.GetString("PreDefineText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Publication.
+        /// </summary>
+        internal static string Publication {
+            get {
+                return ResourceManager.GetString("Publication", resourceCulture);
             }
         }
         
@@ -942,6 +1104,15 @@ namespace TabloidWizard.Properties {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Merci de sélectionnez un indicateur..
+        /// </summary>
+        internal static string SelectIndic {
+            get {
+                return ResourceManager.GetString("SelectIndic", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Sélectionnez une jointure pour poursuivre cette opération!.
         /// </summary>
         internal static string SelectJoin {
@@ -978,12 +1149,30 @@ namespace TabloidWizard.Properties {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Projet {0} - dossier {1} - version du projet {2} - version displonible {3}.
+        /// </summary>
+        internal static string StatusMatrix {
+            get {
+                return ResourceManager.GetString("StatusMatrix", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap suppr2 {
             get {
                 object obj = ResourceManager.GetObject("suppr2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Ce nom de table existe déja !.
+        /// </summary>
+        internal static string TableAlreadyExist {
+            get {
+                return ResourceManager.GetString("TableAlreadyExist", resourceCulture);
             }
         }
         
@@ -1033,6 +1222,24 @@ namespace TabloidWizard.Properties {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Le champ .
+        /// </summary>
+        internal static string TheField {
+            get {
+                return ResourceManager.GetString("TheField", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Validation....
+        /// </summary>
+        internal static string Validation {
+            get {
+                return ResourceManager.GetString("Validation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Ce nom de vue existe déja. Si vous souhaitez créer deux vues pour une même table saisissez un nom de vue différent.
         /// </summary>
         internal static string ViewNameAlreadyExist {
@@ -1056,6 +1263,15 @@ namespace TabloidWizard.Properties {
         internal static string Warning {
             get {
                 return ResourceManager.GetString("Warning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à en lecture seule.
+        /// </summary>
+        internal static string WithReadOnly {
+            get {
+                return ResourceManager.GetString("WithReadOnly", resourceCulture);
             }
         }
         

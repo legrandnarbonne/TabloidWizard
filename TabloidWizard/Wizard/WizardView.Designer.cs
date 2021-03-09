@@ -32,6 +32,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WizardTable));
             this.wizard1 = new Gui.Wizard.Wizard();
             this.Info = new Gui.Wizard.WizardPage();
+            this.txtInititView = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.txtNomVue = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.cmbTable = new System.Windows.Forms.ComboBox();
@@ -44,43 +46,41 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.header4 = new Gui.Wizard.Header();
-            this.Fin = new Gui.Wizard.WizardPage();
-            this.header5 = new Gui.Wizard.Header();
-            this.label8 = new System.Windows.Forms.Label();
             this.wizardPage1 = new Gui.Wizard.WizardPage();
             this.chkDefaultView = new System.Windows.Forms.CheckBox();
             this.chkAjMenu = new System.Windows.Forms.CheckBox();
             this.radMnParam = new System.Windows.Forms.RadioButton();
             this.radMnMain = new System.Windows.Forms.RadioButton();
+            this.Fin = new Gui.Wizard.WizardPage();
+            this.header5 = new Gui.Wizard.Header();
+            this.label8 = new System.Windows.Forms.Label();
             this.Calendar = new Gui.Wizard.WizardPage();
             this.chkDetail = new System.Windows.Forms.CheckBox();
             this.txtTitre = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.txtInititView = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.wizard1.SuspendLayout();
             this.Info.SuspendLayout();
-            this.Fin.SuspendLayout();
             this.wizardPage1.SuspendLayout();
+            this.Fin.SuspendLayout();
             this.Calendar.SuspendLayout();
             this.SuspendLayout();
             // 
             // wizard1
             // 
             this.wizard1.Controls.Add(this.Info);
-            this.wizard1.Controls.Add(this.wizardPage1);
             this.wizard1.Controls.Add(this.Fin);
+            this.wizard1.Controls.Add(this.wizardPage1);
             this.wizard1.Controls.Add(this.Calendar);
             this.wizard1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.wizard1.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.wizard1.Location = new System.Drawing.Point(0, 0);
+            this.wizard1.Location = new System.Drawing.Point(20, 60);
             this.wizard1.Name = "wizard1";
             this.wizard1.Pages.AddRange(new Gui.Wizard.WizardPage[] {
             this.Info,
             this.wizardPage1,
             this.Fin});
-            this.wizard1.Size = new System.Drawing.Size(335, 383);
+            this.wizard1.Size = new System.Drawing.Size(365, 398);
             this.wizard1.TabIndex = 0;
             // 
             // Info
@@ -103,8 +103,25 @@
             this.Info.IsFinishPage = false;
             this.Info.Location = new System.Drawing.Point(0, 0);
             this.Info.Name = "Info";
-            this.Info.Size = new System.Drawing.Size(335, 335);
+            this.Info.Size = new System.Drawing.Size(365, 350);
             this.Info.TabIndex = 4;
+            // 
+            // txtInititView
+            // 
+            this.txtInititView.Location = new System.Drawing.Point(167, 63);
+            this.txtInititView.Name = "txtInititView";
+            this.txtInititView.Size = new System.Drawing.Size(121, 21);
+            this.txtInititView.TabIndex = 38;
+            this.txtInititView.TextChanged += new System.EventHandler(this.txtInititView_TextChanged);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(28, 66);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(119, 13);
+            this.label3.TabIndex = 37;
+            this.label3.Text = "Titre de la nouvelle vue";
             // 
             // txtNomVue
             // 
@@ -213,43 +230,9 @@
             this.header4.Image = ((System.Drawing.Image)(resources.GetObject("header4.Image")));
             this.header4.Location = new System.Drawing.Point(0, 0);
             this.header4.Name = "header4";
-            this.header4.Size = new System.Drawing.Size(335, 57);
+            this.header4.Size = new System.Drawing.Size(365, 57);
             this.header4.TabIndex = 11;
             this.header4.Title = "Assistant d\'ajout";
-            // 
-            // Fin
-            // 
-            this.Fin.Controls.Add(this.header5);
-            this.Fin.Controls.Add(this.label8);
-            this.Fin.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Fin.IsFinishPage = true;
-            this.Fin.Location = new System.Drawing.Point(0, 0);
-            this.Fin.Name = "Fin";
-            this.Fin.Size = new System.Drawing.Size(284, 294);
-            this.Fin.TabIndex = 5;
-            this.Fin.CloseFromNext += new Gui.Wizard.PageEventHandler(this.Button_end);
-            // 
-            // header5
-            // 
-            this.header5.BackColor = System.Drawing.SystemColors.Control;
-            this.header5.CausesValidation = false;
-            this.header5.Description = "";
-            this.header5.Dock = System.Windows.Forms.DockStyle.Top;
-            this.header5.Image = ((System.Drawing.Image)(resources.GetObject("header5.Image")));
-            this.header5.Location = new System.Drawing.Point(0, 0);
-            this.header5.Name = "header5";
-            this.header5.Size = new System.Drawing.Size(284, 57);
-            this.header5.TabIndex = 12;
-            this.header5.Title = "Assistant d\'ajout";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(37, 111);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(217, 13);
-            this.label8.TabIndex = 0;
-            this.label8.Text = "Cliquez sur \"Finish\" pour réaliser l\'opération.";
             // 
             // wizardPage1
             // 
@@ -309,6 +292,40 @@
             this.radMnMain.Text = "ajouter au menu principal";
             this.radMnMain.UseVisualStyleBackColor = true;
             // 
+            // Fin
+            // 
+            this.Fin.Controls.Add(this.header5);
+            this.Fin.Controls.Add(this.label8);
+            this.Fin.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Fin.IsFinishPage = true;
+            this.Fin.Location = new System.Drawing.Point(0, 0);
+            this.Fin.Name = "Fin";
+            this.Fin.Size = new System.Drawing.Size(284, 294);
+            this.Fin.TabIndex = 5;
+            this.Fin.CloseFromNext += new Gui.Wizard.PageEventHandler(this.Button_end);
+            // 
+            // header5
+            // 
+            this.header5.BackColor = System.Drawing.SystemColors.Control;
+            this.header5.CausesValidation = false;
+            this.header5.Description = "";
+            this.header5.Dock = System.Windows.Forms.DockStyle.Top;
+            this.header5.Image = ((System.Drawing.Image)(resources.GetObject("header5.Image")));
+            this.header5.Location = new System.Drawing.Point(0, 0);
+            this.header5.Name = "header5";
+            this.header5.Size = new System.Drawing.Size(284, 57);
+            this.header5.TabIndex = 12;
+            this.header5.Title = "Assistant d\'ajout";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(37, 111);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(217, 13);
+            this.label8.TabIndex = 0;
+            this.label8.Text = "Cliquez sur \"Finish\" pour réaliser l\'opération.";
+            // 
             // Calendar
             // 
             this.Calendar.Controls.Add(this.chkDetail);
@@ -318,7 +335,7 @@
             this.Calendar.IsFinishPage = false;
             this.Calendar.Location = new System.Drawing.Point(0, 0);
             this.Calendar.Name = "Calendar";
-            this.Calendar.Size = new System.Drawing.Size(335, 383);
+            this.Calendar.Size = new System.Drawing.Size(365, 398);
             this.Calendar.TabIndex = 7;
             // 
             // chkDetail
@@ -348,39 +365,22 @@
             this.label2.TabIndex = 34;
             this.label2.Text = "Titre de la vue";
             // 
-            // txtInititView
-            // 
-            this.txtInititView.Location = new System.Drawing.Point(167, 63);
-            this.txtInititView.Name = "txtInititView";
-            this.txtInititView.Size = new System.Drawing.Size(121, 21);
-            this.txtInititView.TabIndex = 38;
-            this.txtInititView.TextChanged += new System.EventHandler(this.txtInititView_TextChanged);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(28, 66);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(119, 13);
-            this.label3.TabIndex = 37;
-            this.label3.Text = "Titre de la nouvelle vue";
-            // 
             // WizardTable
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(335, 383);
+            this.ClientSize = new System.Drawing.Size(405, 478);
             this.Controls.Add(this.wizard1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "WizardTable";
-            this.Text = "Wizard";
+            this.Text = "Vue";
             this.wizard1.ResumeLayout(false);
             this.Info.ResumeLayout(false);
             this.Info.PerformLayout();
-            this.Fin.ResumeLayout(false);
-            this.Fin.PerformLayout();
             this.wizardPage1.ResumeLayout(false);
             this.wizardPage1.PerformLayout();
+            this.Fin.ResumeLayout(false);
+            this.Fin.PerformLayout();
             this.Calendar.ResumeLayout(false);
             this.Calendar.PerformLayout();
             this.ResumeLayout(false);

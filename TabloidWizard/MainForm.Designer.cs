@@ -7,6 +7,8 @@
  * To change this template use Tools | Options | Coding | Edit Standard Headers.
  */
 
+using MetroFramework.Controls;
+
 namespace TabloidWizard
 {
     partial class MainForm
@@ -45,24 +47,24 @@ namespace TabloidWizard
             this.btnStatusUpdateEngine = new System.Windows.Forms.ToolStripSplitButton();
             this.txtStatut = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.projetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.nouveauProjetÀPartirDunSiteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ouvrirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.nouveauToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
-            this.enregistrerToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.enregistrerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.propriétésToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.publierUnSiteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.MajMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator15 = new System.Windows.Forms.ToolStripSeparator();
-            this.définirLesPropriètésParDéfautsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
-            this.fichierRécentsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.kToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.MnEditeurMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
+            this.MnSave = new System.Windows.Forms.ToolStripMenuItem();
+            this.MnSaveAs = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator10 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripMenuItem8 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator11 = new System.Windows.Forms.ToolStripSeparator();
+            this.MnPublier = new System.Windows.Forms.ToolStripMenuItem();
+            this.MnMaj = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator13 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripMenuItem11 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator14 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripMenuItem12 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem13 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem14 = new System.Windows.Forms.ToolStripMenuItem();
             this.pageDeSynthèseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.outilsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.convertisseur1x2xToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -72,6 +74,7 @@ namespace TabloidWizard
             this.connecteurInstallésToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.styleCartographieToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.analyserLaStructureDeVotreProjetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.activerPostgisToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.chkSavAuto = new System.Windows.Forms.ToolStripMenuItem();
             this.modulesMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -79,7 +82,7 @@ namespace TabloidWizard
             this.codeXMLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.teToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cmbDisplayLevel = new System.Windows.Forms.ToolStripComboBox();
-            this.contextMenuView = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.contextMenuView = new MetroFramework.Controls.MetroContextMenu(this.components);
             this.ajouterTable = new System.Windows.Forms.ToolStripMenuItem();
             this.supprimerLaTableToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
@@ -120,12 +123,12 @@ namespace TabloidWizard
             this.ajouterUneTableToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.imgView = new System.Windows.Forms.ImageList(this.components);
-            this.contextMenuFunction = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.contextMenuFunction = new MetroFramework.Controls.MetroContextMenu(this.components);
             this.ajouterUneFonctionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.supprimerUneFonctionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.imgFct = new System.Windows.Forms.ImageList(this.components);
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.tabviewfct = new System.Windows.Forms.TabControl();
+            this.tabviewfct = new MetroFramework.Controls.MetroTabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.txtStartMsg = new System.Windows.Forms.TextBox();
             this.lstViews = new TabloidWizard.Classes.Control.GListBox();
@@ -136,7 +139,9 @@ namespace TabloidWizard
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.propTable = new System.Windows.Forms.PropertyGrid();
             this.lblTable = new System.Windows.Forms.Label();
-            this.tabFieldDetail = new System.Windows.Forms.TabControl();
+            this.tabFieldDetail = new MetroFramework.Controls.MetroTabControl();
+            this.metroStyleManager1 = new MetroFramework.Components.MetroStyleManager(this.components);
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.contextMenuView.SuspendLayout();
@@ -154,31 +159,35 @@ namespace TabloidWizard
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.metroStyleManager1)).BeginInit();
             this.SuspendLayout();
             // 
             // statusStrip1
             // 
+            this.statusStrip1.BackColor = System.Drawing.Color.Silver;
             this.statusStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Visible;
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnStatusUpdateEngine,
             this.txtStatut});
             this.statusStrip1.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
-            this.statusStrip1.Location = new System.Drawing.Point(0, 494);
+            this.statusStrip1.Location = new System.Drawing.Point(20, 474);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.statusStrip1.Size = new System.Drawing.Size(826, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(1318, 22);
             this.statusStrip1.TabIndex = 1;
             this.statusStrip1.Text = "statusStrip1";
             // 
             // btnStatusUpdateEngine
             // 
+            this.btnStatusUpdateEngine.BackColor = System.Drawing.Color.Silver;
             this.btnStatusUpdateEngine.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.btnStatusUpdateEngine.DropDownButtonWidth = 0;
-            this.btnStatusUpdateEngine.ForeColor = System.Drawing.Color.Red;
+            this.btnStatusUpdateEngine.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnStatusUpdateEngine.ForeColor = System.Drawing.Color.Brown;
             this.btnStatusUpdateEngine.Image = ((System.Drawing.Image)(resources.GetObject("btnStatusUpdateEngine.Image")));
             this.btnStatusUpdateEngine.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnStatusUpdateEngine.Name = "btnStatusUpdateEngine";
-            this.btnStatusUpdateEngine.Size = new System.Drawing.Size(80, 20);
+            this.btnStatusUpdateEngine.Size = new System.Drawing.Size(86, 20);
             this.btnStatusUpdateEngine.Text = "Mettre à jour";
             this.btnStatusUpdateEngine.Visible = false;
             this.btnStatusUpdateEngine.ButtonClick += new System.EventHandler(this.btnStatusUpdateEngine_Click);
@@ -191,9 +200,12 @@ namespace TabloidWizard
             // 
             // menuStrip1
             // 
+            this.menuStrip1.BackColor = System.Drawing.Color.SkyBlue;
+            this.menuStrip1.Font = new System.Drawing.Font("Calibri Light", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.projetToolStripMenuItem,
-            this.MnEditeurMenu,
+            this.toolStripMenuItem1,
+            this.toolStripMenuItem14,
             this.pageDeSynthèseToolStripMenuItem,
             this.outilsToolStripMenuItem,
             this.optionsToolStripMenuItem,
@@ -201,157 +213,173 @@ namespace TabloidWizard
             this.codeXMLToolStripMenuItem,
             this.teToolStripMenuItem,
             this.cmbDisplayLevel});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
+            this.menuStrip1.Location = new System.Drawing.Point(20, 30);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(826, 27);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(0, 2, 0, 2);
+            this.menuStrip1.Size = new System.Drawing.Size(1318, 50);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             // 
-            // projetToolStripMenuItem
+            // toolStripMenuItem1
             // 
-            this.projetToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.nouveauProjetÀPartirDunSiteToolStripMenuItem,
-            this.ouvrirToolStripMenuItem,
-            this.nouveauToolStripMenuItem,
-            this.toolStripMenuItem2,
-            this.enregistrerToolStripMenuItem1,
-            this.enregistrerToolStripMenuItem,
-            this.toolStripSeparator2,
-            this.propriétésToolStripMenuItem,
-            this.toolStripSeparator1,
-            this.publierUnSiteToolStripMenuItem,
-            this.MajMenuItem,
-            this.toolStripSeparator15,
-            this.définirLesPropriètésParDéfautsToolStripMenuItem,
-            this.toolStripSeparator7,
-            this.fichierRécentsToolStripMenuItem});
-            this.projetToolStripMenuItem.Name = "projetToolStripMenuItem";
-            this.projetToolStripMenuItem.Size = new System.Drawing.Size(50, 23);
-            this.projetToolStripMenuItem.Text = "Projet";
+            this.toolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem3,
+            this.toolStripMenuItem4,
+            this.toolStripMenuItem5,
+            this.toolStripSeparator9,
+            this.MnSave,
+            this.MnSaveAs,
+            this.toolStripSeparator10,
+            this.toolStripMenuItem8,
+            this.toolStripSeparator11,
+            this.MnPublier,
+            this.MnMaj,
+            this.toolStripSeparator13,
+            this.toolStripMenuItem11,
+            this.toolStripSeparator14,
+            this.toolStripMenuItem12});
+            this.toolStripMenuItem1.Font = new System.Drawing.Font("Calibri Light", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toolStripMenuItem1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.toolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripMenuItem1.Image")));
+            this.toolStripMenuItem1.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Padding = new System.Windows.Forms.Padding(30, 10, 0, 0);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(138, 46);
+            this.toolStripMenuItem1.Text = "Projet";
+            this.toolStripMenuItem1.DropDownClosed += new System.EventHandler(this.toolStripMenuItem1_DropDownClosed);
+            this.toolStripMenuItem1.DropDownOpening += new System.EventHandler(this.toolStripMenuItem1_DropDownOpening);
             // 
-            // nouveauProjetÀPartirDunSiteToolStripMenuItem
+            // toolStripMenuItem3
             // 
-            this.nouveauProjetÀPartirDunSiteToolStripMenuItem.Name = "nouveauProjetÀPartirDunSiteToolStripMenuItem";
-            this.nouveauProjetÀPartirDunSiteToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
+            this.toolStripMenuItem3.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
             | System.Windows.Forms.Keys.O)));
-            this.nouveauProjetÀPartirDunSiteToolStripMenuItem.Size = new System.Drawing.Size(325, 22);
-            this.nouveauProjetÀPartirDunSiteToolStripMenuItem.Text = "Ouvrir un site existant";
-            this.nouveauProjetÀPartirDunSiteToolStripMenuItem.Click += new System.EventHandler(this.NewFromSite);
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(537, 34);
+            this.toolStripMenuItem3.Text = "Ouvrir un site existant";
+            this.toolStripMenuItem3.Click += new System.EventHandler(this.NewFromSite);
             // 
-            // ouvrirToolStripMenuItem
+            // toolStripMenuItem4
             // 
-            this.ouvrirToolStripMenuItem.Name = "ouvrirToolStripMenuItem";
-            this.ouvrirToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
-            this.ouvrirToolStripMenuItem.Size = new System.Drawing.Size(325, 22);
-            this.ouvrirToolStripMenuItem.Text = "Créer un nouveau projet";
-            this.ouvrirToolStripMenuItem.Click += new System.EventHandler(this.NewProject_Click);
+            this.toolStripMenuItem4.Name = "toolStripMenuItem4";
+            this.toolStripMenuItem4.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(537, 34);
+            this.toolStripMenuItem4.Text = "Créer un nouveau projet";
+            this.toolStripMenuItem4.Click += new System.EventHandler(this.NewProject_Click);
             // 
-            // nouveauToolStripMenuItem
+            // toolStripMenuItem5
             // 
-            this.nouveauToolStripMenuItem.Name = "nouveauToolStripMenuItem";
-            this.nouveauToolStripMenuItem.ShortcutKeyDisplayString = "";
-            this.nouveauToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            this.toolStripMenuItem5.Name = "toolStripMenuItem5";
+            this.toolStripMenuItem5.ShortcutKeyDisplayString = "";
+            this.toolStripMenuItem5.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
             | System.Windows.Forms.Keys.B)));
-            this.nouveauToolStripMenuItem.Size = new System.Drawing.Size(325, 22);
-            this.nouveauToolStripMenuItem.Text = "Nouveau projet à partir d\'une base";
-            this.nouveauToolStripMenuItem.Click += new System.EventHandler(this.NewFromDatabase);
+            this.toolStripMenuItem5.Size = new System.Drawing.Size(537, 34);
+            this.toolStripMenuItem5.Text = "Nouveau projet à partir d\'une base";
+            this.toolStripMenuItem5.Click += new System.EventHandler(this.NewFromDatabase);
             // 
-            // toolStripMenuItem2
+            // toolStripSeparator9
             // 
-            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(322, 6);
+            this.toolStripSeparator9.Name = "toolStripSeparator9";
+            this.toolStripSeparator9.Size = new System.Drawing.Size(534, 6);
             // 
-            // enregistrerToolStripMenuItem1
+            // MnSave
             // 
-            this.enregistrerToolStripMenuItem1.Name = "enregistrerToolStripMenuItem1";
-            this.enregistrerToolStripMenuItem1.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.enregistrerToolStripMenuItem1.Size = new System.Drawing.Size(325, 22);
-            this.enregistrerToolStripMenuItem1.Text = "Enregistrer les fichiers de configuration";
-            this.enregistrerToolStripMenuItem1.Click += new System.EventHandler(this.SaveMenu);
+            this.MnSave.Name = "MnSave";
+            this.MnSave.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
+            this.MnSave.Size = new System.Drawing.Size(537, 34);
+            this.MnSave.Text = "Enregistrer les fichiers de configuration";
+            this.MnSave.Click += new System.EventHandler(this.SaveMenu);
             // 
-            // enregistrerToolStripMenuItem
+            // MnSaveAs
             // 
-            this.enregistrerToolStripMenuItem.Enabled = false;
-            this.enregistrerToolStripMenuItem.Name = "enregistrerToolStripMenuItem";
-            this.enregistrerToolStripMenuItem.Size = new System.Drawing.Size(325, 22);
-            this.enregistrerToolStripMenuItem.Text = "Enregistrer les fichiers de configuration sous";
-            this.enregistrerToolStripMenuItem.Click += new System.EventHandler(this.SaveAsMenu);
+            this.MnSaveAs.Enabled = false;
+            this.MnSaveAs.Name = "MnSaveAs";
+            this.MnSaveAs.Size = new System.Drawing.Size(537, 34);
+            this.MnSaveAs.Text = "Enregistrer les fichiers de configuration sous";
+            this.MnSaveAs.Click += new System.EventHandler(this.SaveAsMenu);
             // 
-            // toolStripSeparator2
+            // toolStripSeparator10
             // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(322, 6);
+            this.toolStripSeparator10.Name = "toolStripSeparator10";
+            this.toolStripSeparator10.Size = new System.Drawing.Size(534, 6);
             // 
-            // propriétésToolStripMenuItem
+            // toolStripMenuItem8
             // 
-            this.propriétésToolStripMenuItem.Enabled = false;
-            this.propriétésToolStripMenuItem.Name = "propriétésToolStripMenuItem";
-            this.propriétésToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.P)));
-            this.propriétésToolStripMenuItem.Size = new System.Drawing.Size(325, 22);
-            this.propriétésToolStripMenuItem.Text = "Propriétés du projet";
-            this.propriétésToolStripMenuItem.Click += new System.EventHandler(this.PropertiesMenu);
+            this.toolStripMenuItem8.Enabled = false;
+            this.toolStripMenuItem8.Name = "toolStripMenuItem8";
+            this.toolStripMenuItem8.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.P)));
+            this.toolStripMenuItem8.Size = new System.Drawing.Size(537, 34);
+            this.toolStripMenuItem8.Text = "Propriétés du projet";
+            this.toolStripMenuItem8.Click += new System.EventHandler(this.PropertiesMenu);
             // 
-            // toolStripSeparator1
+            // toolStripSeparator11
             // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(322, 6);
+            this.toolStripSeparator11.Name = "toolStripSeparator11";
+            this.toolStripSeparator11.Size = new System.Drawing.Size(534, 6);
             // 
-            // publierUnSiteToolStripMenuItem
+            // MnPublier
             // 
-            this.publierUnSiteToolStripMenuItem.Name = "publierUnSiteToolStripMenuItem";
-            this.publierUnSiteToolStripMenuItem.Size = new System.Drawing.Size(325, 22);
-            this.publierUnSiteToolStripMenuItem.Text = "Publier un site";
-            this.publierUnSiteToolStripMenuItem.Click += new System.EventHandler(this.publierUnSiteToolStripMenuItem_Click);
+            this.MnPublier.Name = "MnPublier";
+            this.MnPublier.Size = new System.Drawing.Size(537, 34);
+            this.MnPublier.Text = "Publier un site";
+            this.MnPublier.Click += new System.EventHandler(this.publierUnSiteToolStripMenuItem_Click);
             // 
-            // MajMenuItem
+            // MnMaj
             // 
-            this.MajMenuItem.Name = "MajMenuItem";
-            this.MajMenuItem.Size = new System.Drawing.Size(325, 22);
-            this.MajMenuItem.Text = "Mettre à jour le moteur";
-            this.MajMenuItem.Click += new System.EventHandler(this.mettreÀJourLeMoteurToolStripMenuItem_Click);
+            this.MnMaj.Name = "MnMaj";
+            this.MnMaj.Size = new System.Drawing.Size(537, 34);
+            this.MnMaj.Text = "Mettre à jour le moteur";
+            this.MnMaj.Click += new System.EventHandler(this.mettreÀJourLeMoteurToolStripMenuItem_Click);
             // 
-            // toolStripSeparator15
+            // toolStripSeparator13
             // 
-            this.toolStripSeparator15.Name = "toolStripSeparator15";
-            this.toolStripSeparator15.Size = new System.Drawing.Size(322, 6);
+            this.toolStripSeparator13.Name = "toolStripSeparator13";
+            this.toolStripSeparator13.Size = new System.Drawing.Size(534, 6);
             // 
-            // définirLesPropriètésParDéfautsToolStripMenuItem
+            // toolStripMenuItem11
             // 
-            this.définirLesPropriètésParDéfautsToolStripMenuItem.Name = "définirLesPropriètésParDéfautsToolStripMenuItem";
-            this.définirLesPropriètésParDéfautsToolStripMenuItem.Size = new System.Drawing.Size(325, 22);
-            this.définirLesPropriètésParDéfautsToolStripMenuItem.Text = "Définir les propriètés par défauts";
-            this.définirLesPropriètésParDéfautsToolStripMenuItem.Click += new System.EventHandler(this.définirLesPropriètésParDéfautsToolStripMenuItem_Click);
+            this.toolStripMenuItem11.Name = "toolStripMenuItem11";
+            this.toolStripMenuItem11.Size = new System.Drawing.Size(537, 34);
+            this.toolStripMenuItem11.Text = "Définir les propriètés par défauts";
+            this.toolStripMenuItem11.Click += new System.EventHandler(this.définirLesPropriètésParDéfautsToolStripMenuItem_Click);
             // 
-            // toolStripSeparator7
+            // toolStripSeparator14
             // 
-            this.toolStripSeparator7.Name = "toolStripSeparator7";
-            this.toolStripSeparator7.Size = new System.Drawing.Size(322, 6);
+            this.toolStripSeparator14.Name = "toolStripSeparator14";
+            this.toolStripSeparator14.Size = new System.Drawing.Size(534, 6);
             // 
-            // fichierRécentsToolStripMenuItem
+            // toolStripMenuItem12
             // 
-            this.fichierRécentsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.kToolStripMenuItem});
-            this.fichierRécentsToolStripMenuItem.Name = "fichierRécentsToolStripMenuItem";
-            this.fichierRécentsToolStripMenuItem.Size = new System.Drawing.Size(325, 22);
-            this.fichierRécentsToolStripMenuItem.Text = "Fichier récents";
+            this.toolStripMenuItem12.BackColor = System.Drawing.SystemColors.Control;
+            this.toolStripMenuItem12.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem13});
+            this.toolStripMenuItem12.Name = "toolStripMenuItem12";
+            this.toolStripMenuItem12.Size = new System.Drawing.Size(537, 34);
+            this.toolStripMenuItem12.Text = "Fichier récents";
             // 
-            // kToolStripMenuItem
+            // toolStripMenuItem13
             // 
-            this.kToolStripMenuItem.Name = "kToolStripMenuItem";
-            this.kToolStripMenuItem.Size = new System.Drawing.Size(67, 22);
+            this.toolStripMenuItem13.Name = "toolStripMenuItem13";
+            this.toolStripMenuItem13.Size = new System.Drawing.Size(73, 22);
             // 
-            // MnEditeurMenu
+            // toolStripMenuItem14
             // 
-            this.MnEditeurMenu.Name = "MnEditeurMenu";
-            this.MnEditeurMenu.Size = new System.Drawing.Size(106, 23);
-            this.MnEditeurMenu.Text = "Editeur de menu";
-            this.MnEditeurMenu.Click += new System.EventHandler(this.MnEditeurMenu_Click);
+            this.toolStripMenuItem14.Image = ((System.Drawing.Image)(resources.GetObject("toolStripMenuItem14.Image")));
+            this.toolStripMenuItem14.Margin = new System.Windows.Forms.Padding(0, 0, 10, 0);
+            this.toolStripMenuItem14.Name = "toolStripMenuItem14";
+            this.toolStripMenuItem14.Padding = new System.Windows.Forms.Padding(0);
+            this.toolStripMenuItem14.Size = new System.Drawing.Size(97, 46);
+            this.toolStripMenuItem14.Text = "Menu";
+            this.toolStripMenuItem14.Click += new System.EventHandler(this.MnEditeurMenu_Click);
             // 
             // pageDeSynthèseToolStripMenuItem
             // 
+            this.pageDeSynthèseToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("pageDeSynthèseToolStripMenuItem.Image")));
+            this.pageDeSynthèseToolStripMenuItem.Margin = new System.Windows.Forms.Padding(0, 0, 10, 0);
             this.pageDeSynthèseToolStripMenuItem.Name = "pageDeSynthèseToolStripMenuItem";
-            this.pageDeSynthèseToolStripMenuItem.Size = new System.Drawing.Size(110, 23);
-            this.pageDeSynthèseToolStripMenuItem.Text = "Page de synthèse";
+            this.pageDeSynthèseToolStripMenuItem.Padding = new System.Windows.Forms.Padding(0);
+            this.pageDeSynthèseToolStripMenuItem.Size = new System.Drawing.Size(128, 46);
+            this.pageDeSynthèseToolStripMenuItem.Text = "Synthèse";
             this.pageDeSynthèseToolStripMenuItem.Click += new System.EventHandler(this.pageDeSynthèseToolStripMenuItem_Click);
             // 
             // outilsToolStripMenuItem
@@ -363,15 +391,19 @@ namespace TabloidWizard
             this.générateurDeQuestionnaireToolStripMenuItem,
             this.connecteurInstallésToolStripMenuItem,
             this.styleCartographieToolStripMenuItem,
-            this.analyserLaStructureDeVotreProjetToolStripMenuItem});
+            this.analyserLaStructureDeVotreProjetToolStripMenuItem,
+            this.activerPostgisToolStripMenuItem});
+            this.outilsToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("outilsToolStripMenuItem.Image")));
+            this.outilsToolStripMenuItem.Margin = new System.Windows.Forms.Padding(0, 0, 10, 0);
             this.outilsToolStripMenuItem.Name = "outilsToolStripMenuItem";
-            this.outilsToolStripMenuItem.Size = new System.Drawing.Size(50, 23);
+            this.outilsToolStripMenuItem.Padding = new System.Windows.Forms.Padding(0);
+            this.outilsToolStripMenuItem.Size = new System.Drawing.Size(96, 46);
             this.outilsToolStripMenuItem.Text = "Outils";
             // 
             // convertisseur1x2xToolStripMenuItem
             // 
             this.convertisseur1x2xToolStripMenuItem.Name = "convertisseur1x2xToolStripMenuItem";
-            this.convertisseur1x2xToolStripMenuItem.Size = new System.Drawing.Size(261, 22);
+            this.convertisseur1x2xToolStripMenuItem.Size = new System.Drawing.Size(431, 34);
             this.convertisseur1x2xToolStripMenuItem.Text = "Convertisseur 1.x > 2.x";
             this.convertisseur1x2xToolStripMenuItem.Click += new System.EventHandler(this.convertisseur1x2xToolStripMenuItem_Click);
             // 
@@ -379,51 +411,61 @@ namespace TabloidWizard
             // 
             this.genQlikViewToolStripMenuItem.Enabled = false;
             this.genQlikViewToolStripMenuItem.Name = "genQlikViewToolStripMenuItem";
-            this.genQlikViewToolStripMenuItem.Size = new System.Drawing.Size(261, 22);
+            this.genQlikViewToolStripMenuItem.Size = new System.Drawing.Size(431, 34);
             this.genQlikViewToolStripMenuItem.Text = "Génerer un script QlikView";
             this.genQlikViewToolStripMenuItem.Click += new System.EventHandler(this.génererUnScriptQlikViewToolStripMenuItem_Click);
             // 
             // sauvegarderToolStripMenuItem
             // 
             this.sauvegarderToolStripMenuItem.Name = "sauvegarderToolStripMenuItem";
-            this.sauvegarderToolStripMenuItem.Size = new System.Drawing.Size(261, 22);
+            this.sauvegarderToolStripMenuItem.Size = new System.Drawing.Size(431, 34);
             this.sauvegarderToolStripMenuItem.Text = "Sauvegarder";
             this.sauvegarderToolStripMenuItem.Click += new System.EventHandler(this.sauvegarderToolStripMenuItem_Click);
             // 
             // générateurDeQuestionnaireToolStripMenuItem
             // 
             this.générateurDeQuestionnaireToolStripMenuItem.Name = "générateurDeQuestionnaireToolStripMenuItem";
-            this.générateurDeQuestionnaireToolStripMenuItem.Size = new System.Drawing.Size(261, 22);
+            this.générateurDeQuestionnaireToolStripMenuItem.Size = new System.Drawing.Size(431, 34);
             this.générateurDeQuestionnaireToolStripMenuItem.Text = "Générateur de questionnaire";
             this.générateurDeQuestionnaireToolStripMenuItem.Click += new System.EventHandler(this.générateurDeQuestionnaireToolStripMenuItem_Click);
             // 
             // connecteurInstallésToolStripMenuItem
             // 
             this.connecteurInstallésToolStripMenuItem.Name = "connecteurInstallésToolStripMenuItem";
-            this.connecteurInstallésToolStripMenuItem.Size = new System.Drawing.Size(261, 22);
+            this.connecteurInstallésToolStripMenuItem.Size = new System.Drawing.Size(431, 34);
             this.connecteurInstallésToolStripMenuItem.Text = "Connecteur installés";
             this.connecteurInstallésToolStripMenuItem.Click += new System.EventHandler(this.connecteurInstallésToolStripMenuItem_Click);
             // 
             // styleCartographieToolStripMenuItem
             // 
             this.styleCartographieToolStripMenuItem.Name = "styleCartographieToolStripMenuItem";
-            this.styleCartographieToolStripMenuItem.Size = new System.Drawing.Size(261, 22);
+            this.styleCartographieToolStripMenuItem.Size = new System.Drawing.Size(431, 34);
             this.styleCartographieToolStripMenuItem.Text = "Style cartographie";
             this.styleCartographieToolStripMenuItem.Click += new System.EventHandler(this.styleCartographieToolStripMenuItem_Click);
             // 
             // analyserLaStructureDeVotreProjetToolStripMenuItem
             // 
             this.analyserLaStructureDeVotreProjetToolStripMenuItem.Name = "analyserLaStructureDeVotreProjetToolStripMenuItem";
-            this.analyserLaStructureDeVotreProjetToolStripMenuItem.Size = new System.Drawing.Size(261, 22);
+            this.analyserLaStructureDeVotreProjetToolStripMenuItem.Size = new System.Drawing.Size(431, 34);
             this.analyserLaStructureDeVotreProjetToolStripMenuItem.Text = "Analyser la structure de votre projet";
             this.analyserLaStructureDeVotreProjetToolStripMenuItem.Click += new System.EventHandler(this.analyserLaStructureDeVotreProjetToolStripMenuItem_Click);
+            // 
+            // activerPostgisToolStripMenuItem
+            // 
+            this.activerPostgisToolStripMenuItem.Name = "activerPostgisToolStripMenuItem";
+            this.activerPostgisToolStripMenuItem.Size = new System.Drawing.Size(431, 34);
+            this.activerPostgisToolStripMenuItem.Text = "Activer Postgis";
+            this.activerPostgisToolStripMenuItem.Click += new System.EventHandler(this.activerPostgisToolStripMenuItem_Click);
             // 
             // optionsToolStripMenuItem
             // 
             this.optionsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.chkSavAuto});
+            this.optionsToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("optionsToolStripMenuItem.Image")));
+            this.optionsToolStripMenuItem.Margin = new System.Windows.Forms.Padding(0, 0, 10, 0);
             this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
-            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(61, 23);
+            this.optionsToolStripMenuItem.Padding = new System.Windows.Forms.Padding(0);
+            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(116, 46);
             this.optionsToolStripMenuItem.Text = "Options";
             // 
             // chkSavAuto
@@ -432,46 +474,54 @@ namespace TabloidWizard
             this.chkSavAuto.CheckOnClick = true;
             this.chkSavAuto.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkSavAuto.Name = "chkSavAuto";
-            this.chkSavAuto.Size = new System.Drawing.Size(162, 22);
+            this.chkSavAuto.Size = new System.Drawing.Size(246, 34);
             this.chkSavAuto.Text = "Sauvegarde auto";
             // 
             // modulesMenuItem
             // 
             this.modulesMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnPhotoModule});
+            this.modulesMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("modulesMenuItem.Image")));
+            this.modulesMenuItem.Margin = new System.Windows.Forms.Padding(0, 0, 10, 0);
             this.modulesMenuItem.Name = "modulesMenuItem";
-            this.modulesMenuItem.Size = new System.Drawing.Size(116, 23);
-            this.modulesMenuItem.Text = "Modules du projet";
+            this.modulesMenuItem.Padding = new System.Windows.Forms.Padding(0);
+            this.modulesMenuItem.Size = new System.Drawing.Size(124, 46);
+            this.modulesMenuItem.Text = "Modules";
             // 
             // mnPhotoModule
             // 
             this.mnPhotoModule.Name = "mnPhotoModule";
-            this.mnPhotoModule.Size = new System.Drawing.Size(239, 22);
+            this.mnPhotoModule.Size = new System.Drawing.Size(385, 34);
             this.mnPhotoModule.Text = "Activer le module photothèque";
             this.mnPhotoModule.Click += new System.EventHandler(this.activerLeModulePhotothèqueToolStripMenuItem_Click);
             // 
             // codeXMLToolStripMenuItem
             // 
             this.codeXMLToolStripMenuItem.Name = "codeXMLToolStripMenuItem";
-            this.codeXMLToolStripMenuItem.Size = new System.Drawing.Size(74, 23);
+            this.codeXMLToolStripMenuItem.Padding = new System.Windows.Forms.Padding(0);
+            this.codeXMLToolStripMenuItem.Size = new System.Drawing.Size(114, 46);
             this.codeXMLToolStripMenuItem.Text = "Code XML";
+            this.codeXMLToolStripMenuItem.Visible = false;
             this.codeXMLToolStripMenuItem.Click += new System.EventHandler(this.codeXMLToolStripMenuItem_Click);
             // 
             // teToolStripMenuItem
             // 
             this.teToolStripMenuItem.Enabled = false;
             this.teToolStripMenuItem.Name = "teToolStripMenuItem";
-            this.teToolStripMenuItem.Size = new System.Drawing.Size(71, 23);
+            this.teToolStripMenuItem.Padding = new System.Windows.Forms.Padding(0);
+            this.teToolStripMenuItem.Size = new System.Drawing.Size(113, 46);
             this.teToolStripMenuItem.Text = "Interface :";
             // 
             // cmbDisplayLevel
             // 
+            this.cmbDisplayLevel.BackColor = System.Drawing.Color.SkyBlue;
+            this.cmbDisplayLevel.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.cmbDisplayLevel.Items.AddRange(new object[] {
             "Simplifiée",
             "Avancée",
             "Expert"});
             this.cmbDisplayLevel.Name = "cmbDisplayLevel";
-            this.cmbDisplayLevel.Size = new System.Drawing.Size(121, 23);
+            this.cmbDisplayLevel.Size = new System.Drawing.Size(121, 46);
             this.cmbDisplayLevel.SelectedIndexChanged += new System.EventHandler(this.cmbDisplayLevel_SelectedIndexChanged);
             // 
             // contextMenuView
@@ -553,7 +603,6 @@ namespace TabloidWizard
             this.ajouterUneTableCalendrierToolStripMenuItem.Name = "ajouterUneTableCalendrierToolStripMenuItem";
             this.ajouterUneTableCalendrierToolStripMenuItem.Size = new System.Drawing.Size(355, 22);
             this.ajouterUneTableCalendrierToolStripMenuItem.Text = "Implementer un calendrier sur cette vue";
-            this.ajouterUneTableCalendrierToolStripMenuItem.Click += new System.EventHandler(this.ajouterUneTableCalendrierToolStripMenuItem_Click);
             // 
             // créerUneNouvelleVuePourCetteTableToolStripMenuItem
             // 
@@ -662,6 +711,8 @@ namespace TabloidWizard
             // 
             // toolStrip2
             // 
+            this.toolStrip2.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.toolStrip2.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnEnregistrer,
             this.btnProprietes,
@@ -672,10 +723,11 @@ namespace TabloidWizard
             this.btnExecute,
             this.btnLog,
             this.toolStripSeparator6,
-            this.toolStripSplitButton1});
-            this.toolStrip2.Location = new System.Drawing.Point(0, 27);
+            this.toolStripSplitButton1,
+            this.toolStripButton1});
+            this.toolStrip2.Location = new System.Drawing.Point(20, 80);
             this.toolStrip2.Name = "toolStrip2";
-            this.toolStrip2.Size = new System.Drawing.Size(826, 25);
+            this.toolStrip2.Size = new System.Drawing.Size(1318, 25);
             this.toolStrip2.TabIndex = 4;
             this.toolStrip2.Text = "toolStrip2";
             // 
@@ -695,6 +747,7 @@ namespace TabloidWizard
             this.btnProprietes.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnProprietes.Name = "btnProprietes";
             this.btnProprietes.Size = new System.Drawing.Size(23, 22);
+            this.btnProprietes.ToolTipText = "Propriétés du projet";
             this.btnProprietes.Click += new System.EventHandler(this.PropertiesMenu);
             // 
             // toolStripSeparator3
@@ -830,7 +883,7 @@ namespace TabloidWizard
             // 
             this.splitContainer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 52);
+            this.splitContainer1.Location = new System.Drawing.Point(20, 105);
             this.splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
@@ -840,8 +893,8 @@ namespace TabloidWizard
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
-            this.splitContainer1.Size = new System.Drawing.Size(826, 442);
-            this.splitContainer1.SplitterDistance = 274;
+            this.splitContainer1.Size = new System.Drawing.Size(1318, 369);
+            this.splitContainer1.SplitterDistance = 435;
             this.splitContainer1.TabIndex = 3;
             // 
             // tabviewfct
@@ -852,8 +905,9 @@ namespace TabloidWizard
             this.tabviewfct.Location = new System.Drawing.Point(0, 0);
             this.tabviewfct.Name = "tabviewfct";
             this.tabviewfct.SelectedIndex = 0;
-            this.tabviewfct.Size = new System.Drawing.Size(272, 440);
+            this.tabviewfct.Size = new System.Drawing.Size(433, 367);
             this.tabviewfct.TabIndex = 4;
+            this.tabviewfct.UseSelectable = true;
             this.tabviewfct.SelectedIndexChanged += new System.EventHandler(this.tabviewfct_SelectedIndexChanged);
             // 
             // tabPage1
@@ -861,10 +915,10 @@ namespace TabloidWizard
             this.tabPage1.Controls.Add(this.txtStartMsg);
             this.tabPage1.Controls.Add(this.lstViews);
             this.tabPage1.Controls.Add(this.label1);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Location = new System.Drawing.Point(4, 38);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(264, 414);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3, 10, 3, 3);
+            this.tabPage1.Size = new System.Drawing.Size(425, 325);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Liste des Vues";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -875,10 +929,10 @@ namespace TabloidWizard
             this.txtStartMsg.Enabled = false;
             this.txtStartMsg.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtStartMsg.ForeColor = System.Drawing.Color.Orange;
-            this.txtStartMsg.Location = new System.Drawing.Point(3, 35);
+            this.txtStartMsg.Location = new System.Drawing.Point(3, 42);
             this.txtStartMsg.Multiline = true;
             this.txtStartMsg.Name = "txtStartMsg";
-            this.txtStartMsg.Size = new System.Drawing.Size(258, 376);
+            this.txtStartMsg.Size = new System.Drawing.Size(419, 280);
             this.txtStartMsg.TabIndex = 3;
             this.txtStartMsg.Text = "Utilisez le menu \"Projet\" en haut à droite pour débuter un nouveau projet ou char" +
     "ger un projet existant.";
@@ -893,10 +947,10 @@ namespace TabloidWizard
             this.lstViews.ImageIndex = 0;
             this.lstViews.ImageList = null;
             this.lstViews.ImagePadding = 0;
-            this.lstViews.Location = new System.Drawing.Point(3, 35);
+            this.lstViews.Location = new System.Drawing.Point(3, 42);
             this.lstViews.Name = "lstViews";
             this.lstViews.SelectedBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(175)))), ((int)(((byte)(0)))));
-            this.lstViews.Size = new System.Drawing.Size(258, 376);
+            this.lstViews.Size = new System.Drawing.Size(419, 280);
             this.lstViews.TabIndex = 2;
             this.lstViews.SelectedIndexChanged += new System.EventHandler(this.lstView_SelectedIndexChanged);
             this.lstViews.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lstViews_MouseDown);
@@ -907,9 +961,9 @@ namespace TabloidWizard
             this.label1.Dock = System.Windows.Forms.DockStyle.Top;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(3, 3);
+            this.label1.Location = new System.Drawing.Point(3, 10);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(258, 32);
+            this.label1.Size = new System.Drawing.Size(419, 32);
             this.label1.TabIndex = 1;
             this.label1.Text = "- Liste des Vues -";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -918,10 +972,10 @@ namespace TabloidWizard
             // 
             this.tabPage2.Controls.Add(this.lstFct);
             this.tabPage2.Controls.Add(this.label2);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Location = new System.Drawing.Point(4, 38);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(264, 414);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 10, 3, 3);
+            this.tabPage2.Size = new System.Drawing.Size(425, 325);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Liste des fonctions";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -935,10 +989,10 @@ namespace TabloidWizard
             this.lstFct.ImageIndex = 0;
             this.lstFct.ImageList = this.imgFct;
             this.lstFct.ImagePadding = 0;
-            this.lstFct.Location = new System.Drawing.Point(3, 35);
+            this.lstFct.Location = new System.Drawing.Point(3, 42);
             this.lstFct.Name = "lstFct";
             this.lstFct.SelectedBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.lstFct.Size = new System.Drawing.Size(258, 376);
+            this.lstFct.Size = new System.Drawing.Size(419, 280);
             this.lstFct.TabIndex = 3;
             this.lstFct.SelectedIndexChanged += new System.EventHandler(this.lstView_SelectedIndexChanged);
             // 
@@ -948,9 +1002,9 @@ namespace TabloidWizard
             this.label2.Dock = System.Windows.Forms.DockStyle.Top;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(3, 3);
+            this.label2.Location = new System.Drawing.Point(3, 10);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(258, 32);
+            this.label2.Size = new System.Drawing.Size(419, 32);
             this.label2.TabIndex = 4;
             this.label2.Text = "- Liste des fonctions -";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -972,8 +1026,8 @@ namespace TabloidWizard
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.tabFieldDetail);
-            this.splitContainer2.Size = new System.Drawing.Size(548, 442);
-            this.splitContainer2.SplitterDistance = 176;
+            this.splitContainer2.Size = new System.Drawing.Size(879, 369);
+            this.splitContainer2.SplitterDistance = 144;
             this.splitContainer2.TabIndex = 0;
             // 
             // propTable
@@ -987,7 +1041,7 @@ namespace TabloidWizard
             this.propTable.Location = new System.Drawing.Point(0, 23);
             this.propTable.Name = "propTable";
             this.propTable.SelectedItemWithFocusBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(218)))), ((int)(((byte)(121)))));
-            this.propTable.Size = new System.Drawing.Size(546, 151);
+            this.propTable.Size = new System.Drawing.Size(877, 119);
             this.propTable.TabIndex = 4;
             this.propTable.PropertyValueChanged += new System.Windows.Forms.PropertyValueChangedEventHandler(this.TablePropertyValueChanged);
             // 
@@ -999,7 +1053,7 @@ namespace TabloidWizard
             this.lblTable.ForeColor = System.Drawing.Color.White;
             this.lblTable.Location = new System.Drawing.Point(0, 0);
             this.lblTable.Name = "lblTable";
-            this.lblTable.Size = new System.Drawing.Size(546, 23);
+            this.lblTable.Size = new System.Drawing.Size(877, 23);
             this.lblTable.TabIndex = 3;
             this.lblTable.Text = "- Sélectionnez une vue dans la liste de gauche -";
             this.lblTable.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1009,22 +1063,39 @@ namespace TabloidWizard
             this.tabFieldDetail.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabFieldDetail.Location = new System.Drawing.Point(0, 0);
             this.tabFieldDetail.Name = "tabFieldDetail";
-            this.tabFieldDetail.SelectedIndex = 0;
-            this.tabFieldDetail.Size = new System.Drawing.Size(546, 260);
+            this.tabFieldDetail.Size = new System.Drawing.Size(877, 219);
             this.tabFieldDetail.TabIndex = 0;
+            this.tabFieldDetail.UseSelectable = true;
+            // 
+            // metroStyleManager1
+            // 
+            this.metroStyleManager1.Owner = null;
+            // 
+            // toolStripButton1
+            // 
+            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton1.Text = "toolStripButton1";
+            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(826, 516);
+            this.BorderStyle = MetroFramework.Forms.MetroFormBorderStyle.FixedSingle;
+            this.ClientSize = new System.Drawing.Size(1358, 516);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.toolStrip2);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.menuStrip1);
+            this.DisplayHeader = false;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainForm";
+            this.Padding = new System.Windows.Forms.Padding(20, 30, 20, 20);
             this.Text = "TabloidWizard";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.MainFormLoad);
@@ -1049,29 +1120,19 @@ namespace TabloidWizard
             this.splitContainer2.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.metroStyleManager1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
-        private System.Windows.Forms.ToolStripMenuItem fichierRécentsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripMenuItem nouveauProjetÀPartirDunSiteToolStripMenuItem;
         private Classes.Control.GListBox lstViews;
         private System.Windows.Forms.Label lblTable;
         private System.Windows.Forms.SplitContainer splitContainer2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ToolStripMenuItem nouveauToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem enregistrerToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem propriétésToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem ouvrirToolStripMenuItem;
         private System.Windows.Forms.ToolStripStatusLabel txtStatut;
         private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.ToolStripMenuItem projetToolStripMenuItem;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.StatusStrip statusStrip1;
-        private System.Windows.Forms.ToolStripMenuItem enregistrerToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStrip toolStrip2;
         private System.Windows.Forms.ToolStripButton btnEnregistrer;
         private System.Windows.Forms.ToolStripButton btnProprietes;
@@ -1088,22 +1149,17 @@ namespace TabloidWizard
         private System.Windows.Forms.ToolStripSplitButton toolStripSplitButton1;
         private System.Windows.Forms.ToolStripMenuItem ajouterUneColonneToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ajouterUneJointureToolStripMenuItem;
-        private System.Windows.Forms.ContextMenuStrip contextMenuView;
         private System.Windows.Forms.ToolStripMenuItem ajouterUnChampListeComplexe;
         private System.Windows.Forms.ToolStripMenuItem ajouterUnChampListeSimple;
         private System.Windows.Forms.ToolStripMenuItem ajouterTable;
         private System.Windows.Forms.ToolStripMenuItem ajouterUneTableToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ajouterUneTableCalendrierToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem kToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ajouterUnChampToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
         private System.Windows.Forms.ToolStripButton btnExecute;
         private System.Windows.Forms.ToolStripButton btnLog;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
         private System.Windows.Forms.ToolStripMenuItem sauvegarderToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem publierUnSiteToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
-        private System.Windows.Forms.ToolStripMenuItem MnEditeurMenu;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator8;
         private System.Windows.Forms.ToolStripMenuItem ajouterAuMenuParamètreToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ajouterCommeMenuPrincipalToolStripMenuItem;
@@ -1113,8 +1169,6 @@ namespace TabloidWizard
         private System.Windows.Forms.ToolStripMenuItem afficherLeContenuDuSelectToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem générateurDeQuestionnaireToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem générerLesJointuresAutomatiquementToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem définirLesPropriètésParDéfautsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator15;
         private System.Windows.Forms.ToolStripMenuItem attacherUneCarteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem optionsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem chkSavAuto;
@@ -1123,7 +1177,6 @@ namespace TabloidWizard
         private System.Windows.Forms.ToolStripMenuItem créezDesÉlémentsAutomatiquementToolStripMenuItem;
         private System.Windows.Forms.ImageList imgField;
         private System.Windows.Forms.ImageList imgView;
-        private System.Windows.Forms.ToolStripMenuItem MajMenuItem;
         private System.Windows.Forms.ToolStripMenuItem connecteurInstallésToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem styleCartographieToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ajouterToolStripMenuItem1;
@@ -1135,19 +1188,41 @@ namespace TabloidWizard
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator17;
         private System.Windows.Forms.ToolStripMenuItem MnDisplayDefaultView;
         private System.Windows.Forms.ToolStripMenuItem analyserLaStructureDeVotreProjetToolStripMenuItem;
-        private System.Windows.Forms.TabControl tabFieldDetail;
         private System.Windows.Forms.ToolStripMenuItem teToolStripMenuItem;
         private System.Windows.Forms.ToolStripComboBox cmbDisplayLevel;
         private System.Windows.Forms.ToolStripSplitButton btnStatusUpdateEngine;
         private System.Windows.Forms.ToolStripMenuItem pageDeSynthèseToolStripMenuItem;
-        private System.Windows.Forms.TabControl tabviewfct;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
         private Classes.Control.GListBox lstFct;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ContextMenuStrip contextMenuFunction;
         private System.Windows.Forms.ToolStripMenuItem ajouterUneFonctionToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem supprimerUneFonctionToolStripMenuItem;
         private System.Windows.Forms.ImageList imgFct;
+        private MetroFramework.Controls.MetroTabControl tabFieldDetail;
+        private MetroFramework.Controls.MetroTabControl tabviewfct;
+        private MetroFramework.Components.MetroStyleManager metroStyleManager1;
+        private MetroContextMenu contextMenuView;
+        private MetroContextMenu contextMenuFunction;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem4;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem5;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator9;
+        private System.Windows.Forms.ToolStripMenuItem MnSave;
+        private System.Windows.Forms.ToolStripMenuItem MnSaveAs;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator10;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem8;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator11;
+        private System.Windows.Forms.ToolStripMenuItem MnPublier;
+        private System.Windows.Forms.ToolStripMenuItem MnMaj;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator13;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem11;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator14;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem12;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem13;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem14;
+        private System.Windows.Forms.ToolStripMenuItem activerPostgisToolStripMenuItem;
+        private System.Windows.Forms.ToolStripButton toolStripButton1;
     }
 }

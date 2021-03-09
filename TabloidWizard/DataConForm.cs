@@ -1,10 +1,11 @@
-﻿using System;
+﻿using MetroFramework.Forms;
+using System;
 using System.Data.Common;
 using System.Windows.Forms;
 
 namespace TabloidWizard
 {
-    public partial class DataConForm : Form
+    public partial class DataConForm : MetroForm
     {
         public DataConForm()
         {

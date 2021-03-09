@@ -1,4 +1,5 @@
-﻿using ScintillaNET;
+﻿using MetroFramework.Forms;
+using ScintillaNET;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -13,7 +14,7 @@ using TabloidWizard.Classes;
 
 namespace TabloidWizard
 {
-    public partial class XMLEditor : Form
+    public partial class XMLEditor : MetroForm
     {
         /// <summary>
         /// https://github.com/jacobslusser/ScintillaNET#lexer

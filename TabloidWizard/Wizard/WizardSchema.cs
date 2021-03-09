@@ -6,10 +6,12 @@ using TabloidWizard.Classes;
 using TabloidWizard.Properties;
 using Tabloid.Classes.Data;
 using TabloidWizard.Classes.Tools;
+using MetroFramework.Forms;
+using MetroFramework;
 
 namespace TabloidWizard
 {
-    public partial class WizardSchema : Form
+    public partial class WizardSchema : MetroForm
     {
         ConfigFilesCollection _configFiles;
         /// <summary>
@@ -57,7 +59,7 @@ namespace TabloidWizard
                 var cs = string.Format("User ID={1};Password={2};Host={0};Port=5432;", param);
                 if (!dbExist(txtBase.Text, cs))
                 {
-                    if (MessageBox.Show("Cette Base de données n'existe pas souhaitez-vous la créer?", Resources.Erreur, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Error)
+                    if (MetroMessageBox.Show(this,"Cette Base de données n'existe pas souhaitez-vous la créer?", Resources.Erreur, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Error)
                         != DialogResult.Yes)
                         return;
                     dbCreate(txtBase.Text,cs);
@@ -71,11 +73,11 @@ namespace TabloidWizard
             {
                 string err;
 
-                if (MessageBox.Show(Resources.SchemaAlreadyExist, Resources.Erreur, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Error)
+                if (MetroMessageBox.Show(this,Resources.SchemaAlreadyExist, Resources.Erreur, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Error)
                     != DialogResult.Yes)
                     return;
 
-                if (MessageBox.Show(Resources.ConfirmDelete, Resources.Confirmation, MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+                if (MetroMessageBox.Show(this,Resources.ConfirmDelete, Resources.Confirmation, MessageBoxButtons.YesNo, MessageBoxIcon.Question)
                     != DialogResult.Yes)
                     return;
 
@@ -83,7 +85,7 @@ namespace TabloidWizard
 
                 if (!string.IsNullOrEmpty(err))
                 {
-                    MessageBox.Show(string.Format(Resources.ErrorMessage, err), Resources.Erreur, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MetroMessageBox.Show(this,string.Format(Resources.ErrorMessage, err), Resources.Erreur, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
             }
@@ -93,13 +95,13 @@ namespace TabloidWizard
             if (Program.AppSet.ProviderType == Provider.Postgres)
             {//postgres
                 param = new string[] { txtSchema.Text };
-                e.Cancel = !WizardSQLHelper.ExecuteFromFile("schema.sql", param, connectionString);
+                e.Cancel = !WizardSQLHelper.ExecuteFromFile("schema.sql", param, connectionString,this);
                 if (e.Cancel) return;// stop on sql error
             }
             else
             {//mysql
                 param = new string[] { txtBase.Text };
-                e.Cancel = !WizardSQLHelper.ExecuteFromFile("schema.sql", param, connectionString);
+                e.Cancel = !WizardSQLHelper.ExecuteFromFile("schema.sql", param, connectionString,this);
                 if (e.Cancel) return;// stop on sql error
                 connectionString += "Database=" + txtBase.Text + ";";
                 Program.AppSet.ConnectionString = connectionString;
@@ -108,12 +110,12 @@ namespace TabloidWizard
             // add tabloid table to database
             try
             {
-                if (!TabloidTables.CreateTable(TabloidTables.TabloidTablesArray, connectionString))//create tabloid table in base
+                if (!TabloidTables.CreateTable(TabloidTables.TabloidTablesArray, connectionString,this))//create tabloid table in base
                     return;
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString(), Resources.Error, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MetroMessageBox.Show(this,ex.ToString(), Resources.Error, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
             //add table to config
@@ -133,7 +135,7 @@ namespace TabloidWizard
             var cmpt = DataTools.ScalarCommand(sql, null, Program.AppSet.ConnectionString, out err);
 
             if (!string.IsNullOrEmpty(err))
-                MessageBox.Show(string.Format(Resources.ErrorMessage, err), Resources.Erreur, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MetroMessageBox.Show(this,string.Format(Resources.ErrorMessage, err), Resources.Erreur, MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             return Convert.ToInt32(cmpt) > 0;
         }
@@ -151,7 +153,7 @@ namespace TabloidWizard
             var cmpt = DataTools.ScalarCommand(sql, null,cs, out err);
 
             if (!string.IsNullOrEmpty(err))
-                MessageBox.Show(string.Format(Resources.ErrorMessage, err), Resources.Erreur, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MetroMessageBox.Show(this,string.Format(Resources.ErrorMessage, err), Resources.Erreur, MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             return Convert.ToInt32(cmpt) > 0;
         }
@@ -170,7 +172,7 @@ namespace TabloidWizard
             DataTools.Command(sql, null, cs, out err);
 
             if (!string.IsNullOrEmpty(err))
-                MessageBox.Show(string.Format(Resources.ErrorMessage, err), Resources.Erreur, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MetroMessageBox.Show(this,string.Format(Resources.ErrorMessage, err), Resources.Erreur, MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void cmbType_SelectedIndexChanged(object sender, EventArgs e)

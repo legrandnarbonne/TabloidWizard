@@ -32,6 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WizardFunction));
             this.wizard1 = new Gui.Wizard.Wizard();
             this.Info = new Gui.Wizard.WizardPage();
+            this.chkAddMenu = new System.Windows.Forms.CheckBox();
             this.txtFunction = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.cmbFunction = new System.Windows.Forms.ComboBox();
@@ -45,7 +46,6 @@
             this.txtTitre = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.chkAddMenu = new System.Windows.Forms.CheckBox();
             this.wizard1.SuspendLayout();
             this.Info.SuspendLayout();
             this.Fin.SuspendLayout();
@@ -59,12 +59,12 @@
             this.wizard1.Controls.Add(this.Calendar);
             this.wizard1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.wizard1.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.wizard1.Location = new System.Drawing.Point(0, 0);
+            this.wizard1.Location = new System.Drawing.Point(20, 60);
             this.wizard1.Name = "wizard1";
             this.wizard1.Pages.AddRange(new Gui.Wizard.WizardPage[] {
             this.Info,
             this.Fin});
-            this.wizard1.Size = new System.Drawing.Size(335, 282);
+            this.wizard1.Size = new System.Drawing.Size(340, 281);
             this.wizard1.TabIndex = 0;
             // 
             // Info
@@ -79,8 +79,20 @@
             this.Info.IsFinishPage = false;
             this.Info.Location = new System.Drawing.Point(0, 0);
             this.Info.Name = "Info";
-            this.Info.Size = new System.Drawing.Size(335, 234);
+            this.Info.Size = new System.Drawing.Size(340, 233);
             this.Info.TabIndex = 4;
+            // 
+            // chkAddMenu
+            // 
+            this.chkAddMenu.AutoSize = true;
+            this.chkAddMenu.Checked = true;
+            this.chkAddMenu.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkAddMenu.Location = new System.Drawing.Point(191, 176);
+            this.chkAddMenu.Name = "chkAddMenu";
+            this.chkAddMenu.Size = new System.Drawing.Size(97, 17);
+            this.chkAddMenu.TabIndex = 39;
+            this.chkAddMenu.Text = "Créer un menu";
+            this.chkAddMenu.UseVisualStyleBackColor = true;
             // 
             // txtFunction
             // 
@@ -124,7 +136,7 @@
             this.header4.Image = ((System.Drawing.Image)(resources.GetObject("header4.Image")));
             this.header4.Location = new System.Drawing.Point(0, 0);
             this.header4.Name = "header4";
-            this.header4.Size = new System.Drawing.Size(335, 57);
+            this.header4.Size = new System.Drawing.Size(340, 57);
             this.header4.TabIndex = 11;
             this.header4.Title = "Assistant d\'ajout";
             // 
@@ -136,7 +148,7 @@
             this.Fin.IsFinishPage = true;
             this.Fin.Location = new System.Drawing.Point(0, 0);
             this.Fin.Name = "Fin";
-            this.Fin.Size = new System.Drawing.Size(335, 189);
+            this.Fin.Size = new System.Drawing.Size(340, 233);
             this.Fin.TabIndex = 5;
             this.Fin.CloseFromNext += new Gui.Wizard.PageEventHandler(this.Button_end);
             // 
@@ -149,7 +161,7 @@
             this.header5.Image = ((System.Drawing.Image)(resources.GetObject("header5.Image")));
             this.header5.Location = new System.Drawing.Point(0, 0);
             this.header5.Name = "header5";
-            this.header5.Size = new System.Drawing.Size(335, 57);
+            this.header5.Size = new System.Drawing.Size(340, 57);
             this.header5.TabIndex = 12;
             this.header5.Title = "Assistant d\'ajout";
             // 
@@ -171,7 +183,7 @@
             this.Calendar.IsFinishPage = false;
             this.Calendar.Location = new System.Drawing.Point(0, 0);
             this.Calendar.Name = "Calendar";
-            this.Calendar.Size = new System.Drawing.Size(335, 282);
+            this.Calendar.Size = new System.Drawing.Size(340, 281);
             this.Calendar.TabIndex = 7;
             // 
             // chkDetail
@@ -201,27 +213,15 @@
             this.label2.TabIndex = 34;
             this.label2.Text = "Titre de la vue";
             // 
-            // chkAddMenu
-            // 
-            this.chkAddMenu.AutoSize = true;
-            this.chkAddMenu.Checked = true;
-            this.chkAddMenu.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkAddMenu.Location = new System.Drawing.Point(191, 176);
-            this.chkAddMenu.Name = "chkAddMenu";
-            this.chkAddMenu.Size = new System.Drawing.Size(97, 17);
-            this.chkAddMenu.TabIndex = 39;
-            this.chkAddMenu.Text = "Créer un menu";
-            this.chkAddMenu.UseVisualStyleBackColor = true;
-            // 
             // WizardFunction
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(335, 282);
+            this.ClientSize = new System.Drawing.Size(380, 361);
             this.Controls.Add(this.wizard1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "WizardFunction";
-            this.Text = "Wizard";
+            this.Text = "Fonction";
             this.wizard1.ResumeLayout(false);
             this.Info.ResumeLayout(false);
             this.Info.PerformLayout();

@@ -1,8 +1,9 @@
-﻿using System.Windows.Forms;
+﻿using MetroFramework.Forms;
+using System.Windows.Forms;
 
 namespace TabloidWizard
 {
-    public partial class Rename : Form
+    public partial class Rename : MetroForm
     {
         public Rename(string currentName)
         {

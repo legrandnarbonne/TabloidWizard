@@ -1,4 +1,5 @@
 ﻿using Gui.Wizard;
+using MetroFramework.Forms;
 using System;
 using System.Data;
 using System.Windows.Forms;
@@ -10,7 +11,7 @@ using TabloidWizard.Classes.WizardTools;
 
 namespace TabloidWizard
 {
-    public partial class WizardCalendrier : Form
+    public partial class WizardCalendrier : MetroForm
     {
         string _connectionString;
         Provider _provider;
@@ -68,7 +69,7 @@ namespace TabloidWizard
             if (sql != "")
             {
                 sql += "commit;";
-                e.Cancel = !WizardSQLHelper.ExecuteSQLString(sql);
+                e.Cancel = !WizardSQLHelper.ExecuteSQLString(sql,this);
                 if (e.Cancel) return;
             }
 
@@ -110,7 +111,7 @@ namespace TabloidWizard
             {
                 var mn = radMnParam.Checked ? WizardSQLHelper.getParamMenu() : null;
 
-                WizardSQLHelper.AddToMenu(_view, null, TabloidConfigMenuItem.MenuType.Calendrier, mn);
+                WizardSQLHelper.AddToMenu(this,_view, null, TabloidConfigMenuItem.MenuType.Calendrier, mn);
             }
         }
 

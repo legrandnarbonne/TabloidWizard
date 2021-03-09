@@ -10,11 +10,14 @@ using Tabloid.Classes.Data;
 using System;
 using TabloidWizard.Classes.Control;
 using TabloidWizard.Classes.Tools;
+using MetroFramework;
 
 namespace TabloidWizard.Classes
 {
     static class WizardEvents
     {
+
+        //public static IWin32Window _own;
         /// <summary>
         /// Analyse current config
         /// 
@@ -27,12 +30,12 @@ namespace TabloidWizard.Classes
         }
 
 
-        public static void onConfigLoaded(string schema)
+        public static void onConfigLoaded(string schema, IWin32Window own)
         {
             //for mysql verify if default schema is database name
             if (Program.AppSet.ProviderType == Provider.MySql && Program.AppSet.Schema != getDataBaseNameFromConnectionString(Program.AppSet.ConnectionString))
             {
-                if (MessageBox.Show(Properties.Resources.MySQLDifferentBaseName, Properties.Resources.Question, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (MetroMessageBox.Show(own, Properties.Resources.MySQLDifferentBaseName, Properties.Resources.Question, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     var connectionDataBaseName = getDataBaseNameFromConnectionString(Program.AppSet.ConnectionString);
                     WizardSQLHelper.SetAllViewSchema(connectionDataBaseName);
@@ -43,11 +46,12 @@ namespace TabloidWizard.Classes
             //verify role columun existance
             var tableColumns = new Dictionary<string, Dictionary<string, FieldDescriptionType>>{
                 {"roles",new Dictionary<string,FieldDescriptionType> {
-                    {"droits_limiteecr", new FieldDescriptionType {type=DbType.Int64,extra="(20) DEFAULT 0"} },//"numeric(20,0) DEFAULT 0"
-                    {"droits_limite", new FieldDescriptionType {type=DbType.Int64,extra="(20) DEFAULT 1"} } } },
+                    {"ad_group",new FieldDescriptionType {type=DbType.String,extra="(255)"}},
+                    {"droits_limiteecr", new FieldDescriptionType {type=DbType.Int64,extra="(20) DEFAULT 0"}},//"numeric(20,0) DEFAULT 0"
+                    {"droits_limite", new FieldDescriptionType {type=DbType.Int64,extra="(20) DEFAULT 1"}}}},
                 {"utilisateurs",new Dictionary<string,FieldDescriptionType> {
                     {"theme", new FieldDescriptionType {type=DbType.String,extra="(100)"}},
-                    {"lastchatid", new FieldDescriptionType {type=DbType.Int64,extra="(11) DEFAULT 0"}},
+                    {"lastchatid", new FieldDescriptionType {type=DbType.Int64,extra=" DEFAULT 0"}},
                     {"password",new FieldDescriptionType {type=DbType.String,extra="(100)"}},
                     {"token",new FieldDescriptionType {type=DbType.String,extra="(40)"}},
                     {"ref",new FieldDescriptionType {type=DbType.Boolean}}
@@ -83,7 +87,7 @@ namespace TabloidWizard.Classes
                     {
                         var param = new[] { t.Key, c.Key, c.Value.ToString(), Program.AppSet.Schema };
 
-                        var result = WizardSQLHelper.ExecuteFromFile("addField.sql", param, Program.AppSet.ConnectionString);
+                        var result = WizardSQLHelper.ExecuteFromFile("addField.sql", param, Program.AppSet.ConnectionString, own);
                     }
                 }
 
@@ -91,7 +95,7 @@ namespace TabloidWizard.Classes
             //Detect old role implementation
             if (!WizardTools.Tools.isTableExist("lst_roles"))
             {
-                var result = MessageBox.Show(Properties.Resources.WrongConfigVersion, Properties.Resources.Information, MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+                var result = MetroMessageBox.Show(own, Properties.Resources.WrongConfigVersion, Properties.Resources.Information, MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
 
                 if (result == DialogResult.Yes)
                 {
@@ -99,7 +103,7 @@ namespace TabloidWizard.Classes
 
                     var view = TabloidConfig.Config.Views["utilisateurs"];//Todo role field could not be c4 on manual déclaration
 
-                    WizardSQLHelper.ConvertSimpleList(view, view.Colonnes["c4"], "lst_roles");
+                    WizardSQLHelper.ConvertSimpleList(view, view.Colonnes["c4"], "lst_roles", own);
 
                     removeView("utilisateurs");
                     removeView("roles");
@@ -113,7 +117,7 @@ namespace TabloidWizard.Classes
                 !TabloidConfig.Config.Views["utilisateurs"].AutomaticCreation ||
                 !TabloidConfig.Config.Views["perso"].AutomaticCreation)
             {
-                var dr = MessageBox.Show(Properties.Resources.CustumRoleUsed,
+                var dr = MetroMessageBox.Show(own, Properties.Resources.CustumRoleUsed,
                      Properties.Resources.Information, MessageBoxButtons.YesNo, MessageBoxIcon.Information);
 
 
@@ -143,10 +147,10 @@ namespace TabloidWizard.Classes
 
             foreach (string p in connectionString.Split(';'))
             {
-                if (p.StartsWith(property,StringComparison.InvariantCultureIgnoreCase))
+                if (p.StartsWith(property, StringComparison.InvariantCultureIgnoreCase))
                 {
                     var part = p.Split('=');
-                    return part.Length==2?part[1]:"";
+                    return part.Length == 2 ? part[1] : "";
                 }
             }
 
@@ -211,14 +215,14 @@ namespace TabloidWizard.Classes
                 v.AutomaticCreation = false;
         }
 
-        internal static void afterViewPropertyChange(object s, PropertyValueChangedEventArgs e)
+        internal static void afterViewPropertyChange(object s, PropertyValueChangedEventArgs e, IWin32Window own)
         {
             switch (e.ChangedItem.PropertyDescriptor.Name)
             {
                 case "Corbeille":
                     if (!(bool)e.ChangedItem.Value)//disable trash requested
                     {
-                        var result = MessageBox.Show(Properties.Resources.EmptyTrash, Properties.Resources.Information, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                        var result = MetroMessageBox.Show(own, Properties.Resources.EmptyTrash, Properties.Resources.Information, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                         if (result == DialogResult.Yes)
                         {
                             DataTools.Command(
@@ -233,7 +237,7 @@ namespace TabloidWizard.Classes
             afterViewModified(CurrentContext.CurrentView);
         }
 
-        internal static void afterFieldPropertyChange(object s, PropertyValueChangedEventArgs e)
+        internal static void afterFieldPropertyChange(object s, PropertyValueChangedEventArgs e, IWin32Window own)
         {
             if (e != null)
             {
@@ -250,7 +254,7 @@ namespace TabloidWizard.Classes
 
                                 if (!join.VisiblePublipostage)
                                 {
-                                    var result = MessageBox.Show(Properties.Resources.alignJoinVisibility, Properties.Resources.Warning, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                                    var result = MetroMessageBox.Show(own, Properties.Resources.alignJoinVisibility, Properties.Resources.Warning, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                                     if (result == DialogResult.Yes)
                                         setPublipostageVisibility(join);
                                 }

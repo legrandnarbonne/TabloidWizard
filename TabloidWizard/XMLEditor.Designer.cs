@@ -33,6 +33,7 @@
             this.scintilla1 = new ScintillaNET.Scintilla();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.treeView1 = new System.Windows.Forms.TreeView();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
@@ -44,7 +45,6 @@
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -70,7 +70,7 @@
             this.scintilla1.RectangularSelectionAnchorVirtualSpace = 0;
             this.scintilla1.RectangularSelectionCaret = 0;
             this.scintilla1.RectangularSelectionCaretVirtualSpace = 0;
-            this.scintilla1.Size = new System.Drawing.Size(521, 416);
+            this.scintilla1.Size = new System.Drawing.Size(537, 334);
             this.scintilla1.TabIndex = 0;
             this.scintilla1.AutoCSelection += new System.EventHandler<ScintillaNET.AutoCSelectionEventArgs>(this.scintilla1_AutoCSelection);
             this.scintilla1.CharAdded += new System.EventHandler<ScintillaNET.CharAddedEventArgs>(this.scintilla_CharAdded);
@@ -89,8 +89,8 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.scintilla1);
-            this.splitContainer1.Size = new System.Drawing.Size(786, 416);
-            this.splitContainer1.SplitterDistance = 261;
+            this.splitContainer1.Size = new System.Drawing.Size(809, 334);
+            this.splitContainer1.SplitterDistance = 268;
             this.splitContainer1.TabIndex = 3;
             // 
             // treeView1
@@ -102,9 +102,19 @@
             this.treeView1.Location = new System.Drawing.Point(0, 0);
             this.treeView1.Name = "treeView1";
             this.treeView1.SelectedImageIndex = 0;
-            this.treeView1.Size = new System.Drawing.Size(261, 416);
+            this.treeView1.Size = new System.Drawing.Size(268, 334);
             this.treeView1.TabIndex = 0;
             this.treeView1.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView1_NodeMouseDoubleClick);
+            // 
+            // imageList1
+            // 
+            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList1.Images.SetKeyName(0, "champ.png");
+            this.imageList1.Images.SetKeyName(1, "config.png");
+            this.imageList1.Images.SetKeyName(2, "connect.png");
+            this.imageList1.Images.SetKeyName(3, "table.png");
+            this.imageList1.Images.SetKeyName(4, "xml.png");
             // 
             // toolStrip1
             // 
@@ -118,7 +128,7 @@
             this.toolStripLabel1});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(786, 28);
+            this.toolStrip1.Size = new System.Drawing.Size(809, 25);
             this.toolStrip1.TabIndex = 4;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -128,7 +138,7 @@
             this.toolStripButton1.Image = global::TabloidWizard.Properties.Resources.enrg;
             this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(23, 25);
+            this.toolStripButton1.Size = new System.Drawing.Size(23, 22);
             this.toolStripButton1.Text = "toolStripButton1";
             // 
             // toolStripDropDownButton1
@@ -140,7 +150,7 @@
             this.toolStripDropDownButton1.Image = global::TabloidWizard.Properties.Resources.wizard;
             this.toolStripDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripDropDownButton1.Name = "toolStripDropDownButton1";
-            this.toolStripDropDownButton1.Size = new System.Drawing.Size(29, 25);
+            this.toolStripDropDownButton1.Size = new System.Drawing.Size(29, 22);
             this.toolStripDropDownButton1.Text = "Ajouter";
             // 
             // ajouterUneColonneToolStripMenuItem
@@ -158,27 +168,27 @@
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 28);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
             // 
             // toolStripTextBox1
             // 
             this.toolStripTextBox1.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.toolStripTextBox1.Name = "toolStripTextBox1";
-            this.toolStripTextBox1.Size = new System.Drawing.Size(100, 28);
+            this.toolStripTextBox1.Size = new System.Drawing.Size(100, 25);
             this.toolStripTextBox1.TextChanged += new System.EventHandler(this.toolStripTextBox1_TextChanged);
             // 
             // toolStripLabel1
             // 
             this.toolStripLabel1.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.toolStripLabel1.Name = "toolStripLabel1";
-            this.toolStripLabel1.Size = new System.Drawing.Size(72, 25);
+            this.toolStripLabel1.Size = new System.Drawing.Size(72, 22);
             this.toolStripLabel1.Text = "Rechercher :";
             // 
             // splitContainer2
             // 
             this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer2.IsSplitterFixed = true;
-            this.splitContainer2.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer2.Location = new System.Drawing.Point(20, 60);
             this.splitContainer2.Name = "splitContainer2";
             this.splitContainer2.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
@@ -189,17 +199,17 @@
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.splitContainer1);
-            this.splitContainer2.Size = new System.Drawing.Size(786, 448);
-            this.splitContainer2.SplitterDistance = 28;
+            this.splitContainer2.Size = new System.Drawing.Size(809, 363);
+            this.splitContainer2.SplitterDistance = 25;
             this.splitContainer2.TabIndex = 5;
             // 
             // statusStrip1
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel1});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 426);
+            this.statusStrip1.Location = new System.Drawing.Point(20, 401);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(786, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(809, 22);
             this.statusStrip1.TabIndex = 6;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -211,22 +221,11 @@
             this.toolStripStatusLabel1.Size = new System.Drawing.Size(118, 17);
             this.toolStripStatusLabel1.Text = "toolStripStatusLabel1";
             // 
-            // imageList1
-            // 
-            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
-            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageList1.Images.SetKeyName(0, "champ.png");
-            this.imageList1.Images.SetKeyName(1, "config.png");
-            this.imageList1.Images.SetKeyName(2, "connect.png");
-            this.imageList1.Images.SetKeyName(3, "table.png");
-            this.imageList1.Images.SetKeyName(4, "xml.png");
-            // 
             // XMLEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(786, 448);
+            this.ClientSize = new System.Drawing.Size(849, 443);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.splitContainer2);
             this.Name = "XMLEditor";

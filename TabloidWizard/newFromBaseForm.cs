@@ -1,4 +1,6 @@
 ﻿
+using MetroFramework;
+using MetroFramework.Forms;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -15,7 +17,7 @@ using TabloidWizard.Properties;
 
 namespace TabloidWizard
 {
-    public partial class NewFromBaseForm : Form
+    public partial class NewFromBaseForm : MetroForm
     {
         public NewFromBaseForm()
         {
@@ -62,7 +64,7 @@ namespace TabloidWizard
 
             if (dt == null)
             {
-                MessageBox.Show(Resources.NewFromBaseForm_btn_Click_ + lastError, Resources.Erreur,
+                MetroMessageBox.Show(this,Resources.NewFromBaseForm_btn_Click_ + lastError, Resources.Erreur,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
@@ -110,7 +112,7 @@ namespace TabloidWizard
 
                         try
                         {
-                            BuildFromBase.GetTable(dtName, schema, ref tableConfig, ref avt, config);
+                            BuildFromBase.GetTable(this,dtName, schema, ref tableConfig, ref avt, config);
                             TabloidConfig.Config.Views.Add(tableConfig);
                         }
                         catch(Exception ex)
@@ -137,7 +139,7 @@ namespace TabloidWizard
                                 .Where((f, index) => l.Any(i => i == index))
                                 .Select((x, index) => x.Name).ToArray());
 
-                        r = MessageBox.Show(
+                        r = MetroMessageBox.Show(this,
                             string.Format(
                                 Resources.NewFromBaseForm_tables_inutiles,
                                 strCh),
@@ -153,13 +155,13 @@ namespace TabloidWizard
                             .ToList();
 
                         TabloidTables.CreateTable(
-                            toCreate, connectionString);
+                            toCreate, connectionString,this);
 
                         foreach (var t in toCreate)// table to config
                         {
                             var tableConfig = new TabloidConfigView();
                             try {
-                                BuildFromBase.GetTable(t.Name, schema, ref tableConfig, ref avt, config);
+                                BuildFromBase.GetTable(this,t.Name, schema, ref tableConfig, ref avt, config);
                                 TabloidConfig.Config.Views.Add(tableConfig);
                             }
                             catch (Exception ex)

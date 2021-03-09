@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MetroFramework.Forms;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
@@ -6,7 +7,7 @@ using System.Windows.Forms;
 
 namespace TabloidWizard.Classes.Editor
 {
-    public partial class ImgSrcFormEditor : Form
+    public partial class ImgSrcFormEditor : MetroForm
     {
         public string _currentDir;
         private BorderedPictureBox _currentSelectedBox;

@@ -1,11 +1,12 @@
 ﻿
+using MetroFramework.Forms;
 using System.Windows.Forms;
 using Tabloid.Classes.Objects.OlObjects;
 using TabloidWizard.Classes;
 
 namespace TabloidWizard
 {
-    public partial class olStyleFrm : Form
+    public partial class olStyleFrm : MetroForm
     {
 
         public olStyleFrm()

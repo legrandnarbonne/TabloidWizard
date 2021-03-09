@@ -47,14 +47,14 @@
             this.propertyGrid1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.propertyGrid1.Location = new System.Drawing.Point(0, 0);
             this.propertyGrid1.Name = "propertyGrid1";
-            this.propertyGrid1.Size = new System.Drawing.Size(453, 337);
+            this.propertyGrid1.Size = new System.Drawing.Size(453, 298);
             this.propertyGrid1.TabIndex = 0;
             this.propertyGrid1.PropertyValueChanged += new System.Windows.Forms.PropertyValueChangedEventHandler(this.propertyGrid1_PropertyValueChanged);
             // 
             // splitContainer1
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer1.Location = new System.Drawing.Point(20, 60);
             this.splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
@@ -65,8 +65,8 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.propertyGrid1);
-            this.splitContainer1.Size = new System.Drawing.Size(685, 337);
-            this.splitContainer1.SplitterDistance = 228;
+            this.splitContainer1.Size = new System.Drawing.Size(684, 298);
+            this.splitContainer1.SplitterDistance = 227;
             this.splitContainer1.TabIndex = 1;
             // 
             // lstStyle
@@ -75,7 +75,7 @@
             this.lstStyle.FormattingEnabled = true;
             this.lstStyle.Location = new System.Drawing.Point(0, 0);
             this.lstStyle.Name = "lstStyle";
-            this.lstStyle.Size = new System.Drawing.Size(228, 312);
+            this.lstStyle.Size = new System.Drawing.Size(227, 273);
             this.lstStyle.TabIndex = 0;
             this.lstStyle.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
@@ -85,9 +85,9 @@
             this.toolStripField.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnAjoutStyle,
             this.btnSuppStyle});
-            this.toolStripField.Location = new System.Drawing.Point(0, 312);
+            this.toolStripField.Location = new System.Drawing.Point(0, 273);
             this.toolStripField.Name = "toolStripField";
-            this.toolStripField.Size = new System.Drawing.Size(228, 25);
+            this.toolStripField.Size = new System.Drawing.Size(227, 25);
             this.toolStripField.TabIndex = 5;
             this.toolStripField.Text = "toolStrip1";
             // 
@@ -115,7 +115,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(685, 337);
+            this.ClientSize = new System.Drawing.Size(724, 378);
             this.Controls.Add(this.splitContainer1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "olStyleFrm";

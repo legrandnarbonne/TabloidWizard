@@ -1,4 +1,6 @@
 ﻿using Gui.Wizard;
+using MetroFramework;
+using MetroFramework.Forms;
 using System;
 using System.Data;
 using System.Windows.Forms;
@@ -11,7 +13,7 @@ using TabloidWizard.Classes.WizardTools;
 
 namespace TabloidWizard
 {
-    public partial class WizardTable : Form
+    public partial class WizardTable : MetroForm
     {
         string _connectionString;
         Provider _provider;
@@ -54,7 +56,7 @@ namespace TabloidWizard
 
             if (TabloidConfig.Config.Views.Contains(viewName))
             {
-                MessageBox.Show(TabloidWizard.Properties.Resources.ViewNameAlreadyExist, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MetroMessageBox.Show(this,TabloidWizard.Properties.Resources.ViewNameAlreadyExist, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 e.Cancel = true;
                 return;
             }
@@ -83,7 +85,7 @@ namespace TabloidWizard
                 return;
             }
 
-            e.Cancel = !WizardSQLHelper.ExecuteFromFile("table.sql", param, _connectionString);
+            e.Cancel = !WizardSQLHelper.ExecuteFromFile("table.sql", param, _connectionString,this);
             if (e.Cancel) return;
 
             var Tc = new TabloidConfigColonne
@@ -117,9 +119,9 @@ namespace TabloidWizard
             if (!chkAjMenu.Checked) return;
 
             if (radMnMain.Checked)
-                WizardSQLHelper.AddToMenu(t);
+                WizardSQLHelper.AddToMenu(this,t);
             else
-                WizardSQLHelper.AddToParamMenu(t);
+                WizardSQLHelper.AddToParamMenu(t,this);
         }
 
 

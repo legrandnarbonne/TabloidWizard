@@ -1,4 +1,5 @@
 ﻿using Gui.Wizard;
+using MetroFramework.Forms;
 using System;
 using System.Windows.Forms;
 using Tabloid.Classes.Config;
@@ -7,7 +8,7 @@ using TabloidWizard.Classes.Tools;
 
 namespace TabloidWizard
 {
-    public partial class WizardFunction : Form
+    public partial class WizardFunction : MetroForm
     {
         public TabloidConfigFunction function;
         /// <summary>

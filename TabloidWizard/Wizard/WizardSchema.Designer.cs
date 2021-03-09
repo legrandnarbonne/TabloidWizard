@@ -60,12 +60,12 @@
             this.wizard1.Controls.Add(this.Fin);
             this.wizard1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.wizard1.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.wizard1.Location = new System.Drawing.Point(0, 0);
+            this.wizard1.Location = new System.Drawing.Point(20, 60);
             this.wizard1.Name = "wizard1";
             this.wizard1.Pages.AddRange(new Gui.Wizard.WizardPage[] {
             this.Info,
             this.Fin});
-            this.wizard1.Size = new System.Drawing.Size(298, 313);
+            this.wizard1.Size = new System.Drawing.Size(334, 322);
             this.wizard1.TabIndex = 0;
             // 
             // Info
@@ -87,7 +87,7 @@
             this.Info.IsFinishPage = false;
             this.Info.Location = new System.Drawing.Point(0, 0);
             this.Info.Name = "Info";
-            this.Info.Size = new System.Drawing.Size(298, 265);
+            this.Info.Size = new System.Drawing.Size(334, 274);
             this.Info.TabIndex = 4;
             // 
             // label7
@@ -210,7 +210,7 @@
             this.header4.Image = ((System.Drawing.Image)(resources.GetObject("header4.Image")));
             this.header4.Location = new System.Drawing.Point(0, 0);
             this.header4.Name = "header4";
-            this.header4.Size = new System.Drawing.Size(298, 57);
+            this.header4.Size = new System.Drawing.Size(334, 57);
             this.header4.TabIndex = 11;
             this.header4.Title = "Assistant création de base";
             // 
@@ -252,11 +252,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(298, 313);
+            this.ClientSize = new System.Drawing.Size(374, 402);
             this.Controls.Add(this.wizard1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "WizardSchema";
-            this.Text = "Wizard";
+            this.Text = "Schema";
             this.wizard1.ResumeLayout(false);
             this.Info.ResumeLayout(false);
             this.Info.PerformLayout();

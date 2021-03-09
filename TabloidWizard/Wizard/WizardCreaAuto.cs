@@ -4,10 +4,11 @@ using Tabloid.Classes.Config;
 using System.Linq;
 using TabloidWizard.Classes;
 using TabloidWizard.Classes.Tools;
+using MetroFramework.Forms;
 
 namespace TabloidWizard
 {
-    public partial class WizardCreaAuto : Form
+    public partial class WizardCreaAuto : MetroForm
     {
         TabloidConfigView _view;
         const string triggerName = "autocreateafterinsert";
@@ -28,7 +29,7 @@ namespace TabloidWizard
         private void Info_CloseFromNext(object sender, PageEventArgs e)
         {
             // add insertselect function
-            e.Cancel = !WizardSQLHelper.ExecuteFromFile("functions\\insertselect.sql", new string[] { _view.Schema }, Program.AppSet.ConnectionString);
+            e.Cancel = !WizardSQLHelper.ExecuteFromFile("functions\\insertselect.sql", new string[] { _view.Schema }, Program.AppSet.ConnectionString,this);
 
             var where = string.IsNullOrEmpty(txtWhere.Text) ? "'1=1'" : txtWhere.Text;
 
@@ -54,7 +55,7 @@ namespace TabloidWizard
                function
             };
 
-            e.Cancel = !WizardSQLHelper.ExecuteFromFile("trigger.sql", param, Program.AppSet.ConnectionString);
+            e.Cancel = !WizardSQLHelper.ExecuteFromFile("trigger.sql", param, Program.AppSet.ConnectionString,this);
 
         }
 

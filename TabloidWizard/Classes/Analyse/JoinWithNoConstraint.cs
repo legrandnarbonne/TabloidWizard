@@ -5,11 +5,14 @@ using Tabloid.Classes.Config;
 using System.Linq;
 using static TabloidWizard.AnalyseStr;
 using TabloidWizard.Classes.Tools;
+using System.Windows.Forms;
 
 namespace TabloidWizard.Classes.Analyse
 {
     class JoinWithNoConstraint : AnalyseResult, IAnalyseResult
     {
+        IWin32Window _own;
+
         public override int Level
         {
             get
@@ -70,7 +73,7 @@ namespace TabloidWizard.Classes.Analyse
             var key = WizardSQLHelper.GetPrimaryKeyName(Join.NomTable);
             //var param = new string[] { View.Schema, Join.NomTable, View.NomTable, Join.ChampDeRef, View.Schema, key };
             //WizardHelper.ExecuteFromFile("addConstraint.sql", param, Program.AppSet.ConnectionString);
-            WizardSQLHelper.addConstraint(View.Schema, Join.NomTable, View.NomTable, Join.ChampDeRef, View.Schema, key);
+            WizardSQLHelper.addConstraint(View.Schema, Join.NomTable, View.NomTable, Join.ChampDeRef, View.Schema, key,_own);
            
         }
 
@@ -78,8 +81,9 @@ namespace TabloidWizard.Classes.Analyse
 
         public TabloidConfigView View { get; set; }
 
-        public JoinWithNoConstraint(TabloidConfigJointure join, TabloidConfigView view)
+        public JoinWithNoConstraint(TabloidConfigJointure join, TabloidConfigView view,IWin32Window own)
         {
+            _own = own;
             Join = join;
             View = view;
         }

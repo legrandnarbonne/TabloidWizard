@@ -37,14 +37,14 @@
             // propertyGrid1
             // 
             this.propertyGrid1.LineColor = System.Drawing.SystemColors.ControlDark;
-            this.propertyGrid1.Location = new System.Drawing.Point(12, 12);
+            this.propertyGrid1.Location = new System.Drawing.Point(23, 66);
             this.propertyGrid1.Name = "propertyGrid1";
-            this.propertyGrid1.Size = new System.Drawing.Size(495, 317);
+            this.propertyGrid1.Size = new System.Drawing.Size(562, 317);
             this.propertyGrid1.TabIndex = 0;
             // 
             // btnOk
             // 
-            this.btnOk.Location = new System.Drawing.Point(351, 338);
+            this.btnOk.Location = new System.Drawing.Point(430, 403);
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(75, 23);
             this.btnOk.TabIndex = 1;
@@ -55,7 +55,7 @@
             // btnCancel
             // 
             this.btnCancel.Enabled = false;
-            this.btnCancel.Location = new System.Drawing.Point(432, 338);
+            this.btnCancel.Location = new System.Drawing.Point(511, 403);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 2;
@@ -67,13 +67,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(519, 373);
+            this.ClientSize = new System.Drawing.Size(608, 438);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOk);
             this.Controls.Add(this.propertyGrid1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "PropriesForm";
-            this.Text = "Propriétés";
+            this.Text = "Propriétés du projet";
             this.ResumeLayout(false);
 
         }

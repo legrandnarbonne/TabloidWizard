@@ -69,7 +69,7 @@ namespace TabloidWizard.Classes.Control
 
             SelectedBackgroundColor = Color.FromArgb(255, 219, 175, 0);
         }
-        
+
         protected override void OnDrawItem(DrawItemEventArgs e)
         {
             //e.DrawBackground();
@@ -84,18 +84,17 @@ namespace TabloidWizard.Classes.Control
                 e.Graphics.FillRectangle(backgroundColorBrush, e.Bounds);
             }
 
-
             e.DrawFocusRectangle();
 
             //draw item
-            if (Items == null|| Items.Count == 0) return;
+            if (Items == null || Items.Count == 0) return;
 
             GListBoxItem item;
             Rectangle bounds = e.Bounds;
 
             var xOffset = bounds.Left;
 
-            if (ImageList!=null)
+            if (ImageList != null)
             {
                 ItemHeight = ImageList.ImageSize.Height;
 
@@ -150,7 +149,7 @@ namespace TabloidWizard.Classes.Control
         {
             if (i is GListBoxItem)
             {
-                var gi=(GListBoxItem)i;
+                var gi = (GListBoxItem)i;
 
                 gi.ImageIndex = (int)ImageIndex;
 

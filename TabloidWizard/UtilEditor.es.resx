@@ -120,4 +120,40 @@
   <data name="textBox1.Text" xml:space="preserve">
     <value>Ingrese la información de inicio de sesión del usuario para el primer inicio de sesión. Sólo se requiere el inicio de sesión de Windows. Una vez conectado, la administración de usuarios se puede hacer a través del menú Parmeter / Users!</value>
   </data>
+  <data name="btnCancel.Text" xml:space="preserve">
+    <value>Cancelar</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>NOMBRE:</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Nombre</value>
+  </data>
+  <data name="lblAuth.Text" xml:space="preserve">
+    <value>Nombre de usuario de Windows</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>Dirección de correo electrónico.</value>
+  </data>
+  <data name="btnOk.Text" xml:space="preserve">
+    <value>Aceptar</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>Contraseña</value>
+  </data>
+  <data name="label6.Text" xml:space="preserve">
+    <value>Confirmación:</value>
+  </data>
+  <data name="label7.Text" xml:space="preserve">
+    <value>Autenticación:</value>
+  </data>
+  <data name="cmbAuth.Items" xml:space="preserve">
+    <value>Basados en formularios</value>
+  </data>
+  <data name="cmbAuth.Items1" xml:space="preserve">
+    <value>¡Usando un dominio de Windows (LDPA)!</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Usuario...</value>
+  </data>
 </root>

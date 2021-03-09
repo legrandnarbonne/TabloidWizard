@@ -439,4 +439,58 @@ Do you want to create them?</value>
   <data name="DisplayCorrespondigView" xml:space="preserve">
     <value>Display the corresponding view!</value>
   </data>
+  <data name="ChangeProjectSchema" xml:space="preserve">
+    <value>You have changed the default schema. Do you want to change the schema for all views ?!</value>
+  </data>
+  <data name="Chargement" xml:space="preserve">
+    <value>Loading</value>
+  </data>
+  <data name="DatabaseRead" xml:space="preserve">
+    <value>Reading data...</value>
+  </data>
+  <data name="DataDisplaying" xml:space="preserve">
+    <value>Data display.</value>
+  </data>
+  <data name="LodingGeoStyle" xml:space="preserve">
+    <value>Loading map styles.!</value>
+  </data>
+  <data name="AutomaticViewBuilding" xml:space="preserve">
+    <value>Creation of automatic views.!</value>
+  </data>
+  <data name="Validation" xml:space="preserve">
+    <value>Validation</value>
+  </data>
+  <data name="StatusMatrix" xml:space="preserve">
+    <value>Project {0} - folder {1} - version of project {2} - version available {3}!</value>
+  </data>
+  <data name="NoUpdate" xml:space="preserve">
+    <value>- the engine is up to date.!</value>
+  </data>
+  <data name="LodingConfigFiles" xml:space="preserve">
+    <value>Loading configuration files.!</value>
+  </data>
+  <data name="Publication" xml:space="preserve">
+    <value>Publication:</value>
+  </data>
+  <data name="CreateIndic" xml:space="preserve">
+    <value>This cell does not refer to an indicator. Would you like to add one ?!</value>
+  </data>
+  <data name="AliasTransform" xml:space="preserve">
+    <value>Transform into an alias!</value>
+  </data>
+  <data name="DisplayOnly" xml:space="preserve">
+    <value>displayed only!</value>
+  </data>
+  <data name="Hidden" xml:space="preserve">
+    <value>Hidden,</value>
+  </data>
+  <data name="WithReadOnly" xml:space="preserve">
+    <value>Read-Only</value>
+  </data>
+  <data name="Edition" xml:space="preserve">
+    <value>The edition!</value>
+  </data>
+  <data name="TheField" xml:space="preserve">
+    <value>The field</value>
+  </data>
 </root>

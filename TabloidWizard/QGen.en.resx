@@ -120,4 +120,22 @@
   <data name="textBox1.Text" xml:space="preserve">
     <value>Use a file with three columns: one containing the questions, one empty for a free field, or the list of separate responses by; for the drop-down lists, the third will contain a possible group title.</value>
   </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>View Name</value>
+  </data>
+  <data name="txtVue.Text" xml:space="preserve">
+    <value>Questionnaire</value>
+  </data>
+  <data name="btnImport.Text" xml:space="preserve">
+    <value>Import an Excel file Provider</value>
+  </data>
+  <data name="button1.Text" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="btnGen.Text" xml:space="preserve">
+    <value>Generate</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Questionnaire generator!</value>
+  </data>
 </root>

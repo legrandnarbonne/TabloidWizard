@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MetroFramework;
+using MetroFramework.Forms;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,7 +17,7 @@ using TabloidWizard.Classes.Analyse;
 
 namespace TabloidWizard
 {
-    public partial class AnalyseStr : Form
+    public partial class AnalyseStr : MetroForm
     {
         private List<TableAnalysisResult> _results;
 
@@ -35,7 +37,7 @@ namespace TabloidWizard
             {
                 var _wf = new WaitingForm(Analyse)
                 {
-                    lbInfo = { Text = Properties.Resources.Analysing },
+                    Text = Properties.Resources.Analysing ,
                     progressBar = { Style = ProgressBarStyle.Marquee }
                 };
 
@@ -47,7 +49,7 @@ namespace TabloidWizard
             }
             catch (Exception ex)
             {
-                MessageBox.Show(Properties.Resources.AnalyseError, Properties.Resources.Erreur, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MetroMessageBox.Show(this,Properties.Resources.AnalyseError, Properties.Resources.Erreur, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -92,7 +94,7 @@ namespace TabloidWizard
                 };
 
                 if (attachedView.Count == 0)
-                    result.Results.Add(new TableWithNoView(result));
+                    result.Results.Add(new TableWithNoView(result,this));
                 _results.Add(result);
             }
 
@@ -106,7 +108,7 @@ namespace TabloidWizard
                 result.Views.Add(v);
 
                 if (!tableList.Contains(v.NomTable))//search view with no table
-                    result.Results.Add(new ViewWithNoTable(result));
+                    result.Results.Add(new ViewWithNoTable(result,this));
 
 
                 var joinList = v.Jointures.GetJointures(VisibiliteTools.GetFullVisibilite(), true);
@@ -120,7 +122,7 @@ namespace TabloidWizard
                         {
                             var sql = $"{dfk.Columns[0].ColumnName}='{j.ChampDeRef}' and {dfk.Columns[1].ColumnName}='{j.NomTable}' and {dfk.Columns[2].ColumnName}='{j.DbKey}'";
                             if (dfk.Select(sql).Count() == 0)
-                                result.Results.Add(new JoinWithNoConstraint(j, v));
+                                result.Results.Add(new JoinWithNoConstraint(j, v,this));
                         }
                     }
                 }
@@ -198,7 +200,7 @@ namespace TabloidWizard
             if (treeView1.SelectedNode == null) return;
             treeView1.SelectedNode.Expand();
 
-            if (treeView1.SelectedNode.Parent.Tag ==null) return;//first level
+            if (treeView1.SelectedNode.Parent==null|| treeView1.SelectedNode.Parent.Tag ==null) return;//first level
 
             pnlBtn.Controls.Clear();
             lbView.Text = lbTable.Text = txtRes.Text = txtdesc.Text = "";

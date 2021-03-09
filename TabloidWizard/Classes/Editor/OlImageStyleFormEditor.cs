@@ -1,11 +1,12 @@
-﻿using System.Drawing;
+﻿using MetroFramework.Forms;
+using System.Drawing;
 using System.Windows.Forms;
 using Tabloid.Classes.Objects.OlObjects;
 using static Tabloid.Classes.Objects.OlObjects.OlStyle;
 
 namespace TabloidWizard.Classes.Editor
 {
-    public partial class OlImageStyleFormEditor : Form
+    public partial class OlImageStyleFormEditor : MetroForm
     {
         public OlImage CurrentOlImage;
 

@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.dataGrid1 = new Zuby.ADGV.AdvancedDataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.cmbVisibility = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.dataGrid1 = new Zuby.ADGV.AdvancedDataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -44,7 +44,7 @@
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer1.Location = new System.Drawing.Point(20, 60);
             this.splitContainer1.Name = "splitContainer1";
             this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
@@ -57,9 +57,20 @@
             this.splitContainer1.Panel2.Controls.Add(this.label1);
             this.splitContainer1.Panel2.Controls.Add(this.cmbVisibility);
             this.splitContainer1.Panel2.Controls.Add(this.button1);
-            this.splitContainer1.Size = new System.Drawing.Size(665, 415);
-            this.splitContainer1.SplitterDistance = 362;
+            this.splitContainer1.Size = new System.Drawing.Size(711, 391);
+            this.splitContainer1.SplitterDistance = 338;
             this.splitContainer1.TabIndex = 2;
+            // 
+            // dataGrid1
+            // 
+            this.dataGrid1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGrid1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGrid1.FilterAndSortEnabled = true;
+            this.dataGrid1.Location = new System.Drawing.Point(0, 0);
+            this.dataGrid1.Name = "dataGrid1";
+            this.dataGrid1.ReadOnly = true;
+            this.dataGrid1.Size = new System.Drawing.Size(711, 338);
+            this.dataGrid1.TabIndex = 1;
             // 
             // label1
             // 
@@ -89,22 +100,11 @@
             this.button1.Text = "Ok";
             this.button1.UseVisualStyleBackColor = true;
             // 
-            // dataGrid1
-            // 
-            this.dataGrid1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGrid1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGrid1.FilterAndSortEnabled = true;
-            this.dataGrid1.Location = new System.Drawing.Point(0, 0);
-            this.dataGrid1.Name = "dataGrid1";
-            this.dataGrid1.ReadOnly = true;
-            this.dataGrid1.Size = new System.Drawing.Size(665, 362);
-            this.dataGrid1.TabIndex = 1;
-            // 
             // GridViewForm2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(665, 415);
+            this.ClientSize = new System.Drawing.Size(751, 471);
             this.Controls.Add(this.splitContainer1);
             this.Name = "GridViewForm2";
             this.Text = "Contenu de la requête";

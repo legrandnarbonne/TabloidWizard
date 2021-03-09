@@ -31,21 +31,24 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WizardField));
             this.wizard1 = new Gui.Wizard.Wizard();
-            this.Fin = new Gui.Wizard.WizardPage();
-            this.header5 = new Gui.Wizard.Header();
-            this.label8 = new System.Windows.Forms.Label();
-            this.Button = new Gui.Wizard.WizardPage();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.txtToolTipBtn = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtUrlBtn = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.header3 = new Gui.Wizard.Header();
+            this.Graphique = new Gui.Wizard.WizardPage();
+            this.cmbGraph = new System.Windows.Forms.ComboBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.visibilite = new Gui.Wizard.WizardPage();
             this.lstVisibilites = new System.Windows.Forms.CheckedListBox();
             this.header1 = new Gui.Wizard.Header();
             this.header2 = new Gui.Wizard.Header();
+            this.Button = new Gui.Wizard.WizardPage();
+            this.txtToolTipBtn = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtIcoBtn = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtUrlBtn = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.header3 = new Gui.Wizard.Header();
+            this.Fin = new Gui.Wizard.WizardPage();
+            this.header5 = new Gui.Wizard.Header();
+            this.label8 = new System.Windows.Forms.Label();
             this.Champ = new Gui.Wizard.WizardPage();
             this.fs = new TabloidWizard.Classes.Control.FieldSelector();
             this.txtDec = new System.Windows.Forms.TextBox();
@@ -72,10 +75,11 @@
             this.radbutton = new System.Windows.Forms.RadioButton();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.wizard1.SuspendLayout();
-            this.Fin.SuspendLayout();
-            this.Button.SuspendLayout();
+            this.Graphique.SuspendLayout();
             this.visibilite.SuspendLayout();
             this.header1.SuspendLayout();
+            this.Button.SuspendLayout();
+            this.Fin.SuspendLayout();
             this.Champ.SuspendLayout();
             this.Editeur.SuspendLayout();
             this.type.SuspendLayout();
@@ -83,65 +87,117 @@
             // 
             // wizard1
             // 
-            this.wizard1.Controls.Add(this.type);
-            this.wizard1.Controls.Add(this.Fin);
             this.wizard1.Controls.Add(this.Button);
             this.wizard1.Controls.Add(this.visibilite);
+            this.wizard1.Controls.Add(this.Graphique);
             this.wizard1.Controls.Add(this.Champ);
             this.wizard1.Controls.Add(this.Editeur);
+            this.wizard1.Controls.Add(this.type);
+            this.wizard1.Controls.Add(this.Fin);
             this.wizard1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.wizard1.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.wizard1.Location = new System.Drawing.Point(0, 0);
+            this.wizard1.Location = new System.Drawing.Point(20, 60);
             this.wizard1.Name = "wizard1";
             this.wizard1.Pages.AddRange(new Gui.Wizard.WizardPage[] {
             this.type,
             this.Editeur,
             this.Champ,
+            this.Graphique,
             this.visibilite,
             this.Button,
             this.Fin});
-            this.wizard1.Size = new System.Drawing.Size(336, 381);
+            this.wizard1.Size = new System.Drawing.Size(343, 395);
             this.wizard1.TabIndex = 0;
             // 
-            // Fin
+            // Graphique
             // 
-            this.Fin.Controls.Add(this.header5);
-            this.Fin.Controls.Add(this.label8);
-            this.Fin.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Fin.IsFinishPage = true;
-            this.Fin.Location = new System.Drawing.Point(0, 0);
-            this.Fin.Name = "Fin";
-            this.Fin.Size = new System.Drawing.Size(336, 333);
-            this.Fin.TabIndex = 5;
-            this.Fin.CloseFromNext += new Gui.Wizard.PageEventHandler(this.Button_end);
+            this.Graphique.Controls.Add(this.cmbGraph);
+            this.Graphique.Controls.Add(this.label7);
+            this.Graphique.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Graphique.IsFinishPage = false;
+            this.Graphique.Location = new System.Drawing.Point(0, 0);
+            this.Graphique.Name = "Graphique";
+            this.Graphique.Size = new System.Drawing.Size(343, 347);
+            this.Graphique.TabIndex = 7;
             // 
-            // header5
+            // cmbGraph
             // 
-            this.header5.BackColor = System.Drawing.SystemColors.Control;
-            this.header5.CausesValidation = false;
-            this.header5.Description = "";
-            this.header5.Dock = System.Windows.Forms.DockStyle.Top;
-            this.header5.Image = ((System.Drawing.Image)(resources.GetObject("header5.Image")));
-            this.header5.Location = new System.Drawing.Point(0, 0);
-            this.header5.Name = "header5";
-            this.header5.Size = new System.Drawing.Size(336, 57);
-            this.header5.TabIndex = 12;
-            this.header5.Title = "Assistant d\'ajout";
+            this.cmbGraph.FormattingEnabled = true;
+            this.cmbGraph.Location = new System.Drawing.Point(68, 126);
+            this.cmbGraph.Name = "cmbGraph";
+            this.cmbGraph.Size = new System.Drawing.Size(241, 21);
+            this.cmbGraph.TabIndex = 32;
             // 
-            // label8
+            // label7
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(66, 152);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(207, 13);
-            this.label8.TabIndex = 0;
-            this.label8.Text = "Utilisez le boutton Finish pour créer l\'objet";
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(37, 99);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(101, 13);
+            this.label7.TabIndex = 31;
+            this.label7.Text = "Nom du graphique :";
+            // 
+            // visibilite
+            // 
+            this.visibilite.Controls.Add(this.lstVisibilites);
+            this.visibilite.Controls.Add(this.header1);
+            this.visibilite.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.visibilite.IsFinishPage = false;
+            this.visibilite.Location = new System.Drawing.Point(0, 0);
+            this.visibilite.Name = "visibilite";
+            this.visibilite.Size = new System.Drawing.Size(343, 347);
+            this.visibilite.TabIndex = 2;
+            // 
+            // lstVisibilites
+            // 
+            this.lstVisibilites.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lstVisibilites.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.lstVisibilites.CheckOnClick = true;
+            this.lstVisibilites.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lstVisibilites.FormattingEnabled = true;
+            this.lstVisibilites.Items.AddRange(new object[] {
+            "Liste",
+            "Détail",
+            "Export",
+            "Publipostage",
+            "Calendrier"});
+            this.lstVisibilites.Location = new System.Drawing.Point(109, 126);
+            this.lstVisibilites.Name = "lstVisibilites";
+            this.lstVisibilites.Size = new System.Drawing.Size(124, 95);
+            this.lstVisibilites.TabIndex = 7;
+            // 
+            // header1
+            // 
+            this.header1.BackColor = System.Drawing.SystemColors.Control;
+            this.header1.CausesValidation = false;
+            this.header1.Controls.Add(this.header2);
+            this.header1.Description = "Selectionnez la ou les vues dans lesquelles afficher cet objet";
+            this.header1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.header1.Image = ((System.Drawing.Image)(resources.GetObject("header1.Image")));
+            this.header1.Location = new System.Drawing.Point(0, 0);
+            this.header1.Name = "header1";
+            this.header1.Size = new System.Drawing.Size(343, 57);
+            this.header1.TabIndex = 5;
+            this.header1.Title = "Assistant d\'ajout";
+            // 
+            // header2
+            // 
+            this.header2.BackColor = System.Drawing.SystemColors.Control;
+            this.header2.CausesValidation = false;
+            this.header2.Description = "Selectionnez la ou les vues dans lesquelles afficher cet objet";
+            this.header2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.header2.Image = ((System.Drawing.Image)(resources.GetObject("header2.Image")));
+            this.header2.Location = new System.Drawing.Point(0, 0);
+            this.header2.Name = "header2";
+            this.header2.Size = new System.Drawing.Size(343, 57);
+            this.header2.TabIndex = 9;
+            this.header2.Title = "Assistant d\'ajout";
             // 
             // Button
             // 
-            this.Button.Controls.Add(this.textBox3);
-            this.Button.Controls.Add(this.label4);
             this.Button.Controls.Add(this.txtToolTipBtn);
+            this.Button.Controls.Add(this.label4);
+            this.Button.Controls.Add(this.txtIcoBtn);
             this.Button.Controls.Add(this.label3);
             this.Button.Controls.Add(this.txtUrlBtn);
             this.Button.Controls.Add(this.label2);
@@ -150,15 +206,15 @@
             this.Button.IsFinishPage = false;
             this.Button.Location = new System.Drawing.Point(0, 0);
             this.Button.Name = "Button";
-            this.Button.Size = new System.Drawing.Size(336, 333);
+            this.Button.Size = new System.Drawing.Size(343, 347);
             this.Button.TabIndex = 3;
             // 
-            // textBox3
+            // txtToolTipBtn
             // 
-            this.textBox3.Location = new System.Drawing.Point(37, 138);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(272, 21);
-            this.textBox3.TabIndex = 18;
+            this.txtToolTipBtn.Location = new System.Drawing.Point(37, 138);
+            this.txtToolTipBtn.Name = "txtToolTipBtn";
+            this.txtToolTipBtn.Size = new System.Drawing.Size(272, 21);
+            this.txtToolTipBtn.TabIndex = 18;
             // 
             // label4
             // 
@@ -169,13 +225,13 @@
             this.label4.TabIndex = 17;
             this.label4.Text = "Info bulle :";
             // 
-            // txtToolTipBtn
+            // txtIcoBtn
             // 
-            this.txtToolTipBtn.Location = new System.Drawing.Point(155, 90);
-            this.txtToolTipBtn.Name = "txtToolTipBtn";
-            this.txtToolTipBtn.Size = new System.Drawing.Size(121, 21);
-            this.txtToolTipBtn.TabIndex = 16;
-            this.txtToolTipBtn.Text = "/images/";
+            this.txtIcoBtn.Location = new System.Drawing.Point(155, 90);
+            this.txtIcoBtn.Name = "txtIcoBtn";
+            this.txtIcoBtn.Size = new System.Drawing.Size(121, 21);
+            this.txtIcoBtn.TabIndex = 16;
+            this.txtIcoBtn.Text = "/images/";
             // 
             // label3
             // 
@@ -212,64 +268,43 @@
             this.header3.Image = ((System.Drawing.Image)(resources.GetObject("header3.Image")));
             this.header3.Location = new System.Drawing.Point(0, 0);
             this.header3.Name = "header3";
-            this.header3.Size = new System.Drawing.Size(336, 57);
+            this.header3.Size = new System.Drawing.Size(343, 57);
             this.header3.TabIndex = 10;
             this.header3.Title = "Assistant d\'ajout";
             // 
-            // visibilite
+            // Fin
             // 
-            this.visibilite.Controls.Add(this.lstVisibilites);
-            this.visibilite.Controls.Add(this.header1);
-            this.visibilite.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.visibilite.IsFinishPage = false;
-            this.visibilite.Location = new System.Drawing.Point(0, 0);
-            this.visibilite.Name = "visibilite";
-            this.visibilite.Size = new System.Drawing.Size(336, 333);
-            this.visibilite.TabIndex = 2;
+            this.Fin.Controls.Add(this.header5);
+            this.Fin.Controls.Add(this.label8);
+            this.Fin.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Fin.IsFinishPage = true;
+            this.Fin.Location = new System.Drawing.Point(0, 0);
+            this.Fin.Name = "Fin";
+            this.Fin.Size = new System.Drawing.Size(343, 347);
+            this.Fin.TabIndex = 5;
+            this.Fin.CloseFromNext += new Gui.Wizard.PageEventHandler(this.Button_end);
             // 
-            // lstVisibilites
+            // header5
             // 
-            this.lstVisibilites.BackColor = System.Drawing.SystemColors.Control;
-            this.lstVisibilites.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.lstVisibilites.CheckOnClick = true;
-            this.lstVisibilites.FormattingEnabled = true;
-            this.lstVisibilites.Items.AddRange(new object[] {
-            "Liste",
-            "Détail",
-            "Export",
-            "Publipostage",
-            "Calendrier"});
-            this.lstVisibilites.Location = new System.Drawing.Point(113, 95);
-            this.lstVisibilites.Name = "lstVisibilites";
-            this.lstVisibilites.Size = new System.Drawing.Size(120, 96);
-            this.lstVisibilites.TabIndex = 6;
+            this.header5.BackColor = System.Drawing.SystemColors.Control;
+            this.header5.CausesValidation = false;
+            this.header5.Description = "";
+            this.header5.Dock = System.Windows.Forms.DockStyle.Top;
+            this.header5.Image = ((System.Drawing.Image)(resources.GetObject("header5.Image")));
+            this.header5.Location = new System.Drawing.Point(0, 0);
+            this.header5.Name = "header5";
+            this.header5.Size = new System.Drawing.Size(343, 57);
+            this.header5.TabIndex = 12;
+            this.header5.Title = "Assistant d\'ajout";
             // 
-            // header1
+            // label8
             // 
-            this.header1.BackColor = System.Drawing.SystemColors.Control;
-            this.header1.CausesValidation = false;
-            this.header1.Controls.Add(this.header2);
-            this.header1.Description = "Selectionnez la ou les vues dans lesquelles afficher cet objet";
-            this.header1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.header1.Image = ((System.Drawing.Image)(resources.GetObject("header1.Image")));
-            this.header1.Location = new System.Drawing.Point(0, 0);
-            this.header1.Name = "header1";
-            this.header1.Size = new System.Drawing.Size(336, 57);
-            this.header1.TabIndex = 5;
-            this.header1.Title = "Assistant d\'ajout";
-            // 
-            // header2
-            // 
-            this.header2.BackColor = System.Drawing.SystemColors.Control;
-            this.header2.CausesValidation = false;
-            this.header2.Description = "Selectionnez la ou les vues dans lesquelles afficher cet objet";
-            this.header2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.header2.Image = ((System.Drawing.Image)(resources.GetObject("header2.Image")));
-            this.header2.Location = new System.Drawing.Point(0, 0);
-            this.header2.Name = "header2";
-            this.header2.Size = new System.Drawing.Size(336, 57);
-            this.header2.TabIndex = 9;
-            this.header2.Title = "Assistant d\'ajout";
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(66, 152);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(207, 13);
+            this.label8.TabIndex = 0;
+            this.label8.Text = "Utilisez le boutton Finish pour créer l\'objet";
             // 
             // Champ
             // 
@@ -289,7 +324,7 @@
             this.Champ.IsFinishPage = false;
             this.Champ.Location = new System.Drawing.Point(0, 0);
             this.Champ.Name = "Champ";
-            this.Champ.Size = new System.Drawing.Size(336, 333);
+            this.Champ.Size = new System.Drawing.Size(343, 347);
             this.Champ.TabIndex = 6;
             // 
             // fs
@@ -403,7 +438,7 @@
             this.header6.Image = ((System.Drawing.Image)(resources.GetObject("header6.Image")));
             this.header6.Location = new System.Drawing.Point(0, 0);
             this.header6.Name = "header6";
-            this.header6.Size = new System.Drawing.Size(336, 50);
+            this.header6.Size = new System.Drawing.Size(343, 50);
             this.header6.TabIndex = 5;
             this.header6.Title = "Assistant d\'ajout";
             // 
@@ -419,11 +454,12 @@
             this.Editeur.IsFinishPage = false;
             this.Editeur.Location = new System.Drawing.Point(0, 0);
             this.Editeur.Name = "Editeur";
-            this.Editeur.Size = new System.Drawing.Size(336, 333);
+            this.Editeur.Size = new System.Drawing.Size(343, 347);
             this.Editeur.TabIndex = 4;
             // 
             // txtDescription
             // 
+            this.txtDescription.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.txtDescription.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtDescription.Enabled = false;
             this.txtDescription.Location = new System.Drawing.Point(12, 140);
@@ -477,7 +513,7 @@
             this.header4.Image = ((System.Drawing.Image)(resources.GetObject("header4.Image")));
             this.header4.Location = new System.Drawing.Point(0, 0);
             this.header4.Name = "header4";
-            this.header4.Size = new System.Drawing.Size(336, 57);
+            this.header4.Size = new System.Drawing.Size(343, 57);
             this.header4.TabIndex = 11;
             this.header4.Title = "Assistant d\'ajout";
             // 
@@ -490,7 +526,7 @@
             this.type.IsFinishPage = false;
             this.type.Location = new System.Drawing.Point(0, 0);
             this.type.Name = "type";
-            this.type.Size = new System.Drawing.Size(336, 333);
+            this.type.Size = new System.Drawing.Size(343, 347);
             this.type.TabIndex = 1;
             // 
             // hdrChooseRoute
@@ -502,7 +538,7 @@
             this.hdrChooseRoute.Image = ((System.Drawing.Image)(resources.GetObject("hdrChooseRoute.Image")));
             this.hdrChooseRoute.Location = new System.Drawing.Point(0, 0);
             this.hdrChooseRoute.Name = "hdrChooseRoute";
-            this.hdrChooseRoute.Size = new System.Drawing.Size(336, 50);
+            this.hdrChooseRoute.Size = new System.Drawing.Size(343, 50);
             this.hdrChooseRoute.TabIndex = 4;
             this.hdrChooseRoute.Title = "Assistant d\'ajout";
             // 
@@ -532,19 +568,21 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(336, 381);
+            this.ClientSize = new System.Drawing.Size(383, 475);
             this.Controls.Add(this.wizard1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "WizardField";
             this.Text = "Ajout de champ";
             this.Load += new System.EventHandler(this.Wizard_Load);
             this.wizard1.ResumeLayout(false);
-            this.Fin.ResumeLayout(false);
-            this.Fin.PerformLayout();
-            this.Button.ResumeLayout(false);
-            this.Button.PerformLayout();
+            this.Graphique.ResumeLayout(false);
+            this.Graphique.PerformLayout();
             this.visibilite.ResumeLayout(false);
             this.header1.ResumeLayout(false);
+            this.Button.ResumeLayout(false);
+            this.Button.PerformLayout();
+            this.Fin.ResumeLayout(false);
+            this.Fin.PerformLayout();
             this.Champ.ResumeLayout(false);
             this.Champ.PerformLayout();
             this.Editeur.ResumeLayout(false);
@@ -564,13 +602,12 @@
         private Gui.Wizard.WizardPage Button;
         private Gui.Wizard.WizardPage Editeur;
         private Gui.Wizard.Header hdrChooseRoute;
-        private System.Windows.Forms.CheckedListBox lstVisibilites;
         private Gui.Wizard.Header header1;
         private Gui.Wizard.Header header3;
         private Gui.Wizard.Header header2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtToolTipBtn;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox txtIcoBtn;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtUrlBtn;
         private System.Windows.Forms.Label label2;
@@ -597,5 +634,9 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox txtDescription;
         private Classes.Control.FieldSelector fs;
+        private System.Windows.Forms.CheckedListBox lstVisibilites;
+        private Gui.Wizard.WizardPage Graphique;
+        private System.Windows.Forms.ComboBox cmbGraph;
+        private System.Windows.Forms.Label label7;
     }
 }

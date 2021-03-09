@@ -1,4 +1,6 @@
 ﻿
+using MetroFramework;
+using MetroFramework.Forms;
 using System;
 using System.Drawing;
 using System.IO;
@@ -9,7 +11,7 @@ using TabloidWizard.Classes.WizardTools;
 
 namespace TabloidWizard.Classes.Editor
 {
-    public partial class GraphicFormEditor : Form
+    public partial class GraphicFormEditor : MetroForm
     {
         TabloidConfigGraphCollection _tgc;
         TabloidConfigView _view;
@@ -82,7 +84,7 @@ namespace TabloidWizard.Classes.Editor
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, Properties.Resources.Erreur, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MetroMessageBox.Show(this,ex.Message, Properties.Resources.Erreur, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Windows.Forms;
 using Tabloid.Classes.Config;
 using Tabloid.Classes.Data;
 using TabloidWizard.Classes.Tools;
@@ -41,7 +42,7 @@ namespace TabloidWizard.Classes
         /// </summary>
         /// <param name="tl"></param>
         /// <param name="connectionString"></param>
-        public static bool CreateTable(IEnumerable<Table> tl, string connectionString)
+        public static bool CreateTable(IEnumerable<Table> tl, string connectionString, IWin32Window own)
         {
             foreach (var t in tl)
             {
@@ -54,7 +55,7 @@ namespace TabloidWizard.Classes
                         Program.AppSet.grainDeSable = Classes.WizardEvents.GetUniqueKey(7);
                         TabloidConfig.Config.updateCurrentKey(Program.AppSet.grainDeSable);
                         var param = new string[] { utilFrm.txtLogin.Text, utilFrm.txtNom.Text, utilFrm.txtPrenom.Text, utilFrm.txtMail.Text, Tabloid.Classes.Tools.SecurityHelper.EncryptPassword(utilFrm.txtMdp1.Text) };
-                        WizardSQLHelper.ExecuteFromFile(t.SqlFile, param, connectionString);
+                        WizardSQLHelper.ExecuteFromFile(t.SqlFile, param, connectionString,own);
 
                         Program.AppSet.ModeAuthentification = utilFrm.cmbAuth.SelectedIndex == 0 ? AuthenticationHandler.AuthenticationType.Formulaire : AuthenticationHandler.AuthenticationType.Windows;
                     }

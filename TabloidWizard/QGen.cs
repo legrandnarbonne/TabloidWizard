@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MetroFramework;
+using MetroFramework.Forms;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.OleDb;
@@ -12,7 +14,7 @@ using TabloidWizard.Classes.Tools;
 
 namespace TabloidWizard
 {
-    public partial class QGen : Form
+    public partial class QGen : MetroForm
     {
         DataTable _tbContainer = new DataTable();
 
@@ -89,7 +91,7 @@ namespace TabloidWizard
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error!", ex.Message);
+                MetroMessageBox.Show(this,"Error", ex.Message);
             }
         }
 
@@ -152,7 +154,7 @@ namespace TabloidWizard
                 DisplayOnTowRow=true
             };
 
-            result = WizardSQLHelper.ExecuteFromFile("table.sql", param, Program.AppSet.ConnectionString);
+            result = WizardSQLHelper.ExecuteFromFile("table.sql", param, Program.AppSet.ConnectionString,this);
             if (!result) return;
 
             var i = 1;
@@ -179,7 +181,7 @@ namespace TabloidWizard
                         Tc.Editeur = Tabloid.Classes.Controls.TemplateType.Defaut;
                         Tc.Type = DbType.String;
                         param[2] = dataHelper.DbTypeConverter.ConvertFromGenericDbType(DbType.String, Classes.WizardTools.Tools.ConvertProviderType(Program.AppSet.ProviderType));
-                        result = WizardSQLHelper.ExecuteFromFile("addField.sql", param, Program.AppSet.ConnectionString);
+                        result = WizardSQLHelper.ExecuteFromFile("addField.sql", param, Program.AppSet.ConnectionString,this);
 
                         t.Colonnes.Add(Tc);
                     }
@@ -187,7 +189,7 @@ namespace TabloidWizard
                     {//ComboBox
                         var tableCreationNeeded = !createdList.Contains(dr["Liste"].ToString());
 
-                        result = WizardSQLHelper.SetDataBaseForList(false, Program.AppSet.Schema, dr["Liste"].ToString(), dr["Liste"].ToString(), "id_" + dr["Liste"].ToString(), false, t, Tc.Champ, Program.AppSet.ConnectionString, Program.AppSet.ProviderType, true, false, tableCreationNeeded ? "" : "alr" + i, !tableCreationNeeded);
+                        result = WizardSQLHelper.SetDataBaseForList(this,false, Program.AppSet.Schema, dr["Liste"].ToString(), dr["Liste"].ToString(), "id_" + dr["Liste"].ToString(), false, t, Tc.Champ, Program.AppSet.ConnectionString, Program.AppSet.ProviderType, true, false, tableCreationNeeded ? "" : "alr" + i, !tableCreationNeeded);
 
                         var c = t.Colonnes[t.Colonnes.Count - 1];//last added column
                         c.Groupe = "!!!" + dr["Groupe"];
@@ -234,7 +236,7 @@ namespace TabloidWizard
             //add default url field in user table
             var sqlType = dataHelper.DbTypeConverter.ConvertFromGenericDbType(DbType.String, Classes.WizardTools.Tools.ConvertProviderType(Program.AppSet.ProviderType));
             var requestParam = new string[] { "roles", "default_url", sqlType+$"(300)", Program.AppSet.Schema };
-            WizardSQLHelper.ExecuteFromFile("addField.sql", requestParam, Program.AppSet.ConnectionString);
+            WizardSQLHelper.ExecuteFromFile("addField.sql", requestParam, Program.AppSet.ConnectionString,this);
 
             //add role "sonde"
             var detailURL=AppSetting.GetDefaultPageURL(t.Nom,TabloidPages.Type.Detail)+ "&mode=questionnaire";

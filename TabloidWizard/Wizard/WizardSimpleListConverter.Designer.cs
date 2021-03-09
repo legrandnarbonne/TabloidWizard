@@ -46,16 +46,16 @@
             // 
             // wizard1
             // 
-            this.wizard1.Controls.Add(this.Fin);
             this.wizard1.Controls.Add(this.Info);
+            this.wizard1.Controls.Add(this.Fin);
             this.wizard1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.wizard1.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.wizard1.Location = new System.Drawing.Point(0, 0);
+            this.wizard1.Location = new System.Drawing.Point(20, 60);
             this.wizard1.Name = "wizard1";
             this.wizard1.Pages.AddRange(new Gui.Wizard.WizardPage[] {
             this.Info,
             this.Fin});
-            this.wizard1.Size = new System.Drawing.Size(298, 313);
+            this.wizard1.Size = new System.Drawing.Size(351, 248);
             this.wizard1.TabIndex = 0;
             // 
             // Fin
@@ -101,7 +101,7 @@
             this.Info.IsFinishPage = false;
             this.Info.Location = new System.Drawing.Point(0, 0);
             this.Info.Name = "Info";
-            this.Info.Size = new System.Drawing.Size(298, 265);
+            this.Info.Size = new System.Drawing.Size(351, 200);
             this.Info.TabIndex = 4;
             // 
             // label11
@@ -130,7 +130,7 @@
             this.header4.Image = ((System.Drawing.Image)(resources.GetObject("header4.Image")));
             this.header4.Location = new System.Drawing.Point(0, 0);
             this.header4.Name = "header4";
-            this.header4.Size = new System.Drawing.Size(298, 57);
+            this.header4.Size = new System.Drawing.Size(351, 57);
             this.header4.TabIndex = 11;
             this.header4.Title = "Convertisseur";
             // 
@@ -138,10 +138,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(298, 313);
+            this.ClientSize = new System.Drawing.Size(391, 328);
             this.Controls.Add(this.wizard1);
             this.Name = "WizardSimpleListConverter";
-            this.Text = "Wizard";
+            this.Text = "Liste à choix multiple";
             this.wizard1.ResumeLayout(false);
             this.Fin.ResumeLayout(false);
             this.Fin.PerformLayout();

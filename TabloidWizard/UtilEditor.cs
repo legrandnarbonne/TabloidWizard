@@ -1,10 +1,12 @@
-﻿using System;
+﻿using MetroFramework;
+using MetroFramework.Forms;
+using System;
 using System.Windows.Forms;
 using Tabloid.Classes.Tools;
 
 namespace TabloidWizard
 {
-    public partial class UtilEditor : Form
+    public partial class UtilEditor : MetroForm
     {
         public UtilEditor()
         {
@@ -16,15 +18,15 @@ namespace TabloidWizard
         private void button2_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(txtLogin.Text))// login is required
-                MessageBox.Show(Properties.Resources.LoginCouldnotbeempty, Properties.Resources.Erreur, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MetroMessageBox.Show(this,Properties.Resources.LoginCouldnotbeempty, Properties.Resources.Erreur, MessageBoxButtons.OK, MessageBoxIcon.Error);
             else
             {
                 if (cmbAuth.SelectedIndex == 0 && !SecurityHelper.CheckPasswordCompliance(txtMdp1.Text))//form authentication
-                    MessageBox.Show(Properties.Resources.PasswordRegExpMess, Properties.Resources.Erreur, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MetroMessageBox.Show(this,Properties.Resources.PasswordRegExpMess, Properties.Resources.Erreur, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 else
                 {
                     if (cmbAuth.SelectedIndex == 0 && txtMdp1.Text!=txtMdp2.Text)//form authentication
-                        MessageBox.Show(Properties.Resources.ConfirmPasswordError, Properties.Resources.Erreur, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MetroMessageBox.Show(this,Properties.Resources.ConfirmPasswordError, Properties.Resources.Erreur, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     else
                     {
                         this.DialogResult = DialogResult.OK;

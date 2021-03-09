@@ -79,8 +79,8 @@
             // topSplit.Panel2
             // 
             this.topSplit.Panel2.Controls.Add(this.splitDisplay);
-            this.topSplit.Size = new System.Drawing.Size(741, 462);
-            this.topSplit.SplitterDistance = 246;
+            this.topSplit.Size = new System.Drawing.Size(762, 382);
+            this.topSplit.SplitterDistance = 252;
             this.topSplit.TabIndex = 0;
             // 
             // splitContainer2
@@ -97,8 +97,8 @@
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.propertyGrid1);
-            this.splitContainer2.Size = new System.Drawing.Size(246, 462);
-            this.splitContainer2.SplitterDistance = 197;
+            this.splitContainer2.Size = new System.Drawing.Size(252, 382);
+            this.splitContainer2.SplitterDistance = 162;
             this.splitContainer2.TabIndex = 0;
             // 
             // splitContainer3
@@ -118,8 +118,8 @@
             this.splitContainer3.Panel2.Controls.Add(this.btnVisu);
             this.splitContainer3.Panel2.Controls.Add(this.btnAdd);
             this.splitContainer3.Panel2.Controls.Add(this.btnSupp);
-            this.splitContainer3.Size = new System.Drawing.Size(246, 197);
-            this.splitContainer3.SplitterDistance = 167;
+            this.splitContainer3.Size = new System.Drawing.Size(252, 162);
+            this.splitContainer3.SplitterDistance = 132;
             this.splitContainer3.TabIndex = 1;
             // 
             // lstGraphic
@@ -128,14 +128,14 @@
             this.lstGraphic.FormattingEnabled = true;
             this.lstGraphic.Location = new System.Drawing.Point(0, 0);
             this.lstGraphic.Name = "lstGraphic";
-            this.lstGraphic.Size = new System.Drawing.Size(246, 167);
+            this.lstGraphic.Size = new System.Drawing.Size(252, 132);
             this.lstGraphic.TabIndex = 0;
             this.lstGraphic.SelectedIndexChanged += new System.EventHandler(this.lstGraphic_SelectedIndexChanged);
             // 
             // btnVisu
             // 
             this.btnVisu.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnVisu.Location = new System.Drawing.Point(66, 0);
+            this.btnVisu.Location = new System.Drawing.Point(72, 0);
             this.btnVisu.Name = "btnVisu";
             this.btnVisu.Size = new System.Drawing.Size(59, 26);
             this.btnVisu.TabIndex = 2;
@@ -146,7 +146,7 @@
             // btnAdd
             // 
             this.btnAdd.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnAdd.Location = new System.Drawing.Point(125, 0);
+            this.btnAdd.Location = new System.Drawing.Point(131, 0);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(52, 26);
             this.btnAdd.TabIndex = 1;
@@ -157,7 +157,7 @@
             // btnSupp
             // 
             this.btnSupp.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnSupp.Location = new System.Drawing.Point(177, 0);
+            this.btnSupp.Location = new System.Drawing.Point(183, 0);
             this.btnSupp.Name = "btnSupp";
             this.btnSupp.Size = new System.Drawing.Size(69, 26);
             this.btnSupp.TabIndex = 0;
@@ -170,7 +170,7 @@
             this.propertyGrid1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.propertyGrid1.Location = new System.Drawing.Point(0, 0);
             this.propertyGrid1.Name = "propertyGrid1";
-            this.propertyGrid1.Size = new System.Drawing.Size(246, 261);
+            this.propertyGrid1.Size = new System.Drawing.Size(252, 216);
             this.propertyGrid1.TabIndex = 2;
             this.propertyGrid1.PropertyValueChanged += new System.Windows.Forms.PropertyValueChangedEventHandler(this.propertyGrid1_PropertyValueChanged);
             // 
@@ -188,8 +188,8 @@
             // splitDisplay.Panel2
             // 
             this.splitDisplay.Panel2.Controls.Add(this.chkPreview);
-            this.splitDisplay.Size = new System.Drawing.Size(491, 462);
-            this.splitDisplay.SplitterDistance = 428;
+            this.splitDisplay.Size = new System.Drawing.Size(506, 382);
+            this.splitDisplay.SplitterDistance = 353;
             this.splitDisplay.TabIndex = 1;
             // 
             // imgGraphic
@@ -197,7 +197,7 @@
             this.imgGraphic.Dock = System.Windows.Forms.DockStyle.Fill;
             this.imgGraphic.Location = new System.Drawing.Point(0, 0);
             this.imgGraphic.Name = "imgGraphic";
-            this.imgGraphic.Size = new System.Drawing.Size(491, 428);
+            this.imgGraphic.Size = new System.Drawing.Size(506, 353);
             this.imgGraphic.TabIndex = 0;
             this.imgGraphic.TabStop = false;
             // 
@@ -206,7 +206,7 @@
             this.chkPreview.AutoSize = true;
             this.chkPreview.Checked = true;
             this.chkPreview.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkPreview.Location = new System.Drawing.Point(399, 10);
+            this.chkPreview.Location = new System.Drawing.Point(411, 5);
             this.chkPreview.Name = "chkPreview";
             this.chkPreview.Size = new System.Drawing.Size(85, 17);
             this.chkPreview.TabIndex = 0;
@@ -218,7 +218,7 @@
             // 
             this.MainSplit.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MainSplit.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
-            this.MainSplit.Location = new System.Drawing.Point(0, 0);
+            this.MainSplit.Location = new System.Drawing.Point(20, 60);
             this.MainSplit.Name = "MainSplit";
             this.MainSplit.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
@@ -230,15 +230,15 @@
             // 
             this.MainSplit.Panel2.Controls.Add(this.btnCancel);
             this.MainSplit.Panel2.Controls.Add(this.btnOk);
-            this.MainSplit.Size = new System.Drawing.Size(741, 497);
-            this.MainSplit.SplitterDistance = 462;
+            this.MainSplit.Size = new System.Drawing.Size(762, 417);
+            this.MainSplit.SplitterDistance = 382;
             this.MainSplit.TabIndex = 1;
             // 
             // btnCancel
             // 
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancel.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnCancel.Location = new System.Drawing.Point(591, 0);
+            this.btnCancel.Location = new System.Drawing.Point(612, 0);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 31);
             this.btnCancel.TabIndex = 1;
@@ -249,7 +249,7 @@
             // 
             this.btnOk.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnOk.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnOk.Location = new System.Drawing.Point(666, 0);
+            this.btnOk.Location = new System.Drawing.Point(687, 0);
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(75, 31);
             this.btnOk.TabIndex = 0;
@@ -260,7 +260,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(741, 497);
+            this.ClientSize = new System.Drawing.Size(802, 497);
             this.Controls.Add(this.MainSplit);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "GraphicFormEditor";

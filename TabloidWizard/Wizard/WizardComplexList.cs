@@ -1,4 +1,6 @@
 ﻿using Gui.Wizard;
+using MetroFramework;
+using MetroFramework.Forms;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +13,7 @@ using TabloidWizard.Classes.Tools;
 
 namespace TabloidWizard
 {
-    public partial class WizardComplexList : Form
+    public partial class WizardComplexList : MetroForm
     {
         TabloidConfigView _view;
         string _connectionString;
@@ -55,7 +57,7 @@ namespace TabloidWizard
         void Button_end(object sender, PageEventArgs e)
         {//e.Cancel = !WizardSQLHelper.SetDataBaseForList(true, _view.Schema, txtTable.Text, txtViewName.Text, "id_"+ txtViewName.Text, false, _view, null, _connectionString, _provider, chkName.Checked, chkDistinct.Checked); JD 2/9/19
             if (radioCrea.Checked)
-                e.Cancel = !WizardSQLHelper.SetDataBaseForList(true, _view.Schema, txtTable.Text, "id_" + txtTable.Text, txtViewName.Text, false, _view, null, _connectionString, _provider, chkName.Checked, chkDistinct.Checked);
+                e.Cancel = !WizardSQLHelper.SetDataBaseForList(this,true, _view.Schema, txtTable.Text, "id_" + txtTable.Text, txtViewName.Text, false, _view, null, _connectionString, _provider, chkName.Checked, chkDistinct.Checked);
             else
                 e.Cancel =
                     !WizardSQLHelper.AddGridviewField(_view, txtViewName.Text, (TabloidConfigJointure)cmbJoin.SelectedValue, cmbChamp.SelectedItem.ToString(), _ctrl == TemplateType.GridView, chkDistinct.Checked);
@@ -96,7 +98,7 @@ namespace TabloidWizard
                     {
                         if (j.NomTable == _view.NomTable)
                         {
-                            var dr = MessageBox.Show(Properties.Resources.NoJoinCreate, Properties.Resources.CreateJoin, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                            var dr = MetroMessageBox.Show(this,Properties.Resources.NoJoinCreate, Properties.Resources.CreateJoin, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                             if (dr == DialogResult.No) break;
 
                             WizardJoin.joinConverter(j, true, joinedTable);
@@ -122,7 +124,7 @@ namespace TabloidWizard
         {
             if (cmbJoin.SelectedItem != null || radioCrea.Checked) return;
 
-            MessageBox.Show(Properties.Resources.SelectJoin, Properties.Resources.Error, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MetroMessageBox.Show(this,Properties.Resources.SelectJoin, Properties.Resources.Error, MessageBoxButtons.OK, MessageBoxIcon.Error);
             e.Cancel = true;
         }
 

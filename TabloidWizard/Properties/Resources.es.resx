@@ -438,4 +438,58 @@ Parámetros:
   <data name="DisplayCorrespondigView" xml:space="preserve">
     <value>Mostrar la vista correspondiente!</value>
   </data>
+  <data name="ChangeProjectSchema" xml:space="preserve">
+    <value>Has cambiado el esquema predeterminado. ¿Desea cambiar el esquema de todas las vistas?</value>
+  </data>
+  <data name="Chargement" xml:space="preserve">
+    <value>(Cargando)</value>
+  </data>
+  <data name="DatabaseRead" xml:space="preserve">
+    <value>Leyendo datos...</value>
+  </data>
+  <data name="DataDisplaying" xml:space="preserve">
+    <value>Visualización de los datos</value>
+  </data>
+  <data name="LodingGeoStyle" xml:space="preserve">
+    <value>Cargando estilos de mapa.!</value>
+  </data>
+  <data name="AutomaticViewBuilding" xml:space="preserve">
+    <value>Creación de vistas automáticas.!</value>
+  </data>
+  <data name="Validation" xml:space="preserve">
+    <value>VALIDATION.</value>
+  </data>
+  <data name="StatusMatrix" xml:space="preserve">
+    <value>Proyecto {0} - carpeta {1} - versión del proyecto {2} - versión disponible {3}!</value>
+  </data>
+  <data name="NoUpdate" xml:space="preserve">
+    <value>- El motor está actualizado.</value>
+  </data>
+  <data name="LodingConfigFiles" xml:space="preserve">
+    <value>Cargando archivos de configuración.!</value>
+  </data>
+  <data name="Publication" xml:space="preserve">
+    <value>Publicando…</value>
+  </data>
+  <data name="CreateIndic" xml:space="preserve">
+    <value>Esta celda no se refiere a un indicador. Le gustaría agregar uno ?!</value>
+  </data>
+  <data name="AliasTransform" xml:space="preserve">
+    <value>¡Transfórmate en un alias!</value>
+  </data>
+  <data name="DisplayOnly" xml:space="preserve">
+    <value>solo se muestra!</value>
+  </data>
+  <data name="Hidden" xml:space="preserve">
+    <value>Oculto,</value>
+  </data>
+  <data name="WithReadOnly" xml:space="preserve">
+    <value>(sólo lectura)</value>
+  </data>
+  <data name="Edition" xml:space="preserve">
+    <value>La edicion!</value>
+  </data>
+  <data name="TheField" xml:space="preserve">
+    <value>La era</value>
+  </data>
 </root>

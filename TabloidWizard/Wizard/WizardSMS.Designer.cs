@@ -49,11 +49,11 @@
             this.wizard1.Controls.Add(this.Info);
             this.wizard1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.wizard1.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.wizard1.Location = new System.Drawing.Point(0, 0);
+            this.wizard1.Location = new System.Drawing.Point(20, 60);
             this.wizard1.Name = "wizard1";
             this.wizard1.Pages.AddRange(new Gui.Wizard.WizardPage[] {
             this.Info});
-            this.wizard1.Size = new System.Drawing.Size(331, 343);
+            this.wizard1.Size = new System.Drawing.Size(356, 321);
             this.wizard1.TabIndex = 0;
             // 
             // Info
@@ -69,7 +69,7 @@
             this.Info.IsFinishPage = true;
             this.Info.Location = new System.Drawing.Point(0, 0);
             this.Info.Name = "Info";
-            this.Info.Size = new System.Drawing.Size(331, 295);
+            this.Info.Size = new System.Drawing.Size(356, 273);
             this.Info.TabIndex = 4;
             this.Info.CloseFromNext += new Gui.Wizard.PageEventHandler(this.Info_CloseFromNext);
             // 
@@ -139,7 +139,7 @@
             this.header4.Image = ((System.Drawing.Image)(resources.GetObject("header4.Image")));
             this.header4.Location = new System.Drawing.Point(0, 0);
             this.header4.Name = "header4";
-            this.header4.Size = new System.Drawing.Size(331, 57);
+            this.header4.Size = new System.Drawing.Size(356, 57);
             this.header4.TabIndex = 11;
             this.header4.Title = "Assistant SMS";
             // 
@@ -147,11 +147,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(331, 343);
+            this.ClientSize = new System.Drawing.Size(396, 401);
             this.Controls.Add(this.wizard1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "WizardSMS";
-            this.Text = "Wizard";
+            this.Text = "SMS";
             this.wizard1.ResumeLayout(false);
             this.Info.ResumeLayout(false);
             this.Info.PerformLayout();

@@ -1,14 +1,11 @@
 ﻿using Gui.Wizard;
-
-using System.Windows.Forms;
+using MetroFramework.Forms;
 using Tabloid.Classes.Config;
-
-using TabloidWizard.Classes;
 using TabloidWizard.Classes.Tools;
 
 namespace TabloidWizard
 {
-    public partial class WizardSMS : Form
+    public partial class WizardSMS : MetroForm
     {
         TabloidConfigView _view;
 
@@ -35,15 +32,15 @@ namespace TabloidWizard
                 Type=TabloidConfigMenuItem.MenuType.Simple
                 };
 
-                WizardSQLHelper.AddToMenu(alertMn,null,true);
+                WizardSQLHelper.AddToMenu(this,alertMn,null,true);
 
-                WizardSQLHelper.AddToMenu(new TabloidConfigMenuItem
+                WizardSQLHelper.AddToMenu(this,new TabloidConfigMenuItem
                 {
                     Titre = Properties.Resources.SimpleSMS,
                     Type = TabloidConfigMenuItem.MenuType.Sms
                 }, alertMn,true);
 
-                WizardSQLHelper.AddToMenu(new TabloidConfigMenuItem
+                WizardSQLHelper.AddToMenu(this,new TabloidConfigMenuItem
                 {
                     Titre = Properties.Resources.MultiSMS,
                     Type = TabloidConfigMenuItem.MenuType.Filtre,
@@ -54,7 +51,7 @@ namespace TabloidWizard
             }
             if (chkText.Checked)
             {
-                WizardSQLHelper.AddToParamMenu(new TabloidConfigMenuItem
+                WizardSQLHelper.AddToParamMenu(this,new TabloidConfigMenuItem
                 {
                     Titre = Properties.Resources.PreDefineText,
                     Type = TabloidConfigMenuItem.MenuType.TxtSms
