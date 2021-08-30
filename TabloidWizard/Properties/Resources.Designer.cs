@@ -269,6 +269,15 @@ namespace TabloidWizard.Properties {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Nettoyage.
+        /// </summary>
+        internal static string Cleaning {
+            get {
+                return ResourceManager.GetString("Cleaning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Nettoyage..
         /// </summary>
         internal static string Cleanning {
@@ -404,6 +413,15 @@ namespace TabloidWizard.Properties {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Cette Base de données n&apos;existe pas souhaitez-vous la créer?.
+        /// </summary>
+        internal static string DataBaseNotExist {
+            get {
+                return ResourceManager.GetString("DataBaseNotExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Lecture des données..
         /// </summary>
         internal static string DatabaseRead {
@@ -418,6 +436,15 @@ namespace TabloidWizard.Properties {
         internal static string DataDisplaying {
             get {
                 return ResourceManager.GetString("DataDisplaying", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Import de la base.
+        /// </summary>
+        internal static string dbImport {
+            get {
+                return ResourceManager.GetString("dbImport", resourceCulture);
             }
         }
         
@@ -513,6 +540,15 @@ namespace TabloidWizard.Properties {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Dump de la base.
+        /// </summary>
+        internal static string DumpDataBase {
+            get {
+                return ResourceManager.GetString("DumpDataBase", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à L&apos;édition .
         /// </summary>
         internal static string Edition {
@@ -586,6 +622,15 @@ namespace TabloidWizard.Properties {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Export en cours.
+        /// </summary>
+        internal static string Exporting {
+            get {
+                return ResourceManager.GetString("Exporting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Ce champ provient d&apos;une jointure, souhaitez vous supprimer la jointure?.
         /// </summary>
         internal static string Field_in_join_remove_join {
@@ -631,6 +676,24 @@ namespace TabloidWizard.Properties {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Génération de l&apos;export.
+        /// </summary>
+        internal static string GeneratingExport {
+            get {
+                return ResourceManager.GetString("GeneratingExport", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Génération du site web.
+        /// </summary>
+        internal static string GeneratingWebSite {
+            get {
+                return ResourceManager.GetString("GeneratingWebSite", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Graphique.
         /// </summary>
         internal static string Graphic {
@@ -658,11 +721,65 @@ namespace TabloidWizard.Properties {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Mise en place du moteur.
+        /// </summary>
+        internal static string ImportBuildEngine {
+            get {
+                return ResourceManager.GetString("ImportBuildEngine", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Extraction des fichiers.
+        /// </summary>
+        internal static string ImportExtractFile {
+            get {
+                return ResourceManager.GetString("ImportExtractFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Copie des fichiers annexes.
+        /// </summary>
+        internal static string ImportFilesCopying {
+            get {
+                return ResourceManager.GetString("ImportFilesCopying", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Une des lignes de votre tableau de correspondance est incomplète..
         /// </summary>
         internal static string ImportIncorrectExcelLine {
             get {
                 return ResourceManager.GetString("ImportIncorrectExcelLine", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Préparation de l&apos;import.
+        /// </summary>
+        internal static string ImportPrepare {
+            get {
+                return ResourceManager.GetString("ImportPrepare", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Détail de l&apos;import.
+        /// </summary>
+        internal static string ImportReport {
+            get {
+                return ResourceManager.GetString("ImportReport", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Restauration en cours.
+        /// </summary>
+        internal static string ImportRestauration {
+            get {
+                return ResourceManager.GetString("ImportRestauration", resourceCulture);
             }
         }
         
@@ -681,6 +798,15 @@ namespace TabloidWizard.Properties {
         internal static string Information {
             get {
                 return ResourceManager.GetString("Information", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Initialisation.
+        /// </summary>
+        internal static string Initiating {
+            get {
+                return ResourceManager.GetString("Initiating", resourceCulture);
             }
         }
         
@@ -730,6 +856,15 @@ namespace TabloidWizard.Properties {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Chargement de la configuration.
+        /// </summary>
+        internal static string LoadingConfig {
+            get {
+                return ResourceManager.GetString("LoadingConfig", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Chargement des fichiers de configuration..
         /// </summary>
         internal static string LodingConfigFiles {
@@ -762,6 +897,15 @@ namespace TabloidWizard.Properties {
         internal static string LoginCouldnotbeempty {
             get {
                 return ResourceManager.GetString("LoginCouldnotbeempty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à D&apos;autre table sont liées à la table &apos;{tableName}&apos; :{pucePatern}{string.Join(.
+        /// </summary>
+        internal static string lookFor1NJoinLinkedTable {
+            get {
+                return ResourceManager.GetString("lookFor1NJoinLinkedTable", resourceCulture);
             }
         }
         
@@ -951,6 +1095,15 @@ namespace TabloidWizard.Properties {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Copie des fichiers de personnalisation.
+        /// </summary>
+        internal static string PersFilesCopy {
+            get {
+                return ResourceManager.GetString("PersFilesCopy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Textes prédefinis.
         /// </summary>
         internal static string PreDefineText {
@@ -1100,6 +1253,15 @@ namespace TabloidWizard.Properties {
         internal static string Search_filter {
             get {
                 return ResourceManager.GetString("Search_filter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Sélectionnez le fichier à importer.
+        /// </summary>
+        internal static string SelectImportFile {
+            get {
+                return ResourceManager.GetString("SelectImportFile", resourceCulture);
             }
         }
         

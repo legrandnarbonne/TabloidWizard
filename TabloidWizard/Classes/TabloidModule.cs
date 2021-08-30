@@ -18,7 +18,8 @@ namespace TabloidWizard.Classes
         {
             SMS,
             Messenger,
-            Phototheque
+            Phototheque,
+            Demarches,//démarches simplifiées
         };
 
         /// <summary>
@@ -28,7 +29,8 @@ namespace TabloidWizard.Classes
         {
             {ModuleTableType.SMS,new string[] { "tracesenvois","textes" }},
             {ModuleTableType.Messenger,new string[] { "message" } },
-            {ModuleTableType.Phototheque,new string[] { "photos" }}
+            {ModuleTableType.Phototheque,new string[] { "photos" } },
+            {ModuleTableType.Demarches,new string[] { "dslststatus", "dssyncstatus", "dsmessage" }}
         };
 
         /// <summary>
@@ -36,7 +38,7 @@ namespace TabloidWizard.Classes
         /// </summary>
         /// <param name="enable">set if true or disable module if false</param>
         /// <returns></returns>
-        public static bool SetModuleState(bool enable, ModuleTableType moduleType, IWin32Window own)
+        public static bool ToggleModuleState(bool enable, ModuleTableType moduleType, IWin32Window own)
         {
             return enable ? Activate(moduleType,own) : Remove(moduleType,own);
         }
@@ -48,7 +50,7 @@ namespace TabloidWizard.Classes
             foreach (string tableName in TableList[moduleType])
             {
                 if (!BindingHelper.ToBool(DataTools.ScalarCommand(
-                string.Format("SELECT EXISTS (SELECT 1 FROM information_schema.tables WHERE table_schema = '{0}' AND table_name = '{1}');", Program.AppSet.Schema, "photos"),
+                string.Format("SELECT EXISTS (SELECT 1 FROM information_schema.tables WHERE table_schema = '{0}' AND table_name = '{1}');", Program.AppSet.Schema, tableName),
                 null, Program.AppSet.ConnectionString, out error))) return false;
             }
 

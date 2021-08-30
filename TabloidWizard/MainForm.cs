@@ -33,7 +33,8 @@ using Tabloid.Classes.Data;
 using MetroFramework.Forms;
 using MetroFramework;
 using TabloidWizard.Classes.Editor;
-using static TabloidWizard.Classes.AppSetting;
+using Ionic.Zip;
+using Tabloid.Classes.Optimisation.Cache;
 
 namespace TabloidWizard
 {
@@ -522,13 +523,13 @@ namespace TabloidWizard
         {
             TypeDescriptor.AddAttributes(
                 typeof(TabloidConfigGraphCollection),
-                new EditorAttribute(typeof(Classes.Editor.GraphicEditor), typeof(UITypeEditor)));
+                new EditorAttribute(typeof(GraphicEditor), typeof(UITypeEditor)));
             TypeDescriptor.AddAttributes(
                 typeof(String),
-                new EditorAttribute(typeof(Classes.Editor.GenericPropertySelector), typeof(UITypeEditor)));
+                new EditorAttribute(typeof(GenericPropertySelector), typeof(UITypeEditor)));
             TypeDescriptor.AddAttributes(
                 typeof(Tabloid.Classes.Objects.EditableColor),
-                new EditorAttribute(typeof(Classes.Editor.ColorEditor), typeof(UITypeEditor)));
+                new EditorAttribute(typeof(ColorEditor), typeof(UITypeEditor)));
             TypeDescriptor.AddAttributes(
                   typeof(OlStyle.ImageSource),
                   new EditorAttribute(
@@ -600,6 +601,7 @@ namespace TabloidWizard
 
             //ModuleTable
             mnPhotoModule.Checked = TabloidModule.IsModuleActivated(TabloidModule.ModuleTableType.Phototheque);
+            mnDemarches.Checked = TabloidModule.IsModuleActivated(TabloidModule.ModuleTableType.Demarches);
 
             updateStatusBar();
 
@@ -613,57 +615,57 @@ namespace TabloidWizard
             var folderName = (string)args[0];
             var appSet = (AppSetting)args[1];
 
-            _configFiles = new ConfigFilesCollection();//new XmlFile[Enum.GetNames(typeof(XmlFile.ConfigFilesTypes)).Length];
+            _configFiles = new ConfigFilesCollection();
 
-            worker.ReportProgress(0, new WaitingFormProperties(Resources.Chargement, Resources.LodingConfigFiles));
+            _configFiles.ReadConfig(folderName, appSet, worker, this);
 
-            foreach (XmlFile.ConfigFilesTypes ct in Enum.GetValues(typeof(XmlFile.ConfigFilesTypes)))
-            {
-                var fi = new FileInfo(folderName + "\\configs\\" + ct + ".config");
+            //worker.ReportProgress(0, new WaitingFormProperties(Resources.Chargement, Resources.LodingConfigFiles));
 
-
-                if (fi.Exists)
-                {
-                    _configFiles._configFiles[(int)ct] = new XmlFile(fi.FullName, ct);
+            //foreach (XmlFile.ConfigFilesTypes ct in Enum.GetValues(typeof(XmlFile.ConfigFilesTypes)))
+            //{
+            //    var fi = new FileInfo(folderName + "\\configs\\" + ct + ".config");
 
 
-                }
-                else
-                {
-                    MetroMessageBox.Show(this, Resources.MainForm_ReadWebConfig_Ce_dossier_ne_contient_pas_de_fichier_config_web,
-                        Resources.Erreur, MessageBoxButtons.OK,
-                        MessageBoxIcon.Error);
-                    return;
-                }
-            }
+            //    if (fi.Exists)
+            //    {
+            //        _configFiles.ConfigFiles[(int)ct] = new XmlFile(fi.FullName, ct);
+            //    }
+            //    else
+            //    {
+            //        MetroMessageBox.Show(this, Resources.MainForm_ReadWebConfig_Ce_dossier_ne_contient_pas_de_fichier_config_web,
+            //            Resources.Erreur, MessageBoxButtons.OK,
+            //            MessageBoxIcon.Error);
+            //        return;
+            //    }
+            //}
 
             _mruManager.Add(folderName);
             //_currentPath = folderName;
 
-            DeserializeMainTabloidConfig();
+            //_configFiles.DeserializeMainTabloidConfig(this);
 
-            //read appsetting properties
-            appSet.ReadAppSetting(_configFiles._configFiles[(int)XmlFile.ConfigFilesTypes.appSettings], true);
-            appSet.ReadConnectionSetting(_configFiles._configFiles[(int)XmlFile.ConfigFilesTypes.connections], true, this);
+            ////read appsetting properties
+            //appSet.ReadAppSetting(_configFiles.ConfigFiles[(int)XmlFile.ConfigFilesTypes.appSettings], true);
+            //appSet.ReadConnectionSetting(_configFiles.ConfigFiles[(int)XmlFile.ConfigFilesTypes.connections], true, this);
 
-            ////read tabloid config menu
-            var tabloidmn = _configFiles._configFiles[(int)XmlFile.ConfigFilesTypes.tabloidMenu].Xml.SelectSingleNode("/TabloidMenu");
-            if (tabloidmn != null)
-            {
-                TabloidConfigMenu.Deserialize("<TabloidMenu>" + tabloidmn.InnerXml + "</TabloidMenu>");
+            //////read tabloid config menu
+            //var tabloidmn = _configFiles.ConfigFiles[(int)XmlFile.ConfigFilesTypes.tabloidMenu].Xml.SelectSingleNode("/TabloidMenu");
+            //if (tabloidmn != null)
+            //{
+            //    TabloidConfigMenu.Deserialize("<TabloidMenu>" + tabloidmn.InnerXml + "</TabloidMenu>");
 
-                tabloidmn.InnerXml = ""; //remove tabloid content when readed
-            }
+            //    tabloidmn.InnerXml = ""; //remove tabloid content when readed
+            //}
 
-            worker.ReportProgress(0, new WaitingFormProperties(Resources.Chargement, Resources.LodingGeoStyle));
-            //read olstyle file
-            OlStyleCollection.Load(folderName);
+            //worker.ReportProgress(0, new WaitingFormProperties(Resources.Chargement, Resources.LodingGeoStyle));
+            ////read olstyle file
+            //OlStyleCollection.Load(folderName);
 
-            worker.ReportProgress(0, new WaitingFormProperties(Resources.Chargement, Resources.AutomaticViewBuilding));
-            AutomaticViewBuilder.SetTable(appSet.Schema);//automatic view is added on load and remove on save
+            //worker.ReportProgress(0, new WaitingFormProperties(Resources.Chargement, Resources.AutomaticViewBuilding));
+            //AutomaticViewBuilder.SetTable(appSet.Schema);//automatic view is added on load and remove on save
 
-            worker.ReportProgress(0, new WaitingFormProperties(Resources.Chargement, Resources.Validation));
-            WizardEvents.onConfigLoaded(appSet.Schema, this);
+            //worker.ReportProgress(0, new WaitingFormProperties(Resources.Chargement, Resources.Validation));
+            //WizardEvents.onConfigLoaded(appSet.Schema, this);
         }
 
         private void updateStatusBar()
@@ -694,30 +696,7 @@ namespace TabloidWizard
             return FileVersionInfo.GetVersionInfo(folderName + "\\bin\\tabloid.dll").FileVersion;
         }
 
-        /// <summary>
-        /// Deserialize main tabloid config file
-        /// </summary>
-        void DeserializeMainTabloidConfig()
-        {
-            var tabloid = _configFiles._configFiles[(int)XmlFile.ConfigFilesTypes.tabloid].Xml.SelectSingleNode("/Tabloid");
-            if (tabloid != null)
-            {
-                try
-                {
-                    TabloidConfig.Deserialize("<Tabloid>" + tabloid.InnerXml + "</Tabloid>");
 
-                    tabloid.InnerXml = ""; //remove tabloid content when readed
-
-                    WizardEvents.OnDeserialize();
-                }
-                catch(Exception e)
-                {
-                    MetroMessageBox.Show(this, "Erreur au chargement de la configuration :"+e.ToString(), Resources.Error, MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                }
-
-            }
-        }
 
         /// <summary>
         ///     Set if project is ready
@@ -733,7 +712,7 @@ namespace TabloidWizard
             codeXMLToolStripMenuItem.Enabled = MnSave.Enabled = v;
             genQlikViewToolStripMenuItem.Enabled = MnSaveAs.Enabled = btnEnregistrer.Enabled = générateurDeQuestionnaireToolStripMenuItem.Enabled = v;
             btnExecute.Enabled = btnLog.Enabled = styleCartographieToolStripMenuItem.Enabled = v;
-            contextMenuView.Enabled = v;
+            btnExport.Enabled = contextMenuView.Enabled = v;
 
             txtStartMsg.Visible = !v;
         }
@@ -754,14 +733,12 @@ namespace TabloidWizard
         {
             _configFiles.updateXML();
 
-            var isFirstSave = _configFiles._configFiles[(int)XmlFile.ConfigFilesTypes.tabloid].ConfigFilePath.StartsWith("source", StringComparison.InvariantCulture);
+            var isFirstSave = _configFiles.ConfigFiles[(int)XmlFile.ConfigFilesTypes.tabloid].ConfigFilePath.StartsWith("source", StringComparison.InvariantCulture);
 
             As |= isFirstSave;
             //change file path
-
-
-
-            if (_configFiles._configFiles[(int)XmlFile.ConfigFilesTypes.tabloid].ConfigFilePath == null || As)//new folder
+            
+            if (_configFiles.ConfigFiles[(int)XmlFile.ConfigFilesTypes.tabloid].ConfigFilePath == null || As)//new folder
             {
                 var fbd = new FolderBrowserDialog();
                 var result = fbd.ShowDialog();
@@ -1041,7 +1018,7 @@ namespace TabloidWizard
         private void codeXMLToolStripMenuItem_Click(object sender, EventArgs e)
         {
             _configFiles.updateXML();
-            var editor = new XMLEditor(_configFiles._configFiles[(int)XmlFile.ConfigFilesTypes.tabloid].Xml.OuterXml);
+            var editor = new XMLEditor(_configFiles.ConfigFiles[(int)XmlFile.ConfigFilesTypes.tabloid].Xml.OuterXml);
             editor.ShowDialog();
         }
 
@@ -1051,32 +1028,14 @@ namespace TabloidWizard
 
         private void NewProject_Click(object sender, EventArgs e)
         {
-            _configFiles = new ConfigFilesCollection();//new XmlFile[Enum.GetValues(typeof(XmlFile.ConfigFilesTypes)).Length];
-
-            var fi = new FileInfo("sources\\tabloid.config");
-            _configFiles._configFiles[(int)XmlFile.ConfigFilesTypes.tabloid] = new XmlFile(fi.FullName, XmlFile.ConfigFilesTypes.tabloid);
-            DeserializeMainTabloidConfig();
-
-            fi = new FileInfo("defaultProperties.xml");
-
-            if (fi.Exists)
-            {
-                XmlSerializer serializer = new XmlSerializer(typeof(AppSetting));
-                StreamReader reader = new StreamReader("defaultProperties.xml");
-                Program.AppSet = (AppSetting)serializer.Deserialize(reader);
-                reader.Close();
-            }
-
-            var w = new WizardSchema(_configFiles);
-
-            // set new olstyle project collection
-            OlStyleCollection.olStyles = new List<OlStyle>();
-
-            if (w.ShowDialog() != DialogResult.OK) return;
-
-            SetViewListFromConfig();
-            SetProjectReady(true);
+            NewProject();
         }
+
+        private void créerUnProjetÀPartirDunExportToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            NewProject(true);
+        }
+
         private void btnExecute_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(Program.AppSet.URL)) return;
@@ -1490,10 +1449,10 @@ namespace TabloidWizard
             {
                 if (fieldAddAction) WizardEvents.afterFieldAdded(CurrentContext.CurrentView);
                 CurrentContext.CurrentView.AutomaticCreation = false;
-                SetViewListFromConfig(true);
             }
 
-            setProjectModified();
+            SetViewListFromConfig(true);
+            //setProjectModified();
         }
 
         void ajouterUneTableToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1503,16 +1462,6 @@ namespace TabloidWizard
             lstViews.SelectedIndex = lstViews.Items.Count - 1;
         }
 
-        //private void ajouterUneTableCalendrierToolStripMenuItem_Click(object sender, EventArgs e)
-        //{
-        //    var w3 = new WizardCalendrier(CurrentContext.CurrentView, Program.AppSet.ConnectionString, Program.AppSet.ProviderType);
-        //    if (w3.ShowDialog() == DialogResult.OK)
-        //    {
-        //        CurrentContext.CurrentView.AutomaticCreation = false;
-        //        SetViewListFromConfig(true);
-        //    }
-        //    lstViews.SelectedIndex = lstViews.Items.Count - 1;
-        //}
         private void ajouterUnChampToolStripMenuItem_Click(object sender, EventArgs e)
         {
             AddFieldFromWizard(CurrentContext.CurrentView, null);
@@ -1645,6 +1594,9 @@ namespace TabloidWizard
         {
             var newIndic = new TabloidConfigIndicateur();
             Tools.AddWithUniqueName(CurrentContext.CurrentView.Indicateurs, newIndic, "I");
+
+            IndicCache.setIndicCache();
+
             _indicViewer.SetObjectCollection();
             setProjectModified();
         }
@@ -2081,7 +2033,7 @@ namespace TabloidWizard
 
 
             // set phototheque module state
-            if (TabloidModule.SetModuleState(!((ToolStripMenuItem)sender).Checked, TabloidModule.ModuleTableType.Phototheque, this))
+            if (TabloidModule.ToggleModuleState(!((ToolStripMenuItem)sender).Checked, TabloidModule.ModuleTableType.Phototheque, this))
                 ((ToolStripMenuItem)sender).Checked = !((ToolStripMenuItem)sender).Checked;
         }
 
@@ -2285,16 +2237,197 @@ namespace TabloidWizard
 
         }
 
-        private void toolStripButton1_Click(object sender, EventArgs e)
+
+        private void moduleDémarchesSimplifiéesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //MessageBox.Show(PgAdmin.IsPgAdminInstalled().ToString());
-            var c = new Connexion(Program.AppSet.ConnectionString);
+            if (((ToolStripMenuItem)sender).Checked)
+                //remove module
+                if (MetroMessageBox.Show(this, Resources.DisableModule, Resources.Information, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+                    return;
 
-            PgAdmin.BackupDatabase(c.Host,c.UserID,c.Password, c.Database, @"c:\\", "test.sql",c.Port);
+
+            // install module
+            if (TabloidModule.ToggleModuleState(!((ToolStripMenuItem)sender).Checked, TabloidModule.ModuleTableType.Demarches, this))
+                ((ToolStripMenuItem)sender).Checked = !((ToolStripMenuItem)sender).Checked;
+
+            //add views
+            if (((ToolStripMenuItem)sender).Checked)
+            {
+                var logs = AutomaticViewBuilder.setDMLog(Program.AppSet.Schema);
+
+                TabloidConfig.Config.Views.Add(logs);
+
+                var mn = new TabloidConfigMenuItem
+                {
+                    Nom = "mnDS0",
+                    Titre = "Démarches",
+                    Type = TabloidConfigMenuItem.MenuType.Simple
+                };
+
+                var mn01 = new TabloidConfigMenuItem
+                {
+                    Nom = "mnDS1",
+                    Titre = "Logs",
+                    Table = "dslog",
+                    Type = TabloidConfigMenuItem.MenuType.Liste
+                };
+
+                mn.SousMenu.Add(mn01);
+
+                WizardSQLHelper.AddToParamMenu(this, mn, false, true);
+
+                SetViewListFromConfig(true);
+            }
         }
+
+        private void exporterLeProjetToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //request destination path
+            var fbd = new FolderBrowserDialog { Description = "Sélectionnez le dossier ou stocker l'export." };
+            var result = fbd.ShowDialog();
+            if (result != DialogResult.OK) return;
+
+            var folderName = fbd.SelectedPath;
+
+            //request excluded table data
+            var fet = new ExcludeTableForm(TabloidConfig.Config,_configFiles.ConfigFolderPath);
+            result = fet.ShowDialog();
+            if (result != DialogResult.OK) return;
+
+            //start job
+            _waitingForm = new WaitingForm(ExportWorker)
+            {
+                Text = "Export en cours",
+                progressBar = { Style = ProgressBarStyle.Marquee }
+            };
+
+            _waitingForm.Wr.RunWorkerAsync(new object[] { folderName, fet.ExcludedCommand ,fet.ExcludedView});
+
+            _waitingForm.ShowDialog();
+        }
+
+        private void ExportWorker(object sender, DoWorkEventArgs e)
+        {
+            var args = (object[])e.Argument;
+            var worker = (BackgroundWorker)sender;
+
+            var folderName = (string)args[0];
+            var ExcludedCommand = (string)args[1];
+            var excludedView = (string[])args[2];
+            var pgsql = new Pgsql();
+            var connection = new ConnectionProperties(Program.AppSet.ConnectionString, Program.AppSet.ProviderType == Provider.MySql);
+            var path = Path.GetTempPath() + Guid.NewGuid();
+
+            worker.ReportProgress(0, new WaitingFormProperties(Resources.Exporting, Resources.Initiating));
+            Directory.CreateDirectory(path);
+
+            //create dump
+            var result = pgsql.SqlDump(path + @"\base.dmp",
+                connection.Host,
+                connection.Port,
+                connection.Database,
+                connection.User,
+                connection.Password,
+                Program.AppSet.Schema,
+                ExcludedCommand);
+
+            worker.ReportProgress(0, new WaitingFormProperties(Resources.Exporting, Resources.DumpDataBase));
+            result.Wait();
+
+
+            worker.ReportProgress(0, new WaitingFormProperties(Resources.Exporting, Resources.PersFilesCopy));
+            //export configs files
+            Directory.CreateDirectory(path + @"\configs");
+            Tools.DirectoryCopy(_configFiles.ConfigFolderPath, path + @"\configs", true);
+
+            //export openlayer style
+            Directory.CreateDirectory(path + @"\Scripts");
+            var scriptPath = _configFiles.ProjectFolderPath + @"\scripts";
+            Tools.copyFile(@"\OpenLayersStyles.js", scriptPath, path + @"\Scripts");
+            Tools.copyFile(@"\wizstyles.js", scriptPath, path + @"\Scripts");
+
+            //export uploads files
+            var excludeFolders = new string[excludedView.Length*3];
+            for(int i = 0; i < excludedView.Length;i++)//exclude SingleFile for excluded view
+            {
+                excludeFolders[i*3] = @"Uploads\SingleFile\" + excludedView[i];
+                excludeFolders[i*3+1] = @"Uploads\FilesTree\" + excludedView[i];
+                excludeFolders[i*3+2] = @"Uploads\PicturesFiles\" + excludedView[i];
+                 
+            }
+
+            Tools.DirectoryCopy(_configFiles.ProjectFolderPath + @"\uploads", path + @"\uploads", true, excludeFolders);
+
+            worker.ReportProgress(0, new WaitingFormProperties(Resources.Exporting, Resources.GeneratingExport));
+
+            var fileName = Program.AppSet.Titre;
+            if (string.IsNullOrEmpty(fileName))
+                fileName = "Export";
+
+            //delete file if exist
+            var zipFilei = new FileInfo(folderName + @"\" + fileName + ".twz");
+            if (zipFilei.Exists) zipFilei.Delete();
+
+            using (var zipFile = new ZipFile(folderName + @"\" + fileName + ".twz"))
+            {
+                zipFile.AddDirectory(path);
+                zipFile.Save();
+            }
+
+            worker.ReportProgress(0, new WaitingFormProperties(Resources.Exporting, Resources.Cleaning));
+
+            Directory.Delete(path, true);
+        }
+
+
+        void NewProject(bool fromImport = false)
+        {
+            /// build config file
+            _configFiles = new ConfigFilesCollection();
+            FileInfo fi;
+
+            // set empty config
+            fi = new FileInfo("sources\\tabloid.config");
+            _configFiles.ConfigFiles[(int)XmlFile.ConfigFilesTypes.tabloid] = new XmlFile(fi.FullName, XmlFile.ConfigFilesTypes.tabloid);
+            _configFiles.DeserializeMainTabloidConfig(this);
+
+
+            fi = new FileInfo("defaultProperties.xml");
+
+            // appy default user properties
+            if (fi.Exists)
+            {
+                XmlSerializer serializer = new XmlSerializer(typeof(AppSetting));
+                StreamReader reader = new StreamReader("defaultProperties.xml");
+                Program.AppSet = (AppSetting)serializer.Deserialize(reader);
+                reader.Close();
+            }
+
+            /// set database
+            var w = new WizardSchema(_configFiles, fromImport);
+
+            /// set new olstyle project collection
+            OlStyleCollection.olStyles = new List<OlStyle>();
+
+            if (w.ShowDialog() != DialogResult.OK) return;
+
+            // set display
+            SetViewListFromConfig();
+
+            //ModuleTable
+            //if (pro)
+            mnPhotoModule.Checked = TabloidModule.IsModuleActivated(TabloidModule.ModuleTableType.Phototheque);
+            mnDemarches.Checked = TabloidModule.IsModuleActivated(TabloidModule.ModuleTableType.Demarches);
+
+            updateStatusBar();
+
+            SetProjectReady(true);
+        }
+
+
+
+
     }
-
-
 
     static class CurrentContext
     {

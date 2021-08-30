@@ -50,6 +50,7 @@ namespace TabloidWizard
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
+            this.créerUnProjetÀPartirDunExportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
             this.MnSave = new System.Windows.Forms.ToolStripMenuItem();
@@ -58,6 +59,7 @@ namespace TabloidWizard
             this.toolStripMenuItem8 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator11 = new System.Windows.Forms.ToolStripSeparator();
             this.MnPublier = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnExport = new System.Windows.Forms.ToolStripMenuItem();
             this.MnMaj = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator13 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripMenuItem11 = new System.Windows.Forms.ToolStripMenuItem();
@@ -79,6 +81,7 @@ namespace TabloidWizard
             this.chkSavAuto = new System.Windows.Forms.ToolStripMenuItem();
             this.modulesMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnPhotoModule = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnDemarches = new System.Windows.Forms.ToolStripMenuItem();
             this.codeXMLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.teToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cmbDisplayLevel = new System.Windows.Forms.ToolStripComboBox();
@@ -141,7 +144,6 @@ namespace TabloidWizard
             this.lblTable = new System.Windows.Forms.Label();
             this.tabFieldDetail = new MetroFramework.Controls.MetroTabControl();
             this.metroStyleManager1 = new MetroFramework.Components.MetroStyleManager(this.components);
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.contextMenuView.SuspendLayout();
@@ -226,6 +228,7 @@ namespace TabloidWizard
             this.toolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItem3,
             this.toolStripMenuItem4,
+            this.créerUnProjetÀPartirDunExportToolStripMenuItem,
             this.toolStripMenuItem5,
             this.toolStripSeparator9,
             this.MnSave,
@@ -234,6 +237,7 @@ namespace TabloidWizard
             this.toolStripMenuItem8,
             this.toolStripSeparator11,
             this.MnPublier,
+            this.btnExport,
             this.MnMaj,
             this.toolStripSeparator13,
             this.toolStripMenuItem11,
@@ -266,6 +270,13 @@ namespace TabloidWizard
             this.toolStripMenuItem4.Size = new System.Drawing.Size(537, 34);
             this.toolStripMenuItem4.Text = "Créer un nouveau projet";
             this.toolStripMenuItem4.Click += new System.EventHandler(this.NewProject_Click);
+            // 
+            // créerUnProjetÀPartirDunExportToolStripMenuItem
+            // 
+            this.créerUnProjetÀPartirDunExportToolStripMenuItem.Name = "créerUnProjetÀPartirDunExportToolStripMenuItem";
+            this.créerUnProjetÀPartirDunExportToolStripMenuItem.Size = new System.Drawing.Size(537, 34);
+            this.créerUnProjetÀPartirDunExportToolStripMenuItem.Text = "Créer un projet à partir d\'un export";
+            this.créerUnProjetÀPartirDunExportToolStripMenuItem.Click += new System.EventHandler(this.créerUnProjetÀPartirDunExportToolStripMenuItem_Click);
             // 
             // toolStripMenuItem5
             // 
@@ -323,6 +334,13 @@ namespace TabloidWizard
             this.MnPublier.Size = new System.Drawing.Size(537, 34);
             this.MnPublier.Text = "Publier un site";
             this.MnPublier.Click += new System.EventHandler(this.publierUnSiteToolStripMenuItem_Click);
+            // 
+            // btnExport
+            // 
+            this.btnExport.Name = "btnExport";
+            this.btnExport.Size = new System.Drawing.Size(537, 34);
+            this.btnExport.Text = "Exporter le projet";
+            this.btnExport.Click += new System.EventHandler(this.exporterLeProjetToolStripMenuItem_Click);
             // 
             // MnMaj
             // 
@@ -480,7 +498,8 @@ namespace TabloidWizard
             // modulesMenuItem
             // 
             this.modulesMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mnPhotoModule});
+            this.mnPhotoModule,
+            this.mnDemarches});
             this.modulesMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("modulesMenuItem.Image")));
             this.modulesMenuItem.Margin = new System.Windows.Forms.Padding(0, 0, 10, 0);
             this.modulesMenuItem.Name = "modulesMenuItem";
@@ -491,9 +510,16 @@ namespace TabloidWizard
             // mnPhotoModule
             // 
             this.mnPhotoModule.Name = "mnPhotoModule";
-            this.mnPhotoModule.Size = new System.Drawing.Size(385, 34);
+            this.mnPhotoModule.Size = new System.Drawing.Size(395, 34);
             this.mnPhotoModule.Text = "Activer le module photothèque";
             this.mnPhotoModule.Click += new System.EventHandler(this.activerLeModulePhotothèqueToolStripMenuItem_Click);
+            // 
+            // mnDemarches
+            // 
+            this.mnDemarches.Name = "mnDemarches";
+            this.mnDemarches.Size = new System.Drawing.Size(395, 34);
+            this.mnDemarches.Text = "module \"Démarches simplifiées\"";
+            this.mnDemarches.Click += new System.EventHandler(this.moduleDémarchesSimplifiéesToolStripMenuItem_Click);
             // 
             // codeXMLToolStripMenuItem
             // 
@@ -723,8 +749,7 @@ namespace TabloidWizard
             this.btnExecute,
             this.btnLog,
             this.toolStripSeparator6,
-            this.toolStripSplitButton1,
-            this.toolStripButton1});
+            this.toolStripSplitButton1});
             this.toolStrip2.Location = new System.Drawing.Point(20, 80);
             this.toolStrip2.Name = "toolStrip2";
             this.toolStrip2.Size = new System.Drawing.Size(1318, 25);
@@ -1071,16 +1096,6 @@ namespace TabloidWizard
             // 
             this.metroStyleManager1.Owner = null;
             // 
-            // toolStripButton1
-            // 
-            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton1.Text = "toolStripButton1";
-            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1223,6 +1238,8 @@ namespace TabloidWizard
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem13;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem14;
         private System.Windows.Forms.ToolStripMenuItem activerPostgisToolStripMenuItem;
-        private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private System.Windows.Forms.ToolStripMenuItem mnDemarches;
+        private System.Windows.Forms.ToolStripMenuItem btnExport;
+        private System.Windows.Forms.ToolStripMenuItem créerUnProjetÀPartirDunExportToolStripMenuItem;
     }
 }

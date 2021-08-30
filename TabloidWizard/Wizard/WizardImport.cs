@@ -174,5 +174,10 @@ namespace TabloidWizard
                 _linkList.Add(new ColumnFieldLink {columnTitle= c });
             }
         }
+
+        private void WizardImport_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

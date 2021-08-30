@@ -141,4 +141,13 @@
   <data name="$this.Text" xml:space="preserve">
     <value>="Resumen"</value>
   </data>
+  <data name="button3.Text" xml:space="preserve">
+    <value>Eliminar celda</value>
+  </data>
+  <data name="btnCreateIndic.Text" xml:space="preserve">
+    <value>Crear un indicador clave de rendimiento nuevo (KPI).</value>
+  </data>
+  <data name="button4.Text" xml:space="preserve">
+    <value>Eliminar indicador</value>
+  </data>
 </root>

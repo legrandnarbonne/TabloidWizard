@@ -536,4 +536,58 @@ Souhaitez-vous les créer ?</value>
   <data name="ImportIncorrectExcelLine" xml:space="preserve">
     <value>Une des lignes de votre tableau de correspondance est incomplète.</value>
   </data>
+  <data name="Exporting" xml:space="preserve">
+    <value>Export en cours</value>
+  </data>
+  <data name="Initiating" xml:space="preserve">
+    <value>Initialisation</value>
+  </data>
+  <data name="PersFilesCopy" xml:space="preserve">
+    <value>Copie des fichiers de personnalisation</value>
+  </data>
+  <data name="DumpDataBase" xml:space="preserve">
+    <value>Dump de la base</value>
+  </data>
+  <data name="GeneratingExport" xml:space="preserve">
+    <value>Génération de l'export</value>
+  </data>
+  <data name="Cleaning" xml:space="preserve">
+    <value>Nettoyage</value>
+  </data>
+  <data name="DataBaseNotExist" xml:space="preserve">
+    <value>Cette Base de données n'existe pas souhaitez-vous la créer?</value>
+  </data>
+  <data name="ImportPrepare" xml:space="preserve">
+    <value>Préparation de l'import</value>
+  </data>
+  <data name="ImportExtractFile" xml:space="preserve">
+    <value>Extraction des fichiers</value>
+  </data>
+  <data name="LoadingConfig" xml:space="preserve">
+    <value>Chargement de la configuration</value>
+  </data>
+  <data name="dbImport" xml:space="preserve">
+    <value>Import de la base</value>
+  </data>
+  <data name="ImportRestauration" xml:space="preserve">
+    <value>Restauration en cours</value>
+  </data>
+  <data name="ImportReport" xml:space="preserve">
+    <value>Détail de l'import</value>
+  </data>
+  <data name="SelectImportFile" xml:space="preserve">
+    <value>Sélectionnez le fichier à importer</value>
+  </data>
+  <data name="GeneratingWebSite" xml:space="preserve">
+    <value>Génération du site web</value>
+  </data>
+  <data name="ImportFilesCopying" xml:space="preserve">
+    <value>Copie des fichiers annexes</value>
+  </data>
+  <data name="ImportBuildEngine" xml:space="preserve">
+    <value>Mise en place du moteur</value>
+  </data>
+  <data name="lookFor1NJoinLinkedTable" xml:space="preserve">
+    <value>D'autre table sont liées à la table '{tableName}' :{pucePatern}{string.Join(</value>
+  </data>
 </root>

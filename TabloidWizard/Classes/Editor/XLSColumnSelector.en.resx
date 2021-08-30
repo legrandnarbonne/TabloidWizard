@@ -135,4 +135,22 @@
   <data name="$this.Text" xml:space="preserve">
     <value>Select a field</value>
   </data>
+  <data name="lblPath.Text" xml:space="preserve">
+    <value>C</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>Reference file</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>'|' Tab</value>
+  </data>
+  <data name="button1.Text" xml:space="preserve">
+    <value>...!</value>
+  </data>
+  <data name="textBox1.Text" xml:space="preserve">
+    <value>Use the button below to load a typical file to analyze the structure of the files you will import.!</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>Ignore the first x lines:!</value>
+  </data>
 </root>

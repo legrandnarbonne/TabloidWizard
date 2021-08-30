@@ -130,6 +130,8 @@ namespace TabloidWizard
 
         private void cmbJoin_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (cmbJoin.SelectedItem == null) return;
+
             foreach (var i in cmbTable.Items)
                 if (((TabloidConfigView)i).NomTable == ((TabloidConfigJointure)cmbJoin.SelectedItem).NomTable)
                     cmbTable.SelectedItem = i;

@@ -2,6 +2,8 @@
 using MetroFramework.Forms;
 using System;
 using Tabloid.Classes.Config;
+using Tabloid.Classes.Optimisation.Cache;
+using TabloidWizard.Classes.WizardTools;
 
 namespace TabloidWizard
 {
@@ -17,18 +19,25 @@ namespace TabloidWizard
             InitializeComponent();
 
             cmbType.DataSource = Enum.GetValues(typeof(TabloidConfigIndicateur.WidgetType));
-            Fin.CloseFromBack+=Fin_CloseFromBack;
+            Fin.CloseFromNext+=Fin_CloseFromNext;
         }
 
-        private void Fin_CloseFromBack(object sender, PageEventArgs e)
+        private void Fin_CloseFromNext(object sender, PageEventArgs e)
         {
+            Result = new TabloidConfigIndicateur();
 
+            Result.Type = (TabloidConfigIndicateur.WidgetType)cmbType.SelectedValue;
+            Result.Texte = txtIndic.Text;
+
+            var parentCollection = _view != null ? _view.Indicateurs : TabloidConfig.Config.Synthese.Indicateurs;
+
+            var i=Tools.AddWithUniqueName(parentCollection, Result, "I");
+
+            IndicCache.setIndicCache();
         }
 
         private void wiStart_CloseFromNext(object sender, PageEventArgs e)
         {
-            Result = null;
-
 
         }
 

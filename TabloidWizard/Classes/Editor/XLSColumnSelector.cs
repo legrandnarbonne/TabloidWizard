@@ -35,12 +35,16 @@ namespace TabloidWizard.Classes.Editor
 
             CurrentXLSStructure.CurrentWorkBookNum = tmp;
 
-            if (CurrentXLSStructure.CurrentWorkBookNum != 0) cmbSheet.SelectedIndex = CurrentXLSStructure.CurrentWorkBookNum;
+            if (CurrentXLSStructure.CurrentWorkBookNum != 0)
+            {
+                cmbSheet.SelectedIndex = CurrentXLSStructure.CurrentWorkBookNum;
+                cmbField.Enabled = cmbSheet.Enabled = true;
+            }
 
             lblPath.Text = CurrentXLSStructure.FileName;
 
-            cmbField.Visible = label1.Visible = _behaviour == BehaviourTypes.ColumnSelect;
-            txtIgnore.Text = CurrentXLSStructure.IgnoreLine.ToString();
+            cmbField.Visible = label1.Visible =cmbField.Enabled=  _behaviour ==BehaviourTypes.ColumnSelect;
+            txtIgnore.Text = CurrentXLSStructure.IgnoreLine.ToString();            
 
             initialize = false;
         }

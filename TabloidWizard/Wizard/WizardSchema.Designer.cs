@@ -56,8 +56,8 @@
             // 
             // wizard1
             // 
-            this.wizard1.Controls.Add(this.Info);
             this.wizard1.Controls.Add(this.Fin);
+            this.wizard1.Controls.Add(this.Info);
             this.wizard1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.wizard1.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.wizard1.Location = new System.Drawing.Point(20, 60);
@@ -205,14 +205,14 @@
             // 
             this.header4.BackColor = System.Drawing.SystemColors.Control;
             this.header4.CausesValidation = false;
-            this.header4.Description = "Initialisation d\'une base vide";
+            this.header4.Description = "Initialisation d\'un nouveau projet";
             this.header4.Dock = System.Windows.Forms.DockStyle.Top;
             this.header4.Image = ((System.Drawing.Image)(resources.GetObject("header4.Image")));
             this.header4.Location = new System.Drawing.Point(0, 0);
             this.header4.Name = "header4";
             this.header4.Size = new System.Drawing.Size(334, 57);
             this.header4.TabIndex = 11;
-            this.header4.Title = "Assistant création de base";
+            this.header4.Title = "Assistant création de nouveau projet";
             // 
             // Fin
             // 
@@ -222,7 +222,7 @@
             this.Fin.IsFinishPage = true;
             this.Fin.Location = new System.Drawing.Point(0, 0);
             this.Fin.Name = "Fin";
-            this.Fin.Size = new System.Drawing.Size(298, 265);
+            this.Fin.Size = new System.Drawing.Size(334, 274);
             this.Fin.TabIndex = 5;
             this.Fin.CloseFromNext += new Gui.Wizard.PageEventHandler(this.Button_end);
             // 
@@ -235,7 +235,7 @@
             this.header5.Image = ((System.Drawing.Image)(resources.GetObject("header5.Image")));
             this.header5.Location = new System.Drawing.Point(0, 0);
             this.header5.Name = "header5";
-            this.header5.Size = new System.Drawing.Size(298, 57);
+            this.header5.Size = new System.Drawing.Size(334, 57);
             this.header5.TabIndex = 12;
             this.header5.Title = "Assistant d\'ajout";
             // 
@@ -256,7 +256,7 @@
             this.Controls.Add(this.wizard1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "WizardSchema";
-            this.Text = "Schema";
+            this.Text = "Nouveau projet";
             this.wizard1.ResumeLayout(false);
             this.Info.ResumeLayout(false);
             this.Info.PerformLayout();

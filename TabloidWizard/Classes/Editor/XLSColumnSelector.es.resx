@@ -136,4 +136,13 @@
   <data name="$this.Text" xml:space="preserve">
     <value>Seleccione el campo que desea insertar:</value>
   </data>
+  <data name="lblPath.Text" xml:space="preserve">
+    <value>C:\</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>Archivo de referencia:</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>&lt;tabulador&gt;</value>
+  </data>
 </root>

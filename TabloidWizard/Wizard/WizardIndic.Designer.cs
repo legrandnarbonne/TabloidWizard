@@ -39,6 +39,8 @@
             this.label10 = new System.Windows.Forms.Label();
             this.header7 = new Gui.Wizard.Header();
             this.wizard1 = new Gui.Wizard.Wizard();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtIndic = new System.Windows.Forms.TextBox();
             this.Fin.SuspendLayout();
             this.wiNewIndic.SuspendLayout();
             this.wizard1.SuspendLayout();
@@ -79,6 +81,8 @@
             // 
             // wiNewIndic
             // 
+            this.wiNewIndic.Controls.Add(this.txtIndic);
+            this.wiNewIndic.Controls.Add(this.label1);
             this.wiNewIndic.Controls.Add(this.cmbType);
             this.wiNewIndic.Controls.Add(this.label10);
             this.wiNewIndic.Controls.Add(this.header7);
@@ -92,7 +96,7 @@
             // cmbType
             // 
             this.cmbType.FormattingEnabled = true;
-            this.cmbType.Location = new System.Drawing.Point(125, 81);
+            this.cmbType.Location = new System.Drawing.Point(126, 114);
             this.cmbType.Name = "cmbType";
             this.cmbType.Size = new System.Drawing.Size(137, 21);
             this.cmbType.TabIndex = 30;
@@ -100,7 +104,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(23, 84);
+            this.label10.Location = new System.Drawing.Point(24, 117);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(96, 13);
             this.label10.TabIndex = 29;
@@ -133,6 +137,22 @@
             this.wizard1.Size = new System.Drawing.Size(325, 324);
             this.wizard1.TabIndex = 0;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(23, 71);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(36, 13);
+            this.label1.TabIndex = 31;
+            this.label1.Text = "Titre :";
+            // 
+            // txtIndic
+            // 
+            this.txtIndic.Location = new System.Drawing.Point(126, 71);
+            this.txtIndic.Name = "txtIndic";
+            this.txtIndic.Size = new System.Drawing.Size(137, 21);
+            this.txtIndic.TabIndex = 32;
+            // 
             // WizardIndic
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -162,5 +182,7 @@
         private Gui.Wizard.Wizard wizard1;
         private System.Windows.Forms.ComboBox cmbType;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox txtIndic;
+        private System.Windows.Forms.Label label1;
     }
 }

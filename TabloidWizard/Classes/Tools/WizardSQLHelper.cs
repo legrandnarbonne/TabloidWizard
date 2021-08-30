@@ -38,7 +38,7 @@ namespace TabloidWizard.Classes.Tools
                 if (dcr[0].ToString() == selectTableName) cmb.SelectedIndex = cmb.Items.Count - 1;
             }
 
-            if (cmb.SelectedIndex == -1&& cmb.Items.Count>0) cmb.SelectedIndex = 0;
+            if (cmb.SelectedIndex == -1 && cmb.Items.Count > 0) cmb.SelectedIndex = 0;
         }
 
         /// <summary>
@@ -148,12 +148,12 @@ namespace TabloidWizard.Classes.Tools
         /// <param name="useJoin">if not null join is not created and given join is used</param>
         /// <param name="addFieldOnly">Add only join</param>
         /// <returns></returns>
-        public static bool SetDataBaseForList(IWin32Window own,bool complexList, string schema, string newtableName, string newDbKey, string newViewName, bool addToParamMenu, TabloidConfigView sourceView, string tableSrcFieldRef, string connectionString, Provider provider, bool addNameField = true, bool addDistinct = false, string alias = null, bool addFieldOnly = false, string schemaNewtable = null, TabloidConfigJointure useJoin = null, bool addOnlyJoin = false)
+        public static bool SetDataBaseForList(IWin32Window own, bool complexList, string schema, string newtableName, string newDbKey, string newViewName, bool addToParamMenu, TabloidConfigView sourceView, string tableSrcFieldRef, string connectionString, Provider provider, bool addNameField = true, bool addDistinct = false, string alias = null, bool addFieldOnly = false, string schemaNewtable = null, TabloidConfigJointure useJoin = null, bool addOnlyJoin = false)
         {
             try
             {
-                var param = new[] { schema, newtableName.ToLower(), sourceView.Nom, tableSrcFieldRef };
-                var complexParam = new[] { schema, newtableName.ToLower(), sourceView.Nom, sourceView.DbKey };
+                var param = new[] { schema, newtableName.ToLower(), sourceView.NomTable, tableSrcFieldRef };
+                var complexParam = new[] { schema, newtableName.ToLower(), sourceView.NomTable, sourceView.DbKey };
                 string select = null;
                 string aliasDbKey = null;
 
@@ -163,19 +163,19 @@ namespace TabloidWizard.Classes.Tools
                         // add field to table
                         var sqlType = dataHelper.DbTypeConverter.ConvertFromGenericDbType(DbType.Int16, WizardTools.Tools.ConvertProviderType(Program.AppSet.ProviderType));
 
-                    //    var fieldOnlyParam = new[] {
-                    //sourceView.NomTable,
-                    //tableSrcFieldRef,
-                    //sqlType,
-                    //schema };
-                        tableSrcFieldRef=addField(sourceView.NomTable, tableSrcFieldRef, sqlType, schema,own);
-                        if (tableSrcFieldRef==null) return false;
+                        //    var fieldOnlyParam = new[] {
+                        //sourceView.NomTable,
+                        //tableSrcFieldRef,
+                        //sqlType,
+                        //schema };
+                        tableSrcFieldRef = addField(sourceView.NomTable, tableSrcFieldRef, sqlType, schema, own);
+                        if (tableSrcFieldRef == null) return false;
 
                         //var fieldOnlyParam = new[] { schema, newtableName, sourceView.NomTable, tableSrcFieldRef, schemaNewtable ?? schema, newDbKey };//"id_"+ newtableName
                         //if (!ExecuteFromFile("addConstraint.sql", fieldOnlyParam, connectionString)) return false;//TO DO handel duplicate name
 
                         //add constraint do not stop on error
-                        addConstraint(schema, newtableName, sourceView.NomTable, tableSrcFieldRef, schemaNewtable ?? schema, newDbKey,own); 
+                        addConstraint(schema, newtableName, sourceView.NomTable, tableSrcFieldRef, schemaNewtable ?? schema, newDbKey, own);
 
                         if (!string.IsNullOrEmpty(alias))
                         {
@@ -184,7 +184,7 @@ namespace TabloidWizard.Classes.Tools
                         }
                     }
                     else
-                    if (!ExecuteFromFile(complexList ? "fieldComplexList.sql" : "fieldList.sql", complexList ? complexParam : param, connectionString,own))
+                    if (!ExecuteFromFile(complexList ? "fieldComplexList.sql" : "fieldList.sql", complexList ? complexParam : param, connectionString, own))
                     { return false; }
 
                 //add join
@@ -258,17 +258,17 @@ namespace TabloidWizard.Classes.Tools
                 try
                 {
 
-                    if (addToParamMenu) AddToParamMenu(t,own);
+                    if (addToParamMenu) AddToParamMenu(t, own);
                 }
                 catch (Exception e)
                 {
-                    MetroMessageBox.Show(own,e.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MetroMessageBox.Show(own, e.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return true;
                 }
             }
             catch (Exception e)
             {
-                MetroMessageBox.Show(own,e.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MetroMessageBox.Show(own, e.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
 
@@ -284,7 +284,7 @@ namespace TabloidWizard.Classes.Tools
         /// </summary>
         public static string addField(string tableName, string fieldName, string sqlType, string schema, IWin32Window own)
         {
-            var cmpt =2;
+            var cmpt = 2;
             while (WizardTools.Tools.isFieldExist(fieldName, tableName, schema))
             {
                 fieldName += "_" + cmpt++;
@@ -296,7 +296,7 @@ namespace TabloidWizard.Classes.Tools
                     sqlType,
                     schema };
 
-            if (!ExecuteFromFile("addField.sql", fieldParam, Program.AppSet.ConnectionString,own)) return null;
+            if (!ExecuteFromFile("addField.sql", fieldParam, Program.AppSet.ConnectionString, own)) return null;
 
             return fieldName;
         }
@@ -307,11 +307,11 @@ namespace TabloidWizard.Classes.Tools
         /// 
         /// return false on error
         /// </summary>
-        public static bool addConstraint(string schema, string newtableName, string tableName, string fieldName, string newTableSchema,string newDbKey, IWin32Window own)
+        public static bool addConstraint(string schema, string newtableName, string tableName, string fieldName, string newTableSchema, string newDbKey, IWin32Window own)
         {
             var constraintName = fieldName + "_fk";
 
-            constraintName=SearchConstraintUniqueName(constraintName, schema);
+            constraintName = SearchConstraintUniqueName(constraintName, schema);
 
             var Param = new[] { schema, newtableName, tableName, fieldName, newTableSchema, newDbKey, constraintName };
 
@@ -444,7 +444,7 @@ namespace TabloidWizard.Classes.Tools
 
             if (string.IsNullOrEmpty(lastError)) return true;
 
-            MetroMessageBox.Show(own,Resources.Base_Modification_error + lastError, Resources.Error, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MetroMessageBox.Show(own, Resources.Base_Modification_error + lastError, Resources.Error, MessageBoxButtons.OK, MessageBoxIcon.Error);
             return false;
         }
 
@@ -455,7 +455,7 @@ namespace TabloidWizard.Classes.Tools
 
             if (string.IsNullOrEmpty(lastError)) return true;
 
-            MetroMessageBox.Show(own,Resources.Base_Modification_error + lastError, Resources.Error, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MetroMessageBox.Show(own, Resources.Base_Modification_error + lastError, Resources.Error, MessageBoxButtons.OK, MessageBoxIcon.Error);
             return false;
         }
 
@@ -547,7 +547,7 @@ namespace TabloidWizard.Classes.Tools
 
             return result;
         }
-        
+
         /// <summary>
         /// Convert field to list
         /// </summary>
@@ -559,7 +559,7 @@ namespace TabloidWizard.Classes.Tools
         {
             //search for a unique constraint name
             var fk1Name = SearchConstraintUniqueName(newTableName + "_fk", view.Schema);
-            var fieldType= dataHelper.DbTypeConverter.ConvertFromGenericDbType(field.Type, WizardTools.Tools.ConvertProviderType(Program.AppSet.ProviderType));
+            var fieldType = dataHelper.DbTypeConverter.ConvertFromGenericDbType(field.Type, WizardTools.Tools.ConvertProviderType(Program.AppSet.ProviderType));
 
             var param = new[]
             {
@@ -583,7 +583,7 @@ namespace TabloidWizard.Classes.Tools
             };
 
             var tabloidJoinID = WizardTools.Tools.AddWithUniqueName(view.Jointures, join, "J");
-            
+
             field.Jointure = tabloidJoinID;
             field.Editeur = TemplateType.ComboBoxPlus;
 
@@ -603,12 +603,17 @@ namespace TabloidWizard.Classes.Tools
                 Valideurs = field.Valideurs,
                 Obligatoire = field.Obligatoire,
                 Information = field.Information,
+                DSID=field.DSID,
                 Editeur = field.Editeur
             };
-            
+
+            field.DSID = "";
+
             WizardTools.Tools.AddWithUniqueName(lstView.Colonnes, c2, "C");
 
             TabloidConfig.Config.Views.Add(lstView);
+
+            AddToParamMenu(lstView, own);
 
             return true;
         }
@@ -645,11 +650,11 @@ namespace TabloidWizard.Classes.Tools
             };
 
 
-            var result = ExecuteFromFile("fieldListTOfieldComplexList.sql", param, Program.AppSet.ConnectionString,own);
+            var result = ExecuteFromFile("fieldListTOfieldComplexList.sql", param, Program.AppSet.ConnectionString, own);
             if (!result) return false;
 
 
-            SqlCommands.DropColumn(view.NomTable, join.ChampDeRef, view.Schema,own);
+            SqlCommands.DropColumn(view.NomTable, join.ChampDeRef, view.Schema, own);
 
             var joinLst = new TabloidConfigJointure
             {
@@ -744,7 +749,7 @@ namespace TabloidWizard.Classes.Tools
         {
             var mn = TabloidConfigMenu.ConfigMenu.TopMenu.findFirstFromTitle(Resources.Parameters);
             //if (mn == null)
-                //throw new Exception(Resources.Parameters_menu_not_found);
+            //throw new Exception(Resources.Parameters_menu_not_found);
 
             return mn;
         }
@@ -752,18 +757,18 @@ namespace TabloidWizard.Classes.Tools
         public static void AddToParamMenu(TabloidConfigView view, IWin32Window own)
         {
             var mn = getParamMenu();
-            AddToMenu(own,view, null, TabloidConfigMenuItem.MenuType.Liste, mn);
+            AddToMenu(own, view, null, TabloidConfigMenuItem.MenuType.Liste, mn);
         }
-        public static void AddToParamMenu(IWin32Window own,TabloidConfigMenuItem newChild, bool silentMode = false)
+        public static void AddToParamMenu(IWin32Window own, TabloidConfigMenuItem newChild, bool silentMode = false, bool keepName = false)
         {
             var mn = getParamMenu();
-            AddToMenu(own,newChild, mn, silentMode);
+            AddToMenu(own, newChild, mn, silentMode, keepName);
         }
         /// <summary>
         /// Add View to menu
         /// </summary>
         /// <param name="mn">menu to use as parent</param>
-        public static void AddToMenu(IWin32Window own,TabloidConfigView view, string title = null, TabloidConfigMenuItem.MenuType mnType = TabloidConfigMenuItem.MenuType.Liste, TabloidConfigMenuItem mn = null)
+        public static void AddToMenu(IWin32Window own, TabloidConfigView view, string title = null, TabloidConfigMenuItem.MenuType mnType = TabloidConfigMenuItem.MenuType.Liste, TabloidConfigMenuItem mn = null)
         {
             var newChild = new TabloidConfigMenuItem
             {
@@ -773,36 +778,46 @@ namespace TabloidWizard.Classes.Tools
                 Parent = mn
             };
 
-            AddToMenu(own,newChild, mn);
+            AddToMenu(own, newChild, mn);
         }
         /// <summary>
         /// Add Function to menu
         /// </summary>
         /// <param name="mn">menu to use as parent</param>
-        public static void AddToMenu(IWin32Window own,TabloidConfigFunction function,TabloidConfigMenuItem mn = null)
+        public static void AddToMenu(IWin32Window own, TabloidConfigFunction function, TabloidConfigMenuItem mn = null)
         {
             var newChild = new TabloidConfigMenuItem
             {
                 Titre = function.Titre,
                 Type = TabloidConfigMenuItem.MenuType.Function,
-                Function=function.Nom,
+                Function = function.Nom,
                 Parent = mn
             };
 
-            AddToMenu(own,newChild, mn);
+            AddToMenu(own, newChild, mn);
         }
         /// <summary>
         /// Add item menu to menu
         /// </summary>
         /// <param name="mn">menu to use as parent</param>
-        public static void AddToMenu(IWin32Window own,TabloidConfigMenuItem newChild, TabloidConfigMenuItem mn = null, bool silentMode = false)
+        public static void AddToMenu(IWin32Window own, TabloidConfigMenuItem newChild, TabloidConfigMenuItem mn = null, bool silentMode = false, bool keepName = false)
         {
             if (mn == null)
-                WizardTools.Tools.AddWithUniqueName(TabloidConfigMenu.ConfigMenu.TopMenu, newChild, "M", null, 0);
+            {
+                if (keepName)
+                    TabloidConfigMenu.ConfigMenu.TopMenu.Add(newChild);
+                else
+                    WizardTools.Tools.AddWithUniqueName(TabloidConfigMenu.ConfigMenu.TopMenu, newChild, "M", null, 0);
+            }
             else
-                WizardTools.Tools.AddWithUniqueName(TabloidConfigMenu.ConfigMenu.TopMenu, newChild, "M", mn.SousMenu, 0);
+            {
+                if (keepName)
+                    mn.SousMenu.Add(newChild);
+                else
+                    WizardTools.Tools.AddWithUniqueName(TabloidConfigMenu.ConfigMenu.TopMenu, newChild, "M", mn.SousMenu, 0);
+            }
 
-            if (!silentMode) MetroMessageBox.Show(own,Resources.Menu_creation_success);
+            if (!silentMode) MetroMessageBox.Show(own, Resources.Menu_creation_success);
         }
 
         public static void SetMobile(TabloidConfigView view)
@@ -835,6 +850,8 @@ namespace TabloidWizard.Classes.Tools
         System.Web.HttpUtility.UrlEncode(
             text.ToLower(), Encoding.GetEncoding("iso-8859-7")));
         }
+
+
     }
 }
 

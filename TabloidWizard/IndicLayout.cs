@@ -1,7 +1,6 @@
 ﻿using MetroFramework;
 using MetroFramework.Forms;
 using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
@@ -42,6 +41,13 @@ namespace TabloidWizard
                 renderSynthese();
 
             setActive(panel);
+
+            if (panel.Controls.Count > 1)
+            {
+                var ctrl = panel.Controls[1];
+                if (ctrl.Controls.Count > 1)
+                    setActiveImg((PictureBox)ctrl.Controls[1]);
+            }
         }
 
         //private void setIndicDictionary()
@@ -106,7 +112,7 @@ namespace TabloidWizard
             currentImage = sender;
 
             if (old != null) old.Refresh();
-            
+
             currentImage.Refresh();
 
             var indic = getIndicFromTag(currentImage.Tag);
@@ -121,8 +127,8 @@ namespace TabloidWizard
             var pb = ((PictureBox)sender);
 
             if (pb == currentImage)
-                ControlPaint.DrawBorder(e.Graphics, pb.ClientRectangle, 
-                    Color.Blue,3, ButtonBorderStyle.Solid,
+                ControlPaint.DrawBorder(e.Graphics, pb.ClientRectangle,
+                    Color.Blue, 3, ButtonBorderStyle.Solid,
                     Color.Blue, 3, ButtonBorderStyle.Solid,
                     Color.Blue, 3, ButtonBorderStyle.Solid,
                     Color.Blue, 3, ButtonBorderStyle.Solid);
@@ -189,7 +195,11 @@ namespace TabloidWizard
             return tab;
         }
 
-
+        /// <summary>
+        /// Add a column to a display row
+        /// </summary>
+        /// <param name="parent">display row</param>
+        /// <param name="c"></param>
         private void addColumn(TableLayoutPanel parent, TabloidConfigCell c)
         {
             parent.SuspendLayout();
@@ -278,18 +288,45 @@ namespace TabloidWizard
                  TabloidConfig.Config.Synthese.Affichage, r, "SR");
             addRow(currentTable, r);
         }
-
+        /// <summary>
+        /// Create new cell layout plus click
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void picAddColumn_Click(object sender, EventArgs e)
         {
-            var parent = (TableLayoutPanel)((PictureBox)sender).Parent;
-            setActive(parent);
-            addColumn(currentTable, null);
+            createNewCell((PictureBox)sender);
         }
 
+        /// <summary>
+        /// Create new cell button click
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button2_Click(object sender, EventArgs e)
         {
-            addColumn(currentTable, null);
+            createNewCell(currentImage);
         }
+
+        /// <summary>
+        /// Create cell
+        /// </summary>
+        /// <param name="pb"></param>
+        private void createNewCell(PictureBox pb)
+        {
+            var parent = (TableLayoutPanel)(pb.Parent);
+
+            // add cell to config
+            var c = new TabloidConfigCell();
+            Tools.AddWithUniqueName(
+                 ((TabloidConfigRow)parent.Tag).Cellules, c, "SC");
+
+            // add cell to layout
+
+            setActive(parent);
+            addColumn(currentTable, c);
+        }
+
 
         private void Tab_Click(object sender, MouseEventArgs e)
         {
@@ -341,6 +378,15 @@ namespace TabloidWizard
 
         private void btnRemoveIndic_Click(object sender, EventArgs e)
         {
+            clearCurrentImage();
+        }
+
+        /// <summary>
+        /// dissociate indic from cell
+        /// </summary>
+        private void clearCurrentImage()
+        {
+            if (currentImage == null) return;
             ((TabloidConfigCell)currentImage.Tag).Indicateur = null;
             currentImage.BackgroundImage = getImage(null);
         }
@@ -350,10 +396,16 @@ namespace TabloidWizard
             var wiz = new WizardIndic();
             if (wiz.ShowDialog() == DialogResult.OK)
             {
+                cmbIndic.DataSource = null;
+                cmbIndic.DataSource = IndicCache.GetIndicList().Values.ToArray();
+
                 var indic = wiz.Result;
                 ((TabloidConfigCell)currentImage.Tag).Indicateur = indic.Nom;
                 currentImage.BackgroundImage = getImage(indic);
+
+                setActiveImg(currentImage);
             }
+
 
         }
 
@@ -362,10 +414,10 @@ namespace TabloidWizard
             if (currentImage == null) return;
 
 
-            if (MetroMessageBox.Show(this, "Confirmez-vous la suppression de la cellule?","Question",MessageBoxButtons.OKCancel)==DialogResult.OK)
+            if (MetroMessageBox.Show(this, "Confirmez-vous la suppression de la cellule?", "Question", MessageBoxButtons.OKCancel) == DialogResult.OK)
             {
 
-                TableLayoutPanel parent =(TableLayoutPanel)currentImage.Parent.Parent;
+                TableLayoutPanel parent = (TableLayoutPanel)currentImage.Parent.Parent;
 
                 parent.SuspendLayout();
 
@@ -382,6 +434,30 @@ namespace TabloidWizard
 
                 parent.ResumeLayout();
             }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            if (currentImage == null) return;
+
+            var i = getIndicFromTag(currentImage.Tag);
+
+            if (!TabloidConfig.Config.Synthese.Indicateurs.Contains(i))
+            {
+                MetroMessageBox.Show(this, "Cet indicateur est rattaché à une vue. Pour le supprimer rendez vous dans l'onglet Indicateur de cette dernière","Information",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                return;
+            }
+
+            var Confirm=MetroMessageBox.Show(this, "Cet indicateur sera supprimé définitivement", "Information", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+
+            if (Confirm == DialogResult.OK)
+            {
+                TabloidConfig.Config.Synthese.Indicateurs.Remove(i);
+
+                IndicCache.setIndicCache();
+                clearCurrentImage();
+            }
+            
         }
     }
 

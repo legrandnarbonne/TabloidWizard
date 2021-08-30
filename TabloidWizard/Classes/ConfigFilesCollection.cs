@@ -1,19 +1,21 @@
 ﻿
 using MetroFramework;
 using System;
+using System.ComponentModel;
 using System.IO;
 using System.Windows.Forms;
 using Tabloid.Classes.Config;
 using Tabloid.Classes.Config.Helper;
+using TabloidWizard.Properties;
 
 namespace TabloidWizard.Classes
 {
     public class ConfigFilesCollection
     {
-        public XmlFile[] _configFiles;
+        public XmlFile[] ConfigFiles;
         public ConfigFilesCollection()
         {
-            _configFiles = new XmlFile[Enum.GetValues(typeof(XmlFile.ConfigFilesTypes)).Length];
+            ConfigFiles = new XmlFile[Enum.GetValues(typeof(XmlFile.ConfigFilesTypes)).Length];
         }
         /// <summary>
         /// Return site path
@@ -22,7 +24,7 @@ namespace TabloidWizard.Classes
         {
             get
             {
-                return _configFiles[0].ConfigFilePath.Substring(0, _configFiles[0].ConfigFilePath.Length - 27);
+                return ConfigFiles[0].ConfigFilePath.Substring(0, ConfigFiles[0].ConfigFilePath.Length - 27);
             }
         }
         /// <summary>
@@ -32,7 +34,7 @@ namespace TabloidWizard.Classes
         {
             get
             {
-                return _configFiles[0].ConfigFilePath.Substring(0, _configFiles[0].ConfigFilePath.Length - 19);
+                return ConfigFiles[0].ConfigFilePath.Substring(0, ConfigFiles[0].ConfigFilePath.Length - 19);
             }
         }
 
@@ -44,7 +46,7 @@ namespace TabloidWizard.Classes
         {
             foreach (var ft in Enum.GetValues(typeof(XmlFile.ConfigFilesTypes)))
             {
-                _configFiles[(int)ft].ConfigFilePath = newPath + "\\configs\\" + ft + ".config";
+                ConfigFiles[(int)ft].ConfigFilePath = newPath + "\\configs\\" + ft + ".config";
             }
         }
         /// <summary>
@@ -53,7 +55,7 @@ namespace TabloidWizard.Classes
         /// <param name="promptOnExist"></param>
         public void SaveConfigFiles(bool promptOnExist, IWin32Window own)
         {
-            if (_configFiles == null) return;
+            if (ConfigFiles == null) return;
 
             Directory.CreateDirectory(ConfigFolderPath); //create if not exist
 
@@ -68,7 +70,7 @@ namespace TabloidWizard.Classes
             //Save file
             foreach (var ft in Enum.GetValues(typeof(XmlFile.ConfigFilesTypes)))
             {
-                var configFile = _configFiles[(int)ft];
+                var configFile = ConfigFiles[(int)ft];
 
                 var fi = new FileInfo(configFile.ConfigFilePath);
                 if (fi.Exists)
@@ -86,7 +88,7 @@ namespace TabloidWizard.Classes
         public void updateXML()
         {
             // set config file
-            var cf = _configFiles[(int)XmlFile.ConfigFilesTypes.tabloid];
+            var cf = ConfigFiles[(int)XmlFile.ConfigFilesTypes.tabloid];
             var n = cf.Xml.SelectSingleNode("/Tabloid");
 
             //remove automatic created view
@@ -103,13 +105,85 @@ namespace TabloidWizard.Classes
             if (n != null) n.InnerXml = tabloid == "" ? "" : tabloid.Substring(9, tabloid.Length - 19);
 
             // set config menu file
-            _configFiles[(int)XmlFile.ConfigFilesTypes.tabloidMenu].Xml.InnerXml = TabloidConfigMenu.ConfigMenu.Serialize();
+            ConfigFiles[(int)XmlFile.ConfigFilesTypes.tabloidMenu].Xml.InnerXml = TabloidConfigMenu.ConfigMenu.Serialize();
             // set appSettings menu file
-            var nt = _configFiles[(int)XmlFile.ConfigFilesTypes.appSettings].Xml.SelectSingleNode("/appSettings");
+            var nt = ConfigFiles[(int)XmlFile.ConfigFilesTypes.appSettings].Xml.SelectSingleNode("/appSettings");
             if (nt != null) nt.InnerXml = "\n" + AppSetting.GetAppSettingNodes(Program.AppSet, true);
             // set connectionStrings menu file
-            nt = _configFiles[(int)XmlFile.ConfigFilesTypes.connections].Xml.SelectSingleNode("/connectionStrings");
+            nt = ConfigFiles[(int)XmlFile.ConfigFilesTypes.connections].Xml.SelectSingleNode("/connectionStrings");
             if (nt != null) nt.InnerXml = "\n" + AppSetting.GetConnectionStringsNodes(Program.AppSet, true) + "\n";
+        }
+
+        public void ReadConfig(string folderName,AppSetting appSet, BackgroundWorker worker, IWin32Window own)
+        {
+            worker.ReportProgress(0, new WaitingFormProperties(Resources.Chargement, Resources.LodingConfigFiles));
+            foreach (XmlFile.ConfigFilesTypes ct in Enum.GetValues(typeof(XmlFile.ConfigFilesTypes)))
+            {
+                var fi = new FileInfo(folderName + "\\configs\\" + ct + ".config");
+
+
+                if (fi.Exists)
+                {
+                    ConfigFiles[(int)ct] = new XmlFile(fi.FullName, ct);
+                }
+                else
+                {
+                    MetroMessageBox.Show(own, Resources.MainForm_ReadWebConfig_Ce_dossier_ne_contient_pas_de_fichier_config_web,
+                        Resources.Erreur, MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                    return;
+                }
+            }
+
+            DeserializeMainTabloidConfig(own);
+
+            //read appsetting properties
+            appSet.ReadAppSetting(ConfigFiles[(int)XmlFile.ConfigFilesTypes.appSettings], true);
+            appSet.ReadConnectionSetting(ConfigFiles[(int)XmlFile.ConfigFilesTypes.connections], true, own);
+
+            ////read tabloid config menu
+            var tabloidmn = ConfigFiles[(int)XmlFile.ConfigFilesTypes.tabloidMenu].Xml.SelectSingleNode("/TabloidMenu");
+            if (tabloidmn != null)
+            {
+                TabloidConfigMenu.Deserialize("<TabloidMenu>" + tabloidmn.InnerXml + "</TabloidMenu>");
+
+                tabloidmn.InnerXml = ""; //remove tabloid content when readed
+            }
+
+            worker.ReportProgress(0, new WaitingFormProperties(Resources.Chargement, Resources.LodingGeoStyle));
+            //read olstyle file
+            OlStyleCollection.Load(folderName);
+
+            worker.ReportProgress(0, new WaitingFormProperties(Resources.Chargement, Resources.AutomaticViewBuilding));
+            AutomaticViewBuilder.SetTable(appSet.Schema);//automatic view is added on load and remove on save
+
+            worker.ReportProgress(0, new WaitingFormProperties(Resources.Chargement, Resources.Validation));
+            WizardEvents.onConfigLoaded(appSet.Schema, own);
+        }
+
+        /// <summary>
+        /// Deserialize main tabloid config file
+        /// </summary>
+        public void DeserializeMainTabloidConfig( IWin32Window own)
+        {
+            var tabloid = ConfigFiles[(int)XmlFile.ConfigFilesTypes.tabloid].Xml.SelectSingleNode("/Tabloid");
+            if (tabloid != null)
+            {
+                try
+                {
+                    TabloidConfig.Deserialize("<Tabloid>" + tabloid.InnerXml + "</Tabloid>");
+
+                    tabloid.InnerXml = ""; //remove tabloid content when readed
+
+                    WizardEvents.OnDeserialize();
+                }
+                catch (Exception e)
+                {
+                    MetroMessageBox.Show(own, "Erreur au chargement de la configuration :" + e.ToString(), Resources.Error, MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                }
+
+            }
         }
 
     }

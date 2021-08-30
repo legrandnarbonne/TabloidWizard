@@ -84,7 +84,7 @@ namespace TabloidWizard
             //search in table list and attach corresponding view
             foreach (DataRow dcr in dc.Rows)
             {
-                var attachedView = TabloidConfig.Config.Views.Where(c => c.NomTable == dcr[0].ToString()).ToList();
+                var attachedView = TabloidConfig.Config.Views.Where(c => string.Equals(c.NomTable , dcr[0].ToString(),StringComparison.InvariantCultureIgnoreCase)).ToList();
                 tableList.Add(dcr[0].ToString());
 
                 var result = new TableAnalysisResult
@@ -107,7 +107,7 @@ namespace TabloidWizard
                 };
                 result.Views.Add(v);
 
-                if (!tableList.Contains(v.NomTable))//search view with no table
+                if (!tableList.Contains(v.NomTable, StringComparer.OrdinalIgnoreCase))//search view with no table
                     result.Results.Add(new ViewWithNoTable(result,this));
 
 

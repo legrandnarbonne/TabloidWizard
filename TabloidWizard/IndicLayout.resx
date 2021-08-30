@@ -156,7 +156,7 @@
     <value>4, 4</value>
   </data>
   <data name="picAddLine.Size" type="System.Drawing.Size, System.Drawing">
-    <value>614, 594</value>
+    <value>600, 597</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="picAddLine.TabIndex" type="System.Int32, mscorlib">
@@ -208,10 +208,10 @@
     <value>1</value>
   </data>
   <data name="splitContainer1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>882, 518</value>
+    <value>1108, 518</value>
   </data>
   <data name="splitContainer1.SplitterDistance" type="System.Int32, mscorlib">
-    <value>293</value>
+    <value>368</value>
   </data>
   <data name="splitContainer1.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -246,27 +246,6 @@
   <metadata name="contextMenuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>114, 17</value>
   </metadata>
-  <data name="removeIndic.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
-    <value>Suppr</value>
-  </data>
-  <data name="removeIndic.Size" type="System.Drawing.Size, System.Drawing">
-    <value>221, 22</value>
-  </data>
-  <data name="removeIndic.Text" xml:space="preserve">
-    <value>Dissocier l'indicateur</value>
-  </data>
-  <data name="delCell.Size" type="System.Drawing.Size, System.Drawing">
-    <value>221, 22</value>
-  </data>
-  <data name="delCell.Text" xml:space="preserve">
-    <value>Supprimer la cellule</value>
-  </data>
-  <data name="delRow.Size" type="System.Drawing.Size, System.Drawing">
-    <value>221, 22</value>
-  </data>
-  <data name="delRow.Text" xml:space="preserve">
-    <value>Supprimer la ligne</value>
-  </data>
   <data name="contextMenuStrip1.Size" type="System.Drawing.Size, System.Drawing">
     <value>222, 70</value>
   </data>
@@ -286,7 +265,7 @@
     <value>1</value>
   </data>
   <data name="panel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>622, 518</value>
+    <value>608, 518</value>
   </data>
   <data name="panel.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -304,7 +283,7 @@
     <value>0</value>
   </data>
   <data name="panel.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="picAddLine" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,100" /&gt;&lt;Rows Styles="Absolute,600,Absolute,600" /&gt;&lt;/TableLayoutSettings&gt;</value>
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="picAddLine" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,100" /&gt;&lt;Rows Styles="Absolute,603,Absolute,603" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <data name="&gt;&gt;splitContainer2.Panel1.Name" xml:space="preserve">
     <value>splitContainer2.Panel1</value>
@@ -343,7 +322,7 @@
     <value>0, 21</value>
   </data>
   <data name="propertyGrid1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>256, 221</value>
+    <value>496, 266</value>
   </data>
   <data name="propertyGrid1.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
@@ -367,7 +346,7 @@
     <value>0, 0</value>
   </data>
   <data name="cmbIndic.Size" type="System.Drawing.Size, System.Drawing">
-    <value>256, 21</value>
+    <value>496, 21</value>
   </data>
   <data name="cmbIndic.TabIndex" type="System.Int32, mscorlib">
     <value>11</value>
@@ -396,6 +375,33 @@
   <data name="&gt;&gt;splitContainer4.Panel1.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="button4.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="button4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 10</value>
+  </data>
+  <data name="button4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>496, 23</value>
+  </data>
+  <data name="button4.TabIndex" type="System.Int32, mscorlib">
+    <value>16</value>
+  </data>
+  <data name="button4.Text" xml:space="preserve">
+    <value>Supprimer l'indicateur</value>
+  </data>
+  <data name="&gt;&gt;button4.Name" xml:space="preserve">
+    <value>button4</value>
+  </data>
+  <data name="&gt;&gt;button4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;button4.Parent" xml:space="preserve">
+    <value>splitContainer4.Panel2</value>
+  </data>
+  <data name="&gt;&gt;button4.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="button3.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Bottom</value>
   </data>
@@ -406,7 +412,7 @@
     <value>0, 33</value>
   </data>
   <data name="button3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>256, 25</value>
+    <value>496, 25</value>
   </data>
   <data name="button3.TabIndex" type="System.Int32, mscorlib">
     <value>15</value>
@@ -424,7 +430,37 @@
     <value>splitContainer4.Panel2</value>
   </data>
   <data name="&gt;&gt;button3.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
+  </data>
+  <data name="btnRemoveIndic.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="btnRemoveIndic.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnRemoveIndic.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 58</value>
+  </data>
+  <data name="btnRemoveIndic.Size" type="System.Drawing.Size, System.Drawing">
+    <value>496, 25</value>
+  </data>
+  <data name="btnRemoveIndic.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
+  <data name="btnRemoveIndic.Text" xml:space="preserve">
+    <value>Dissocier l'indicateur de la cellule</value>
+  </data>
+  <data name="&gt;&gt;btnRemoveIndic.Name" xml:space="preserve">
+    <value>btnRemoveIndic</value>
+  </data>
+  <data name="&gt;&gt;btnRemoveIndic.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnRemoveIndic.Parent" xml:space="preserve">
+    <value>splitContainer4.Panel2</value>
+  </data>
+  <data name="&gt;&gt;btnRemoveIndic.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <data name="btnCreateIndic.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Bottom</value>
@@ -433,10 +469,10 @@
     <value>NoControl</value>
   </data>
   <data name="btnCreateIndic.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 58</value>
+    <value>0, 83</value>
   </data>
   <data name="btnCreateIndic.Size" type="System.Drawing.Size, System.Drawing">
-    <value>256, 25</value>
+    <value>496, 25</value>
   </data>
   <data name="btnCreateIndic.TabIndex" type="System.Int32, mscorlib">
     <value>14</value>
@@ -454,37 +490,7 @@
     <value>splitContainer4.Panel2</value>
   </data>
   <data name="&gt;&gt;btnCreateIndic.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="btnRemoveIndic.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Bottom</value>
-  </data>
-  <data name="btnRemoveIndic.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="btnRemoveIndic.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 83</value>
-  </data>
-  <data name="btnRemoveIndic.Size" type="System.Drawing.Size, System.Drawing">
-    <value>256, 25</value>
-  </data>
-  <data name="btnRemoveIndic.TabIndex" type="System.Int32, mscorlib">
-    <value>13</value>
-  </data>
-  <data name="btnRemoveIndic.Text" xml:space="preserve">
-    <value>Supprimer l'indicateur de la cellule</value>
-  </data>
-  <data name="&gt;&gt;btnRemoveIndic.Name" xml:space="preserve">
-    <value>btnRemoveIndic</value>
-  </data>
-  <data name="&gt;&gt;btnRemoveIndic.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnRemoveIndic.Parent" xml:space="preserve">
-    <value>splitContainer4.Panel2</value>
-  </data>
-  <data name="&gt;&gt;btnRemoveIndic.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="btnAddLine.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Bottom</value>
@@ -493,7 +499,7 @@
     <value>0, 108</value>
   </data>
   <data name="btnAddLine.Size" type="System.Drawing.Size, System.Drawing">
-    <value>256, 25</value>
+    <value>496, 25</value>
   </data>
   <data name="btnAddLine.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
@@ -511,7 +517,7 @@
     <value>splitContainer4.Panel2</value>
   </data>
   <data name="&gt;&gt;btnAddLine.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="button2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Bottom</value>
@@ -520,7 +526,7 @@
     <value>0, 133</value>
   </data>
   <data name="button2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>256, 25</value>
+    <value>496, 25</value>
   </data>
   <data name="button2.TabIndex" type="System.Int32, mscorlib">
     <value>11</value>
@@ -538,7 +544,7 @@
     <value>splitContainer4.Panel2</value>
   </data>
   <data name="&gt;&gt;button2.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="&gt;&gt;splitContainer4.Panel2.Name" xml:space="preserve">
     <value>splitContainer4.Panel2</value>
@@ -553,10 +559,10 @@
     <value>1</value>
   </data>
   <data name="splitContainer4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>256, 404</value>
+    <value>496, 449</value>
   </data>
   <data name="splitContainer4.SplitterDistance" type="System.Int32, mscorlib">
-    <value>242</value>
+    <value>287</value>
   </data>
   <data name="splitContainer4.TabIndex" type="System.Int32, mscorlib">
     <value>11</value>
@@ -585,11 +591,14 @@
   <data name="&gt;&gt;splitContainer3.Panel1.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="button1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
   <data name="button1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>150, 75</value>
+    <value>0, 42</value>
   </data>
   <data name="button1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
+    <value>496, 23</value>
   </data>
   <data name="button1.TabIndex" type="System.Int32, mscorlib">
     <value>13</value>
@@ -622,10 +631,10 @@
     <value>1</value>
   </data>
   <data name="splitContainer3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>256, 518</value>
+    <value>496, 518</value>
   </data>
   <data name="splitContainer3.SplitterDistance" type="System.Int32, mscorlib">
-    <value>404</value>
+    <value>449</value>
   </data>
   <data name="splitContainer3.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -655,10 +664,10 @@
     <value>1</value>
   </data>
   <data name="splitContainer2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>882, 518</value>
+    <value>1108, 518</value>
   </data>
   <data name="splitContainer2.SplitterDistance" type="System.Int32, mscorlib">
-    <value>622</value>
+    <value>608</value>
   </data>
   <data name="splitContainer2.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -675,6 +684,27 @@
   <data name="&gt;&gt;splitContainer2.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <data name="removeIndic.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
+    <value>Suppr</value>
+  </data>
+  <data name="removeIndic.Size" type="System.Drawing.Size, System.Drawing">
+    <value>221, 22</value>
+  </data>
+  <data name="removeIndic.Text" xml:space="preserve">
+    <value>Dissocier l'indicateur</value>
+  </data>
+  <data name="delCell.Size" type="System.Drawing.Size, System.Drawing">
+    <value>221, 22</value>
+  </data>
+  <data name="delCell.Text" xml:space="preserve">
+    <value>Supprimer la cellule</value>
+  </data>
+  <data name="delRow.Size" type="System.Drawing.Size, System.Drawing">
+    <value>221, 22</value>
+  </data>
+  <data name="delRow.Text" xml:space="preserve">
+    <value>Supprimer la ligne</value>
+  </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -682,7 +712,7 @@
     <value>6, 13</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>922, 598</value>
+    <value>1148, 598</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -2983,6 +3013,9 @@
         DBu4ZzBzxoVYv86Vbt/NlG3exYNWurdmL2umRAYWu2UYAH8ZAAAAAAAAAAAAAPAAAADAAAAAgAAAAIAB
         AACAAQAAgAEAAIABAACAAQAAAAAAAAAAAACAAQAAgAEAAIABAADAAwAA4AcAAPAPAAA=
 </value>
+  </data>
+  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Synthèse</value>

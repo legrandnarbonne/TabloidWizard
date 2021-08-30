@@ -208,13 +208,12 @@ namespace TabloidWizard.Classes
 
         [Category("Divers"),Description("Permet un mode de fonctionnement spécifique de type questionnaire par exemple.")]
         public TabloidTypes TabloidType { get; set; }
-        //[Category("IIS"),
-        //Description(""), DefaultValue(false)]
-        //public bool autoFormsAuthentication { get; set; }
+        
+        [Category("Démarches simplifiées"), Description("Clef API demarches simplifiées.")]
+        public String DSKey { get; set; }
 
-        //        [Category("IIS"),
-        //Description(""), DefaultValue(false)]
-        //        public bool enableSimpleMembership { get; set; }
+        [Category("Démarches simplifiées"), Description("URL de l'API demarches simplifiées.")]
+        public String DSURL { get; set; }
 
 
         /// <summary>

@@ -32,6 +32,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WizardImport));
             this.wizard1 = new Gui.Wizard.Wizard();
             this.Info = new Gui.Wizard.WizardPage();
+            this.button2 = new System.Windows.Forms.Button();
+            this.btnAjoutExcelCol = new System.Windows.Forms.Button();
             this.txtTitreImport = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.lblOnglet = new System.Windows.Forms.Label();
@@ -47,8 +49,6 @@
             this.txtTitre = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.btnAjoutExcelCol = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.wizard1.SuspendLayout();
             this.Info.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
@@ -89,6 +89,28 @@
             this.Info.Size = new System.Drawing.Size(523, 498);
             this.Info.TabIndex = 4;
             this.Info.CloseFromNext += new Gui.Wizard.PageEventHandler(this.Info_CloseFromNext);
+            // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.PowderBlue;
+            this.button2.Location = new System.Drawing.Point(215, 435);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(145, 37);
+            this.button2.TabIndex = 63;
+            this.button2.Text = "Ajouter l\'ensemble des champs de la vue";
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // btnAjoutExcelCol
+            // 
+            this.btnAjoutExcelCol.BackColor = System.Drawing.Color.PowderBlue;
+            this.btnAjoutExcelCol.Location = new System.Drawing.Point(366, 435);
+            this.btnAjoutExcelCol.Name = "btnAjoutExcelCol";
+            this.btnAjoutExcelCol.Size = new System.Drawing.Size(145, 37);
+            this.btnAjoutExcelCol.TabIndex = 62;
+            this.btnAjoutExcelCol.Text = "Ajouter l\'ensemble des colonnes du fichier source";
+            this.btnAjoutExcelCol.UseVisualStyleBackColor = false;
+            this.btnAjoutExcelCol.Click += new System.EventHandler(this.btnAjoutExcelCol_Click);
             // 
             // txtTitreImport
             // 
@@ -223,28 +245,6 @@
             this.label2.TabIndex = 34;
             this.label2.Text = "Titre de la vue";
             // 
-            // btnAjoutExcelCol
-            // 
-            this.btnAjoutExcelCol.BackColor = System.Drawing.Color.PowderBlue;
-            this.btnAjoutExcelCol.Location = new System.Drawing.Point(366, 435);
-            this.btnAjoutExcelCol.Name = "btnAjoutExcelCol";
-            this.btnAjoutExcelCol.Size = new System.Drawing.Size(145, 37);
-            this.btnAjoutExcelCol.TabIndex = 62;
-            this.btnAjoutExcelCol.Text = "Ajouter l\'ensemble des colonnes du fichier source";
-            this.btnAjoutExcelCol.UseVisualStyleBackColor = false;
-            this.btnAjoutExcelCol.Click += new System.EventHandler(this.btnAjoutExcelCol_Click);
-            // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.Color.PowderBlue;
-            this.button2.Location = new System.Drawing.Point(215, 435);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(145, 37);
-            this.button2.TabIndex = 63;
-            this.button2.Text = "Ajouter l\'ensemble des champs de la vue";
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
             // WizardImport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -254,6 +254,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "WizardImport";
             this.Text = "Ajout d\'import";
+            this.Load += new System.EventHandler(this.WizardImport_Load);
             this.wizard1.ResumeLayout(false);
             this.Info.ResumeLayout(false);
             this.Info.PerformLayout();

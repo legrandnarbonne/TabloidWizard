@@ -135,7 +135,6 @@ namespace TabloidWizard.Classes
                 TabloidConfig.Config.updateCurrentKey(Program.AppSet.grainDeSable);
             }
         }
-
         /// <summary>
         /// Find value of database property in connection string
         /// </summary>
@@ -143,20 +142,9 @@ namespace TabloidWizard.Classes
         /// <returns></returns>
         private static string getDataBaseNameFromConnectionString(string connectionString)
         {
-            var property = "database=";
-
-            foreach (string p in connectionString.Split(';'))
-            {
-                if (p.StartsWith(property, StringComparison.InvariantCultureIgnoreCase))
-                {
-                    var part = p.Split('=');
-                    return part.Length == 2 ? part[1] : "";
-                }
-            }
-
-            return "";
-
+            return DataTools.getPropertyFromConnectionString("database=",connectionString);
         }
+
 
         /// <summary>
         /// Return a random string thanks to https://stackoverflow.com/questions/1344221/how-can-i-generate-random-alphanumeric-strings

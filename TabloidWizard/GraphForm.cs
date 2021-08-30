@@ -141,6 +141,8 @@ namespace TabloidWizard
             dataGridView1.DataSource = data;
             chart.DataBind();
 
+           
+
             //chart.ChartAreas[0].AxisX.LabelStyle.Interval = data.Count / 20;
             UpdatewizardView();
         }
@@ -156,6 +158,15 @@ namespace TabloidWizard
 
         private static void setSerieFromChart(TabloidConfigView table, TabloidConfigGraph graph, Chart chart, bool main, ref string champX)
         {
+            //int points = 0;
+
+            ////For every row in the values table, plot the date against the variable value
+            //foreach (DataRow row in Values.Rows)
+            //{
+            //    myChart.Series[Variable].Points.AddXY(Convert.ToDateTime(row["Date"].ToString()), row["Variable"].ToString());
+            //    myChart.Series[Variable].Points[points].ToolTip = Variable + " = #VALY \r\nDate = #VALX{d} \r\nSerial = " + row["Serial"].ToString();
+            //    points += 1;
+            //}
 
             if (main)
             {
@@ -177,6 +188,7 @@ namespace TabloidWizard
 
             g["PieLabelStyle"] = "Outside";
             g.Label = graph.Etiquette;
+
         }
 
 

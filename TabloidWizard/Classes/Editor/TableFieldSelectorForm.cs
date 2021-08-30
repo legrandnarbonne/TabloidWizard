@@ -1,5 +1,4 @@
 ﻿using MetroFramework.Forms;
-using System.Windows.Forms;
 using Tabloid.Classes.Config;
 using TabloidWizard.Classes.Tools;
 

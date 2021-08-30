@@ -72,6 +72,7 @@
             this.txtSql.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
             this.txtSql.CustomButton.UseSelectable = true;
             this.txtSql.CustomButton.Visible = false;
+            this.txtSql.FontSize = MetroFramework.MetroTextBoxSize.Medium;
             this.txtSql.Lines = new string[0];
             this.txtSql.Location = new System.Drawing.Point(23, 63);
             this.txtSql.MaxLength = 32767;

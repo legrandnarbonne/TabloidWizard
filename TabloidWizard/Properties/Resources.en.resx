@@ -493,4 +493,76 @@ Do you want to create them?</value>
   <data name="TheField" xml:space="preserve">
     <value>The field</value>
   </data>
+  <data name="ConvertToList" xml:space="preserve">
+    <value>Convert to List</value>
+  </data>
+  <data name="FileAnalysis" xml:space="preserve">
+    <value>Analyzing SARIF file...</value>
+  </data>
+  <data name="SelectIndic" xml:space="preserve">
+    <value>Thank you for selecting an indicator.!</value>
+  </data>
+  <data name="TableAlreadyExist" xml:space="preserve">
+    <value>This table name already exists!!</value>
+  </data>
+  <data name="Initiating" xml:space="preserve">
+    <value>Initializing...</value>
+  </data>
+  <data name="Cleaning" xml:space="preserve">
+    <value>Cleaning up</value>
+  </data>
+  <data name="ImportExtractFile" xml:space="preserve">
+    <value>Extracting files...</value>
+  </data>
+  <data name="LoadingConfig" xml:space="preserve">
+    <value>Loading configuration</value>
+  </data>
+  <data name="ImportRestauration" xml:space="preserve">
+    <value>Restore In Progress</value>
+  </data>
+  <data name="SelectImportFile" xml:space="preserve">
+    <value>Select the file to import:</value>
+  </data>
+  <data name="AddImport" xml:space="preserve">
+    <value>Add a new import!</value>
+  </data>
+  <data name="ImportIncorrectExcelLine" xml:space="preserve">
+    <value>One of the lines of your correspondence table is incomplete.!</value>
+  </data>
+  <data name="Exporting" xml:space="preserve">
+    <value>Exporting…</value>
+  </data>
+  <data name="PersFilesCopy" xml:space="preserve">
+    <value>Copy customization files!</value>
+  </data>
+  <data name="DumpDataBase" xml:space="preserve">
+    <value>Base dump!</value>
+  </data>
+  <data name="GeneratingExport" xml:space="preserve">
+    <value>Export generation!</value>
+  </data>
+  <data name="DataBaseNotExist" xml:space="preserve">
+    <value>This Database does not exist do you want to create it ?!</value>
+  </data>
+  <data name="ImportPrepare" xml:space="preserve">
+    <value>Preparing to import...</value>
+  </data>
+  <data name="dbImport" xml:space="preserve">
+    <value>Import from the database!</value>
+  </data>
+  <data name="ImportReport" xml:space="preserve">
+    <value>Import detail!</value>
+  </data>
+  <data name="GeneratingWebSite" xml:space="preserve">
+    <value>Website generation!</value>
+  </data>
+  <data name="ImportFilesCopying" xml:space="preserve">
+    <value>Copy of ancillary files!</value>
+  </data>
+  <data name="ImportBuildEngine" xml:space="preserve">
+    <value>Positioning the engine!</value>
+  </data>
+  <data name="lookFor1NJoinLinkedTable" xml:space="preserve">
+    <value>Other tables are linked to table &amp;#39;{tableName}&amp;#39;: {pucePatern} {string.Join (!</value>
+  </data>
 </root>

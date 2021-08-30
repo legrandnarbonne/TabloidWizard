@@ -42,13 +42,14 @@
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
             this.splitContainer4 = new System.Windows.Forms.SplitContainer();
             this.propertyGrid1 = new System.Windows.Forms.PropertyGrid();
-            this.cmbIndic = new System.Windows.Forms.ComboBox();
+            this.button3 = new System.Windows.Forms.Button();
+            this.btnCreateIndic = new System.Windows.Forms.Button();
+            this.btnRemoveIndic = new System.Windows.Forms.Button();
             this.btnAddLine = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.btnRemoveIndic = new System.Windows.Forms.Button();
-            this.btnCreateIndic = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.cmbIndic = new System.Windows.Forms.ComboBox();
+            this.button4 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.picAddLine)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.SuspendLayout();
@@ -155,9 +156,10 @@
             // 
             // splitContainer4.Panel2
             // 
+            this.splitContainer4.Panel2.Controls.Add(this.button4);
             this.splitContainer4.Panel2.Controls.Add(this.button3);
-            this.splitContainer4.Panel2.Controls.Add(this.btnCreateIndic);
             this.splitContainer4.Panel2.Controls.Add(this.btnRemoveIndic);
+            this.splitContainer4.Panel2.Controls.Add(this.btnCreateIndic);
             this.splitContainer4.Panel2.Controls.Add(this.btnAddLine);
             this.splitContainer4.Panel2.Controls.Add(this.button2);
             // 
@@ -166,12 +168,26 @@
             resources.ApplyResources(this.propertyGrid1, "propertyGrid1");
             this.propertyGrid1.Name = "propertyGrid1";
             // 
-            // cmbIndic
+            // button3
             // 
-            resources.ApplyResources(this.cmbIndic, "cmbIndic");
-            this.cmbIndic.FormattingEnabled = true;
-            this.cmbIndic.Name = "cmbIndic";
-            this.cmbIndic.SelectedIndexChanged += new System.EventHandler(this.cmbIndic_SelectedIndexChanged);
+            resources.ApplyResources(this.button3, "button3");
+            this.button3.Name = "button3";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // btnCreateIndic
+            // 
+            resources.ApplyResources(this.btnCreateIndic, "btnCreateIndic");
+            this.btnCreateIndic.Name = "btnCreateIndic";
+            this.btnCreateIndic.UseVisualStyleBackColor = true;
+            this.btnCreateIndic.Click += new System.EventHandler(this.btnCreateIndic_Click);
+            // 
+            // btnRemoveIndic
+            // 
+            resources.ApplyResources(this.btnRemoveIndic, "btnRemoveIndic");
+            this.btnRemoveIndic.Name = "btnRemoveIndic";
+            this.btnRemoveIndic.UseVisualStyleBackColor = true;
+            this.btnRemoveIndic.Click += new System.EventHandler(this.btnRemoveIndic_Click);
             // 
             // btnAddLine
             // 
@@ -184,6 +200,7 @@
             resources.ApplyResources(this.button2, "button2");
             this.button2.Name = "button2";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 
@@ -192,26 +209,19 @@
             this.button1.Name = "button1";
             this.button1.UseVisualStyleBackColor = true;
             // 
-            // btnRemoveIndic
+            // cmbIndic
             // 
-            resources.ApplyResources(this.btnRemoveIndic, "btnRemoveIndic");
-            this.btnRemoveIndic.Name = "btnRemoveIndic";
-            this.btnRemoveIndic.UseVisualStyleBackColor = true;
-            this.btnRemoveIndic.Click += new System.EventHandler(this.btnRemoveIndic_Click);
+            resources.ApplyResources(this.cmbIndic, "cmbIndic");
+            this.cmbIndic.FormattingEnabled = true;
+            this.cmbIndic.Name = "cmbIndic";
+            this.cmbIndic.SelectedIndexChanged += new System.EventHandler(this.cmbIndic_SelectedIndexChanged);
             // 
-            // btnCreateIndic
+            // button4
             // 
-            resources.ApplyResources(this.btnCreateIndic, "btnCreateIndic");
-            this.btnCreateIndic.Name = "btnCreateIndic";
-            this.btnCreateIndic.UseVisualStyleBackColor = true;
-            this.btnCreateIndic.Click += new System.EventHandler(this.btnCreateIndic_Click);
-            // 
-            // button3
-            // 
-            resources.ApplyResources(this.button3, "button3");
-            this.button3.Name = "button3";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            resources.ApplyResources(this.button4, "button4");
+            this.button4.Name = "button4";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // IndicLayout
             // 
@@ -257,9 +267,10 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ToolStripMenuItem delCell;
         private System.Windows.Forms.ToolStripMenuItem delRow;
-        private System.Windows.Forms.ComboBox cmbIndic;
         private System.Windows.Forms.Button btnCreateIndic;
         private System.Windows.Forms.Button btnRemoveIndic;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.ComboBox cmbIndic;
+        private System.Windows.Forms.Button button4;
     }
 }

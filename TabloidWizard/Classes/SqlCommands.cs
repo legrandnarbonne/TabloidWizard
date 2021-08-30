@@ -114,6 +114,24 @@ namespace TabloidWizard.Classes
             return string.Format(sql, table, schema);
         }
 
+        /// <summary>
+        /// Return slq command giving 1N Linked table
+        /// </summary>
+        /// <param name="table"></param>
+        /// <param name="schema"></param>
+        /// <returns></returns>
+
+        public static string SqlGet1NFromConstraint(string table,string schema)
+        {
+            return Provider == Provider.MySql?
+                $"SELECT distinct table_Name FROM information_schema.key_column_usage WHERE TABLE_SCHEMA = '{schema}' and referenced_table_name = '{table}'; ":
+                "SELECT distinct(kcu.table_name) FROM" +
+                      " information_schema.table_constraints AS tc" +
+                      $" JOIN information_schema.key_column_usage AS kcu ON (tc.CONSTRAINT_NAME = kcu.CONSTRAINT_NAME and kcu.table_schema='{schema}')" +
+                      $" JOIN information_schema.constraint_column_usage AS ccu ON (ccu.CONSTRAINT_NAME = tc.CONSTRAINT_NAME and ccu.table_schema='{schema}')" +
+                      $" WHERE constraint_type = 'FOREIGN KEY' AND ccu.TABLE_NAME='{table}';";
+        }
+
 
         /// <summary>
         ///     Return Sql command to create new tabloid field with prefix

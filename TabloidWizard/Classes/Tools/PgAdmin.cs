@@ -25,7 +25,8 @@ namespace TabloidWizard.Classes.Tools
             string dbname,
             string backupdir,
             string backupFileName,
-            string port = "5432")
+            string port = "5432"
+            )
         {
 
             string backupFile = backupdir + backupFileName + "_" + DateTime.Now.ToString("yyyy") + "_" + DateTime.Now.ToString("MM") + "_" + DateTime.Now.ToString("dd") + ".backup";
@@ -56,12 +57,9 @@ namespace TabloidWizard.Classes.Tools
         {
             try
             {
-                //Environment.SetEnvironmentVariable("PGPASSWORD", password);
-
-                //SET PGPASSWORD=fBd8s*OwnxR-tDNxM0qg&"C:\Program Files\pgAdmin 4\v4\runtime\pg_dump.exe" -h CAN13 -p 5432 -n tab_fablab -f "c:\\test.sql_2021_02_22.backup" -F c -U tabloidadmin -p 5432 -b bdd_gn
 
                 Process proc = new Process();
-                //proc.StartInfo.EnvironmentVariables.Add("PGPASSWORD", password);
+                
                 proc.StartInfo.FileName =  psqlPath + getCommand(scriptType);
 
                 proc.StartInfo.Arguments = command;

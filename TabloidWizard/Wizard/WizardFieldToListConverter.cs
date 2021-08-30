@@ -22,15 +22,16 @@ namespace TabloidWizard
 
         void Button_end(object sender, PageEventArgs e)
         {
+            var newTable = WizardSQLHelper.TitleToSystemName(txtTable.Text);
 
-            if (Tools.isTableExist(txtTable.Text))
+            if (Tools.isTableExist(newTable))
             {
                 MetroMessageBox.Show(this,Properties.Resources.TableAlreadyExist,Properties.Resources.Error,MessageBoxButtons.OK,MessageBoxIcon.Error);
                 e.Cancel = true;
                 return;
             }
 
-            e.Cancel = !WizardSQLHelper.ConvertFieldToList(_view,_field,txtTable.Text,this);
+            e.Cancel = !WizardSQLHelper.ConvertFieldToList(_view,_field,newTable,this);
 
         }
     }

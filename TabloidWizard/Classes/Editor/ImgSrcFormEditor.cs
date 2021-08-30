@@ -12,6 +12,7 @@ namespace TabloidWizard.Classes.Editor
         public string _currentDir;
         private BorderedPictureBox _currentSelectedBox;
         public string _currentfilePath;
+        const string defaultPath = "\\uploads\\OlStyles";
 
         // PictureBoxes we use to display thumbnails.
         private List<BorderedPictureBox> PictureBoxes = new List<BorderedPictureBox>();
@@ -22,7 +23,7 @@ namespace TabloidWizard.Classes.Editor
 
         public ImgSrcFormEditor()
         {
-            _currentDir = Program.CurrentProjectFolder + "\\images";
+            _currentDir = Program.CurrentProjectFolder + defaultPath;
 
             Directory.CreateDirectory(_currentDir);
 
@@ -124,7 +125,7 @@ namespace TabloidWizard.Classes.Editor
 
             _currentSelectedBox = pictureBox;
 
-            _currentfilePath = $"/images{pictureBox.Tag.ToString().Substring(_currentDir.Length).Replace("\\","/")}";
+            _currentfilePath = $"/uploads/OlStyles{pictureBox.Tag.ToString().Substring(_currentDir.Length).Replace("\\","/")}";
 
             pictureBox.BorderColor = Color.Black;
 

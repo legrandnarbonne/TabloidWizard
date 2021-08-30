@@ -7,6 +7,7 @@ using System.Data;
 using System.IO;
 using System.IO.Compression;
 using System.Linq;
+using System.Security.AccessControl;
 using System.Windows.Forms;
 using Tabloid.Classes.Config;
 using Tabloid.Classes.Data;
@@ -38,7 +39,7 @@ namespace TabloidWizard.Classes.WizardTools
 
                 foreach (XmlFile.ConfigFilesTypes ft in Enum.GetValues(typeof(XmlFile.ConfigFilesTypes)))
                 {
-                    configFiles._configFiles[(int)ft] = new XmlFile("sources/" + ft + ".config", ft); //get generic .config
+                    configFiles.ConfigFiles[(int)ft] = new XmlFile("sources/" + ft + ".config", ft); //get generic .config
                 }
             }
         }
@@ -61,7 +62,7 @@ namespace TabloidWizard.Classes.WizardTools
                 {
                     var _wf = new WaitingForm(makeZipSiteWorker)
                     {
-                         Text = TabloidWizard.Properties.Resources.Saving ,
+                        Text = TabloidWizard.Properties.Resources.Saving,
                         progressBar = { Style = ProgressBarStyle.Marquee }
                     };
 
@@ -70,7 +71,7 @@ namespace TabloidWizard.Classes.WizardTools
                 }
                 catch (Exception ex)
                 {
-                    MetroMessageBox.Show(own,Properties.Resources.SavingError + ex, Properties.Resources.Erreur, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MetroMessageBox.Show(own, Properties.Resources.SavingError + ex, Properties.Resources.Erreur, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
             }
@@ -104,7 +105,7 @@ namespace TabloidWizard.Classes.WizardTools
             if (maj)
             {
                 //use path from config file
-                var path = config._configFiles[0].ConfigFilePath;
+                var path = config.ConfigFiles[0].ConfigFilePath;
                 cfg.DestinationPath = path.Substring(0, path.IndexOf("config", StringComparison.OrdinalIgnoreCase));
             }
             else
@@ -129,7 +130,7 @@ namespace TabloidWizard.Classes.WizardTools
 
                 if (majFrm.ShowDialog() == DialogResult.OK)
                 {
-                    if (majFrm.chkSAV.Checked) makeZipSite(cfg.DestinationPath,own);
+                    if (majFrm.chkSAV.Checked) makeZipSite(cfg.DestinationPath, own);
                     cfg.KeepOpenJs = majFrm.chkOpenJs.Checked;
                     cfg.KeepUpload = majFrm.chkUpload.Checked;
                     cfg.KeepWebConfig = majFrm.chkWebConfig.Checked;
@@ -140,7 +141,7 @@ namespace TabloidWizard.Classes.WizardTools
                     return;
             }
 
-            Tools.publication(config, cfg,own);
+            Tools.publication(config, cfg, own);
         }
 
         /// <summary>
@@ -160,12 +161,12 @@ namespace TabloidWizard.Classes.WizardTools
                     progressBar = { Style = ProgressBarStyle.Marquee }
                 };
 
-                _wf.Wr.RunWorkerAsync(new object[] { config, cfg,own });
+                _wf.Wr.RunWorkerAsync(new object[] { config, cfg, own });
                 _wf.ShowDialog();
             }
             catch (Exception ex)
             {
-                MetroMessageBox.Show(own,Properties.Resources.SavingError + ex, Properties.Resources.Erreur, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MetroMessageBox.Show(own, Properties.Resources.SavingError + ex, Properties.Resources.Erreur, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         static void wrPublication(object sender, DoWorkEventArgs e)
@@ -182,21 +183,21 @@ namespace TabloidWizard.Classes.WizardTools
             if (subFolder.Length > 0)
                 if (!subFolder.Any(r => r.FullName.Equals(Path.Combine(di.FullName, "tabloid"), StringComparison.InvariantCultureIgnoreCase)) &&
                     !subFolder.Any(r => r.FullName.Equals(Path.Combine(di.FullName, "configs"), StringComparison.InvariantCultureIgnoreCase)))
-                {
-                    if (MetroMessageBox.Show((IWin32Window)args[2],Properties.Resources.NotTabloidFolderConfirm, Properties.Resources.Information, MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+                {//if exist warn user before deleting
+                    if (MetroMessageBox.Show((IWin32Window)args[2], Properties.Resources.NotTabloidFolderConfirm, Properties.Resources.Information, MessageBoxButtons.YesNo, MessageBoxIcon.Question)
                         == DialogResult.No)
                         return;
                 }
 
             //delete file in selected folder
-            worker.ReportProgress(0, new WaitingFormProperties(Properties.Resources.Publication,Properties.Resources.RemovingFolderFiles));
+            worker.ReportProgress(0, new WaitingFormProperties(Properties.Resources.Publication, Properties.Resources.RemovingFolderFiles));
             foreach (FileInfo file in di.GetFiles())
             {
                 if (!string.Equals(file.Name, "web.config", StringComparison.OrdinalIgnoreCase) || !cfg.KeepWebConfig)
                     file.Delete();
             }
 
-            //delete unnecessary sub-folders
+            //delete unnecessary sub-folders in future folder
             foreach (DirectoryInfo dir in di.GetDirectories())
             {
                 if (!string.Equals(dir.Name, "Uploads", StringComparison.OrdinalIgnoreCase) || !cfg.KeepUpload)
@@ -240,7 +241,12 @@ namespace TabloidWizard.Classes.WizardTools
             configs.updateXML();
             configs.ChangeConfigFilesPath(cfg.DestinationPath);
             configs.SaveConfigFiles(false, (IWin32Window)args[2]);
+
+            //if not exist create dir scripts and upload
+            Directory.CreateDirectory(cfg.DestinationPath + @"\uploads");
+            Directory.CreateDirectory(cfg.DestinationPath + @"\scripts");
             
+            AddDirectorySecurity(cfg.DestinationPath + @"\uploads", "IIS_IUSRS", FileSystemRights.FullControl, AccessControlType.Allow);
 
             //set authentication mode
             AuthenticationHandler.Set(Program.AppSet.ModeAuthentification);
@@ -355,7 +361,7 @@ namespace TabloidWizard.Classes.WizardTools
 
             if (tree.SelectedNode != null) current = tree.SelectedNode.Name;
 
-            TreeViewHelper.LoadTreeFromCollection(tree, col, "Nom", null, subCollection,own);
+            TreeViewHelper.LoadTreeFromCollection(tree, col, "Nom", null, subCollection, own);
 
 
             if (current != null && tree.Nodes != null)
@@ -400,7 +406,7 @@ namespace TabloidWizard.Classes.WizardTools
         /// <param name="tableName"></param>
         /// <param name="schema"></param>
         /// <returns>true if exist</returns>
-        public static bool isFieldExist(string fieldName,string tableName,string schema)
+        public static bool isFieldExist(string fieldName, string tableName, string schema)
         {
             string lastError;
             var tableColumnsList = DataTools.Data(SqlCommands.SqlGetColums(tableName, schema), Program.AppSet.ConnectionString, out lastError);//c0
@@ -410,7 +416,7 @@ namespace TabloidWizard.Classes.WizardTools
 
             fieldName = DataTools.StringToSql(fieldName);
 
-            return tableColumnsList.Select($"{fieldColumnName} like '{fieldName}'").Length>0;//warning request with .net engine non need to convert like
+            return tableColumnsList.Select($"{fieldColumnName} like '{fieldName}'").Length > 0;//warning request with .net engine non need to convert like
         }
 
         /// <summary>
@@ -490,6 +496,87 @@ namespace TabloidWizard.Classes.WizardTools
 
                 return name;
             }
+        }
+
+        public static void copyFile(string sourceName, string sourcePath, string destPath)
+        {
+
+            var file = new FileInfo(sourcePath + "\\" + sourceName);
+
+            if (file.Exists)
+                file.CopyTo(destPath + "\\" + sourceName, true);
+
+        }
+
+        public static void DirectoryCopy(string sourceDirName, string destDirName, bool copySubDirs, string[] excludedSubFolders = null, string[] contentExcludedSubFolders = null)
+        {
+            // Get the subdirectories for the specified directory.
+            DirectoryInfo dir = new DirectoryInfo(sourceDirName);
+
+            if (!dir.Exists)
+            {
+                throw new DirectoryNotFoundException(
+                    "Source directory does not exist or could not be found: "
+                    + sourceDirName);
+            }
+
+            DirectoryInfo[] dirs = dir.GetDirectories();
+
+            // If the destination directory doesn't exist, create it.       
+            Directory.CreateDirectory(destDirName);
+
+            // Get the files in the directory and copy them to the new location.
+            FileInfo[] files = dir.GetFiles();
+            foreach (FileInfo file in files)
+            {
+                string tempPath = Path.Combine(destDirName, file.Name);
+                file.CopyTo(tempPath, false);
+            }
+
+            // If copying subdirectories, copy them and their contents to new location.
+            if (copySubDirs)
+            {
+                foreach (DirectoryInfo subdir in dirs)
+                {
+                    string tempPath = Path.Combine(destDirName, subdir.Name);
+                    if (!isExcludedFolder(tempPath, excludedSubFolders))
+                        DirectoryCopy(subdir.FullName, tempPath, copySubDirs, excludedSubFolders);
+                }
+            }
+        }
+
+        private static bool isExcludedFolder(string path, string[] excludedSubFolders)
+        {
+            if (excludedSubFolders == null) return false;
+
+            foreach (string excludedFolder in excludedSubFolders)
+            {
+                if (path.EndsWith(excludedFolder, StringComparison.InvariantCultureIgnoreCase)) return true;
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// set folder permission
+        /// </summary>
+        /// <param name="FileName"></param>
+        /// <param name="Account"></param>
+        /// <param name="Rights"></param>
+        /// <param name="ControlType"></param>
+        public static void AddDirectorySecurity(string FileName, string Account, FileSystemRights Rights, AccessControlType ControlType)
+        {
+            DirectoryInfo dInfo = new DirectoryInfo(FileName);
+            DirectorySecurity dSecurity = dInfo.GetAccessControl();
+
+            dSecurity.AddAccessRule(
+                new FileSystemAccessRule(
+                    Account,
+                    Rights,
+                    InheritanceFlags.ContainerInherit | InheritanceFlags.ObjectInherit,
+                    PropagationFlags.None,
+                    ControlType));
+            dInfo.SetAccessControl(dSecurity);
         }
 
         class publishConfig

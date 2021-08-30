@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Graphql;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing.Design;
@@ -10,6 +11,7 @@ using Tabloid.Classes.Data;
 using Tabloid.Classes.Objects;
 using TabloidWizard.Classes.Tools;
 
+
 namespace TabloidWizard.Classes.Editor
 {
     public class GenericPropertySelector : UITypeEditor
@@ -17,12 +19,14 @@ namespace TabloidWizard.Classes.Editor
         IWindowsFormsEditorService _service;
         ListBox _list;
 
-        List<string> modalPropertiesList = new List<string> {"*.Champ","*.ChampLimite","*.Fin","*.Debut","TabloidConfigCalendrier.Titre","*.ChampX","*.ChampY","*.ChampCritere","*.ChampCritere2",
-                                                    "*.ChampAffichage","*.ChampValeur","*.ChampClef","*.ChampDeRef","*.ChampDeRef2","*.DbKey","TabloidConfigCalendrier.Couleur","TabloidConfigCalendrier.Tooltip","TabloidConfigCalendrier.ChampGroupe","*.JoinFieldName","*.JoinValueField",
-                                                    "*.ColName",
-        "*.Select","*.Where","*.GroupBy","*.Distinct","*.WherePeuplement","*.Order","*.Rolels","*.VisibleRole","TabloidConfigEdition.Authorization","*.FieldName"};
+        List<string> modalPropertiesList = new List<string> {
+            "*.Champ","*.ChampLimite","*.Fin","*.Debut","TabloidConfigCalendrier.Titre","*.ChampX","*.ChampY","*.ChampCritere","*.ChampCritere2",
+            "*.ChampAffichage","*.ChampValeur","*.ChampClef","*.ChampDeRef","*.ChampDeRef2","*.DbKey","TabloidConfigCalendrier.Couleur","TabloidConfigCalendrier.Tooltip","TabloidConfigCalendrier.ChampGroupe","*.JoinFieldName","*.JoinValueField",
+            "*.ColName",
+            "*.Select","*.Where","*.GroupBy","*.Distinct","*.WherePeuplement","*.Order","*.Rolels","*.VisibleRole","TabloidConfigEdition.Authorization","*.FieldName"};
 
-        List<string> dropDownPropertiesList = new List<string> { "*.Jointure", "*.Table", "*.TableSource", "*.NomTable","*.TableName","*.JoinTableName"};
+        //Graphql.DSHelper.Champ
+        List<string> dropDownPropertiesList = new List<string> { "*.Jointure", "*.Table", "*.TableSource", "*.NomTable", "*.TableName", "*.JoinTableName", "TabloidConfigColonne.DSID" };
 
         public override UITypeEditorEditStyle GetEditStyle(ITypeDescriptorContext context)
         {
@@ -136,14 +140,14 @@ namespace TabloidWizard.Classes.Editor
                 case "Rolels":
                 case "VisibleRole":
                 case "Authorization":
-                    string title= "?";
-                    WizardRoles wz=null;
+                    string title = "?";
+                    WizardRoles wz = null;
 
                     if (context.PropertyDescriptor.Name == "Authorization")
                     {
                         title = Properties.Resources.Edition + ((TabloidConfigEdition)context.Instance).ToString();
 
-                        wz = new WizardRoles(title, Properties.Resources.DisplayOnly);                        
+                        wz = new WizardRoles(title, Properties.Resources.DisplayOnly);
                     }
                     else
                     {
@@ -151,24 +155,38 @@ namespace TabloidWizard.Classes.Editor
 
                         wz = context.PropertyDescriptor.Name == "VisibleRole" ?
                             new WizardRoles(title, Properties.Resources.Hidden) :
-                            new WizardRoles(title, Properties.Resources.WithReadOnly);                        
+                            new WizardRoles(title, Properties.Resources.WithReadOnly);
                     }
 
                     if (wz.ShowDialog() == DialogResult.OK)
-                        value = wz.txtResult.Text;                    
+                        value = wz.txtResult.Text;
                     break;
                 case "ColName":
-                    var frmXLS = new XLSColumnSelector(Program.CurrentXLSStructure,XLSColumnSelector.BehaviourTypes.ColumnSelect);
+                    var frmXLS = new XLSColumnSelector(Program.CurrentXLSStructure, XLSColumnSelector.BehaviourTypes.ColumnSelect);
                     if (frmXLS.ShowDialog() == DialogResult.OK)
                     {
                         Program.CurrentXLSStructure = frmXLS.CurrentXLSStructure;
                         value = frmXLS.cmbField.SelectedItem;
                     }
                     break;
+                case "DSID":
+                    setDMFieldList(provider, value);
+                    break;
             }
 
             return base.EditValue(context, provider, value);
         }
+
+        private async void getDSField()
+        {
+            var dem = new DSHelper();
+            
+            GraphQL.GraphQLResponse<DSHelper.DemarcheResponse> response = await dem.getDescriptor(Program.AppSet.DSURL, Program.AppSet.DSKey, "19");//CurrentContext.CurrentView.DSNum
+            if (response.Errors == null)
+                graphqlCache = response.Data.demarche.champDescriptors;
+        }
+
+        private List<DSHelper.ChampDescriptor> graphqlCache { get; set; }
 
         private string setIfEmpty(string prop, string value)
         {
@@ -199,6 +217,29 @@ namespace TabloidWizard.Classes.Editor
                     _service.DropDownControl(_list);
 
 
+                }
+            }
+        }
+
+        public void setDMFieldList(IServiceProvider provider, object value)
+        {
+            if (provider != null)
+            {
+                if (!string.IsNullOrEmpty(CurrentContext.CurrentView.DSNum))
+                    if (graphqlCache == null)
+                    {
+                        getDSField();
+                    }
+                // This service is in charge of popping our ListBox.
+                _service = ((IWindowsFormsEditorService)provider.GetService(typeof(IWindowsFormsEditorService)));
+                _list = new ListBox();
+
+                if (_service != null)
+                {
+                    _list.Click += ListBox_Click;
+                    _list.DataSource = graphqlCache;
+
+                    _service.DropDownControl(_list);
                 }
             }
         }

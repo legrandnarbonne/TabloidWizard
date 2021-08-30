@@ -492,4 +492,31 @@ Parámetros:
   <data name="TheField" xml:space="preserve">
     <value>La era</value>
   </data>
+  <data name="ConvertToList" xml:space="preserve">
+    <value>Convertir en lista</value>
+  </data>
+  <data name="FileAnalysis" xml:space="preserve">
+    <value>Analizando archivo %s</value>
+  </data>
+  <data name="Initiating" xml:space="preserve">
+    <value>"Inicializando..."</value>
+  </data>
+  <data name="Cleaning" xml:space="preserve">
+    <value>Limpieza</value>
+  </data>
+  <data name="ImportExtractFile" xml:space="preserve">
+    <value>Insertando archivos en el repositorio</value>
+  </data>
+  <data name="LoadingConfig" xml:space="preserve">
+    <value>Cargando configuración...</value>
+  </data>
+  <data name="ImportRestauration" xml:space="preserve">
+    <value>Restauración en curso</value>
+  </data>
+  <data name="SelectImportFile" xml:space="preserve">
+    <value>Seleccione el archivo para importar</value>
+  </data>
+  <data name="GeneratingWebSite" xml:space="preserve">
+    <value>Incluir validación de accesibilidad al generar Web</value>
+  </data>
 </root>
